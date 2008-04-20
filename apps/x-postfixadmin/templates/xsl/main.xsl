@@ -50,6 +50,100 @@ doctype-system="http://www.w3.org/TR/html4/loose.dtd"/>
     <xsl:value-of select="string" disable-output-escaping="yes"/>
 </xsl:for-each>
 
+
+<div id="menu">
+<ul>
+    <li>
+        <a target='_top' href='list-admin.php'>Admin List</a>
+        <ul>
+            <li>
+                <a target='_top' href='list-admin.php'>Admin List</a>
+            </li>
+            <li>
+                <a target='_top' href='create-admin.php'>New Admin</a>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <a target='_top' href='list-domain.php'>Domain List</a>
+        <ul>
+            <li>
+                <a target='_top' href='list-domain.php'>Domain List</a>
+            </li>
+            <li>
+                <a target='_top' href='create-domain.php'>New Domain</a>
+            </li>
+        </ul>
+    <li>
+        <a target='_top' href='list-virtual.php'>Virtual List</a>
+        <ul>
+            <li>
+                <a target='_top' href='list-virtual.php'>Virtual List</a>
+            </li>
+            <li>
+                <a target='_top' href='create-mailbox.php'>Add Mailbox</a>
+            </li>
+            <li>
+                <a target='_top' href='create-alias.php'>Add Alias</a>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <a target='_top' href='fetchmail.php'>Fetch Email</a>
+        <ul>
+            <li>
+                <a target='_top' href='fetchmail.php'>Fetch Email</a>
+            </li>
+            <li>
+                <a target='_top' href='fetchmail.php?new=1'>New entry</a>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <a target='_top' href='sendmail.php'>Send Email</a>
+        <ul>
+            <li>
+                <a target='_top' href='sendmail.php'>Send Email</a>
+            </li>
+            <li>
+                <a target='_top' href='broadcast-message.php'>Broadcast message</a>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <a target='_top' href='password.php'>Password</a>
+    </li>
+    <li>
+        <a target='_top' href='backup.php'>Backup</a>
+    </li>
+    <li>
+        <a target='_top' href='viewlog.php'>View Log</a>
+    </li>
+    <li>
+        <a target='_top' href='logout.php'>Logout</a>
+    </li>
+    </li>
+</ul>
+
+</div>
+
+<br clear='all' />
+<script type='text/javascript'>
+sfHover = function() {
+   var sfEls = document.getElementById("menu").getElementsByTagName("LI");
+      for (var i=0; i &lt; sfEls.length; i++) {
+         sfEls[i].onmouseover=function() {
+            this.className+=" sfhover";
+         }
+         sfEls[i].onmouseout=function() {
+            this.className=this.className.replace(new RegExp(" sfhover\\b"), "");
+         }
+   }
+}
+if (window.attachEvent) window.attachEvent("onload", sfHover);
+</script>
+
+
     <xsl:call-template name="content"/>
 
 </body>

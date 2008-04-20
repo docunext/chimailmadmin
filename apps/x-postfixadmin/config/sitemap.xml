@@ -24,6 +24,8 @@ or write to the Free Software Foundation,Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <map:prepend>
+    <map:set name="theme" value="default"/>
+    <map:script src="lib/php/runtime.php"/>
 </map:prepend>
 
 
@@ -53,9 +55,9 @@ files. -->
     <map:action type="header" params="Content-Type,text/plain"/>
     <map:raw src="INSTALL" />
 </map:gate>
-<map:gate name="themed-css" cache="0" client_cache="120">
+<map:gate name="themed-css" cache="0">
     <map:action type="header" params="Content-Type,text/css"/>
-    <map:raw src="templates/themes/{//theme}/style-1.css" />
+    <map:raw src="templates/themes/default/style-1.css" />
 </map:gate>
 
 
