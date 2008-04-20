@@ -1,0 +1,60 @@
+<!--
+Program: X Postfix Admin
+Component: domain_list.xsl
+Copyright: Savonix Corporation
+Author: Albert L. Lash, IV
+License: Gnu Affero Public License version 3
+http://www.gnu.org/licenses
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation; either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program; if not, see http://www.gnu.org/licenses
+or write to the Free Software Foundation,Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301  USA
+-->
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" >
+<xsl:import href="main.xsl"/>
+<xsl:template name="content">
+
+<div id="overview">
+<form name="overview" method="post">
+<select name="fUsername" onChange="this.form.submit();">
+<option value="albert.lash@savonix.com">albert.lash@savonix.com</option>
+</select>
+<input class="button" type="submit" name="go" value="Go" />
+</form>
+<form name="search" method="post" action="search.php">
+<input type="textbox" name="search" size="10" />
+</form>
+</div>
+
+<table id="admin_table">
+   <tr class="header">
+      <td>Domain</td>
+      <td>Description</td>
+      <td>Aliases</td>
+      <td>Mailboxes</td>
+      <td>Backup MX</td>
+
+      <td>Last Modified</td>
+      <td>Active</td>
+      <td colspan="2"></td>
+   </tr>
+   <tr class="hilightoff" onMouseOver="className='hilighton';" onMouseOut="className='hilightoff';">
+<td><a href="list-virtual.php?domain=test.com">test.com</a></td><td>ads</td><td>0 / 10</td><td>0 / 10</td><td>NO</td><td>2008-04-19 21:22:46</td><td><a href="edit-active-domain.php?domain=test.com">YES</a></td><td><a href="edit-domain.php?domain=test.com">edit</a></td><td><a href="delete.php?table=domain&delete=test.com" onclick="return confirm ('Do you really want to delete all records for this domain? This can not be undone!\nDomain: test.com')">del</a></td></tr>
+
+</table>
+<p><a href='create-domain.php'>New Domain</a>
+
+
+</xsl:template>
+</xsl:stylesheet>
