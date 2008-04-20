@@ -148,11 +148,7 @@ if (window.attachEvent) window.attachEvent("onload", sfHover);
 
 
 <div id="footer">
-<a target="_blank" href="http://postfixadmin.com/">Postfix Admin 2.2 SVN</a>
-
-
-<a target="_blank" href="http://postfixadmin.sf.net/update-check.php?version=2.2 SVN">Check for update</a>
-<a href="http://change-this-to-your.domain.tld">Return to change-this-to-your.domain.tld</a>
+    <a href="http://www.x-postfixadmin.docunext.com/blog/">X Postfix Admin</a>
 </div>
 
 </body>
