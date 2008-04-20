@@ -54,73 +54,73 @@ doctype-system="http://www.w3.org/TR/html4/loose.dtd"/>
 <div id="menu">
 <ul>
     <li>
-        <a target='_top' href='list-admin.php'>Admin List</a>
+        <a href="list-admin.php">Admin List</a>
         <ul>
             <li>
-                <a target='_top' href='list-admin.php'>Admin List</a>
+                <a href="list-admin.php">Admin List</a>
             </li>
             <li>
-                <a target='_top' href='create-admin.php'>New Admin</a>
+                <a href="create-admin.php">New Admin</a>
             </li>
         </ul>
     </li>
     <li>
-        <a target='_top' href='list-domain.php'>Domain List</a>
+        <a href="list-domain.php">Domain List</a>
         <ul>
             <li>
-                <a target='_top' href='list-domain.php'>Domain List</a>
+                <a href="list-domain.php">Domain List</a>
             </li>
             <li>
-                <a target='_top' href='create-domain.php'>New Domain</a>
+                <a href="create-domain.php">New Domain</a>
             </li>
         </ul>
     <li>
-        <a target='_top' href='list-virtual.php'>Virtual List</a>
+        <a href="list-virtual.php">Virtual List</a>
         <ul>
             <li>
-                <a target='_top' href='list-virtual.php'>Virtual List</a>
+                <a href="list-virtual.php">Virtual List</a>
             </li>
             <li>
-                <a target='_top' href='create-mailbox.php'>Add Mailbox</a>
+                <a href="create-mailbox.php">Add Mailbox</a>
             </li>
             <li>
-                <a target='_top' href='create-alias.php'>Add Alias</a>
-            </li>
-        </ul>
-    </li>
-    <li>
-        <a target='_top' href='fetchmail.php'>Fetch Email</a>
-        <ul>
-            <li>
-                <a target='_top' href='fetchmail.php'>Fetch Email</a>
-            </li>
-            <li>
-                <a target='_top' href='fetchmail.php?new=1'>New entry</a>
+                <a href="create-alias.php">Add Alias</a>
             </li>
         </ul>
     </li>
     <li>
-        <a target='_top' href='sendmail.php'>Send Email</a>
+        <a href="fetchmail.php">Fetch Email</a>
         <ul>
             <li>
-                <a target='_top' href='sendmail.php'>Send Email</a>
+                <a href="fetchmail.php">Fetch Email</a>
             </li>
             <li>
-                <a target='_top' href='broadcast-message.php'>Broadcast message</a>
+                <a href="fetchmail.php?new=1">New entry</a>
             </li>
         </ul>
     </li>
     <li>
-        <a target='_top' href='password.php'>Password</a>
+        <a href="sendmail.php">Send Email</a>
+        <ul>
+            <li>
+                <a href="sendmail.php">Send Email</a>
+            </li>
+            <li>
+                <a href="broadcast-message.php">Broadcast message</a>
+            </li>
+        </ul>
     </li>
     <li>
-        <a target='_top' href='backup.php'>Backup</a>
+        <a href="password.php">Password</a>
     </li>
     <li>
-        <a target='_top' href='viewlog.php'>View Log</a>
+        <a href="backup.php">Backup</a>
     </li>
     <li>
-        <a target='_top' href='logout.php'>Logout</a>
+        <a href="viewlog.php">View Log</a>
+    </li>
+    <li>
+        <a href="logout.php">Logout</a>
     </li>
     </li>
 </ul>
@@ -145,6 +145,15 @@ if (window.attachEvent) window.attachEvent("onload", sfHover);
 
 
     <xsl:call-template name="content"/>
+
+
+<div id="footer">
+<a target="_blank" href="http://postfixadmin.com/">Postfix Admin 2.2 SVN</a>
+
+
+<a target="_blank" href="http://postfixadmin.sf.net/update-check.php?version=2.2 SVN">Check for update</a>
+<a href="http://change-this-to-your.domain.tld">Return to change-this-to-your.domain.tld</a>
+</div>
 
 </body>
 </html>
