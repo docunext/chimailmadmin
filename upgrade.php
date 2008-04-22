@@ -74,7 +74,7 @@ else {
     db_query_parsed($mysql, 0, " ENGINE = MYISAM COMMENT = 'PostfixAdmin settings'");
 }
 
-$sql = "SELECT * FROM config WHERE name = 'version'";
+$sql = "SELECT * FROM " . table_by_key ('config') . " WHERE name = 'version'";
 
 // insert into config('version', '01');
 
@@ -88,7 +88,11 @@ if($r['rows'] == 1) {
     $version = 0;
 }
 
-_do_upgrade($version);
+upgrade_5_mysql();
+exit;
+// lots not working for me - albertlash - 2008-04-22
+// just installing into mysql5 and being done.
+//_do_upgrade($version);
 
 
 function _do_upgrade($current_version) {
@@ -701,18 +705,4 @@ $result = db_query_parsed("
     FOREIGN KEY (`on_vacation`) REFERENCES vacation(`email`) ON DELETE CASCADE
     ");
 }
-
-/*
-   TODO
-
-   Database changes that should be done:
-   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-MySQL:
-* vacation: 
- - DROP INDEX email
- - 'cache' field might be obsolete with vacation_notification - needs to be checked!
-* charset of equal fields MUST be the same (see bugreport)
- */
-
 
