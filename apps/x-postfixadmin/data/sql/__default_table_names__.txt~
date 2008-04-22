@@ -9,13 +9,4 @@
 <!ATTLIST param type CDATA #IMPLIED>
 <!ATTLIST param default CDATA #IMPLIED>
 <!ELEMENT sql      (#PCDATA)>
-<!ENTITY connection "savonix">
-<!ENTITY prefix "xpa_">
-<!ENTITY xpa_admin "&prefix;admin">
-<!ENTITY xpa_alias "&prefix;alias">
-<!ENTITY xpa_config "&prefix;config">
-<!ENTITY xpa_domains "&prefix;domain">
-<!ENTITY xpa_domain_admins "&prefix;domain_admins">
-<!ENTITY xpa_log "&prefix;log">
-<!ENTITY xpa_mailbox "&prefix;mailbox">
-<!ENTITY xpa_vacation "&prefix;vacation">
+<!ENTITY prefix "">

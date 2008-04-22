@@ -25,16 +25,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <query name="domain_create">
     <connection>&connection;</connection>
     <params>
-        <param name="_post/domain" type="text"/>
-        <param name="_post/description" type="text"/>
-        <param name="_post/aliases" type="text"/>
-        <param name="_post/mailboxes" type="text"/>
-        <param name="_post/backupmx" type="text"/>
 	</params>
     <sql>
-        INSERT INTO &xpa_domains;
-        (domain,description,aliases,mailboxes,backupmx)
-        VALUES
-        (?,?,?,?,?)
     </sql>
 </query>

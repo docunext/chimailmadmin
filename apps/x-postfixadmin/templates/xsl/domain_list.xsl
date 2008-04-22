@@ -38,28 +38,34 @@ Fifth Floor, Boston, MA 02110-1301  USA
 </div>
 
 <table id="admin_table">
-   <tr class="header">
-      <td>Domain</td>
-      <td>Description</td>
-      <td>Aliases</td>
-      <td>Mailboxes</td>
-      <td>Backup MX</td>
-
-      <td>Last Modified</td>
-      <td>Active</td>
-      <td colspan="2"></td>
-   </tr>
-   <xsl:for-each select="//domains_get_all">
-   </xsl:for-each>
-   <tr class="hilightoff" onMouseOver="className='hilighton';" onMouseOut="className='hilightoff';">
-<td><a href="{//link_prefix}">test.com</a>
-</td>
-<td>ads</td><td>0 / 10</td><td>0 / 10</td><td>NO</td><td>2008-04-19 21:22:46</td><td>
-<a href="edit-active-domain.php?domain=test.com">YES</a></td><td>
-<a href="edit-domain.php?domain=test.com">edit</a></td><td>
-<a href="delete.php?table=domain&amp;delete=test.com" 
-    onclick="return confirm ('Do you really want to delete all records for this domain? This can not be undone!\nDomain: test.com')">del</a>
-    </td></tr>
+    <tr class="header">
+        <td>Domain</td>
+        <td>Description</td>
+        <td>Aliases</td>
+        <td>Mailboxes</td>
+        <td>Backup MX</td>
+        
+        <td>Last Modified</td>
+        <td>Active</td>
+        <td colspan="2"></td>
+    </tr>
+    <xsl:for-each select="//domains_get_all">
+    <tr class="hilightoff" onMouseOver="className='hilighton';" onMouseOut="className='hilightoff';">
+        <td>
+            <a href="{//link_prefix}"><xsl:value-of select="domain"/></a>
+        </td>
+        <td>ads</td>
+        <td>0 / 10</td>
+        <td>0 / 10</td>
+        <td>NO</td>
+        <td></td><td>
+        <a href="{//link_prefix}">YES</a></td><td>
+        <a href="{//link_prefix}">edit</a></td><td>
+        <a href="{//link_prefix}" 
+        onclick="return confirm ('Do you really want to delete all records for this domain? This can not be undone!\nDomain: test.com')">del</a>
+        </td>
+    </tr>
+    </xsl:for-each>
 
 </table>
 <p><a href="{//link_prefix}xpa-domain-edit">New Domain</a>

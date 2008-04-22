@@ -33,36 +33,36 @@ Fifth Floor, Boston, MA 02110-1301  USA
    <tr>
       <td>Domain:</td>
 
-      <td><input class="flat" type="text" name="fDomain" value="" /></td>
+      <td><input class="flat" type="text" name="domain" value="" /></td>
       <td></td>
    </tr>
    <tr>
       <td>Description:</td>
-      <td><input class="flat" type="text" name="fDescription" value="" /></td>
+      <td><input class="flat" type="text" name="description" value="" /></td>
       <td></td>
    </tr>
 
    <tr>
       <td>Aliases:</td>
-      <td><input class="flat" type="text" name="fAliases" value="10" /></td>
+      <td><input class="flat" type="text" name="aliases" value="10" /></td>
       <td>-1 = disable | 0 = unlimited</td>
    </tr>
    <tr>
       <td>Mailboxes:</td>
 
-      <td><input class="flat" type="text" name="fMailboxes" value="10" /></td>
+      <td><input class="flat" type="text" name="mailboxes" value="10" /></td>
       <td>-1 = disable | 0 = unlimited</td>
    </tr>
       <tr>
       <td>Add default mail aliases:</td>
-      <td>      <input class="flat" type="checkbox" name="fDefaultaliases"  />
+      <td>      <input class="flat" type="checkbox" name="defaultaliases"  />
       </td>
 
       <td></td>
    </tr>
    <tr>
       <td>Mail server is backup MX:</td>
-      <td>      <input class="flat" type="checkbox" name="fBackupmx"  />
+      <td>      <input class="flat" type="checkbox" name="backupmx"  />
       </td>
       <td></td>
    </tr>
