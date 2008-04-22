@@ -54,17 +54,6 @@ doctype-system="http://www.w3.org/TR/html4/loose.dtd"/>
 <div id="menu">
 <ul>
     <li>
-        <a href="{//link_prefix}">Admin List</a>
-        <ul>
-            <li>
-                <a href="{//link_prefix}">Admin List</a>
-            </li>
-            <li>
-                <a href="{//link_prefix}">New Admin</a>
-            </li>
-        </ul>
-    </li>
-    <li>
         <a href="{//link_prefix}xpa-domain-list">Domain List</a>
         <ul>
             <li>
@@ -87,15 +76,6 @@ doctype-system="http://www.w3.org/TR/html4/loose.dtd"/>
                 <a href="{//link_prefix}xpa-alias-list">Add Alias</a>
             </li>
         </ul>
-    </li>
-    <li>
-        <a href="{//link_prefix}">Password</a>
-    </li>
-    <li>
-        <a href="{//link_prefix}">Backup</a>
-    </li>
-    <li>
-        <a href="{//link_prefix}">View Log</a>
     </li>
     <li>
         <a href="{//link_prefix}">Logout</a>
