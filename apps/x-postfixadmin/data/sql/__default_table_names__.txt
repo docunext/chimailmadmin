@@ -1,0 +1,12 @@
+<!ELEMENT query (connection,params,sql)>
+<!ATTLIST query name CDATA #IMPLIED>
+<!ATTLIST query loop CDATA #IMPLIED>
+<!ELEMENT connection      (#PCDATA)>
+<!ELEMENT params      (param*)>
+<!ELEMENT param      (#PCDATA)>
+<!ATTLIST param array CDATA #IMPLIED>
+<!ATTLIST param name CDATA #IMPLIED>
+<!ATTLIST param type CDATA #IMPLIED>
+<!ATTLIST param default CDATA #IMPLIED>
+<!ELEMENT sql      (#PCDATA)>
+<!ENTITY prefix "">
