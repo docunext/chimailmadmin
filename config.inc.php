@@ -28,13 +28,13 @@ if (ereg ("config.inc.php", $_SERVER['PHP_SELF']))
  * application will run!
  * Doing this implies you have changed this file as required.
  */
-$CONF['configured'] = false;
+$CONF['configured'] = true;
 
 
 // Postfix Admin Path
 // Set the location of your Postfix Admin installation here.
 // YOU MUST ENTER THE COMPLETE URL e.g. http://domain.tld/postfixadmin
-$CONF['postfix_admin_url'] = '';
+$CONF['postfix_admin_url'] = 'http://dev-101.savonix.com/a/dev/postfixadmin-0.00/';
 
 // shouldn't need changing.
 $CONF['postfix_admin_path'] = dirname(__FILE__);
@@ -47,15 +47,10 @@ $CONF['default_language'] = 'en';
 // mysql = MySQL 3.23 and 4.0
 // mysqli = MySQL 4.1
 // pgsql = PostgreSQL
-$CONF['database_type'] = 'mysql';
-$CONF['database_host'] = 'localhost';
-$CONF['database_user'] = 'postfixadmin';
-$CONF['database_password'] = 'postfixadmin';
-$CONF['database_name'] = 'postfix';
-$CONF['database_prefix'] = '';
+require('config.inc.php.ignore');
 
 // Here, if you need, you can customize table names.
-$CONF['database_prefix'] = '';
+$CONF['database_prefix'] = 'xpa_';
 $CONF['database_tables'] = array (
     'admin' => 'admin',
     'alias' => 'alias',
