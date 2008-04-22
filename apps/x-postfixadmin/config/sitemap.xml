@@ -35,6 +35,12 @@ Fifth Floor, Boston, MA 02110-1301  USA
 </map:gate>
 
 
+<map:gate name="xpa-domain-list" >
+    <map:xsl src="templates/xsl/domain_list.xsl"/>
+</map:gate>
+<map:gate name="xpa-domain-edit" >
+    <map:xsl src="templates/xsl/domain_form.xsl"/>
+</map:gate>
 
 
 <map:gate name="xpa-mailbox-edit" >

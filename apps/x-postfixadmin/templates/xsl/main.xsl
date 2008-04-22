@@ -54,73 +54,51 @@ doctype-system="http://www.w3.org/TR/html4/loose.dtd"/>
 <div id="menu">
 <ul>
     <li>
-        <a href="list-admin.php">Admin List</a>
+        <a href="{//link_prefix}">Admin List</a>
         <ul>
             <li>
-                <a href="list-admin.php">Admin List</a>
+                <a href="{//link_prefix}">Admin List</a>
             </li>
             <li>
-                <a href="create-admin.php">New Admin</a>
+                <a href="{//link_prefix}">New Admin</a>
             </li>
         </ul>
     </li>
     <li>
-        <a href="list-domain.php">Domain List</a>
+        <a href="{//link_prefix}xpa-domain-list">Domain List</a>
         <ul>
             <li>
-                <a href="list-domain.php">Domain List</a>
+                <a href="{//link_prefix}xpa-domain-list">Domain List</a>
             </li>
             <li>
-                <a href="create-domain.php">New Domain</a>
+                <a href="{//link_prefix}xpa-domain-edit">New Domain</a>
             </li>
         </ul>
     <li>
-        <a href="list-virtual.php">Virtual List</a>
+        <a href="{//link_prefix}xpa-virtual-list">Virtual List</a>
         <ul>
             <li>
-                <a href="list-virtual.php">Virtual List</a>
+                <a href="{//link_prefix}xpa-virtual-list">Virtual List</a>
             </li>
             <li>
-                <a href="create-mailbox.php">Add Mailbox</a>
+                <a href="{//link_prefix}xpa-mailbox-edit">Add Mailbox</a>
             </li>
             <li>
-                <a href="create-alias.php">Add Alias</a>
-            </li>
-        </ul>
-    </li>
-    <li>
-        <a href="fetchmail.php">Fetch Email</a>
-        <ul>
-            <li>
-                <a href="fetchmail.php">Fetch Email</a>
-            </li>
-            <li>
-                <a href="fetchmail.php?new=1">New entry</a>
+                <a href="{//link_prefix}xpa-alias-list">Add Alias</a>
             </li>
         </ul>
     </li>
     <li>
-        <a href="sendmail.php">Send Email</a>
-        <ul>
-            <li>
-                <a href="sendmail.php">Send Email</a>
-            </li>
-            <li>
-                <a href="broadcast-message.php">Broadcast message</a>
-            </li>
-        </ul>
+        <a href="{//link_prefix}">Password</a>
     </li>
     <li>
-        <a href="password.php">Password</a>
+        <a href="{//link_prefix}">Backup</a>
     </li>
     <li>
-        <a href="backup.php">Backup</a>
+        <a href="{//link_prefix}">View Log</a>
     </li>
     <li>
-        <a href="viewlog.php">View Log</a>
-    </li>
-    <li>
-        <a href="logout.php">Logout</a>
+        <a href="{//link_prefix}">Logout</a>
     </li>
     </li>
 </ul>
