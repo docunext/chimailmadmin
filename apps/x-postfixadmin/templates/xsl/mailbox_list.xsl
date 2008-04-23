@@ -94,5 +94,55 @@ Fifth Floor, Boston, MA 02110-1301  USA
     </table>
 
 	</form>
+
+
+<div id="overview">
+<form name="overview" method="post">
+<select name="fDomain" onChange="this.form.submit();">
+<option value="3fasdf.com">3fasdf.com</option>
+<option value="blahdddsh.com">blahdddsh.com</option>
+<option value="sadfsadfsadf.com">sadfsadfsadf.com</option>
+<option value="wowzer.com">wowzer.com</option>
+</select>
+<input type="hidden" name="limit" value="0" />
+
+<input class="button" type="submit" name="go" value="Go" />
+</form>
+<h4>Overview for wowzer.com</h4>
+<p>Aliases: 0 / 10</p>
+<p>Mailboxes: 1 / 10</p>
+<form name="search" method="post" action="search.php">search:
+<input type="textbox" name="search" size="10" />
+</form>
+</div>
+
+<p><a href="create-alias.php?domain=wowzer.com">Add Alias</a></p>
+
+<table id="mailbox_table">
+   <tr>
+      <td colspan="9"><h3>:: Mailboxes</h3></td>   </tr>   
+  <tr class="header">
+      <td>Email</td>
+
+      <td>Name</td>
+      <td>Last Modified</td>
+      <td>Active</td>
+      <td colspan="3"></td>
+   </tr>
+   <tr class="hilightoff" onMouseOver="className='hilighton';" onMouseOut="className='hilightoff';">
+      <td>asdf@wowzer.com</td>
+
+      <td></td>
+      <td>2008-04-22 22:46:18</td>
+      <td><a href="">YES</a></td>
+      <td><a href="">edit</a></td>
+      <td><a href="" onclick="">del</a></td>
+   </tr>
+</table>
+
+<p><a href="create-mailbox.php?domain=wowzer.com">Add Mailbox</a></p>
+
+
+    
 </xsl:template>
 </xsl:stylesheet>

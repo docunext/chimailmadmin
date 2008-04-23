@@ -64,10 +64,10 @@ doctype-system="http://www.w3.org/TR/html4/loose.dtd"/>
             </li>
         </ul>
     <li>
-        <a href="{//link_prefix}xpa-virtual-list">Virtual List</a>
+        <a href="{//link_prefix}xpa-mailbox-list">Address Lists</a>
         <ul>
             <li>
-                <a href="{//link_prefix}xpa-virtual-list">Virtual List</a>
+                <a href="{//link_prefix}xpa-mailbox-list">Address Lists</a>
             </li>
             <li>
                 <a href="{//link_prefix}xpa-mailbox-edit">Add Mailbox</a>
