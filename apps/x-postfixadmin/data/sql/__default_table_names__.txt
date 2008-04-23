@@ -10,6 +10,7 @@
 <!ATTLIST param default CDATA #IMPLIED>
 <!ELEMENT sql      (#PCDATA)>
 <!ENTITY connection "savonix">
+<!ENTITY connection_read "savonix_read">
 <!ENTITY prefix "xpa_">
 <!ENTITY xpa_admin "&prefix;admin">
 <!ENTITY xpa_alias "&prefix;alias">
