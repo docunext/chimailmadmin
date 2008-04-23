@@ -50,6 +50,7 @@ CREATE TABLE IF NOT EXISTS `xpa_config` (
 --
 
 CREATE TABLE IF NOT EXISTS `xpa_domain` (
+  `domain_id` int(11) NOT NULL auto_increment,
   `domain` varchar(255) NOT NULL default '',
   `description` varchar(255) NOT NULL default '',
   `aliases` int(10) NOT NULL default '0',
@@ -61,9 +62,9 @@ CREATE TABLE IF NOT EXISTS `xpa_domain` (
   `created` datetime NOT NULL default '0000-00-00 00:00:00',
   `modified` datetime NOT NULL default '0000-00-00 00:00:00',
   `active` tinyint(1) NOT NULL default '1',
-  PRIMARY KEY  (`domain`),
-  KEY `domain` (`domain`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Postfix Admin - Virtual Domains';
+  PRIMARY KEY  (`domain_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='Postfix Admin - Virtual Domains' AUTO_INCREMENT=2 ;
+
 
 -- --------------------------------------------------------
 

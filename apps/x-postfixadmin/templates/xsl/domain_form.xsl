@@ -26,6 +26,9 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:template name="content">
 <div id="edit_form">
 <form name="create_domain" method="post">
+<xsl:if test="//_get/domain_id">
+    <input type="hidden" name="domain_id" value="{//_get/domain_id}"/>
+</xsl:if>
 <table>
    <tr>
       <td colspan="3"><h3>Add a new domain</h3></td>
@@ -33,24 +36,24 @@ Fifth Floor, Boston, MA 02110-1301  USA
    <tr>
       <td>Domain:</td>
 
-      <td><input class="flat" type="text" name="domain" value="" /></td>
+      <td><input class="flat" type="text" name="domain" value="{//domain_get_by_id/domain}" /></td>
       <td></td>
    </tr>
    <tr>
       <td>Description:</td>
-      <td><input class="flat" type="text" name="description" value="" /></td>
+      <td><input class="flat" type="text" name="description" value="{//domain_get_by_id/description}" /></td>
       <td></td>
    </tr>
 
    <tr>
       <td>Aliases:</td>
-      <td><input class="flat" type="text" name="aliases" value="10" /></td>
+      <td><input class="flat" type="text" name="aliases" value="{//domain_get_by_id/aliases}" /></td>
       <td>-1 = disable | 0 = unlimited</td>
    </tr>
    <tr>
       <td>Mailboxes:</td>
 
-      <td><input class="flat" type="text" name="mailboxes" value="10" /></td>
+      <td><input class="flat" type="text" name="mailboxes" value="{//domain_get_by_id/mailboxes}" /></td>
       <td>-1 = disable | 0 = unlimited</td>
    </tr>
       <tr>
@@ -68,7 +71,9 @@ Fifth Floor, Boston, MA 02110-1301  USA
    </tr>
 
    <tr>
-      <td colspan="3" class="hlp_center"><input class="button" type="submit" name="submit" value="Add Domain" /></td>
+      <td colspan="3" class="hlp_center">
+        <input class="button" type="submit" name="submit" value="Add Domain" />
+    </td>
    </tr>
    <tr>
       <td colspan="3" class="standout"></td>

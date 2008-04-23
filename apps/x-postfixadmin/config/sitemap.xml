@@ -42,11 +42,20 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <map:gate name="xpa-domain-edit" >
     <xsl:if name="//_post">
         <map:true>
-            <map:query src="data/sql/domain_create.xml"/>
+            <map:if name="//_post/domain_id">
+                <map:true>
+                    <map:query src="data/sql/domain_update.xml"/>
+                </map:true>
+                <map:false>
+                    <map:query src="data/sql/domain_create.xml"/>
+                </map:false>
+            </map:if>
+            <map:action type="redirect" params="{//link_prefix}xpa-domain-list"/>
         </map:true>
         <map:false>
         </map:false>
     </xsl:if>
+    <map:query src="data/sql/domain_get_by_id.xml"/>
     <map:xsl src="templates/xsl/domain_form.xsl"/>
 </map:gate>
 

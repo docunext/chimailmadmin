@@ -1,6 +1,6 @@
 <!--
 Program: X-Postfix Admin
-Component: domain_create.xml
+Component: domain_get_by_id.xml
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -22,21 +22,12 @@ or write to the Free Software Foundation,Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
-<query name="domain_create">
+<query name="domain_get_by_id">
     <connection>&connection;</connection>
     <params>
-        <param name="_post/domain" type="text"/>
-        <param name="_post/description" type="text"/>
-        <param name="_post/aliases" type="text"/>
-        <param name="_post/mailboxes" type="text"/>
-        <param name="_post/backupmx" type="text"/>
-        <param name="//runtime/utcdate" type="text"/>
-        <param name="//runtime/utcdate" type="text"/>
+        <param name="_get/domain_id" type="integer"/>
 	</params>
     <sql>
-        INSERT INTO &xpa_domains;
-        (domain,description,aliases,mailboxes,backupmx,created,modified)
-        VALUES
-        (?,?,?,?,?,?,?)
+        SELECT * FROM &xpa_domains; WHERE domain_id = ?
     </sql>
 </query>

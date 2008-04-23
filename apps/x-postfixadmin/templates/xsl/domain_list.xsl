@@ -52,17 +52,30 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <xsl:for-each select="//domains_get_all">
     <tr class="hilightoff" onMouseOver="className='hilighton';" onMouseOut="className='hilightoff';">
         <td>
-            <a href="{//link_prefix}"><xsl:value-of select="domain"/></a>
+            <a href="{//link_prefix}xpa-domain-edit&amp;domain_id={domain_id}">
+                <xsl:value-of select="domain"/>
+            </a>
         </td>
-        <td>ads</td>
+        <td><xsl:value-of select="description"/></td>
         <td>0 / 10</td>
         <td>0 / 10</td>
-        <td>NO</td>
-        <td></td><td>
-        <a href="{//link_prefix}">YES</a></td><td>
-        <a href="{//link_prefix}">edit</a></td><td>
-        <a href="{//link_prefix}" 
-        onclick="return confirm ('Do you really want to delete all records for this domain? This can not be undone!\nDomain: test.com')">del</a>
+        <td>
+            <xsl:value-of select="backupmx"/>
+        </td>
+        <td>
+            <xsl:value-of select="modified"/>
+        </td>
+        <td>
+            <a href="{//link_prefix}">
+                <xsl:value-of select="active"/>
+            </a>
+        </td>
+        <td>
+            <a href="{//link_prefix}xpa-domain-edit&amp;domain_id={domain_id}">edit</a>
+        </td>
+        <td>
+            <a href="{//link_prefix}" 
+            onclick="return confirm ('Do you really want to delete all records for this domain? This can not be undone!\nDomain: test.com')">del</a>
         </td>
     </tr>
     </xsl:for-each>
