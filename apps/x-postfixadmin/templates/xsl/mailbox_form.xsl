@@ -27,13 +27,14 @@ Fifth Floor, Boston, MA 02110-1301  USA
 
 <div id="edit_form">
 <form name="mailbox" method="post">
+<input type="hidden" name="domain_id" value="{//_get/domain_id}"/>
 <table>
    <tr>
       <td colspan="3"><h3></h3></td>
    </tr>
    <tr>
-      <td>Username</td>
-      <td><input class="flat" type="text" name="fUsername" value="" autocomplete="off"/></td>
+      <td>Email Address</td>
+      <td><input class="flat" type="text" name="email_address" value="" autocomplete="off"/></td>
       <td>
       <select name="fDomain">
       </select>
@@ -41,12 +42,12 @@ Fifth Floor, Boston, MA 02110-1301  USA
    </tr>
    <tr>
       <td>Password</td>
-      <td><input class="flat" type="password" name="fPassword" /></td>
+      <td><input class="flat" type="password" name="password" /></td>
       <td></td>
    </tr>
    <tr>
       <td></td>
-      <td><input class="flat" type="password" name="fPassword2" /></td>
+      <td><input class="flat" type="password" name="password2" /></td>
       <td></td>
    </tr>
    <tr>
@@ -56,12 +57,12 @@ Fifth Floor, Boston, MA 02110-1301  USA
    </tr>
    <tr>
       <td>Active</td>
-      <td><input class="flat" type="checkbox" name="fActive" /></td>
+      <td><input class="flat" type="checkbox" name="active" /></td>
       <td></td>
    </tr>
    <tr>
       <td>Welcome mail</td>
-      <td><input class="flat" type="checkbox" name="fMail" /></td>
+      <td><input class="flat" type="checkbox" name="mail" /></td>
       <td></td>
    </tr>
    <tr>

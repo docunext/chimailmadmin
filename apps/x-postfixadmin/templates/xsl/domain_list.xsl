@@ -52,7 +52,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <xsl:for-each select="//domains_get_all">
     <tr class="hilightoff" onMouseOver="className='hilighton';" onMouseOut="className='hilightoff';">
         <td>
-            <a href="{//link_prefix}xpa-domain-edit&amp;domain_id={domain_id}">
+            <a href="{//link_prefix}xpa-mailbox-list&amp;domain_id={domain_id}">
                 <xsl:value-of select="domain"/>
             </a>
         </td>

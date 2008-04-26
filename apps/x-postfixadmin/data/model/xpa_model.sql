@@ -3,14 +3,14 @@
 --
 
 CREATE TABLE IF NOT EXISTS `xpa_admin` (
+  `user_id` int(11) NOT NULL auto_increment,
   `username` varchar(255) NOT NULL default '',
   `password` varchar(255) NOT NULL default '',
   `created` datetime NOT NULL default '0000-00-00 00:00:00',
   `modified` datetime NOT NULL default '0000-00-00 00:00:00',
   `active` tinyint(1) NOT NULL default '1',
-  PRIMARY KEY  (`username`),
-  KEY `username` (`username`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Postfix Admin - Virtual Admins';
+  PRIMARY KEY  (`user_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Postfix Admin - Virtual Admins' AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS `xpa_domain` (
   `modified` datetime NOT NULL default '0000-00-00 00:00:00',
   `active` tinyint(1) NOT NULL default '1',
   PRIMARY KEY  (`domain_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='Postfix Admin - Virtual Domains' AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='Postfix Admin - Virtual Domains' AUTO_INCREMENT=2 ;
 
 
 -- --------------------------------------------------------
@@ -78,7 +78,7 @@ CREATE TABLE IF NOT EXISTS `xpa_domain_admins` (
   `created` datetime NOT NULL default '0000-00-00 00:00:00',
   `active` tinyint(1) NOT NULL default '1',
   KEY `username` (`username`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Postfix Admin - Domain Admins';
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Postfix Admin - Domain Admins';
 
 -- --------------------------------------------------------
 
@@ -113,7 +113,7 @@ CREATE TABLE IF NOT EXISTS `xpa_mailbox` (
   `active` tinyint(1) NOT NULL default '1',
   PRIMARY KEY  (`username`),
   KEY `username` (`username`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Postfix Admin - Virtual Mailboxes';
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Postfix Admin - Virtual Mailboxes';
 
 -- --------------------------------------------------------
 

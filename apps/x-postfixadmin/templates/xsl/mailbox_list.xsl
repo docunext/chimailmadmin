@@ -99,10 +99,9 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <div id="overview">
 <form name="overview" method="post">
 <select name="fDomain" onChange="this.form.submit();">
-<option value="3fasdf.com">3fasdf.com</option>
-<option value="blahdddsh.com">blahdddsh.com</option>
-<option value="sadfsadfsadf.com">sadfsadfsadf.com</option>
-<option value="wowzer.com">wowzer.com</option>
+    <xsl:for-each select="//domains_get_all">
+    <option value="{domain}"><xsl:value-of select="domain"/></option>
+    </xsl:for-each>
 </select>
 <input type="hidden" name="limit" value="0" />
 
@@ -120,17 +119,18 @@ Fifth Floor, Boston, MA 02110-1301  USA
 
 <table id="mailbox_table">
    <tr>
-      <td colspan="9"><h3>:: Mailboxes</h3></td>   </tr>   
+      <td colspan="9"><h3>:: Mailboxes</h3></td>
+  </tr>
   <tr class="header">
       <td>Email</td>
-
       <td>Name</td>
       <td>Last Modified</td>
       <td>Active</td>
       <td colspan="3"></td>
    </tr>
+   <xsl:for-each select="//mailboxes_get_all">
    <tr class="hilightoff" onMouseOver="className='hilighton';" onMouseOut="className='hilightoff';">
-      <td>asdf@wowzer.com</td>
+      <td><xsl:value-of select="email_address"/></td>
 
       <td></td>
       <td>2008-04-22 22:46:18</td>
@@ -138,9 +138,10 @@ Fifth Floor, Boston, MA 02110-1301  USA
       <td><a href="">edit</a></td>
       <td><a href="" onclick="">del</a></td>
    </tr>
+   </xsl:for-each>
 </table>
 
-<p><a href="create-mailbox.php?domain=wowzer.com">Add Mailbox</a></p>
+<p><a href="{//link_prefix}xpa-mailbox-edit&amp;domain_id={//_get/domain_id}">Add Mailbox</a></p>
 
 
     
