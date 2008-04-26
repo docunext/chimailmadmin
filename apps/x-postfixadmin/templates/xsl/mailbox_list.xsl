@@ -36,11 +36,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <input class="button" type="submit" name="go" value="Go" />
 </form>
 <h4>Overview for <xsl:value-of select="//domains_get_all[domain_id=//_get/domain_id]/domain"/></h4>
-<p>Aliases: 0 / 10</p>
-<p>Mailboxes: 1 / 10</p>
-<form name="search" method="post">search:
-<input type="textbox" name="search" size="10" />
-</form>
+
 </div>
 
 <p><a href="{//link_prefix}xpa-alias-edit&amp;domain_id={//_get/domain_id}">Add Alias</a></p>
