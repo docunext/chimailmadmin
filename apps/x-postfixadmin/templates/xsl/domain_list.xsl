@@ -26,15 +26,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:template name="content">
 
 <div id="overview">
-<form name="overview" method="post">
-<select name="fUsername" onChange="this.form.submit();">
-<option value="albert.lash@savonix.com">albert.lash@savonix.com</option>
-</select>
-<input class="button" type="submit" name="go" value="Go" />
-</form>
-<form name="search" method="post" action="search.php">
-<input type="textbox" name="search" size="10" />
-</form>
+<br/><br/>
 </div>
 
 <table id="admin_table">
