@@ -65,6 +65,17 @@ Fifth Floor, Boston, MA 02110-1301  USA
       <td><input class="flat" type="checkbox" name="mail" /></td>
       <td></td>
    </tr>
+    <tr>
+        <td><label for="maildir">Create {maildir}</label></td>
+        <td>
+            <input id="maildir" name="create_mail_directory" value="1" type="radio"/>Yes
+            <input id="maildir" name="create_mail_directory" value="0" type="radio"/>No
+        </td>
+    </tr>
+    <tr>
+        <td><label for="default_filters">Create default filters</label></td>
+        <td><input id="default_filters" name="create_default_filters" value="1" checked="checked" type="checkbox"/></td>
+    </tr>
    <tr>
       <td colspan="3" class="hlp_center">
         <input class="button" type="submit" name="submit" value="" />
