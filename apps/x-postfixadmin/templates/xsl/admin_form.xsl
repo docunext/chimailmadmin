@@ -33,18 +33,18 @@ Fifth Floor, Boston, MA 02110-1301  USA
    <tr>
       <td>Admin:</td>
 
-      <td><input class="flat" type="text" name="fUsername" value="" /></td>
+      <td><input class="flat" type="text" name="username" value="" /></td>
       <td>Email address</td>
    </tr>
    <tr>
       <td>Password:</td>
-      <td><input class="flat" type="password" name="fPassword" /></td>
+      <td><input class="flat" type="password" name="password" /></td>
       <td></td>
    </tr>
 
    <tr>
       <td>Password (again):</td>
-      <td><input class="flat" type="password" name="fPassword2" /></td>
+      <td><input class="flat" type="password" name="password2" /></td>
       <td></td>
    </tr>
    <tr>

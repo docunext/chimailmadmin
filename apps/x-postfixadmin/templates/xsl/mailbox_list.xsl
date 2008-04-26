@@ -24,78 +24,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" >
 <xsl:import href="main.xsl"/>
 <xsl:template name="content">
-	<form  method="post">
-    <table cellpadding="2" cellspacing="0" width="100%">
-            <tr>
-                <td>
-                    ID
-                </td>
-                <td>
-                    Name
-                </td>
-                <td>
-                    Username
-                </td>
-                <td>
-                    Email
-                </td>
-                <td>
-                    Home
-                </td>
-                <td>
-                    Mail
-                </td>
-                <td>
-                    Impersonate
-                </td>
-                <td>
-                    Edit
-                </td>
-                <td>
-                    Delete
-                </td>
-            </tr>
-        <xsl:for-each select="//get_client_account_users">
-            <tr class="row{position() mod 2}">
-                <td>
-                    <xsl:value-of select="user_id"/>
-                </td>
-                <td>
-                    <xsl:value-of select="first_name"/>&#160; <xsl:value-of select="last_name"/>
-                </td>
-                <td>
-                    <xsl:value-of select="user_name"/>
-                </td>
-                <td>
-                    <xsl:value-of select="email"/>
-                </td>
-                <td>
-                    <xsl:value-of select="homedir"/>
-                </td>
-                <td>
-                    <xsl:value-of select="maildir"/>
-                </td>
-                <td>
-                <a href="/impersonate/&amp;user_id={user_id}">impersonate</a> 
-                </td>
-                <td>
-                    <a href="/admin/security/acc/view/users/edit/&amp;user_id={user_id}">
-                        Edit
-                    </a>
-                </td>
-                <td>
-                    <a href="/admin/security/acc/view/users/delete/&amp;user_id={user_id}" 
-                        onclick="return confirm('Are you sure you want to delete this user?')">
-                        Delete
-                    </a>
-                </td>
-            </tr>
-        </xsl:for-each>
-    </table>
-
-	</form>
-
-
 <div id="overview">
 <form name="overview" method="post">
 <select name="fDomain" onChange="this.form.submit();">
@@ -107,15 +35,15 @@ Fifth Floor, Boston, MA 02110-1301  USA
 
 <input class="button" type="submit" name="go" value="Go" />
 </form>
-<h4>Overview for wowzer.com</h4>
+<h4>Overview for <xsl:value-of select="//domains_get_all[domain_id=//_get/domain_id]/domain"/></h4>
 <p>Aliases: 0 / 10</p>
 <p>Mailboxes: 1 / 10</p>
-<form name="search" method="post" action="search.php">search:
+<form name="search" method="post">search:
 <input type="textbox" name="search" size="10" />
 </form>
 </div>
 
-<p><a href="create-alias.php?domain=wowzer.com">Add Alias</a></p>
+<p><a href="{//link_prefix}xpa-alias-edit&amp;domain_id={//_get/domain_id}">Add Alias</a></p>
 
 <table id="mailbox_table">
    <tr>

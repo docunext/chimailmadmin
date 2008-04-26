@@ -26,6 +26,10 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:template name="content">
 <div id="edit_form">
 <form name="alias" method="post">
+<xsl:if test="//_get/alias_id">
+    <input type="hidden" name="alias_id" value="{//_get/alias_id}"/>
+</xsl:if>
+<input type="hidden" name="domain_id" value="{//_get/domain_id}"/>
 <table>
    <tr>
       <td colspan="3"><h3>Create a new alias for your domain.</h3></td>
@@ -35,25 +39,18 @@ Fifth Floor, Boston, MA 02110-1301  USA
 
       <td><input class="flat" type="text" name="fAddress" value="" /></td>
       <td>
-      <select class="flat" name="fDomain">
-      <option value="test.com">test.com</option>
-      </select>
-            </td>
+      </td>
    </tr>
    <tr>
 
       <td>To:</td>
-      <td><input class="flat" type="text" name="fGoto" value="" /></td>
+      <td><input class="flat" type="text" name="destination" value="" /></td>
       <td>Where the mail needs to be sent to.</td>
    </tr>
    <tr>
-      <td>Active:</td>
-      <td><input class="flat" type="checkbox" name="fActive" checked /></td>
-
-      <td></td>
-   </tr>
-   <tr>
-      <td colspan="3" class="hlp_center"><input class="button" type="submit" name="submit" value="Add Alias" /></td>
+      <td colspan="3" class="hlp_center">
+        <input class="button" type="submit" name="submit" value="Add Alias" />
+    </td>
    </tr>
    <tr>
       <td colspan="3" class="standout"></td>

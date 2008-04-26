@@ -29,8 +29,9 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <table><tr><td colspan="3"><h3>Fetch Email</h3></td></tr><tr><td align="left" valign="top">
     <label style="width: 20em;">Mailbox:</label></td>
     <td align="left" style="padding-left:.25em;padding-right:.25em;background-color:white;">
-    <select name=mailbox id=1><option>albert.lash@savonix.com</option>
-</select>
+    <select name="mailbox" id="1">
+        <option>albert.lash@savonix.com</option>
+        </select>
 </td><td align=left valign=top><i>Local mailbox</i></td></tr>
 <tr><td align=left valign=top><label for=2 style='width:20em;'>Server:</label></td><td align=left style='padding-left:.25em;padding-right:.25em;background-color:white;'><input type=text name=src_server id=2 value=''></td><td align=left valign=top><i>Remote Server</i></td></tr>
 <tr><td align=left valign=top><label for=3 style='width:20em;'>Auth Type:</label></td><td align=left style='padding-left:.25em;padding-right:.25em;background-color:white;'><select name=src_auth id=3><option>password</option>
