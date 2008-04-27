@@ -1,6 +1,6 @@
 <?php
 /*
-Program: X Postfix Admin
+Program: Yo Mailbox Admin
 Component: runtime.php
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
@@ -25,8 +25,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
 */
 
 
-
-
 # This wacky path builder is required due to mod_rewrite situations
 $request_uri = $_SERVER['REQUEST_URI'];
 Nexista_Flow::add("request_uri",$request_uri);
@@ -44,9 +42,8 @@ $runtime = array('host_name'=>$_SERVER['SERVER_NAME'],
                 'utcdate'=>$utcdate,
                 'username'=>$_SESSION['NX_AUTH']['username'],
                 'user_id'=>$_SESSION['NX_AUTH']['user_id'],
-                'group_id'=>$_SESSION['NX_AUTH']['group_id'],
-                'remote_ip'=>$_SERVER['REMOTE_ADDR'],
-                'timestamp'=>time());
+                'group_id'=>$_SESSION['NX_AUTH']['group_id']
+                );
 
 Nexista_Flow::add("runtime",$runtime,false);
 

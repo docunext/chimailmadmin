@@ -1,5 +1,5 @@
 <!--
-Program: X Postfix Admin
+Program: Yo Mailbox Admin
 Component: main.xsl
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
@@ -79,7 +79,7 @@ if (window.attachEvent) window.attachEvent("onload", sfHover);
 
 
 <div id="footer">
-    <a href="http://www.x-postfixadmin.docunext.com/blog/">X Postfix Admin</a>
+    <a href="http://www.x-postfixadmin.docunext.com/blog/">Yo Mailbox Admin</a>
 </div>
 </xsl:template>
 </xsl:stylesheet>

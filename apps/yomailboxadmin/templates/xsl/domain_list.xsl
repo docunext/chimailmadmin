@@ -1,5 +1,5 @@
 <!--
-Program: X Postfix Admin
+Program: Yo Mailbox Admin
 Component: domain_list.xsl
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
