@@ -32,7 +32,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
    </tr>
    <tr>
       <td>Admin:</td>
-
       <td><input class="flat" type="text" name="username" value="" /></td>
       <td>Email address</td>
    </tr>
@@ -52,7 +51,9 @@ Fifth Floor, Boston, MA 02110-1301  USA
       <td>
 
       <select name="fDomains[]" size="10" multiple="multiple">
-      <option value="test.com">test.com</option>
+        <xsl:for-each select="//domains_get_all">
+            <option value="{domain}"><xsl:value-of select="domain_name"/></option>
+        </xsl:for-each>
       </select>
       </td>
       <td></td>
@@ -60,9 +61,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
    <tr>
       <td colspan="3" class="hlp_center"><input class="button" type="submit" name="submit" value="Add Admin" /></td>
 
-   </tr>
-   <tr>
-      <td colspan="3" class="standout"></td>
    </tr>
 </table>
 </form>

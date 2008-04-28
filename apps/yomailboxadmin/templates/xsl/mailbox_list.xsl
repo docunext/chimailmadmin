@@ -31,7 +31,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <option value="{domain}"><xsl:value-of select="domain"/></option>
     </xsl:for-each>
 </select>
-<input type="hidden" name="limit" value="0" />
 
 <input class="button" type="submit" name="go" value="Go" />
 </form>
@@ -57,17 +56,16 @@ Fifth Floor, Boston, MA 02110-1301  USA
       <td><xsl:value-of select="email_address"/></td>
 
       <td></td>
-      <td>2008-04-22 22:46:18</td>
-      <td><a href="">YES</a></td>
-      <td><a href="">edit</a></td>
-      <td><a href="" onclick="">del</a></td>
+      <td></td>
+      <td><a href="{//link_prefix}"></a></td>
+      <td><a href="{//link_prefix}">edit</a></td>
+      <td><a href="{//link_prefix}" onclick="">del</a></td>
    </tr>
    </xsl:for-each>
 </table>
 
-<p><a href="{//link_prefix}xpa-mailbox-edit&amp;domain_id={//_get/domain_id}">Add Mailbox</a></p>
+<a href="{//link_prefix}xpa-mailbox-edit&amp;domain_id={//_get/domain_id}">Add Mailbox</a>
 
 
-    
 </xsl:template>
 </xsl:stylesheet>

@@ -24,11 +24,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" >
 <xsl:import href="main.xsl"/>
 <xsl:template name="content">
-
-<div id="overview">
-<br/><br/>
-</div>
-
 <table id="admin_table">
     <tr class="header">
         <td>Domain</td>
@@ -36,7 +31,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <td>Aliases</td>
         <td>Mailboxes</td>
         <td>Backup MX</td>
-        
         <td>Last Modified</td>
         <td>Active</td>
         <td colspan="2"></td>
@@ -49,8 +43,8 @@ Fifth Floor, Boston, MA 02110-1301  USA
             </a>
         </td>
         <td><xsl:value-of select="description"/></td>
-        <td>0 / 10</td>
-        <td>0 / 10</td>
+        <td></td>
+        <td></td>
         <td>
             <xsl:value-of select="backupmx"/>
         </td>
