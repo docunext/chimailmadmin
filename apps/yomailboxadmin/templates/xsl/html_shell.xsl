@@ -51,7 +51,7 @@ doctype-system="http://www.w3.org/TR/html4/loose.dtd"/>
 </xsl:for-each>
 
 
-<xsl:call-template name="body"/>
+<xsl:call-template name="main"/>
 
 
 
