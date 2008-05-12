@@ -28,7 +28,7 @@ doctype-system="http://www.w3.org/TR/html4/loose.dtd"/>
 <xsl:template match="/">
 <html>
 <head>
-    <title><xsl:value-of select="/__ROOT__/i18n/labels/label[key='default_page_title']/value"/></title>
+    <title>Chi Mail Madmin</title>
     <!-- CSS -->
     <!--<link rel="stylesheet" type="text/css" href="{//link_prefix}themed-css" ></link>-->
     <link rel="stylesheet" type="text/css" href="{//link_prefix}dynamic-css" ></link>
