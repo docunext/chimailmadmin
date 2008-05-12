@@ -27,22 +27,18 @@ Fifth Floor, Boston, MA 02110-1301  USA
 
 # This wacky path builder is required due to mod_rewrite situations
 $request_uri = $_SERVER['REQUEST_URI'];
-Nexista_Flow::add("request_uri",$request_uri);
 $parse_uri = explode("?",$request_uri);
 $app_prefix=$parse_uri[0];
-$path_prefix = dirname($app_prefix);
+$path_prefix = dirname($app_prefix)."/";
 $link_prefix = $app_prefix."?nid=";
 $utcdate = gmdate('Y-m-d H:i:s');
 
 
 
-$runtime = array('host_name'=>$_SERVER['SERVER_NAME'],
+$runtime = array(
                 'path_prefix'=>$path_prefix,
                 'link_prefix'=>$link_prefix,
-                'utcdate'=>$utcdate,
-                'username'=>$_SESSION['NX_AUTH']['username'],
-                'user_id'=>$_SESSION['NX_AUTH']['user_id'],
-                'group_id'=>$_SESSION['NX_AUTH']['group_id']
+                'utcdate'=>$utcdate
                 );
 
 Nexista_Flow::add("runtime",$runtime,false);

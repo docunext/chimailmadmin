@@ -22,8 +22,20 @@ or write to the Free Software Foundation,Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" >
-<xsl:import href="main.xsl"/>
+<xsl:include href="main.xsl"/>
+<xsl:include href="pager.xsl"/>
 <xsl:template name="content">
+<xsl:call-template name="jquery-setup">
+    <xsl:with-param name="my-table">mailbox_table</xsl:with-param>    
+    <xsl:with-param name="my-table-div">myDomainsDiv</xsl:with-param>
+    <xsl:with-param name="no-sort-column">,
+        headers: { 
+            5: {sorter: false},
+            6: {sorter: false},
+            7: {sorter: false}
+        }
+    </xsl:with-param>
+</xsl:call-template>
 <div id="overview">
 <form name="overview" method="post">
 <select name="fDomain" onChange="this.form.submit();">
@@ -39,29 +51,29 @@ Fifth Floor, Boston, MA 02110-1301  USA
 </div>
 
 <p><a href="{//link_prefix}xpa-alias-edit&amp;domain_id={//_get/domain_id}">Add Alias</a></p>
-
-<table id="mailbox_table">
-   <tr>
-      <td colspan="9"><h3>:: Mailboxes</h3></td>
-  </tr>
-  <tr class="header">
-      <td>Email</td>
-      <td>Name</td>
-      <td>Last Modified</td>
-      <td>Active</td>
-      <td colspan="3"></td>
-   </tr>
-   <xsl:for-each select="//mailboxes_get_all">
-   <tr class="hilightoff" onMouseOver="className='hilighton';" onMouseOut="className='hilightoff';">
-      <td><xsl:value-of select="email_address"/></td>
-
-      <td></td>
-      <td></td>
-      <td><a href="{//link_prefix}"></a></td>
-      <td><a href="{//link_prefix}">edit</a></td>
-      <td><a href="{//link_prefix}" onclick="">del</a></td>
-   </tr>
-   </xsl:for-each>
+<h3>:: Mailboxes</h3>
+<table id="mailbox_table" class="tablesorter">
+    <thead>
+    <tr>
+        <th>Email</th>
+        <th>Name</th>
+        <th>Last Modified</th>
+        <th>Active</th>
+        <th colspan="3"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <xsl:for-each select="//mailboxes_get_all">
+    <tr>
+        <td><xsl:value-of select="email_address"/></td>
+        <td></td>
+        <td></td>
+        <td><a href="{//link_prefix}"></a></td>
+        <td><a href="{//link_prefix}">edit</a></td>
+        <td><a href="{//link_prefix}" onclick="">del</a></td>
+    </tr>
+    </xsl:for-each>
+    </tbody>
 </table>
 
 <a href="{//link_prefix}xpa-mailbox-edit&amp;domain_id={//_get/domain_id}">Add Mailbox</a>

@@ -68,12 +68,12 @@ Fifth Floor, Boston, MA 02110-1301  USA
             <i>Mostly "password"</i>
         </td>
     </tr>
-    <tr><td><label>User:</label></td><td><input type="text" name="src_user"></td><td><i>Remote User</i></td></tr>
-    <tr><td><label>Password:</label></td><td><input type="password" name="src_password"></td><td><i>Remote Password</i></td></tr>
-    <tr><td><label>Folder:</label></td><td><input type="text" name="src_folder"></td><td><i>Remote Folder</i></td></tr>
-    <tr><td><label>Poll:</label></td><td><input type="text" name="poll_time"value="10"></td><td><i>Poll every ... minutes</i></td></tr>
-    <tr><td><label>Fetch All:</label></td><td><input type="checkbox" name="fetchall"></td><td><i>Retrieve  both old (seen) and new messages</i></td></tr>
-    <tr><td><label>Keep:</label></td><td><input type="checkbox" name="keep"></td><td><i>Keep retrieved messages on the remote mailserver</i></td></tr>
+    <tr><td><label>User:</label></td><td><input type="text" name="src_user"/></td><td><i>Remote User</i></td></tr>
+    <tr><td><label>Password:</label></td><td><input type="password" name="src_password"/></td><td><i>Remote Password</i></td></tr>
+    <tr><td><label>Folder:</label></td><td><input type="text" name="src_folder"/></td><td><i>Remote Folder</i></td></tr>
+    <tr><td><label>Poll:</label></td><td><input type="text" name="poll_time"value="10"/></td><td><i>Poll every ... minutes</i></td></tr>
+    <tr><td><label>Fetch All:</label></td><td><input type="checkbox" name="fetchall"/></td><td><i>Retrieve  both old (seen) and new messages</i></td></tr>
+    <tr><td><label>Keep:</label></td><td><input type="checkbox" name="keep"/></td><td><i>Keep retrieved messages on the remote mailserver</i></td></tr>
     <tr><td><label>Protocol:</label></td><td><select name="protocol"><option>POP3</option>
     <option>IMAP</option>
     <option>POP2</option>
@@ -82,8 +82,8 @@ Fifth Floor, Boston, MA 02110-1301  USA
     </select>
     </td><td><i>Protocol to use</i></td></tr>
 <tr><td align=center colspan=3>
-      <input type="submit" name="save" value="Save"> 
-      <input type="submit" name="cancel" value="Cancel">
+      <input type="submit" name="save" value="Save"/> 
+      <input type="submit" name="cancel" value="Cancel"/>
    </td></tr>
 </table>
 <p />

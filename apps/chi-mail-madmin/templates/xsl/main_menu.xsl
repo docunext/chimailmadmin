@@ -32,7 +32,7 @@ $(document).ready(function()
 </script>
 <ul id="xpa-main-menu">
     <li>
-        <a href="{//link_prefix}xpa-domain-list">Domain List</a>
+        <a href="{//link_prefix}xpa-domain-list">Domains</a>
         <ul>
             <li>
                 <a href="{//link_prefix}xpa-domain-list">Domain List</a>
@@ -43,7 +43,7 @@ $(document).ready(function()
         </ul>
     </li>
     <li>
-        <a href="{//link_prefix}xpa-mailbox-list">Address Lists</a>
+        <a href="{//link_prefix}xpa-mailbox-list">Email Addresses</a>
         <ul>
             <li>
                 <a href="{//link_prefix}xpa-mailbox-list">Address Lists</a>

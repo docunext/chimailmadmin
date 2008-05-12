@@ -51,9 +51,16 @@ pre {
 }
 #page {
     padding: 0;
+    min-height: 50em;
 }
 #content {
     padding: 1em;
+}
+#footer {
+    text-align: center;
+    font-size: small;
+    width: 100%;
+    background-color: #ddd;
 }
 </xsl:template>
 </xsl:stylesheet>

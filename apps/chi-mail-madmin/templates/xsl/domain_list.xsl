@@ -22,8 +22,21 @@ or write to the Free Software Foundation,Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" >
-<xsl:import href="main.xsl"/>
+<xsl:include href="main.xsl"/>
+<xsl:include href="pager.xsl"/>
 <xsl:template name="content">
+<xsl:call-template name="jquery-setup">
+    <xsl:with-param name="my-table">admin_table</xsl:with-param>    
+    <xsl:with-param name="my-table-div">myDomainsDiv</xsl:with-param>
+    <xsl:with-param name="no-sort-column">,
+        headers: { 
+            5: {sorter: false},
+            6: {sorter: false},
+            7: {sorter: false}
+        }
+    </xsl:with-param>
+</xsl:call-template>
+<div id="myDomainsDiv">
 <table id="admin_table" class="tablesorter">
     <thead>
     <tr>
@@ -37,8 +50,9 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <th colspan="2"></th>
     </tr>
     </thead>
+    <tbody>
     <xsl:for-each select="//domains_get_all">
-    <tr class="hilightoff" onMouseOver="className='hilighton';" onMouseOut="className='hilightoff';">
+    <tr>
         <td>
             <a href="{//link_prefix}xpa-mailbox-list&amp;domain_id={domain_id}">
                 <xsl:value-of select="domain"/>
@@ -67,10 +81,15 @@ Fifth Floor, Boston, MA 02110-1301  USA
         </td>
     </tr>
     </xsl:for-each>
-
+    </tbody>
 </table>
-<p><a href="{//link_prefix}xpa-domain-edit">New Domain</a>
-</p>
+</div>
+<xsl:call-template name="pager">
+    <xsl:with-param name="my-table">admin_table</xsl:with-param>
+</xsl:call-template>
 
+<div style="float: right">
+<a href="{//link_prefix}xpa-domain-edit">New Domain</a>
+</div>
 </xsl:template>
 </xsl:stylesheet>

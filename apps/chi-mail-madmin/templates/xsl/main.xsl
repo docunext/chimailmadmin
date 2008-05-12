@@ -27,10 +27,10 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:template name="main">
 
 
-
+<div id="page">
     <xsl:call-template name="main_menu"/>
     <xsl:call-template name="content"/>
-
+</div>
 
 <div id="footer">
     <a href="http://www.chi-mail-madmin.docunext.com/blog/">Chi Mail Madmin</a>
