@@ -1,6 +1,6 @@
 <!--
 Program: Chi Mail Madmin
-Component: main.xsl
+Component: default.css.xsl
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -22,18 +22,38 @@ or write to the Free Software Foundation,Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-<xsl:include href="html_shell.xsl"/>
-<xsl:include href="main_menu.xsl"/>
-<xsl:template name="main">
-
-
-
-    <xsl:call-template name="main_menu"/>
-    <xsl:call-template name="content"/>
-
-
-<div id="footer">
-    <a href="http://www.chi-mail-madmin.docunext.com/blog/">Chi Mail Madmin</a>
-</div>
+<xsl:output method="text" encoding="UTF-8" omit-xml-declaration="yes"/>
+<xsl:template match="/">
+html, body {
+	color: black;
+	background: white;
+	font-weight: normal;
+	font-style: normal;
+	text-decoration: none;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-family: Arial, Helvetica, sans-serif; 
+    min-height: 50em;
+    font-family: sans-serif;
+    font-size: .88em;
+}
+pre {
+    font-size: 140%;
+}
+#banner {
+    background: #AB7A41;
+}
+#banner h1 {
+    color: #aa3f31;
+    padding: .2em;
+    margin-top: 0;
+}
+#page {
+    padding: 0;
+}
+#content {
+    padding: 1em;
+}
 </xsl:template>
 </xsl:stylesheet>

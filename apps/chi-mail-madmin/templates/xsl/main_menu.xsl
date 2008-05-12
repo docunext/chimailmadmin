@@ -23,17 +23,39 @@ Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <xsl:include href="html_shell.xsl"/>
-<xsl:include href="main_menu.xsl"/>
-<xsl:template name="main">
-
-
-
-    <xsl:call-template name="main_menu"/>
-    <xsl:call-template name="content"/>
-
-
-<div id="footer">
-    <a href="http://www.chi-mail-madmin.docunext.com/blog/">Chi Mail Madmin</a>
-</div>
+<xsl:template name="main_menu">
+<script type="text/javascript">
+$(document).ready(function()
+{
+    $('#xpa-main-menu').clickMenu();
+});
+</script>
+<ul id="xpa-main-menu">
+    <li>
+        <a href="{//link_prefix}xpa-domain-list">Domain List</a>
+        <ul>
+            <li>
+                <a href="{//link_prefix}xpa-domain-list">Domain List</a>
+            </li>
+            <li>
+                <a href="{//link_prefix}xpa-domain-edit">New Domain</a>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <a href="{//link_prefix}xpa-mailbox-list">Address Lists</a>
+        <ul>
+            <li>
+                <a href="{//link_prefix}xpa-mailbox-list">Address Lists</a>
+            </li>
+            <li>
+                <a href="{//link_prefix}xpa-mailbox-edit">Add Mailbox</a>
+            </li>
+            <li>
+                <a href="{//link_prefix}xpa-alias-list">Add Alias</a>
+            </li>
+        </ul>
+    </li>
+</ul>
 </xsl:template>
 </xsl:stylesheet>

@@ -24,17 +24,19 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" >
 <xsl:import href="main.xsl"/>
 <xsl:template name="content">
-<table id="admin_table">
-    <tr class="header">
-        <td>Domain</td>
-        <td>Description</td>
-        <td>Aliases</td>
-        <td>Mailboxes</td>
-        <td>Backup MX</td>
-        <td>Last Modified</td>
-        <td>Active</td>
-        <td colspan="2"></td>
+<table id="admin_table" class="tablesorter">
+    <thead>
+    <tr>
+        <th>Domain</th>
+        <th>Description</th>
+        <th>Aliases</th>
+        <th>Mailboxes</th>
+        <th>Backup MX</th>
+        <th>Last Modified</th>
+        <th>Active</th>
+        <th colspan="2"></th>
     </tr>
+    </thead>
     <xsl:for-each select="//domains_get_all">
     <tr class="hilightoff" onMouseOver="className='hilighton';" onMouseOut="className='hilightoff';">
         <td>
