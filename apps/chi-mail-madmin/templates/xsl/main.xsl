@@ -58,22 +58,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
 
 </div>
 
-<br clear='all' />
-<script type='text/javascript'>
-sfHover = function() {
-   var sfEls = document.getElementById("menu").getElementsByTagName("LI");
-      for (var i=0; i &lt; sfEls.length; i++) {
-         sfEls[i].onmouseover=function() {
-            this.className+=" sfhover";
-         }
-         sfEls[i].onmouseout=function() {
-            this.className=this.className.replace(new RegExp(" sfhover\\b"), "");
-         }
-   }
-}
-if (window.attachEvent) window.attachEvent("onload", sfHover);
-</script>
-
 
     <xsl:call-template name="content"/>
 
