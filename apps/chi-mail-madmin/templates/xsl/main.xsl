@@ -79,7 +79,7 @@ if (window.attachEvent) window.attachEvent("onload", sfHover);
 
 
 <div id="footer">
-    <a href="http://www.x-postfixadmin.docunext.com/blog/">Chi Mail Madmin</a>
+    <a href="http://www.chi-mail-madmin.docunext.com/blog/">Chi Mail Madmin</a>
 </div>
 </xsl:template>
 </xsl:stylesheet>

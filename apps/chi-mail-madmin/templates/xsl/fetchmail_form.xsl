@@ -43,7 +43,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <tr>
         <td>Server:</td>
         <td>
-        <input type="text" name="src_server"></td>
+        <input type="text" name="src_server"/></td>
         <td><i>Remote Server</i>
         </td>
     </tr>
