@@ -15,7 +15,7 @@ $project_root = dirname(dirname(__FILE__));
 $project_root = str_replace('\\','/',$project_root);
 define('PROJECT_ROOT',$project_root);
 define('PROJECT_NAME','x-postfixadmin');
-define('APP_NAME','yomailboxadmin');
+define('APP_NAME','chi-mail-madmin');
 
 $server_init = PROJECT_ROOT."/cache/".SERVER_NAME."/".APP_NAME."/".APP_NAME.".php";
 
