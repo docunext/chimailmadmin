@@ -1,5 +1,5 @@
 <!--
-Program: Yo Mailbox Admin
+Program: Chi Mail Madmin
 Component: html_shell.xsl
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV

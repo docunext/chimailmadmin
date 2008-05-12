@@ -1,0 +1,9 @@
+<table>
+    <field>user_id</field>
+    <field>username</field>
+    <field>password</field>
+    <field>created</field>
+    <field>modified</field>
+    <field>active</field>
+</table>
+

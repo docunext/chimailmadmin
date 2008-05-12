@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <map:sitemap xmlns:map="http://www.nexista.com/sitemap"> 
 <!--
-Program: Yo Mailbox Admin
+Program: Chi Mail Madmin
 Component: Sitemap
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
@@ -120,9 +120,9 @@ files. -->
     <map:action type="header" params="Content-Type,text/plain"/>
     <map:raw src="LICENSE" />
 </map:gate>
-<map:gate name="install" cache="0">
+<map:gate name="readme" cache="0">
     <map:action type="header" params="Content-Type,text/plain"/>
-    <map:raw src="INSTALL" />
+    <map:raw src="README" />
 </map:gate>
 <map:gate name="themed-css" cache="0">
     <map:action type="header" params="Content-Type,text/css"/>

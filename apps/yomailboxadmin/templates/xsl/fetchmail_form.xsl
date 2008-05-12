@@ -1,5 +1,5 @@
 <!--
-Program: Yo Mailbox Admin
+Program: Chi Mail Madmin
 Component: fetchmail_form.xsl
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
