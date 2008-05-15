@@ -1,8 +1,4 @@
 
---
--- Table structure for table `xpa_admin`
---
-
 CREATE TABLE IF NOT EXISTS `xpa_admin` (
   `user_id` int(11) NOT NULL auto_increment,
   `username` varchar(255) NOT NULL default '',
@@ -11,13 +7,8 @@ CREATE TABLE IF NOT EXISTS `xpa_admin` (
   `modified` datetime NOT NULL default '0000-00-00 00:00:00',
   `active` tinyint(1) NOT NULL default '1',
   PRIMARY KEY  (`user_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Postfix Admin - Virtual Admins' AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `xpa_alias`
---
 
 CREATE TABLE IF NOT EXISTS `xpa_alias` (
   `alias_id` int(11) NOT NULL auto_increment,
@@ -28,13 +19,8 @@ CREATE TABLE IF NOT EXISTS `xpa_alias` (
   `modified` datetime NOT NULL default '0000-00-00 00:00:00',
   `active` tinyint(1) NOT NULL default '1',
   PRIMARY KEY  (`alias_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Postfix Admin - Virtual Aliases' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `xpa_config`
---
 
 CREATE TABLE IF NOT EXISTS `xpa_config` (
   `id` int(11) NOT NULL auto_increment,
@@ -42,13 +28,8 @@ CREATE TABLE IF NOT EXISTS `xpa_config` (
   `value` varchar(20) NOT NULL default '',
   PRIMARY KEY  (`id`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='PostfixAdmin settings' AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `xpa_domain`
---
 
 CREATE TABLE IF NOT EXISTS `xpa_domain` (
   `domain_id` int(11) NOT NULL auto_increment,
@@ -64,13 +45,8 @@ CREATE TABLE IF NOT EXISTS `xpa_domain` (
   `modified` datetime NOT NULL default '0000-00-00 00:00:00',
   `active` tinyint(1) NOT NULL default '1',
   PRIMARY KEY  (`domain_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='Postfix Admin - Virtual Domains' AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `xpa_domain_admins`
---
 
 CREATE TABLE IF NOT EXISTS `xpa_domain_admins` (
   `username` varchar(255) NOT NULL default '',
@@ -78,13 +54,8 @@ CREATE TABLE IF NOT EXISTS `xpa_domain_admins` (
   `created` datetime NOT NULL default '0000-00-00 00:00:00',
   `active` tinyint(1) NOT NULL default '1',
   KEY `username` (`username`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Postfix Admin - Domain Admins';
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 ;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `xpa_mailbox`
---
 
 CREATE TABLE IF NOT EXISTS `xpa_mailbox` (
   `mailbox_id` int(11) NOT NULL auto_increment,
@@ -98,13 +69,8 @@ CREATE TABLE IF NOT EXISTS `xpa_mailbox` (
   `modified` datetime NOT NULL default '0000-00-00 00:00:00',
   `active` tinyint(1) NOT NULL default '1',
   PRIMARY KEY  (`mailbox_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Postfix Admin - Virtual Mailboxes' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `xpa_vacation`
---
 
 CREATE TABLE IF NOT EXISTS `xpa_vacation` (
   `email` varchar(255) NOT NULL default '',
@@ -114,21 +80,11 @@ CREATE TABLE IF NOT EXISTS `xpa_vacation` (
   `domain` varchar(255) NOT NULL default '',
   `created` datetime NOT NULL default '0000-00-00 00:00:00',
   `active` tinyint(1) NOT NULL default '1'
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Postfix Admin - Virtual Vacation';
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 ;
 
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `xpa_alias`
---
 ALTER TABLE `xpa_alias`
   ADD CONSTRAINT `xpa_alias_ibfk_1` FOREIGN KEY (`alias_id`) REFERENCES `xpa_domain` (`domain_id`) ON DELETE CASCADE;
 
---
--- Constraints for table `xpa_mailbox`
---
 ALTER TABLE `xpa_mailbox`
   ADD CONSTRAINT `xpa_mailbox_ibfk_1` FOREIGN KEY (`mailbox_id`) REFERENCES `xpa_domain` (`domain_id`);
 

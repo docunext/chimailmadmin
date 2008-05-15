@@ -26,8 +26,8 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:include href="pager.xsl"/>
 <xsl:template name="content">
 <xsl:call-template name="jquery-setup">
-    <xsl:with-param name="my-table">mailbox_table</xsl:with-param>    
-    <xsl:with-param name="my-table-div">myDomainsDiv</xsl:with-param>
+    <xsl:with-param name="my-table">mailbox_table</xsl:with-param>
+    <xsl:with-param name="my-table-div">myMailboxes</xsl:with-param>
     <xsl:with-param name="no-sort-column">,
         headers: { 
             5: {sorter: false},
@@ -36,22 +36,18 @@ Fifth Floor, Boston, MA 02110-1301  USA
         }
     </xsl:with-param>
 </xsl:call-template>
-<div id="overview">
+<div style="float: right">
 <form name="overview" method="post">
 <select name="fDomain" onChange="this.form.submit();">
     <xsl:for-each select="//domains_get_all">
     <option value="{domain}"><xsl:value-of select="domain"/></option>
     </xsl:for-each>
 </select>
-
 <input class="button" type="submit" name="go" value="Go" />
 </form>
-<h4>Overview for <xsl:value-of select="//domains_get_all[domain_id=//_get/domain_id]/domain"/></h4>
-
 </div>
-
-<p><a href="{//link_prefix}xpa-alias-edit&amp;domain_id={//_get/domain_id}">Add Alias</a></p>
-<h3>:: Mailboxes</h3>
+<h4>Mailboxen for <xsl:value-of select="//domains_get_all[domain_id=//_get/domain_id]/domain"/></h4>
+<div if="myMailboxes">
 <table id="mailbox_table" class="tablesorter">
     <thead>
     <tr>
@@ -75,9 +71,13 @@ Fifth Floor, Boston, MA 02110-1301  USA
     </xsl:for-each>
     </tbody>
 </table>
-
-<a href="{//link_prefix}xpa-mailbox-edit&amp;domain_id={//_get/domain_id}">Add Mailbox</a>
-
-
+</div>
+<xsl:call-template name="pager">
+    <xsl:with-param name="my-table">mailbox_table</xsl:with-param>
+</xsl:call-template>
+<div style="float: right">
+<a href="{//link_prefix}xpa-mailbox-edit&amp;domain_id={//_get/domain_id}">Add Mailbox</a><br/>
+<a href="{//link_prefix}xpa-alias-edit&amp;domain_id={//_get/domain_id}">Add Alias</a>
+</div>
 </xsl:template>
 </xsl:stylesheet>

@@ -31,7 +31,7 @@ doctype-system="http://www.w3.org/TR/html4/loose.dtd"/>
     <title>Chi Mail Madmin</title>
     <!-- CSS -->
     <!--<link rel="stylesheet" type="text/css" href="{//link_prefix}themed-css" ></link>-->
-    <link rel="stylesheet" type="text/css" href="{//link_prefix}dynamic-css" ></link>
+    <link rel="stylesheet" type="text/css" href="{//link_prefix}dynamic-css"></link>
     <link rel="stylesheet" type="text/css" href="{//path_prefix}/s/css/clickmenu.css"></link>
 
     <!-- JS -->
