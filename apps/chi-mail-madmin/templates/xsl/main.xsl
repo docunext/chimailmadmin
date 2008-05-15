@@ -29,11 +29,16 @@ Fifth Floor, Boston, MA 02110-1301  USA
 
 <div id="page">
     <xsl:call-template name="main_menu"/>
-    <xsl:call-template name="content"/>
+    <div id="content">
+        <xsl:call-template name="content"/>
+    </div>
 </div>
 
 <div id="footer">
     <a href="http://www.chi-mail-madmin.docunext.com/blog/">Chi Mail Madmin</a>
+    <xsl:if test="//runtime/svn_revision">
+        Revision <xsl:value-of select="//svn_revision"/>
+    </xsl:if>
 </div>
 </xsl:template>
 </xsl:stylesheet>

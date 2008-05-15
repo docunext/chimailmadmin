@@ -27,16 +27,11 @@ Fifth Floor, Boston, MA 02110-1301  USA
 html, body {
 	color: black;
 	background: white;
-	font-weight: normal;
-	font-style: normal;
-	text-decoration: none;
 	margin: 0;
 	padding: 0;
 	border: 0;
-	font-family: Arial, Helvetica, sans-serif; 
     min-height: 50em;
     font-family: sans-serif;
-    font-size: .88em;
 }
 pre {
     font-size: 140%;
