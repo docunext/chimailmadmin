@@ -1,6 +1,6 @@
 <!--
 Program: Chi Mail Madmin
-Component: main.xsl
+Component: footer.xsl
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -22,22 +22,16 @@ or write to the Free Software Foundation,Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-<xsl:include href="html_shell.xsl"/>
-<xsl:include href="main_menu.xsl"/>
-<xsl:include href="footer.xsl"/>
-<xsl:template name="main">
+<xsl:template name="footer">
 
-
-<div id="page">
-    <xsl:call-template name="main_menu"/>
-    <div id="content">
-        <xsl:call-template name="content"/>
-    </div>
+<div id="footer">
+    <a href="http://www.chi-mail-madmin.docunext.com/blog/">Chi Mail Madmin</a>
+    <xsl:if test="//runtime/svn_revision">
+        Revision <xsl:value-of select="//svn_revision"/>
+    </xsl:if>
+    <a href="{//link_prefix}xpa-iframe-viewer&amp;url=license">License</a>&#160;
+    <a href="{//link_prefix}xpa-iframe-viewer&amp;url=readme">Readme</a>
 </div>
-
-
-<xsl:call-template name="footer"/>
-
 
 </xsl:template>
 </xsl:stylesheet>

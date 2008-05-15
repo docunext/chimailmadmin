@@ -108,6 +108,11 @@ Fifth Floor, Boston, MA 02110-1301  USA
 </map:gate>
 
 
+
+
+<map:gate name="xpa-iframe-viewer">
+    <map:xsl src="templates/xsl/iframe_viewer.xsl"/>
+</map:gate>
 <map:gate name="dynamic-css" cache="0">
     <map:action type="header" params="Content-Type,text/css"/>
     <map:xsl src="templates/css/default.css.xsl"/>

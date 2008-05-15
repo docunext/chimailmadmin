@@ -1,6 +1,6 @@
 <!--
-Program: Chi Mail Madmin
-Component: main.xsl
+Program: Infonomix
+Component: iframe_viewer.xsl
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -22,22 +22,8 @@ or write to the Free Software Foundation,Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-<xsl:include href="html_shell.xsl"/>
-<xsl:include href="main_menu.xsl"/>
-<xsl:include href="footer.xsl"/>
-<xsl:template name="main">
-
-
-<div id="page">
-    <xsl:call-template name="main_menu"/>
-    <div id="content">
-        <xsl:call-template name="content"/>
-    </div>
-</div>
-
-
-<xsl:call-template name="footer"/>
-
-
+<xsl:import href="main.xsl"/>
+<xsl:template name="content">
+<iframe style="width: 100%; overflow-y: scroll;" frameborder="0" height="400px" src="{//link_prefix}{//_get/url}"/>
 </xsl:template>
 </xsl:stylesheet>
