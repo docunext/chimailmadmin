@@ -1,6 +1,6 @@
 <!--
 Program: Chi Mail Madmin
-Component: mailbox_create.xml
+Component: mailbox_update.xml
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -22,18 +22,14 @@ or write to the Free Software Foundation,Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
-<query name="mailbox_create">
+<query name="mailbox_update">
     <connection>&connection;</connection>
     <params>
-        <param name="_post/domain_id" type="text"/>
-        <param name="_post/email_address" type="text"/>
-        <param name="_post/password" type="text"/>
-        <param name="//runtime/utcdate" type="text"/>
+        <param name="//_post/active" type="text"/>
+        <param name="//_post/mailbox_id" type="text"/>
 	</params>
     <sql>
-        INSERT INTO &xpa_mailbox;
-        (domain_id,email_address,password,created)
-        VALUES
-        (?,?,?,?)
+        UPDATE &xpa_mailbox; SET active = ?
+        WHERE mailbox_id = ? 
     </sql>
 </query>

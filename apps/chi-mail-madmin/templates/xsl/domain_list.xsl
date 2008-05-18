@@ -89,7 +89,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 </xsl:call-template>
 
 <div style="float: right">
-<a href="{//link_prefix}xpa-domain-edit">New Domain</a>
+<a class="button-basic-{//theme_color}" href="{//link_prefix}xpa-domain-edit">New Domain</a>
 </div>
 </xsl:template>
 </xsl:stylesheet>
