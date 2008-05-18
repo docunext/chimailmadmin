@@ -29,7 +29,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:param name="my-sort-column"/>
 <xsl:param name="no-sort-column"/>
 <xsl:param name="my-page-num">0</xsl:param>
-<xsl:call-template name="jquery-links"/>
 <script type="text/javascript">
 $(document).ready(function()
     { 
@@ -59,7 +58,6 @@ $(document).ready(function()
 <xsl:param name="my-table"/>
 <xsl:param name="my-sort-column"/>
 <xsl:param name="no-sort-column"/>
-<xsl:call-template name="jquery-links"/>
 <script type="text/javascript">
 $(document).ready(function() 
     {
@@ -76,10 +74,6 @@ $(document).ready(function()
 </script>
 </xsl:template>
 
-<!-- load the javascript -->
-<xsl:template name="jquery-links">
-    type="text/css" media="print, projection, screen"/>
-</xsl:template>
 
 <xsl:template name="pager">
 <xsl:param name="my-table"/>
