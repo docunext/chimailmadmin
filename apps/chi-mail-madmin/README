@@ -13,6 +13,8 @@ A web based email management system.
 
 Requirements
 ------------
+* Nexista
+* MySQL
 
 
 Installation
@@ -27,7 +29,7 @@ Usage
 
 Support
 -------
-
+* http://www.chi-mail-madmin.docunext.com/blog/
 
 
 Credits
