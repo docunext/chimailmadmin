@@ -36,7 +36,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <map:xsl src="templates/xsl/welcome.xsl"/>
 </map:gate>
 
-
+<!-- DOMAINS -->
 <map:gate name="xpa-domain-list" >
     <map:query src="data/sql/domains_get_all.xml"/>
     <map:xsl src="templates/xsl/domain_list.xsl"/>
@@ -60,8 +60,11 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <map:query src="data/sql/domain_get_by_id.xml"/>
     <map:xsl src="templates/xsl/domain_form.xsl"/>
 </map:gate>
+<map:gate name="x-domain-delete">
+    <map:query src="data/sql/domain_delete.xml"/>
+</map:gate>
 
-
+<!-- MAILBOXEN -->
 <map:gate name="xpa-mailbox-list" >
     <map:query src="data/sql/domains_get_all.xml"/>
     <map:query src="data/sql/mailboxes_get_all.xml"/>
@@ -85,8 +88,14 @@ Fifth Floor, Boston, MA 02110-1301  USA
     </map:if>
     <map:xsl src="templates/xsl/mailbox_form.xsl"/>
 </map:gate>
+<map:gate name="x-mailbox-delete" >
+    <map:query src="data/sql/mailbox_delete.xml"/>
+    <map:action type="redirect" params="{//link_prefix}xpa-domain-list"/>
+</map:gate>
 
+<!-- ALIAS -->
 <map:gate name="xpa-alias-list">
+    <map:query src="data/sql/alias_get_all.xml"/>
     <map:xsl src="templates/xsl/alias_list.xsl"/>
 </map:gate>
 <map:gate name="xpa-alias-edit">
@@ -107,7 +116,10 @@ Fifth Floor, Boston, MA 02110-1301  USA
     </map:if>
     <map:xsl src="templates/xsl/alias_form.xsl"/>
 </map:gate>
-
+<map:gate name="xpa-alias-delete">
+    <map:query src="data/sql/alias_delete.xml"/>
+    <map:action type="redirect" params="{//link_prefix}xpa-alias-list"/>
+</map:gate>
 
 
 
