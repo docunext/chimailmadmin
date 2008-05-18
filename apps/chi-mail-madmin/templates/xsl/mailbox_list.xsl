@@ -76,8 +76,10 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <xsl:with-param name="my-table">mailbox_table</xsl:with-param>
 </xsl:call-template>
 <div style="float: right">
-<a href="{//link_prefix}xpa-mailbox-edit&amp;domain_id={//_get/domain_id}">Add Mailbox</a><br/>
-<a href="{//link_prefix}xpa-alias-edit&amp;domain_id={//_get/domain_id}">Add Alias</a>
+<a class="button-basic-blue" href="{//link_prefix}xpa-mailbox-edit&amp;domain_id={//_get/domain_id}">Add Mailbox</a>
+</div>
+<div style="float: right">
+<a class="button-basic-blue" href="{//link_prefix}xpa-alias-edit&amp;domain_id={//_get/domain_id}">Add Alias</a>
 </div>
 </xsl:template>
 </xsl:stylesheet>
