@@ -43,7 +43,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <option value="{domain}"><xsl:value-of select="domain"/></option>
     </xsl:for-each>
 </select>
-<input class="button" type="submit" name="go" value="Go" />
+<input class="button" type="submit" name="go" value="Go"/>
 </form>
 </div>
 <h4>Mailboxen for <xsl:value-of select="//domains_get_all[domain_id=//_get/domain_id]/domain"/></h4>

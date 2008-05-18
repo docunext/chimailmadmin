@@ -78,8 +78,8 @@ $(document).ready(function()
 
 <!-- load the javascript -->
 <xsl:template name="jquery-links">
-<link rel="stylesheet" href="{__ROOT__/runtime/path_prefix}s/css/blue/style.css"
-    type="text/css" media="print, projection, screen" />
+<link rel="stylesheet" href="{__ROOT__/runtime/path_prefix}/s/css/blue/style.css"
+    type="text/css" media="print, projection, screen"/>
 </xsl:template>
 
 <xsl:template name="pager">

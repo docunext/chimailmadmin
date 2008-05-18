@@ -34,7 +34,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
    </tr>
    <tr>
       <td>Email Address</td>
-      <td><input class="flat" type="text" name="email_address" value="" autocomplete="off"/></td>
+      <td><input type="text" name="email_address" value=""/></td>
       <td>
       <select name="fDomain">
       </select>
@@ -42,27 +42,27 @@ Fifth Floor, Boston, MA 02110-1301  USA
    </tr>
    <tr>
       <td>Password</td>
-      <td><input class="flat" type="password" name="password" /></td>
+      <td><input type="password" name="password"/></td>
       <td></td>
    </tr>
    <tr>
       <td></td>
-      <td><input class="flat" type="password" name="password2" /></td>
+      <td><input type="password" name="password2"/></td>
       <td></td>
    </tr>
    <tr>
       <td>Name</td>
-      <td><input class="flat" type="text" name="fName" value="" /></td>
+      <td><input type="text" name="fName" value=""/></td>
       <td></td>
    </tr>
    <tr>
       <td>Active</td>
-      <td><input class="flat" type="checkbox" name="active" /></td>
+      <td><input type="checkbox" name="active"/></td>
       <td></td>
    </tr>
    <tr>
       <td>Welcome mail</td>
-      <td><input class="flat" type="checkbox" name="mail" /></td>
+      <td><input type="checkbox" name="mail"/></td>
       <td></td>
    </tr>
     <tr>
@@ -77,12 +77,12 @@ Fifth Floor, Boston, MA 02110-1301  USA
         <td><input id="default_filters" name="create_default_filters" value="1" checked="checked" type="checkbox"/></td>
     </tr>
    <tr>
-      <td colspan="3" class="hlp_center">
-        <input class="button" type="submit" name="submit" value="" />
+      <td colspan="3">
+        <input class="button" type="submit" name="submit" value=""/>
     </td>
    </tr>
    <tr>
-      <td colspan="3" class="standout"></td>
+      <td colspan="3"></td>
    </tr>
 </table>
 </form>

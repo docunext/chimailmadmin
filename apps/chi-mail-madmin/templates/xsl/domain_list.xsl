@@ -26,7 +26,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:include href="pager.xsl"/>
 <xsl:template name="content">
 <xsl:call-template name="jquery-setup">
-    <xsl:with-param name="my-table">admin_table</xsl:with-param>    
+    <xsl:with-param name="my-table">admin_table</xsl:with-param>
     <xsl:with-param name="my-table-div">myDomainsDiv</xsl:with-param>
     <xsl:with-param name="no-sort-column">,
         headers: { 

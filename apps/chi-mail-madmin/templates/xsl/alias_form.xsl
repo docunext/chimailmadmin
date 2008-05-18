@@ -37,27 +37,27 @@ Fifth Floor, Boston, MA 02110-1301  USA
    <tr>
       <td>Alias</td>
 
-      <td><input class="flat" type="text" name="fAddress" value="" /></td>
+      <td><input type="text" name="fAddress" value=""/></td>
       <td>
       </td>
    </tr>
    <tr>
 
       <td>To:</td>
-      <td><input class="flat" type="text" name="destination" value="" /></td>
+      <td><input type="text" name="destination" value=""/></td>
       <td>Where the mail needs to be sent to.</td>
    </tr>
    <tr>
-      <td colspan="3" class="hlp_center">
+      <td colspan="3">
         <input class="button" type="submit" name="submit" value="Add Alias" />
     </td>
    </tr>
    <tr>
-      <td colspan="3" class="standout"></td>
+      <td colspan="3"></td>
    </tr>
    <tr>
 
-      <td colspan="3" class="help_text">To create a catch-all use an "*" as alias.<br />For domain to domain forwarding use "*@domain.tld" as to.</td>
+      <td colspan="3">To create a catch-all use an "*" as alias.<br />For domain to domain forwarding use "*@domain.tld" as to.</td>
    </tr>
 </table>
 </form>

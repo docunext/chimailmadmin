@@ -32,18 +32,18 @@ Fifth Floor, Boston, MA 02110-1301  USA
    </tr>
    <tr>
       <td>Admin:</td>
-      <td><input class="flat" type="text" name="username" value="" /></td>
+      <td><input type="text" name="username" value=""/></td>
       <td>Email address</td>
    </tr>
    <tr>
       <td>Password:</td>
-      <td><input class="flat" type="password" name="password" /></td>
+      <td><input type="password" name="password" /></td>
       <td></td>
    </tr>
 
    <tr>
       <td>Password (again):</td>
-      <td><input class="flat" type="password" name="password2" /></td>
+      <td><input type="password" name="password2" /></td>
       <td></td>
    </tr>
    <tr>
@@ -59,7 +59,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
       <td></td>
    </tr>
    <tr>
-      <td colspan="3" class="hlp_center"><input class="button" type="submit" name="submit" value="Add Admin" /></td>
+      <td colspan="3"><input class="button" type="submit" name="submit" value="Add Admin" /></td>
 
    </tr>
 </table>

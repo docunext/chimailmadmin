@@ -19,7 +19,7 @@ GNU Affero General Public License for more details.
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
 or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA
+Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" >
 <xsl:import href="main.xsl"/>
@@ -71,7 +71,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <tr><td><label>User:</label></td><td><input type="text" name="src_user"/></td><td><i>Remote User</i></td></tr>
     <tr><td><label>Password:</label></td><td><input type="password" name="src_password"/></td><td><i>Remote Password</i></td></tr>
     <tr><td><label>Folder:</label></td><td><input type="text" name="src_folder"/></td><td><i>Remote Folder</i></td></tr>
-    <tr><td><label>Poll:</label></td><td><input type="text" name="poll_time"value="10"/></td><td><i>Poll every ... minutes</i></td></tr>
+    <tr><td><label>Poll:</label></td><td><input type="text" name="poll_time" value="10"/></td><td><i>Poll every ... minutes</i></td></tr>
     <tr><td><label>Fetch All:</label></td><td><input type="checkbox" name="fetchall"/></td><td><i>Retrieve  both old (seen) and new messages</i></td></tr>
     <tr><td><label>Keep:</label></td><td><input type="checkbox" name="keep"/></td><td><i>Keep retrieved messages on the remote mailserver</i></td></tr>
     <tr><td><label>Protocol:</label></td><td><select name="protocol"><option>POP3</option>
@@ -86,7 +86,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
       <input type="submit" name="cancel" value="Cancel"/>
    </td></tr>
 </table>
-<p />
+<p/>
 </form>
 </div>
 
