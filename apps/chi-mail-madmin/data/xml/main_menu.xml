@@ -22,15 +22,30 @@ or write to the Free Software Foundation,Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <menu>
-    <item active="1">
-        <key>browser</key>
+	<item>
+        <key>domains</key>
         <item>
-            <key>browser</key>
-            <url>browser</url>
+            <key>domain_list</key>
+            <url>xpa-domain-list</url>
         </item>
         <item>
-            <key>repositories</key>
-            <url>repositories</url>
+            <key>add_domain</key>
+            <url>xpa-domain-edit</url>
+        </item>
+    </item>
+	<item>
+        <key>addresses</key>
+        <item>
+            <key>address_list</key>
+            <url>xpa-mailbox-list</url>
+        </item>
+        <item>
+            <key>add_mailbox</key>
+            <url>xpa-mailbox-edit</url>
+        </item>
+        <item>
+            <key>add_alias</key>
+            <url>xpa-alias-edit</url>
         </item>
     </item>
 	<item>

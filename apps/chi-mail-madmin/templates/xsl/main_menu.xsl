@@ -27,10 +27,15 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <script type="text/javascript">
 $(document).ready(function()
 {
-    $('#xpa-main-menu').clickMenu();
+    $('#top-main-menu').clickMenu();
 });
 </script>
-<ul id="xpa-main-menu">
+<ul id="top-main-menu">
+<xsl:for-each select="//menu/item[not(@active=0)]">
+<xsl:call-template name="button">
+    <xsl:with-param name="key"><xsl:value-of select="key"/></xsl:with-param>
+</xsl:call-template>
+</xsl:for-each>
     <li>
         <a href="{//link_prefix}xpa-domain-list">Domains</a>
         <ul>
@@ -57,5 +62,22 @@ $(document).ready(function()
         </ul>
     </li>
 </ul>
+</xsl:template>
+
+<xsl:template name="button">
+    <xsl:param name="key"/>
+    <li>
+        <xsl:value-of select="//labels/label[key=$key]/value"/>
+        <ul>
+        <xsl:for-each select="//menu/item[key=$key]/item">
+        <xsl:variable name="my_key"><xsl:value-of select="key"/></xsl:variable>
+            <li>
+            <a href="{//runtime/link_prefix}{url}" id="{key}">
+                <xsl:value-of select="//labels/label[key=$my_key]/value"/>
+            </a>
+            </li>
+        </xsl:for-each>
+        </ul>
+    </li>
 </xsl:template>
 </xsl:stylesheet>
