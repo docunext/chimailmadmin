@@ -1,6 +1,6 @@
 <!--
 Program: Chi Mail Madmin
-Component: chi_mail_madmin.xml
+Component: main_menu.xml
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -21,27 +21,35 @@ along with this program; if not, see http://www.gnu.org/licenses
 or write to the Free Software Foundation,Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301  USA
 -->
-<i18n>
-<labels lang="en-us">
-    <label>
-        <key>name</key>
-        <value>Name</value>
-    </label>
-    <label>
-        <key>number_of_records</key>
-        <value>Number of records</value>
-    </label>
-    <label>
-        <key>upload_options</key>
-        <value>Upload Options</value>
-    </label>
-    <label>
-        <key>image_options</key>
-        <value>Image Options</value>
-    </label>
-    <label>
-        <key>interface_options</key>
-        <value>Interface Options</value>
-    </label>
-</labels>
-</i18n>
+<menu>
+    <item active="1">
+        <key>browser</key>
+        <item>
+            <key>browser</key>
+            <url>browser</url>
+        </item>
+        <item>
+            <key>repositories</key>
+            <url>repositories</url>
+        </item>
+    </item>
+	<item>
+        <key>cma_options</key>
+        <item>
+            <key>upload_options</key>
+            <url>cma-upload-options</url>
+        </item>
+        <item>
+            <key>image_options</key>
+            <url>cma-image-options</url>
+        </item>
+        <item>
+            <key>database_options</key>
+            <url>cma-database-options</url>
+        </item>
+        <item>
+            <key>interface_options</key>
+            <url>cma-interface-options</url>
+        </item>
+    </item>
+</menu>
