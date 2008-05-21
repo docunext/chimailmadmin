@@ -36,31 +36,6 @@ $(document).ready(function()
     <xsl:with-param name="key"><xsl:value-of select="key"/></xsl:with-param>
 </xsl:call-template>
 </xsl:for-each>
-    <li>
-        <a href="{//link_prefix}xpa-domain-list">Domains</a>
-        <ul>
-            <li>
-                <a href="{//link_prefix}xpa-domain-list">Domain List</a>
-            </li>
-            <li>
-                <a href="{//link_prefix}xpa-domain-edit">New Domain</a>
-            </li>
-        </ul>
-    </li>
-    <li>
-        <a href="{//link_prefix}xpa-mailbox-list">Email Addresses</a>
-        <ul>
-            <li>
-                <a href="{//link_prefix}xpa-mailbox-list">Address Lists</a>
-            </li>
-            <li>
-                <a href="{//link_prefix}xpa-mailbox-edit">Add Mailbox</a>
-            </li>
-            <li>
-                <a href="{//link_prefix}xpa-alias-list">Add Alias</a>
-            </li>
-        </ul>
-    </li>
 </ul>
 </xsl:template>
 
