@@ -1,6 +1,6 @@
 <!--
 Program: Chi Mail Madmin
-Component: default.css.xsl
+Component: layout.css.xsl
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
