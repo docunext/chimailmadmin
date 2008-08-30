@@ -30,26 +30,18 @@ html, body {
 	margin: 0;
 	padding: 0;
 	border: 0;
-    min-height: 50em;
-    font-family: sans-serif;
+	min-height: 50em;
+	font-family: sans-serif;
 }
-pre {
-    font-size: 140%;
-}
-#banner {
-    background: #AB7A41;
-}
+
+
+
+
+
 #banner h1 {
     color: #aa3f31;
     padding: .2em;
     margin-top: 0;
-}
-#page {
-    padding: 0;
-    min-height: 50em;
-}
-#content {
-    padding: 1em;
 }
 #footer {
     text-align: center;

@@ -25,5 +25,13 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:output method="text" encoding="UTF-8" omit-xml-declaration="yes"/>
 <xsl:template name="layout">
 
+#page {
+    padding: 0;
+    min-height: 50em;
+}
+#content {
+    padding: 1em;
+}
+
 </xsl:template>
 </xsl:stylesheet>
