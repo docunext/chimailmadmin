@@ -18,22 +18,22 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
-or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA
+or write to the Free Software Foundation, Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
 <query name="alias_create">
-    <connection>&connection;</connection>
-    <params>
-        <param name="_post/domain_id" type="text"/>
-        <param name="_post/alias_address" type="text"/>
-        <param name="_post/destination" type="text"/>
-        <param name="//runtime/utcdate" type="text"/>
+	<connection>&connection;</connection>
+	<params>
+		<param name="_post/domain_id" type="text"/>
+		<param name="_post/alias_address" type="text"/>
+		<param name="_post/destination" type="text"/>
+		<param name="//runtime/utcdate" type="text"/>
 	</params>
-    <sql>
-        INSERT INTO &xpa_mailbox;
-        (domain_id,alias,destination,created)
-        VALUES
-        (?,?,?,?)
-    </sql>
+	<sql>
+	INSERT INTO &xpa_mailbox;
+	(domain_id,alias,destination,created)
+	VALUES
+	(?,?,?,?)
+	</sql>
 </query>
