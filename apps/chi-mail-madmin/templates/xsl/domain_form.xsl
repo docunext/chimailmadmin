@@ -39,14 +39,14 @@ Fifth Floor, Boston, MA 02110-1301 USA
 						<td>Domain:</td>
 
 						<td>
-							<input type="text" name="domain" value="{//domain_get_by_id/domain}"/>
+							<input type="text" name="domain" value="{//domain_get_by_id/domain_get_by_id/domain}"/>
 						</td>
 						<td></td>
 					</tr>
 					<tr>
 						<td>Description:</td>
 						<td>
-							<input type="text" name="description" value="{//domain_get_by_id/description}"/>
+							<input type="text" name="description" value="{//domain_get_by_id/domain_get_by_id/description}"/>
 						</td>
 						<td></td>
 					</tr>
@@ -54,7 +54,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					<tr>
 						<td>Aliases:</td>
 						<td>
-							<input type="text" name="aliases" value="{//domain_get_by_id/aliases}"/>
+							<input type="text" name="aliases" value="{//domain_get_by_id/domain_get_by_id/aliases}"/>
 						</td>
 						<td>-1 = disable | 0 = unlimited</td>
 					</tr>
@@ -62,7 +62,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 						<td>Mailboxes:</td>
 
 						<td>
-							<input type="text" name="mailboxes" value="{//domain_get_by_id/mailboxes}"/>
+							<input type="text" name="mailboxes" value="{//domain_get_by_id/domain_get_by_id/mailboxes}"/>
 						</td>
 						<td>-1 = disable | 0 = unlimited</td>
 					</tr>

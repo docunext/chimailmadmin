@@ -25,16 +25,19 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	<xsl:include href="main.xsl"/>
 	<xsl:include href="pager.xsl"/>
 	<xsl:template name="content">
+    <xsl:param name="link_prefix"/>
+    <xsl:param name="path_prefix"/>
+    <xsl:param name="i18n"/>
 		<xsl:call-template name="jquery-setup">
 			<xsl:with-param name="my-table">admin_table</xsl:with-param>
 			<xsl:with-param name="my-table-div">myDomainsDiv</xsl:with-param>
 			<xsl:with-param name="no-sort-column">,
-        headers: {
-            5: {sorter: false},
-            6: {sorter: false},
-            7: {sorter: false}
-        }
-    </xsl:with-param>
+			headers: {
+					5: {sorter: false},
+					6: {sorter: false},
+					7: {sorter: false}
+			}
+			</xsl:with-param>
 		</xsl:call-template>
 		<div id="myDomainsDiv">
 			<table id="admin_table" class="tablesorter">
@@ -51,10 +54,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					</tr>
 				</thead>
 				<tbody>
-					<xsl:for-each select="//domains_get_all/domains_get_all">
+					<xsl:for-each select="/_R_/domains_get_all/domains_get_all">
 						<tr>
 							<td>
-								<a href="{//link_prefix}xpa-mailbox-list&amp;domain_id={domain_id}">
+								<a href="{$link_prefix}xpa-mailbox-list&amp;domain_id={domain_id}">
 									<xsl:value-of select="domain"/>
 								</a>
 							</td>
@@ -70,15 +73,15 @@ Fifth Floor, Boston, MA 02110-1301 USA
 								<xsl:value-of select="modified"/>
 							</td>
 							<td>
-								<a href="{//link_prefix}">
+								<a href="{$link_prefix}">
 									<xsl:value-of select="active"/>
 								</a>
 							</td>
 							<td>
-								<a href="{//link_prefix}xpa-domain-edit&amp;domain_id={domain_id}">edit</a>
+								<a href="{$link_prefix}xpa-domain-edit&amp;domain_id={domain_id}">edit</a>
 							</td>
 							<td>
-								<a href="{//link_prefix}" onclick="return confirm ('Do you really want to delete all records for this domain? This can not be undone!\nDomain: test.com')">del</a>
+								<a href="{$link_prefix}" onclick="return confirm ('Do you really want to delete all records for this domain? This can not be undone!\nDomain: test.com')">del</a>
 							</td>
 						</tr>
 					</xsl:for-each>
@@ -90,7 +93,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		</xsl:call-template>
 
 		<div style="float: right">
-			<a class="button-basic-{//theme_color}" href="{//link_prefix}xpa-domain-edit">New Domain</a>
+			<a class="button-basic-{//theme_color}" href="{$link_prefix}xpa-domain-edit">New Domain</a>
 		</div>
 	</xsl:template>
 </xsl:stylesheet>
