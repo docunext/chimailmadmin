@@ -23,14 +23,17 @@ Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<xsl:template name="footer">
+    <xsl:param name="link_prefix"/>
+    <xsl:param name="path_prefix"/>
+    <xsl:param name="i18n"/>
 
 		<div id="footer">
 			<a href="http://www.chi-mail-madmin.docunext.com/blog/">Chi Mail Madmin</a>
 			<xsl:if test="//runtime/svn_revision">
         Revision <xsl:value-of select="//svn_revision"/>
 			</xsl:if>
-			<a href="{//link_prefix}xpa-iframe-viewer&amp;url=license">License</a>&#160;
-    <a href="{//link_prefix}xpa-iframe-viewer&amp;url=readme">Readme</a>
+			<a href="{$link_prefix}xpa-iframe-viewer&amp;url=license">License</a>&#160;
+			<a href="{$link_prefix}xpa-iframe-viewer&amp;url=readme">Readme</a>
 		</div>
 
 	</xsl:template>

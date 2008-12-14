@@ -25,12 +25,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	<xsl:output method="html" indent="yes" encoding="UTF-8" omit-xml-declaration="no" doctype-public="-//W3C//DTD HTML 4.01 Transitional//EN" doctype-system="http://www.w3.org/TR/html4/loose.dtd"/>
 	<xsl:template match="/">
 		<html>
-      <xsl:variable name="link_prefix">
-        <xsl:value-of select="/_R_/runtime/link_prefix"/>
-      </xsl:variable>
-      <xsl:variable name="path_prefix">
-        <xsl:value-of select="/_R_/runtime/path_prefix"/>
-      </xsl:variable>
+      <xsl:variable name="link_prefix" select="/_R_/runtime/link_prefix"/>
+      <xsl:variable name="path_prefix" select="/_R_/runtime/path_prefix"/>
       <xsl:variable name="my18n"
         select="document('../../i18n/en_US/pbooks.xml')/i18n"/>
 
@@ -43,12 +39,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				</xsl:for-each>
 
 				<xsl:call-template name="main">
-          <xsl:with-param name="link_prefix">
-            <xsl:value-of select="$link_prefix"/>
-          </xsl:with-param>
-          <xsl:with-param name="path_prefix">
-            <xsl:value-of select="$path_prefix"/>
-          </xsl:with-param>
+          <xsl:with-param name="link_prefix" select="$link_prefix"/>
+          <xsl:with-param name="path_prefix" select="$path_prefix"/>
           <xsl:with-param name="i18n" select="$my18n"/>
         </xsl:call-template>
 
