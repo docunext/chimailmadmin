@@ -32,11 +32,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			<xsl:with-param name="my-table">alias_table</xsl:with-param>
 			<xsl:with-param name="my-table-div">myAliasDiv</xsl:with-param>
 			<xsl:with-param name="no-sort-column">,
-        headers: {
-            5: {sorter: false},
-            6: {sorter: false},
-            7: {sorter: false}
-        }
+			headers: {
+					5: {sorter: false},
+					6: {sorter: false},
+					7: {sorter: false}
+			}
 			</xsl:with-param>
 		</xsl:call-template>
 		<div style="float: right">

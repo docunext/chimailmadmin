@@ -27,6 +27,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	<params>
 		<param name="_post/domain" type="text"/>
 		<param name="_post/description" type="text"/>
+		<param name="_post/transport" type="text"/>
 		<param name="_post/aliases" type="text"/>
 		<param name="_post/mailboxes" type="text"/>
 		<param name="_post/backupmx" type="text"/>
@@ -34,6 +35,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<param name="_post/domain_id" type="text"/>
 	</params>
 	<sql>
-	UPDATE &xpa_domains; SET domain=?,description=?,aliases=?,mailboxes=?,backupmx=?,modified=? WHERE domain_id=?
+	UPDATE &xpa_domains; SET domain=?,description=?,transport=?,aliases=?,mailboxes=?,backupmx=?,modified=? WHERE domain_id=?
 	</sql>
 </query>

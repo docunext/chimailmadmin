@@ -42,7 +42,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<div style="float: right">
 			<form name="overview" method="post">
 				<select name="fDomain" onChange="this.form.submit();">
-					<xsl:for-each select="//domains_get_all/domains_get_all">
+					<xsl:for-each select="/_R_/domains_get_all/domains_get_all">
 						<option value="{domain}">
 							<xsl:value-of select="domain"/>
 						</option>

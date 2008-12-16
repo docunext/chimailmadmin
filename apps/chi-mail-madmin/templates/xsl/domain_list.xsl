@@ -39,8 +39,25 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			}
 			</xsl:with-param>
 		</xsl:call-template>
+		<script type="text/javascript">
+		function domain_delete(domain_id,row) {
+				if(confirm('Are you sure?')){
+				$.post("<xsl:value-of select="$link_prefix"/>x-domain-delete&amp;domain_id="+domain_id,
+				{
+						'domain_id': domain_id
+				},
+				function (data){
+						myTable = document.getElementById("domain_table");
+						myTable.deleteRow(row);
+				});
+				}
+		}
+		</script>
+		<!-- 
+		return confirm ('Do you really want to delete all records for this domain? This can not be undone!\nDomain: test.com')
+		-->
 		<div id="myDomainsDiv">
-			<table id="admin_table" class="tablesorter">
+			<table id="domain_table" class="tablesorter">
 				<thead>
 					<tr>
 						<th>Domain</th>
@@ -81,7 +98,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 								<a href="{$link_prefix}xpa-domain-edit&amp;domain_id={domain_id}">edit</a>
 							</td>
 							<td>
-								<a href="{$link_prefix}" onclick="return confirm ('Do you really want to delete all records for this domain? This can not be undone!\nDomain: test.com')">del</a>
+								<a href="{$link_prefix}x-domain-delete&amp;domain_id={domain_id}"
+									onclick="domain_delete({domain_id},this.parentNode.parentNode.rowIndex); return false;">del</a>
 							</td>
 						</tr>
 					</xsl:for-each>

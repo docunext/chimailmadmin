@@ -27,6 +27,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	<params>
 		<param name="_post/domain" type="text"/>
 		<param name="_post/description" type="text"/>
+		<param name="_post/transport" type="text"/>
 		<param name="_post/aliases" type="text"/>
 		<param name="_post/mailboxes" type="text"/>
 		<param name="_post/backupmx" type="text"/>
@@ -35,8 +36,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	</params>
 	<sql>
 	INSERT INTO &xpa_domains;
-	(domain,description,aliases,mailboxes,backupmx,created,modified)
+	(domain,description,transport,aliases,mailboxes,backupmx,created,modified)
 	VALUES
-	(?,?,?,?,?,?,?)
+	(?,?,?,?,?,?,?,?)
 	</sql>
 </query>
