@@ -24,8 +24,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
 <query name="domains_get_all">
 	<connection>&connection_read;</connection>
-	<params></params>
+	<params>
+		<param name="_get/domain_id" type="text" default="%"/>
+	</params>
 	<sql>
-	SELECT * FROM &xpa_domains; WHERE active &gt; 0
+	SELECT * FROM &xpa_domains; WHERE domain_id LIKE ? AND active &gt; 0
 	</sql>
 </query>

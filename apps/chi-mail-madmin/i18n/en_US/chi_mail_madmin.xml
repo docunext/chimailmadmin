@@ -22,64 +22,65 @@ or write to the Free Software Foundation,Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <i18n>
-<labels lang="en-us">
-    <label>
-        <key>name</key>
-        <value>Name</value>
-    </label>
+	<submit>Submit</submit>
+	<labels lang="en-us">
+		<label>
+			<key>name</key>
+			<value>Name</value>
+		</label>
     
     <!-- MENU -->
     <!-- Domains -->
-    <label>
-        <key>domains</key>
-        <value>Domains</value>
-    </label>
-    <label>
-        <key>domain_list</key>
-        <value>Domain List</value>
-    </label>
-    <label>
-        <key>add_domain</key>
-        <value>Add Domain</value>
-    </label>
-    <label>
-        <key>addresses</key>
-        <value>Email Addresses</value>
-    </label>
-    <label>
-        <key>address_list</key>
-        <value>Address List</value>
-    </label>
-    <label>
-        <key>add_mailbox</key>
-        <value>Add Mailbox</value>
-    </label>
-    <label>
-        <key>add_alias</key>
-        <value>Add Alias</value>
-    </label>
+		<label>
+			<key>domains</key>
+			<value>Domains</value>
+		</label>
+		<label>
+			<key>domain_list</key>
+			<value>Domain List</value>
+		</label>
+		<label>
+			<key>add_domain</key>
+			<value>Add Domain</value>
+		</label>
+		<label>
+			<key>addresses</key>
+			<value>Email Addresses</value>
+		</label>
+		<label>
+			<key>address_list</key>
+			<value>Address List</value>
+		</label>
+		<label>
+			<key>add_mailbox</key>
+			<value>Add Mailbox</value>
+		</label>
+		<label>
+			<key>add_alias</key>
+			<value>Add Alias</value>
+		</label>
     
     <!-- Addresses -->
     <!-- Options -->
-    <label>
-        <key>cma_options</key>
-        <value>Options</value>
-    </label>
-    <label>
-        <key>number_of_records</key>
-        <value>Number of records</value>
-    </label>
-    <label>
-        <key>upload_options</key>
-        <value>Upload Options</value>
-    </label>
-    <label>
-        <key>image_options</key>
-        <value>Image Options</value>
-    </label>
-    <label>
-        <key>interface_options</key>
-        <value>Interface Options</value>
-    </label>
-</labels>
+		<label>
+			<key>cma_options</key>
+			<value>Options</value>
+		</label>
+		<label>
+			<key>number_of_records</key>
+			<value>Number of records</value>
+		</label>
+		<label>
+			<key>upload_options</key>
+			<value>Upload Options</value>
+		</label>
+		<label>
+			<key>image_options</key>
+			<value>Image Options</value>
+		</label>
+		<label>
+			<key>interface_options</key>
+			<value>Interface Options</value>
+		</label>
+	</labels>
 </i18n>

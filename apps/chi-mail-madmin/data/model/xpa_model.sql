@@ -12,8 +12,8 @@ CREATE TABLE IF NOT EXISTS `xpa_admin` (
 
 CREATE TABLE IF NOT EXISTS `xpa_alias` (
   `alias_id` int(11) NOT NULL auto_increment,
-  `address` varchar(255) NOT NULL default '',
-  `goto` text NOT NULL,
+  `alias` varchar(255) NOT NULL default '',
+  `destination` text NOT NULL,
   `domain_id` int(11) NOT NULL,
   `created` datetime NOT NULL default '0000-00-00 00:00:00',
   `modified` datetime NOT NULL default '0000-00-00 00:00:00',

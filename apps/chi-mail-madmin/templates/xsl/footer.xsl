@@ -1,6 +1,6 @@
 <!--
 Program: Chi Mail Madmin
-Component: footer.xsl
+Component: html_footer.xsl
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -28,7 +28,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:param name="i18n"/>
 
 		<div id="footer">
-			<a href="http://www.chi-mail-madmin.docunext.com/blog/">Chi Mail Madmin</a>
+			<a href="http://www.chimailmadmin.com/blog/">Chi Mail Madmin</a>
 			<xsl:if test="//runtime/svn_revision">
         Revision <xsl:value-of select="//svn_revision"/>
 			</xsl:if>

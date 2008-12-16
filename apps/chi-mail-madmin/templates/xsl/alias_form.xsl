@@ -39,14 +39,14 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					<tr>
 						<td>Alias</td>
 						<td>
-							<input type="text" name="fAddress" value=""/>
+							<input type="text" name="alias" value=""/>
 						</td>
-						<td></td>
+						<td>@<xsl:value-of select="//domains_get_all/domains_get_all/domain"/></td>
 					</tr>
 					<tr>
 						<td>To:</td>
 						<td>
-							<input type="text" name="destination" value=""/>
+							<input type="text" name="destination" value="{//alias_get_all/alias_get_all/destination}"/>
 						</td>
 						<td>Where the mail needs to be sent to.</td>
 					</tr>
