@@ -1,6 +1,6 @@
 <!--
 Program: ChiMailMadmin
-Component: domain_export.txt.xsl
+Component: alias_export.txt.xsl
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3

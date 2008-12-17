@@ -1,6 +1,6 @@
 <!--
 Program: ChiMailMadmin
-Component: domain_export.txt.xsl
+Component: mailbox_export.txt.xsl
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -25,7 +25,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:output method="text" encoding="UTF-8" omit-xml-declaration="yes"/>
 <xsl:template match="/">
 
-  <xsl:for-each select="/_R_/addresses_get_all/addresses_get_all">
+  <xsl:for-each select="/_R_/mailboxes_get_all/mailboxes_get_all">
     <xsl:value-of select="address"/><xsl:text>&#160;OK</xsl:text>
     <xsl:text>&#10;</xsl:text>
   </xsl:for-each>
