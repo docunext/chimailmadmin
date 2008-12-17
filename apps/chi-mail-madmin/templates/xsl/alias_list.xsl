@@ -81,7 +81,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 								<a href="{$link_prefix}">edit</a>
 							</td>
 							<td>
-								<a href="{$link_prefix}" onclick="">del</a>
+								<a href="{$link_prefix}"
+									onclick="domain_delete({alias_id},this.parentNode.parentNode.rowIndex); return false;">del</a>
 							</td>
 						</tr>
 					</xsl:for-each>
