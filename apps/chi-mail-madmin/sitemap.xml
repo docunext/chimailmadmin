@@ -128,6 +128,10 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <map:query src="data/sql/alias_delete.xml"/>
     <map:action type="redirect" params="{//link_prefix}xpa-alias-list"/>
 </map:gate>
+<map:gate name="x-alias-export">
+	<map:query src="data/sql/alias_get_all.xml"/>
+	<map:xsl src="templates/txt/alias_export.txt.xsl"/>
+</map:gate>
 
 
 

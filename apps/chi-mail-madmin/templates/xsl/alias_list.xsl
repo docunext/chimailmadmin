@@ -115,5 +115,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<div style="float: right">
 			<a class="button-basic-blue" href="{$link_prefix}xpa-alias-edit&amp;domain_id={//_get/domain_id}">Add Alias</a>
 		</div>
+		<div style="float: right">
+			<a class="button-basic-blue" href="{$link_prefix}x-alias-export&amp;domain_id={//_get/domain_id}">Export Aliases</a>
+		</div>
 	</xsl:template>
 </xsl:stylesheet>
