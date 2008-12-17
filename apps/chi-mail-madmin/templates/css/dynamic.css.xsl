@@ -300,22 +300,7 @@ table {
 	padding-bottom: 5px;
 }
 
-#main_menu table {
-	margin: 0 auto;
-	text-align: left;
-	padding-top: 20px;
-	padding-bottom: 20px;
-}
 
-#main_menu table td {
-	padding-left: 30px;
-	padding-bottom: 5px;
-}
-
-#main_menu a {
-	color: #888888;
-	padding-left: 8px;
-}
 
 #main_menu a:hover {
 	color: #40B33C; /*#CD6A6A;*/
@@ -326,9 +311,8 @@ table {
 }
 
 #overview, #admin_domains, #admin_virtual {
-	width: 750px;
 	margin: 0 auto;
-	background: #AFE1A6; /*#9ACD32;*/
+	background: #AFE1A6;
 	border: 1px solid #bbb;
 }
 

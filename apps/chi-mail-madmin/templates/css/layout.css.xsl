@@ -37,5 +37,20 @@ Fifth Floor, Boston, MA 02110-1301  USA
 #footer {
     width: 100%;
 }
+#main_menu table {
+	margin: 0 auto;
+	text-align: left;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+#main_menu table td {
+	padding-left: 30px;
+	padding-bottom: 5px;
+}
+
+#main_menu a {
+	padding-left: 8px;
+}
 </xsl:template>
 </xsl:stylesheet>
