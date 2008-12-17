@@ -52,12 +52,6 @@ html, body {
     padding: .2em;
     margin-top: 0;
 }
-#footer {
-    text-align: center;
-    font-size: small;
-    width: 100%;
-    background-color: #ddd;
-}
 
 table.tablesorter {
 	background-color: #CDCDCD;
@@ -385,27 +379,9 @@ table {
 	margin: 0;
 }
 
-#footer {
-	width: 750px;
-	margin: 20px auto;
-	border-top: 1px solid #bbbbbb;
-	background: #efefef;
-	color: #999999;
-	line-height: 20px;
-	text-align: left;
-	padding-left: 15px;
-	font-size: 9px;
-}
 
-#footer a {
-	text-decoration: none;
-	color: #999999;
-}
 
-#footer a:hover {
-	text-decoration: underline;
-	color: #777777;
-}
+
 
 div.setup {
 	width:700px;

@@ -25,10 +25,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <query name="alias_get_all">
 	<connection>&connection_read;</connection>
 	<params>
-		<param name="_get/domain_id" type="text"/>
+		<param name="_get/domain_id" type="text" default="%"/>
 		<param name="_get/alias_id" type="text" default="%"/>
 	</params>
 	<sql>
-	SELECT * FROM &xpa_alias; WHERE domain_id=? and alias_id LIKE ?
+	SELECT * FROM &xpa_alias; WHERE domain_id LIKE ? and alias_id LIKE ?
 	</sql>
 </query>

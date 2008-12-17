@@ -90,6 +90,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<xsl:call-template name="pager">
 			<xsl:with-param name="my-table">mailbox_table</xsl:with-param>
 		</xsl:call-template>
+		<br/>
 		<div style="float: right">
 			<a class="button-basic-{//theme_color}" href="{$link_prefix}xpa-mailbox-edit&amp;domain_id={//_get/domain_id}">Add Mailbox</a>
 		</div>
