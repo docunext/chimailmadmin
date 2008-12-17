@@ -40,10 +40,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			</xsl:with-param>
 		</xsl:call-template>
 		<div style="float: right">
-			<form name="overview" method="post">
-				<select name="fDomain" onChange="this.form.submit();">
+			<form name="overview" method="get">
+				<input type="hidden" name="nid" value="{//_get/nid}"/>
+				<select name="domain_id" onChange="this.form.submit();">
 					<xsl:for-each select="/_R_/domains_get_all/domains_get_all">
-						<option value="{domain}">
+						<option value="{domain_id}">
 							<xsl:value-of select="domain"/>
 						</option>
 					</xsl:for-each>

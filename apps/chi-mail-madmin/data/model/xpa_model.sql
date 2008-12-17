@@ -83,8 +83,8 @@ CREATE TABLE IF NOT EXISTS `xpa_vacation` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 ;
 
 ALTER TABLE `xpa_alias`
-  ADD CONSTRAINT `xpa_alias_ibfk_1` FOREIGN KEY (`alias_id`) REFERENCES `xpa_domain` (`domain_id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `xpa_alias_ibfk_1` FOREIGN KEY (`domain_id`) REFERENCES `xpa_domain` (`domain_id`) ON DELETE CASCADE;
 
 ALTER TABLE `xpa_mailbox`
-  ADD CONSTRAINT `xpa_mailbox_ibfk_1` FOREIGN KEY (`mailbox_id`) REFERENCES `xpa_domain` (`domain_id`);
+  ADD CONSTRAINT `xpa_mailbox_ibfk_1` FOREIGN KEY (`domain_id`) REFERENCES `xpa_domain` (`domain_id`);
 
