@@ -1,6 +1,6 @@
 <!--
 Program: Chi Mail Madmin
-Component: main.xsl
+Component: html_main.xsl
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -24,8 +24,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<xsl:include href="html_shell.xsl"/>
 	<xsl:include href="main_menu.xsl"/>
-	<xsl:include href="head.xsl"/>
-	<xsl:include href="footer.xsl"/>
+	<xsl:include href="html_head.xsl"/>
+	<xsl:include href="html_footer.xsl"/>
 	<xsl:template name="main">
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
