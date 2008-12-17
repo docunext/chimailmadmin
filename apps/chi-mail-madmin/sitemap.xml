@@ -98,6 +98,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 
 <!-- ALIAS -->
 <map:gate name="xpa-alias-list">
+    <map:query src="data/sql/domains_get_all.xml"/>
     <map:query src="data/sql/alias_get_all.xml"/>
     <map:xsl src="templates/xsl/alias_list.xsl"/>
 </map:gate>

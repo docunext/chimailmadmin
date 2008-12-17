@@ -29,7 +29,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				<xsl:if test="//_get/alias_id">
 					<input type="hidden" name="alias_id" value="{//_get/alias_id}"/>
 				</xsl:if>
-				<input type="hidden" name="domain_id" value="{//_get/domain_id}"/>
+				<xsl:if test="//_get/domain_id">
+					<input type="hidden" name="domain_id" value="{//_get/domain_id}"/>
+				</xsl:if>
 				<table>
 					<tr>
 						<td colspan="3">
@@ -41,7 +43,20 @@ Fifth Floor, Boston, MA 02110-1301 USA
 						<td>
 							<input type="text" name="alias" value=""/>
 						</td>
-						<td>@<xsl:value-of select="//domains_get_all/domains_get_all/domain"/></td>
+						<td>
+							<xsl:if test="//_get/domain_id">
+								@<xsl:value-of select="//domains_get_all/domains_get_all[domain_id=//_get/domain_id]/domain"/>
+							</xsl:if>
+							<xsl:if test="not(_get/domain_id)">
+							<select name="domain_id">
+								<xsl:for-each select="//domains_get_all/domains_get_all">
+									<option value="{domain_id}">
+										<xsl:value-of select="domain"/>
+									</option>
+								</xsl:for-each>
+							</select>
+							</xsl:if>
+						</td>
 					</tr>
 					<tr>
 						<td>To:</td>

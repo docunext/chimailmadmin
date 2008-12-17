@@ -40,15 +40,16 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			</xsl:with-param>
 		</xsl:call-template>
 		<div style="float: right">
-			<form name="overview" method="post">
-				<select name="fDomain" onChange="this.form.submit();">
-					<xsl:for-each select="//domains_get_all/domains_get_all">
-						<option value="{domain}">
+			<form name="overview" method="get">
+				<input type="hidden" name="nid" value="{//_get/nid}"/>
+				<select name="domain_id" onChange="this.form.submit();">
+					<xsl:for-each select="/_R_/domains_get_all/domains_get_all">
+						<option value="{domain_id}">
 							<xsl:value-of select="domain"/>
 						</option>
 					</xsl:for-each>
 				</select>
-				<input class="button" type="submit" name="go" value="Go" />
+				<input class="button" type="submit" name="go" value="Go"/>
 			</form>
 		</div>
 		<h4>Alias List for <xsl:value-of
@@ -69,12 +70,12 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					<xsl:for-each select="//alias_get_all/alias_get_all">
 						<tr>
 							<td>
-								<xsl:value-of select="alias_address"/>
+								<xsl:value-of select="alias"/>
 							</td>
-							<td></td>
-							<td></td>
+							<td><xsl:value-of select="destination"/></td>
+							<td><xsl:value-of select="modified"/></td>
 							<td>
-								<a href="{$link_prefix}"></a>
+								<a href="{$link_prefix}"><xsl:value-if select="active"/></a>
 							</td>
 							<td>
 								<a href="{$link_prefix}">edit</a>
