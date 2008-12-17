@@ -75,21 +75,24 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	</xsl:template>
 
 	<xsl:template name="pager">
+    <xsl:param name="path_prefix">
+			<xsl:value-of select="/_R_/runtime/path_prefix"/>
+		</xsl:param>
 		<xsl:param name="my-table"/>
 		<div id="{$my-table}-pager" class="pager" style="margin-top: 20px;">
 			<input id="mypagesize" class="pagesize" type="hidden" name="pagesize" value="16"/>
 			<table>
 				<tr>
 					<td>
-						<img src="{/__ROOT__/runtime/path_prefix}/s/css/blue/first.png" class="first"/>
-						<img src="{/__ROOT__/runtime/path_prefix}/s/css/blue/prev.png" class="prev"/>
+						<img src="{$path_prefix}/s/css/blue/first.png" class="first"/>
+						<img src="{$path_prefix}/s/css/blue/prev.png" class="prev"/>
 					</td>
 					<td>
-						<input type="text" class="pagedisplay" size="10" readonly="readonly"/>
+						<input type="text" class="pagedisplay" size="4" readonly="readonly"/>
 					</td>
 					<td>
-						<img src="{/__ROOT__/runtime/path_prefix}/s/css/blue/next.png" class="next"/>
-						<img src="{/__ROOT__/runtime/path_prefix}/s/css/blue/last.png" class="last"/>
+						<img src="{$path_prefix}/s/css/blue/next.png" class="next"/>
+						<img src="{$path_prefix}/s/css/blue/last.png" class="last"/>
 					</td>
 				</tr>
 			</table>
