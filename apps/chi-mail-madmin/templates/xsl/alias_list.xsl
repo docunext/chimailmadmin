@@ -39,6 +39,20 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			}
 			</xsl:with-param>
 		</xsl:call-template>
+		<script type="text/javascript">
+		function alias_delete(alias_id,row) {
+				if(confirm('Are you sure?')){
+				$.post("<xsl:value-of select="$link_prefix"/>x-alias-delete&amp;alias_id="+alias_id,
+				{
+						'alias_id': alias_id
+				},
+				function (data){
+						myTable = document.getElementById("alias_table");
+						myTable.deleteRow(row);
+				});
+				}
+		}
+		</script>
 		<div style="float: right">
 			<form name="overview" method="get">
 				<input type="hidden" name="nid" value="{//_get/nid}"/>
@@ -75,14 +89,16 @@ Fifth Floor, Boston, MA 02110-1301 USA
 							<td><xsl:value-of select="destination"/></td>
 							<td><xsl:value-of select="modified"/></td>
 							<td>
-								<a href="{$link_prefix}"><xsl:value-if select="active"/></a>
+								<a href="{$link_prefix}xpa-alias-edit&amp;alias_id={alias_id}">
+									<xsl:value-if select="active"/>
+								</a>
 							</td>
 							<td>
-								<a href="{$link_prefix}">edit</a>
+								<a href="{$link_prefix}xpa-alias-edit&amp;alias_id={alias_id}">edit</a>
 							</td>
 							<td>
 								<a href="{$link_prefix}"
-									onclick="domain_delete({alias_id},this.parentNode.parentNode.rowIndex); return false;">del</a>
+									onclick="alias_delete({alias_id},this.parentNode.parentNode.rowIndex); return false;">del</a>
 							</td>
 						</tr>
 					</xsl:for-each>
@@ -92,6 +108,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<xsl:call-template name="pager">
 			<xsl:with-param name="my-table">alias_table</xsl:with-param>
 		</xsl:call-template>
+		<br/>
 		<div style="float: right">
 			<a class="button-basic-blue" href="{$link_prefix}xpa-mailbox-edit&amp;domain_id={//_get/domain_id}">Add Mailbox</a>
 		</div>

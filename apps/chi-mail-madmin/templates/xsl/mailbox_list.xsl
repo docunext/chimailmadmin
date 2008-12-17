@@ -95,7 +95,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 							</td>
 							<td>
 								<a href="{$link_prefix}"
-									onclick="domain_delete({mailbox_id},this.parentNode.parentNode.rowIndex); return false;">del</a>
+									onclick="mailbox_delete({mailbox_id},this.parentNode.parentNode.rowIndex); return false;">del</a>
 							</td>
 						</tr>
 					</xsl:for-each>

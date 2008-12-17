@@ -44,6 +44,10 @@ Fifth Floor, Boston, MA 02110-1301  USA
 			<url>xpa-mailbox-edit</url>
 		</item>
 		<item>
+			<key>alias_list</key>
+			<url>xpa-alias-list</url>
+		</item>
+		<item>
 			<key>add_alias</key>
 			<url>xpa-alias-edit</url>
 		</item>

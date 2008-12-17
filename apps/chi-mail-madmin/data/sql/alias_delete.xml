@@ -25,7 +25,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <query name="alias_delete">
 	<connection>&connection;</connection>
 	<params>
-		<param name="_post/alias_id" type="text"/>
+		<param name="//_post/alias_id" type="text"/>
 	</params>
 	<sql>
 	DELETE FROM &xpa_alias; WHERE alias_id=?

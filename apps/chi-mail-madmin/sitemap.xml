@@ -93,7 +93,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 </map:gate>
 <map:gate name="x-mailbox-delete" >
     <map:query src="data/sql/mailbox_delete.xml"/>
-    <map:action type="redirect" params="{//link_prefix}xpa-domain-list"/>
+    <map:action type="redirect" params="{//link_prefix}xpa-mailbox-list"/>
 </map:gate>
 
 <!-- ALIAS -->
@@ -121,7 +121,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <map:query src="data/sql/domains_get_all.xml"/>
     <map:xsl src="templates/xsl/alias_form.xsl"/>
 </map:gate>
-<map:gate name="xpa-alias-delete">
+<map:gate name="x-alias-delete">
     <map:query src="data/sql/alias_delete.xml"/>
     <map:action type="redirect" params="{//link_prefix}xpa-alias-list"/>
 </map:gate>
