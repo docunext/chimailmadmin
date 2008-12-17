@@ -34,7 +34,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				<table>
 					<tr>
 						<td colspan="3">
-							<h3>Add a new domain</h3>
+							<h3>Add/Edit Domain</h3>
 						</td>
 					</tr>
 					<tr>
@@ -70,7 +70,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					</tr>
 					<tr>
 						<td>Transport:</td>
-
 						<td>
 							<input type="text" name="transport" value="{$domain_get_by_id/transport}"/>
 						</td>

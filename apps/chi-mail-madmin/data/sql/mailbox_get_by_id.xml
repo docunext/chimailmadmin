@@ -25,7 +25,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <query name="mailbox_get_by_id">
 	<connection>&connection_read;</connection>
 	<params>
-		<param name="//_get/mailbox_id" type="text"/>
+		<param name="//_get/mailbox_id" type="integer"/>
 	</params>
 	<sql>
 	SELECT * FROM &xpa_mailbox; WHERE mailbox_id=?

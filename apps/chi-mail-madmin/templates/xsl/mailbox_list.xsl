@@ -39,6 +39,20 @@ Fifth Floor, Boston, MA 02110-1301 USA
         }
 			</xsl:with-param>
 		</xsl:call-template>
+		<script type="text/javascript">
+		function mailbox_delete(mailbox_id,row) {
+				if(confirm('Are you sure?')){
+				$.post("<xsl:value-of select="$link_prefix"/>x-mailbox-delete&amp;mailbox_id="+mailbox_id,
+				{
+						'mailbox_id': mailbox_id
+				},
+				function (data){
+						myTable = document.getElementById("mailbox_table");
+						myTable.deleteRow(row);
+				});
+				}
+		}
+		</script>
 		<div style="float: right">
 			<form name="overview" method="get">
 				<input type="hidden" name="nid" value="{//_get/nid}"/>
@@ -77,7 +91,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 								<a href="{$link_prefix}"></a>
 							</td>
 							<td>
-								<a href="{$link_prefix}">edit</a>
+								<a href="{$link_prefix}xpa-mailbox-edit&amp;mailbox_id={mailbox_id}">edit</a>
 							</td>
 							<td>
 								<a href="{$link_prefix}"

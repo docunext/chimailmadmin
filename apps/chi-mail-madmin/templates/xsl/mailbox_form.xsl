@@ -33,6 +33,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				<xsl:if test="//_get/domain_id">
 					<input type="hidden" name="domain_id" value="{//_get/domain_id}"/>
 				</xsl:if>
+				<xsl:if test="//_get/mailbox_id">
+					<input type="hidden" name="mailbox_id" value="{//_get/mailbox_id}"/>
+				</xsl:if>
+				<xsl:variable name="mailbox_get_by_id" select="//mailbox_get_by_id/mailbox_get_by_id"/>
 				<table>
 					<tr>
 						<td colspan="3">
@@ -42,7 +46,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					<tr>
 						<td>Email Address</td>
 						<td>
-							<input type="text" name="email_address" value=""/>
+							<input type="text" name="email_address" value="{$mailbox_get_by_id/email_address}"/>
 						</td>
 						<td>
 							<xsl:if test="//_get/domain_id">
@@ -59,6 +63,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 							</xsl:if>
 						</td>
 					</tr>
+					<xsl:if test="not(//_get/mailbox_id)">
 					<tr>
 						<td>Password</td>
 						<td>
@@ -70,20 +75,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 						<td></td>
 						<td>
 							<input type="password" name="password2"/>
-						</td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Name</td>
-						<td>
-							<input type="text" name="fName" value=""/>
-						</td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Active</td>
-						<td>
-							<input type="checkbox" name="active"/>
 						</td>
 						<td></td>
 					</tr>
@@ -110,6 +101,21 @@ Fifth Floor, Boston, MA 02110-1301 USA
 						<td>
 							<input id="default_filters" name="create_default_filters" value="1" checked="checked" type="checkbox"/>
 						</td>
+					</tr>
+					</xsl:if>
+					<tr>
+						<td>Name</td>
+						<td>
+							<input type="text" name="first_name" value="{$mailbox_get_by_id/first_name}"/>
+						</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>Active</td>
+						<td>
+							<input type="checkbox" name="active"/>
+						</td>
+						<td></td>
 					</tr>
 					<tr>
 						<td colspan="3">
