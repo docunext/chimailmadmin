@@ -65,6 +65,17 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <map:query src="data/sql/domain_delete.xml"/>
 </map:gate>
 
+<map:gate name="x-domain-export" content_type="text/plain">
+	<map:query src="data/sql/domains_get_all.xml"/>
+	<map:action type="pad" params="//domains_get_all/domains_get_all/domain,30, "/>
+	<map:xsl src="templates/txt/domain_export.txt.xsl"/>
+</map:gate>
+<map:gate name="x-relay-export" content_type="text/plain">
+	<map:query src="data/sql/domains_get_all.xml"/>
+	<map:action type="pad" params="//domains_get_all/domains_get_all/domain,30, "/>
+	<map:xsl src="templates/txt/relay_export.txt.xsl"/>
+</map:gate>
+
 <!-- MAILBOXEN -->
 <map:gate name="xpa-mailbox-list" role="email_admin">
     <map:query src="data/sql/domains_get_all.xml"/>
