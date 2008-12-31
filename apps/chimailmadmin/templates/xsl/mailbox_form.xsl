@@ -53,13 +53,16 @@ Fifth Floor, Boston, MA 02110-1301 USA
 								@<xsl:value-of select="//domains_get_all/domains_get_all[domain_id=//_get/domain_id]/domain"/>
 							</xsl:if>
 							<xsl:if test="not(_get/domain_id)">
-							<select name="domain_id">
-								<xsl:for-each select="//domains_get_all/domains_get_all">
-									<option value="{domain_id}">
-										<xsl:value-of select="domain"/>
-									</option>
-								</xsl:for-each>
-							</select>
+								@<select name="domain_id">
+									<xsl:for-each select="//domains_get_all/domains_get_all">
+										<option value="{domain_id}">
+											<xsl:if test="$mailbox_get_by_id/domain_id=domain_id">
+												<xsl:attribute name="selected">selected</xsl:attribute>
+											</xsl:if>
+											<xsl:value-of select="domain"/>
+										</option>
+									</xsl:for-each>
+								</select>
 							</xsl:if>
 						</td>
 					</tr>
@@ -106,14 +109,18 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					<tr>
 						<td>Name</td>
 						<td>
-							<input type="text" name="first_name" value="{$mailbox_get_by_id/first_name}"/>
+							<input type="text" name="name" value="{$mailbox_get_by_id/name}"/>
 						</td>
 						<td></td>
 					</tr>
 					<tr>
 						<td>Active</td>
 						<td>
-							<input type="checkbox" name="active"/>
+							<input type="checkbox" name="active" id="{active}">
+								<xsl:if test="$mailbox_get_by_id/active='on'">
+									<xsl:attribute name="checked">checked</xsl:attribute>
+								</xsl:if>
+							</input>
 						</td>
 						<td></td>
 					</tr>

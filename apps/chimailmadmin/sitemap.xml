@@ -20,160 +20,156 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
-or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA
+or write to the Free Software Foundation, Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301 USA
 -->
-<map:prepend>
-    <map:set name="theme" value="default"/>
-    <map:script src="lib/php/runtime.php"/>
-    <map:set name="theme_color" value="blue"/>
-    <map:xml src="data/xml/main_menu.xml"/>
-    <map:xml src="i18n/en_US/chi_mail_madmin.xml"/>
-</map:prepend>
+	<map:prepend>
+		<map:set name="theme" value="default"/>
+		<map:script src="lib/php/runtime.php"/>
+		<map:set name="theme_color" value="blue"/>
+		<map:xml src="data/xml/main_menu.xml"/>
+		<map:xml src="i18n/en_US/chi_mail_madmin.xml"/>
+	</map:prepend>
 
 
 
-<map:gate name="index" role="email_admin">
-    <map:xsl src="templates/xsl/welcome.xsl"/>
-</map:gate>
+	<map:gate name="index" role="email_admin">
+		<map:xsl src="templates/xsl/welcome.xsl"/>
+	</map:gate>
 
-<!-- DOMAINS -->
-<map:gate name="xpa-domain-list" role="email_admin">
-    <map:query src="data/sql/domains_get_all.xml"/>
-    <map:xsl src="templates/xsl/domain_list.xsl"/>
-</map:gate>
-<map:gate name="xpa-domain-edit" role="email_admin">
-    <map:if name="//_post">
-        <map:true>
-            <map:if name="//_post/domain_id">
-                <map:true>
-                    <map:query src="data/sql/domain_update.xml"/>
-                </map:true>
-                <map:false>
-                    <map:query src="data/sql/domain_create.xml"/>
-                </map:false>
-            </map:if>
-            <map:action type="redirect" params="{//link_prefix}xpa-domain-list"/>
-        </map:true>
-        <map:false>
-        </map:false>
-    </map:if>
-    <map:query src="data/sql/domain_get_by_id.xml"/>
-    <map:xsl src="templates/xsl/domain_form.xsl"/>
-</map:gate>
-<map:gate name="x-domain-delete" role="email_admin">
-    <map:query src="data/sql/domain_delete.xml"/>
-</map:gate>
+	<!-- DOMAINS -->
+	<map:gate name="xpa-domain-list" role="email_admin">
+		<map:query src="data/sql/domains_get_all.xml"/>
+		<map:xsl src="templates/xsl/domain_list.xsl"/>
+	</map:gate>
+	<map:gate name="xpa-domain-edit" role="email_admin">
+		<map:if name="//_post">
+			<map:true>
+				<map:if name="//_post/domain_id">
+					<map:true>
+						<map:query src="data/sql/domain_update.xml"/>
+					</map:true>
+					<map:false>
+						<map:query src="data/sql/domain_create.xml"/>
+					</map:false>
+				</map:if>
+				<map:action type="redirect" params="{//link_prefix}xpa-domain-list"/>
+			</map:true>
+			<map:false></map:false>
+		</map:if>
+		<map:query src="data/sql/domain_get_by_id.xml"/>
+		<map:xsl src="templates/xsl/domain_form.xsl"/>
+	</map:gate>
+	<map:gate name="x-domain-delete" role="email_admin">
+		<map:query src="data/sql/domain_delete.xml"/>
+	</map:gate>
 
-<map:gate name="x-domain-export" content_type="text/plain">
-	<map:query src="data/sql/domains_get_all.xml"/>
-	<map:action type="pad" params="//domains_get_all/domains_get_all/domain,30, "/>
-	<map:xsl src="templates/txt/domain_export.txt.xsl"/>
-</map:gate>
-<map:gate name="x-relay-export" content_type="text/plain">
-	<map:query src="data/sql/domains_get_all.xml"/>
-	<map:action type="pad" params="//domains_get_all/domains_get_all/domain,30, "/>
-	<map:xsl src="templates/txt/relay_export.txt.xsl"/>
-</map:gate>
+	<map:gate name="x-domain-export" content_type="text/plain">
+		<map:query src="data/sql/domains_get_all.xml"/>
+		<map:action type="pad" params="//domains_get_all/domains_get_all/domain,30, "/>
+		<map:xsl src="templates/txt/domain_export.txt.xsl"/>
+	</map:gate>
+	<map:gate name="x-relay-export" content_type="text/plain">
+		<map:query src="data/sql/domains_get_all.xml"/>
+		<map:action type="pad" params="//domains_get_all/domains_get_all/domain,30, "/>
+		<map:xsl src="templates/txt/relay_export.txt.xsl"/>
+	</map:gate>
 
-<!-- MAILBOXEN -->
-<map:gate name="xpa-mailbox-list" role="email_admin">
-    <map:query src="data/sql/domains_get_all.xml"/>
-    <map:query src="data/sql/mailboxes_get_all.xml"/>
-    <map:xsl src="templates/xsl/mailbox_list.xsl"/>
-</map:gate>
+	<!-- MAILBOXEN -->
+	<map:gate name="xpa-mailbox-list" role="email_admin">
+		<map:query src="data/sql/domains_get_all.xml"/>
+		<map:query src="data/sql/mailboxes_get_all.xml"/>
+		<map:xsl src="templates/xsl/mailbox_list.xsl"/>
+	</map:gate>
 
-<map:gate name="xpa-mailbox-edit" role="email_admin">
-    <map:if name="//_post">
-        <map:true>
-            <map:if name="//_post/mailbox_id">
-                <map:true>
-                    <map:query src="data/sql/mailbox_update.xml"/>
-                </map:true>
-                <map:false>
-                    <map:query src="data/sql/mailbox_create.xml"/>
-                </map:false>
-            </map:if>
-            <map:action type="redirect" params="{//link_prefix}xpa-domain-list"/>
-        </map:true>
-        <map:false>
-        </map:false>
-    </map:if>
-    <map:query src="data/sql/domains_get_all.xml"/>
-    <map:query src="data/sql/mailbox_get_by_id.xml"/>
-    <map:xsl src="templates/xsl/mailbox_form.xsl"/>
-</map:gate>
+	<map:gate name="xpa-mailbox-edit" role="email_admin">
+		<map:if name="//_post">
+			<map:true>
+				<map:if name="//_post/mailbox_id">
+					<map:true>
+						<map:query src="data/sql/mailbox_update.xml"/>
+					</map:true>
+					<map:false>
+						<map:query src="data/sql/mailbox_create.xml"/>
+					</map:false>
+				</map:if>
+				<map:action type="redirect" params="{//link_prefix}xpa-mailbox-list"/>
+			</map:true>
+			<map:false></map:false>
+		</map:if>
+		<map:query src="data/sql/domains_get_all.xml"/>
+		<map:query src="data/sql/mailbox_get_by_id.xml"/>
+		<map:xsl src="templates/xsl/mailbox_form.xsl"/>
+	</map:gate>
 
-<map:gate name="x-mailbox-delete" role="email_admin">
-    <map:query src="data/sql/mailbox_delete.xml"/>
-    <map:action type="redirect" params="{//link_prefix}xpa-mailbox-list"/>
-</map:gate>
+	<map:gate name="x-mailbox-delete" role="email_admin">
+		<map:query src="data/sql/mailbox_delete.xml"/>
+		<map:action type="redirect" params="{//link_prefix}xpa-mailbox-list"/>
+	</map:gate>
 
-<!-- ALIAS -->
-<map:gate name="xpa-alias-list" role="email_admin">
-    <map:query src="data/sql/domains_get_all.xml"/>
-    <map:query src="data/sql/alias_get_all.xml"/>
-    <map:xsl src="templates/xsl/alias_list.xsl"/>
-</map:gate>
+	<!-- ALIAS -->
+	<map:gate name="xpa-alias-list" role="email_admin">
+		<map:query src="data/sql/domains_get_all.xml"/>
+		<map:query src="data/sql/alias_get_all.xml"/>
+		<map:xsl src="templates/xsl/alias_list.xsl"/>
+	</map:gate>
 
-<map:gate name="xpa-alias-edit" role="email_admin">
-    <map:if name="//_post">
-        <map:true>
-            <map:if name="//_post/alias_id">
-                <map:true>
-                    <map:query src="data/sql/alias_update.xml"/>
-                </map:true>
-                <map:false>
-                    <map:query src="data/sql/alias_create.xml"/>
-                </map:false>
-            </map:if>
-            <map:action type="redirect" params="{//link_prefix}xpa-alias-list"/>
-        </map:true>
-        <map:false>
-        </map:false>
-    </map:if>
-    <map:query src="data/sql/domains_get_all.xml"/>
-    <map:xsl src="templates/xsl/alias_form.xsl"/>
-</map:gate>
-<map:gate name="x-alias-delete" role="email_admin">
-    <map:query src="data/sql/alias_delete.xml"/>
-    <map:action type="redirect" params="{//link_prefix}xpa-alias-list"/>
-</map:gate>
-<map:gate name="x-alias-export">
-	<map:query src="data/sql/alias_get_all.xml"/>
-	<map:xsl src="templates/txt/alias_export.txt.xsl"/>
-</map:gate>
+	<map:gate name="xpa-alias-edit" role="email_admin">
+		<map:if name="//_post">
+			<map:true>
+				<map:if name="//_post/alias_id">
+					<map:true>
+						<map:query src="data/sql/alias_update.xml"/>
+					</map:true>
+					<map:false>
+						<map:query src="data/sql/alias_create.xml"/>
+					</map:false>
+				</map:if>
+				<map:action type="redirect" params="{//link_prefix}xpa-alias-list"/>
+			</map:true>
+			<map:false></map:false>
+		</map:if>
+		<map:query src="data/sql/domains_get_all.xml"/>
+		<map:xsl src="templates/xsl/alias_form.xsl"/>
+	</map:gate>
+	<map:gate name="x-alias-delete" role="email_admin">
+		<map:query src="data/sql/alias_delete.xml"/>
+		<map:action type="redirect" params="{//link_prefix}xpa-alias-list"/>
+	</map:gate>
+	<map:gate name="x-alias-export">
+		<map:query src="data/sql/alias_get_all.xml"/>
+		<map:xsl src="templates/txt/alias_export.txt.xsl"/>
+	</map:gate>
 
 
 
-<map:gate name="xpa-iframe-viewer">
-    <map:xsl src="templates/xsl/iframe_viewer.xsl"/>
-</map:gate>
-<map:gate name="dynamic-css" cache="0">
-    <map:action type="header" params="Content-Type,text/css"/>
-    <map:xsl src="templates/css/dynamic.css.xsl"/>
-</map:gate>
+	<map:gate name="xpa-iframe-viewer">
+		<map:xsl src="templates/xsl/iframe_viewer.xsl"/>
+	</map:gate>
+	<map:gate name="dynamic-css" cache="0">
+		<map:action type="header" params="Content-Type,text/css"/>
+		<map:xsl src="templates/css/dynamic.css.xsl"/>
+	</map:gate>
+
+	<!-- Static Files -->
+	<!-- This type of file serving can be a huge
+	security hole, so make sure to only serve hard-coded,
+	or mostly hard-coded files, i.e. have an array of allowed
+	files. -->
+	<!-- If you use the header action, you must set the cache to 0 -->
+	<map:gate name="license" cache="0">
+		<map:action type="header" params="Content-Type,text/plain"/>
+		<map:raw src="LICENSE" />
+	</map:gate>
+	<map:gate name="readme" cache="0">
+		<map:action type="header" params="Content-Type,text/plain"/>
+		<map:raw src="README" />
+	</map:gate>
 
 
-<!-- Static Files -->
-<!-- This type of file serving can be a huge
-security hole, so make sure to only serve hard-coded, 
-or mostly hard-coded files, i.e. have an array of allowed
-files. -->
-<!-- If you use the header action, you must set the cache to 0 -->
-<map:gate name="license" cache="0">
-    <map:action type="header" params="Content-Type,text/plain"/>
-    <map:raw src="LICENSE" />
-</map:gate>
-<map:gate name="readme" cache="0">
-    <map:action type="header" params="Content-Type,text/plain"/>
-    <map:raw src="README" />
-</map:gate>
-
-
-<map:gate name="xml-sitemap">
-    <map:xml src="config/sitemap.xml"/>
-    <map:xsl src="templates/xsl/xml-sitemap.xsl"/>
-</map:gate>
+	<map:gate name="xml-sitemap">
+		<map:xml src="config/sitemap.xml"/>
+		<map:xsl src="templates/xsl/xml-sitemap.xsl"/>
+	</map:gate>
 
 </map:sitemap>

@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `xpa_mailbox` (
   `domain_id` int(11) NOT NULL default '0',
   `created` datetime NOT NULL default '0000-00-00 00:00:00',
   `modified` datetime NOT NULL default '0000-00-00 00:00:00',
-  `active` tinyint(1) NOT NULL default '1',
+  `active` varchar(2) default NULL,
   PRIMARY KEY  (`mailbox_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
