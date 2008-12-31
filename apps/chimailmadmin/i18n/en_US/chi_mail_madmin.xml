@@ -22,8 +22,120 @@ or write to the Free Software Foundation,Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <i18n>
+
+  <name>
+    Name
+  </name>
+
+  <domains>
+    Domains
+  </domains>
+
+  <domain_list>
+    Domain List
+  </domain_list>
+
+  <add_domain>
+    Add Domain
+  </add_domain>
+
+  <addresses>
+    Email Addresses
+  </addresses>
+
+  <address_list>
+    Address List
+  </address_list>
+
+  <add_mailbox>
+    Add Mailbox
+  </add_mailbox>
+
+  <alias_list>
+    Alias List
+  </alias_list>
+
+  <add_alias>
+    Add Alias
+  </add_alias>
+
+  <cma_options>
+    Options
+  </cma_options>
+
+  <number_of_records>
+    Number of records
+  </number_of_records>
+
+  <upload_options>
+    Upload Options
+  </upload_options>
+
+  <image_options>
+    Image Options
+  </image_options>
+
+  <interface_options>
+    Interface Options
+  </interface_options>
+
+  <name>
+    Name
+  </name>
+
+  <domains>
+    Domains
+  </domains>
+
+  <domain_list>
+    Domain List
+  </domain_list>
+
+  <add_domain>
+    Add Domain
+  </add_domain>
+
+  <addresses>
+    Email Addresses
+  </addresses>
+
+  <address_list>
+    Address List
+  </address_list>
+
+  <add_mailbox>
+    Add Mailbox
+  </add_mailbox>
+
+  <alias_list>
+    Alias List
+  </alias_list>
+
+  <add_alias>
+    Add Alias
+  </add_alias>
+
+  <cma_options>
+    Options
+  </cma_options>
+
+  <number_of_records>
+    Number of records
+  </number_of_records>
+
+  <upload_options>
+    Upload Options
+  </upload_options>
+
+  <image_options>
+    Image Options
+  </image_options>
+
+  <interface_options>
+    Interface Options
+  </interface_options>
+
 	<submit>Submit</submit>
-	<labels lang="en-us">
 		<label>
 			<key>name</key>
 			<value>Name</value>
@@ -86,5 +198,4 @@ Fifth Floor, Boston, MA 02110-1301  USA
 			<key>interface_options</key>
 			<value>Interface Options</value>
 		</label>
-	</labels>
 </i18n>
