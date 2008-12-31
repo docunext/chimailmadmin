@@ -25,31 +25,31 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:output method="text" encoding="UTF-8" omit-xml-declaration="yes"/>
 <xsl:template match="/">
 
-  <xsl:for-each select="/_R_/mailboxes_get_all/mailboxes_get_all">
-    <xsl:value-of select="address"/><xsl:text>&#160;OK</xsl:text>
-    <xsl:text>&#10;</xsl:text>
-  </xsl:for-each>
-[general]
-accounts = docunextstaff
 
-[Account docunextstaff]
-localrepository = docunextstafflocal
-remoterepository = docunextstaffremote
+[general]
+<xsl:text>accounts = </xsl:text>
+  <xsl:for-each select="/_R_/mailboxes_get_all/mailboxes_get_all">
+    <xsl:value-of select="name"/>&#160;
+  </xsl:for-each>
+
+
+<xsl:for-each select="/_R_/mailboxes_get_all/mailboxes_get_all">
+[Account <xsl:value-of select="name"/>]
+localrepository = <xsl:value-of select="name"/>local
+remoterepository = <xsl:value-of select="name"/>remote
 ignore-readonly = yes
 
-[Repository docunextstafflocal]
+[Repository <xsl:value-of select="name"/>local]
 type = Maildir
-localfolders = /home/docunext.com/home/docunextstaff/.maildir
+localfolders = /home/docunext.com/home/<xsl:value-of select="name"/>/.maildir
 
-[Repository docunextstaffremote]
+[Repository <xsl:value-of select="name"/>remote]
 type = IMAP
-#preauthtunnel = nc 192.168.8.12 9132
-preauthtunnel = ssh -q 192.168.8.12 '/usr/bin/imapd /home/docunext.com/home/docunextstaff/.maildir'
-#preauthtunnel = echo "/usr/bin/imapd /home/docunext.com/home/docunextstaff/.maildir" | nc 192.168.8.12 9132
-#preauthtunnel = ssh 192.168.8.12 "netcat -v -l -p 9132 -c '/usr/bin/imapd /home/docunext.com/home/docunextstaff/.maildir'"; nc 192.168.8.12 9132
+preauthtunnel = ssh -q 192.168.8.12 '/usr/bin/imapd /home/docunext.com/home/<xsl:value-of select="name"/>/.maildir'
 maxconnections = 1
 holdconnectionopen = no
 nametrans = lambda foldername: re.sub('^INBOX\.*', '.', foldername)
+</xsl:for-each>
 
 </xsl:template>
 </xsl:stylesheet>
