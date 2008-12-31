@@ -83,7 +83,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					<xsl:for-each select="//mailboxes_get_all/mailboxes_get_all">
 						<tr>
 							<td>
-								<xsl:value-of select="email_address"/>
+								<a href="{$link_prefix}xpa-mailbox-edit&amp;mailbox_id={mailbox_id}">
+									<xsl:value-of select="fq_email_address"/>
+								</a>
 							</td>
 							<td></td>
 							<td></td>
