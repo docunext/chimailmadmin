@@ -26,7 +26,7 @@ $project_root = str_replace('\\', '/', $project_root);
 define('NX_PATH_CORE', NX_PATH_BASE."kernel/");
 define('PROJECT_ROOT', $project_root);
 define('PROJECT_NAME', 'chimailmadmin');
-define('APP_NAME', 'chi-mail-madmin');
+define('APP_NAME', 'chimailmadmin');
 
 $server_init = PROJECT_ROOT."/cache/".SERVER_NAME."/".APP_NAME."/".APP_NAME.".php";
 
