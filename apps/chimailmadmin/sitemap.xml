@@ -106,6 +106,13 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<map:query src="data/sql/mailbox_delete.xml"/>
 		<map:action type="redirect" params="{//link_prefix}xpa-mailbox-list"/>
 	</map:gate>
+	<map:gate name="x-mailbox-export" content_type="text/plain">
+		<map:query src="data/sql/mailboxes_get_all.xml"/>
+		<map:action type="concat" params="{//mailboxes_get_all/mailboxes_get_all/email_address},@,//mailboxes_get_all/mailboxes_get_all/fq_email_address"/>
+		<map:action type="concat" params="{//mailboxes_get_all/mailboxes_get_all/fq_email_address},{//mailboxes_get_all/mailboxes_get_all/domain},//mailboxes_get_all/mailboxes_get_all/fq_email_address"/>
+		<map:action type="pad" params="//mailboxes_get_all/mailboxes_get_all/fq_email_address,30, "/>
+		<map:xsl src="templates/txt/mailbox_export.txt.xsl"/>
+	</map:gate>
 
 	<!-- ALIAS -->
 	<map:gate name="xpa-alias-list" role="email_admin">
