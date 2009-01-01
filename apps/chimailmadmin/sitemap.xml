@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<map:sitemap xmlns:map="http://www.nexista.com/sitemap"> 
+<map:sitemap xmlns:map="http://www.nexista.org/sitemap">
 <!--
 Program: Chi Mail Madmin
 Component: Sitemap
@@ -187,9 +187,4 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<map:xsl src="templates/xsl/xml-sitemap.xsl"/>
 	</map:gate>
 
-		<map:gate name="x--i18n-fixer">
-			<map:action type="header" params="Content-type,text/plain"/>
-			<map:xml src="i18n/en_US/chi_mail_madmin.xml"/>
-			<map:xsl src="templates/xml/i18n_fixer.xml.xsl"/>
-		</map:gate>
 </map:sitemap>
