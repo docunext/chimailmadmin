@@ -25,7 +25,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <query name="alias_create">
 	<connection>&connection;</connection>
 	<params>
-		<param name="_post/domain_id" type="text"/>
+		<param name="_post/domain_id" type="integer"/>
 		<param name="_post/alias" type="text"/>
 		<param name="_post/destination" type="text"/>
 		<param name="//runtime/utcdate" type="text"/>
