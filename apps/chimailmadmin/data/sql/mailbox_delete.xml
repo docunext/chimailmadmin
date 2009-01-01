@@ -25,7 +25,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <query name="mailbox_delete">
 	<connection>&connection;</connection>
 	<params>
-		<param name="//_post/mailbox_id" type="text"/>
+		<param name="//_post/mailbox_id" type="integer"/>
 	</params>
 	<sql>
 	DELETE FROM &xpa_mailbox; WHERE mailbox_id=?
