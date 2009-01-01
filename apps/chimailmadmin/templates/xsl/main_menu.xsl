@@ -41,22 +41,22 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		</ul>
 	</xsl:template>
 
-	<xsl:template name="button">
-		<xsl:param name="key"/>
-		<li>
-			<xsl:value-of select="//labels/label[key=$key]/value"/>
-			<ul>
-				<xsl:for-each select="//menu/item[key=$key]/item">
-					<xsl:variable name="my_key">
-						<xsl:value-of select="key"/>
-					</xsl:variable>
-					<li>
-						<a href="{//runtime/link_prefix}{url}" id="{key}">
-							<xsl:value-of select="//labels/label[key=$my_key]/value"/>
-						</a>
-					</li>
-				</xsl:for-each>
-			</ul>
-		</li>
-	</xsl:template>
+  <xsl:template name="button">
+    <xsl:param name="key"/>
+    <li>
+      <xsl:value-of select="/_R_/i18n/*[local-name()=$key]"/>
+      <ul>
+        <xsl:for-each select="/_R_/menu/item[key=$key]/item">
+          <xsl:variable name="my_key">
+            <xsl:value-of select="key"/>
+          </xsl:variable>
+          <li>
+            <a href="{/_R_/runtime/link_prefix}{url}" id="{key}">
+              <xsl:value-of select="/_R_/i18n/*[local-name()=$my_key]"/>
+            </a>
+          </li>
+        </xsl:for-each>
+      </ul>
+    </li>
+  </xsl:template>
 </xsl:stylesheet>

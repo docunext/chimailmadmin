@@ -32,8 +32,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			<xsl:if test="//runtime/svn_revision">
         Revision <xsl:value-of select="//svn_revision"/>
 			</xsl:if>
-			<a href="{$link_prefix}xpa-iframe-viewer&amp;url=license">License</a>&#160;
-			<a href="{$link_prefix}xpa-iframe-viewer&amp;url=readme">Readme</a>
+			<a href="{$link_prefix}xpa-iframe-viewer&amp;url=x--license">License</a>&#160;
+			<a href="{$link_prefix}xpa-iframe-viewer&amp;url=x--readme">Readme</a>
 		</div>
 
 	</xsl:template>
