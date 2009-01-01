@@ -68,7 +68,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		</div>
 		<h4>Mailboxen for <xsl:value-of select="//domains_get_all/domains_get_all[domain_id=//_get/domain_id]/domain"/>
 		</h4>
-		<div if="myMailboxes">
+		<div id="myMailboxes">
 			<table id="mailbox_table" class="tablesorter">
 				<thead>
 					<tr>
