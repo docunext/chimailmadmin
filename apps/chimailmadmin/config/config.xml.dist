@@ -1,10 +1,20 @@
 <config>
     <extensions>
+        <!-- use this in development -->
         <dev_buffer>
-            <placement>prepend</placement>
-            <source>&includepath;extensions/dev_buffer/dev_buffer.php</source>
-            <excludes>themed-css,dynamic-css,xml-sitemap,license,readme</excludes>
+          <placement>prepend</placement>
+          <sitemap>&includepath;extensions/dev_buffer/sitemap.xml</sitemap>
+          <source>&includepath;extensions/dev_buffer/dev_buffer.php</source>
+          <excludes>x--,dynamic-css,dynamic-database-model,xml-sitemap</excludes>
         </dev_buffer>
+        <!-- use this in production -->
+        <!--
+        <nexista_error>
+            <placement>prepend</placement>
+            <sitemap>&includepath;extensions/nexista_error/sitemap.xml</sitemap>
+            <source>&includepath;extensions/nexista_error/nexista_error.php</source>
+        </nexista_error>
+        --
         <nx_auth>
             <placement>prepend</placement>
             <source>&includepath;extensions/nx_auth.php</source>
