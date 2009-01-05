@@ -5,7 +5,7 @@
           <placement>prepend</placement>
           <sitemap>&includepath;extensions/dev_buffer/sitemap.xml</sitemap>
           <source>&includepath;extensions/dev_buffer/dev_buffer.php</source>
-          <excludes>x--,dynamic-css,dynamic-database-model,xml-sitemap</excludes>
+          <excludes>x--,^x-,dynamic-css,dynamic-database-model,xml-sitemap</excludes>
         </dev_buffer>
         <!-- use this in production -->
         <!--
