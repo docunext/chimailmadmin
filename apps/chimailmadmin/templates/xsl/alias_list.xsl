@@ -90,7 +90,15 @@ Fifth Floor, Boston, MA 02110-1301 USA
 							</td>
 							<td>
 								<a href="{$link_prefix}xpa-alias-edit&amp;alias_id={alias_id}">
-									<xsl:value-of select="destination"/>
+									<xsl:if test="string-length(destination) &gt; 40">
+										<xsl:attribute name="title">
+											<xsl:value-of select="destination"/>
+										</xsl:attribute>
+									</xsl:if>
+									<xsl:value-of select="substring(destination,0,40)"/>
+									<xsl:if test="string-length(destination) &gt; 40">
+										<xsl:text>...</xsl:text>
+									</xsl:if>
 								</a>
 							</td>
 							<td>
