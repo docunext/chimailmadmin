@@ -84,7 +84,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 						<tr>
 							<td>
 								<a href="{$link_prefix}xpa-mailbox-edit&amp;mailbox_id={mailbox_id}">
-									<xsl:value-of select="fq_email_address"/>
+									<xsl:value-of select="email_address"/>@<xsl:value-of select="domain"/>
 								</a>
 							</td>
 							<td></td>
@@ -109,7 +109,16 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		</xsl:call-template>
 		<br/>
 		<div style="float: right">
-			<a class="button-basic-{//theme_color}" href="{$link_prefix}xpa-mailbox-edit&amp;domain_id={//_get/domain_id}">Add Mailbox</a>
+			<a class="button-basic-{//theme_color}">
+			<xsl:attribute name="href">
+			<xsl:value-of select="$link_prefix"/>
+			<xsl:text>xpa-mailbox-edit</xsl:text>
+				<xsl:if test="//_get/domain_id">
+					<xsl:text>&amp;domain_id=</xsl:text>
+					<xsl:value-of select="//_get/domain_id"/>
+				</xsl:if>
+			</xsl:attribute>
+			Add Mailbox</a>
 		</div>
 		<div style="float: right">
 			<a class="button-basic-{//theme_color}" href="{$link_prefix}xpa-alias-edit&amp;domain_id={//_get/domain_id}">Add Alias</a>

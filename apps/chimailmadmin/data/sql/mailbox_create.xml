@@ -26,14 +26,15 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	<connection>&connection;</connection>
 	<params>
 		<param name="_post/domain_id" type="integer"/>
+		<param name="//_post/name" type="text"/>
 		<param name="_post/email_address" type="text"/>
 		<param name="_post/password" type="text"/>
 		<param name="//runtime/utcdate" type="text"/>
 	</params>
 	<sql>
 	INSERT INTO &xpa_mailbox;
-	(domain_id,email_address,password,created)
+	(domain_id,name,email_address,password,created,active)
 	VALUES
-	(?,?,?,?)
+	(?,?,?,?,?,'on')
 	</sql>
 </query>

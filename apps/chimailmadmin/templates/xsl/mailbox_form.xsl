@@ -53,7 +53,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 							<xsl:if test="//_get/domain_id">
 								@<xsl:value-of select="//domains_get_all/domains_get_all[domain_id=//_get/domain_id]/domain"/>
 							</xsl:if>
-							<xsl:if test="not(_get/domain_id)">
+							<xsl:if test="not(//_get/domain_id)">
 								@<select name="domain_id">
 									<xsl:for-each select="//domains_get_all/domains_get_all">
 										<option value="{domain_id}">
