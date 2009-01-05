@@ -84,10 +84,18 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					<xsl:for-each select="//alias_get_all/alias_get_all">
 						<tr>
 							<td>
-								<xsl:value-of select="alias"/>@<xsl:value-of select="domain"/>
+								<a href="{$link_prefix}xpa-alias-edit&amp;alias_id={alias_id}">
+									<xsl:value-of select="alias"/>@<xsl:value-of select="domain"/>
+								</a>
 							</td>
-							<td><xsl:value-of select="destination"/></td>
-							<td><xsl:value-of select="modified"/></td>
+							<td>
+								<a href="{$link_prefix}xpa-alias-edit&amp;alias_id={alias_id}">
+									<xsl:value-of select="destination"/>
+								</a>
+							</td>
+							<td>
+								<xsl:value-of select="modified"/>
+							</td>
 							<td>
 								<a href="{$link_prefix}xpa-alias-edit&amp;alias_id={alias_id}">
 									<xsl:value-if select="active"/>
