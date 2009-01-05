@@ -106,7 +106,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 							</td>
 							<td>
 								<a href="{$link_prefix}xpa-alias-edit&amp;alias_id={alias_id}">
-									<xsl:value-if select="active"/>
+									<xsl:value-of select="active"/>
 								</a>
 							</td>
 							<td>
