@@ -69,7 +69,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<h4>Alias List for <xsl:value-of
 			select="//domains_get_all/domains_get_all[domain_id=//_get/domain_id]/domain"/>
 		</h4>
-		<div if="myAliasDiv">
+		<div id="myAliasDiv">
 			<table id="alias_table" class="tablesorter">
 				<thead>
 					<tr>
