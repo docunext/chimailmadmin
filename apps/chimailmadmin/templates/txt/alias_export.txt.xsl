@@ -26,7 +26,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:template match="/">
 
   <xsl:for-each select="/_R_/alias_get_all/alias_get_all">
-    <xsl:value-of select="alias"/>&#160;<xsl:value-of select="destination"/>
+    <xsl:value-of select="fq_alias_address"/>&#160;<xsl:value-of select="destination"/>
     <xsl:text>
 </xsl:text>
   </xsl:for-each>
