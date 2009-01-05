@@ -35,6 +35,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				<xsl:if test="//_get/domain_id">
 					<input type="hidden" name="domain_id" value="{//_get/domain_id}"/>
 				</xsl:if>
+				<xsl:variable name="alias_get_by_id"
+					select="//alias_get_all/alias_get_all"/>
 				<table>
 					<tr>
 						<td colspan="3">
@@ -44,27 +46,30 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					<tr>
 						<td>Alias</td>
 						<td>
-							<input type="text" name="alias" value=""/>
+							<input type="text" name="alias" value="{$alias_get_by_id/alias}"/>
 						</td>
 						<td>
 							<xsl:if test="//_get/domain_id">
 								@<xsl:value-of select="//domains_get_all/domains_get_all[domain_id=//_get/domain_id]/domain"/>
 							</xsl:if>
 							<xsl:if test="not(_get/domain_id)">
-							<select name="domain_id">
-								<xsl:for-each select="//domains_get_all/domains_get_all">
-									<option value="{domain_id}">
-										<xsl:value-of select="domain"/>
-									</option>
-								</xsl:for-each>
-							</select>
+								@<select name="domain_id">
+									<xsl:for-each select="//domains_get_all/domains_get_all">
+										<option value="{domain_id}">
+											<xsl:if test="$alias_get_by_id/domain_id=domain_id">
+												<xsl:attribute name="selected">selected</xsl:attribute>
+											</xsl:if>
+											<xsl:value-of select="domain"/>
+										</option>
+									</xsl:for-each>
+								</select>
 							</xsl:if>
 						</td>
 					</tr>
 					<tr>
 						<td>To:</td>
 						<td>
-							<input type="text" name="destination" value="{//alias_get_all/alias_get_all/destination}"/>
+							<input type="text" name="destination" value="{$alias_get_by_id/destination}"/>
 						</td>
 						<td>Where the mail needs to be sent to.</td>
 					</tr>

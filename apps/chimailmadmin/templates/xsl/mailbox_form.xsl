@@ -36,7 +36,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				<xsl:if test="//_get/mailbox_id">
 					<input type="hidden" name="mailbox_id" value="{//_get/mailbox_id}"/>
 				</xsl:if>
-				<xsl:variable name="mailbox_get_by_id" select="//mailbox_get_by_id/mailbox_get_by_id"/>
+				<xsl:variable name="mailbox_get_by_id"
+					select="//mailbox_get_by_id/mailbox_get_by_id"/>
 				<table>
 					<tr>
 						<td colspan="3">
