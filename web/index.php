@@ -1,6 +1,7 @@
 <?php
 
 
+ini_set('default_mimetype','application/xhtml+xml');
 // Where is nexista? This path should be to a folder containing nexista
 // This is the only thing you may need to edit:
 define('NX_PATH_BASE', "/var/www/dev/nexista/");

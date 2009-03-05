@@ -21,16 +21,18 @@ along with this program; if not, see http://www.gnu.org/licenses
 or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:stylesheet version="1.0"
+	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+	xmlns="http://www.w3.org/1999/xhtml">
 	<xsl:include href="html_shell.xsl"/>
 	<xsl:template name="main_menu">
 		<script type="text/javascript">
-		$(document).ready(function()
-		{
-				$('#top-main-menu').clickMenu();
-		});
+    $(document).ready(function()
+    {
+        $('#nav').droppy();
+    });
 		</script>
-		<ul id="top-main-menu">
+		<ul id="nav">
 			<xsl:for-each select="//menu/item[not(@active=0)]">
 				<xsl:call-template name="button">
 					<xsl:with-param name="key">
