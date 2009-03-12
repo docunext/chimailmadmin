@@ -115,6 +115,11 @@ Fifth Floor, Boston, MA 02110-1301  USA
     Add Alias
   </add_alias>
 
+  <cma_junk>Junk Controls</cma_junk>
+  <spamassassin>Spamassassin</spamassassin>
+  <dspam>DSpam</dspam>
+  <gld>Greylisting Daemon</gld>
+  
   <cma_options>
     Options
   </cma_options>

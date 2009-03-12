@@ -53,6 +53,21 @@ Fifth Floor, Boston, MA 02110-1301  USA
 		</item>
 	</item>
 	<item>
+		<key>cma_junk</key>
+		<item>
+			<key>spamassassin</key>
+			<url>cma-spamassassin</url>
+		</item>
+		<item>
+			<key>dspam</key>
+			<url>cma-dspam</url>
+		</item>
+		<item>
+			<key>gld</key>
+			<url>cma-gld</url>
+		</item>
+	</item>
+	<item>
 		<key>cma_options</key>
 		<item>
 			<key>upload_options</key>
