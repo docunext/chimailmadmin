@@ -33,7 +33,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
       <xsl:variable name="link_prefix" select="/_R_/runtime/link_prefix"/>
       <xsl:variable name="path_prefix" select="/_R_/runtime/path_prefix"/>
       <xsl:variable name="my18n"
-        select="document('../../i18n/en_US/chi_mail_madmin.xml')/i18n"/>
+        select="document('../../i18n/en_US/chimailmadmin.xml')/i18n"/>
 
 			<xsl:call-template name="head">
 				<xsl:with-param name="link_prefix" select="$link_prefix"/>
