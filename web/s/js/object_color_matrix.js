@@ -9,7 +9,7 @@ var $L={'R':0.212671, 'G':0.715160, 'B':0.072169};
 
 var $color=[1,0,0,0,0, 0,1,0,0,0, 0,0,1,0,0, 0,0,0,1,0, 0,0,0,0,1];
 
-var $w, $h, $stop;
+var $name, $w, $h, $stop;
 
 
 /* CANVAS MATRIX */
@@ -246,8 +246,8 @@ _cMatrix={
 
 setColorMatrix=function(m) { $m=m; };
 
-ColorMatrix=function(o,w,h) {
-
+ColorMatrix=function(target,w,h) {
+    var o = target.getContext('2d').getImageData(0, 0, w,h);
 	if(!$stop && $m) { $stop=1;
 	
 		var data=o.data, i, x, y;
@@ -278,7 +278,9 @@ m13=m[13], m14=m[14], m15=m[15], m16=m[16], m17=m[17], m18=m[18], m19=m[19], m20
 		
 		o.data=data;
 	
-		var c=document.getElementById('canvas_c').getContext('2d'); c.clearRect(0,0,w,h); c.putImageData(o,0,0);
+		var c=target.getContext('2d');
+        c.clearRect(0,0,w,h);
+        c.putImageData(o,0,0);
 	
 
 	};
@@ -287,4 +289,3 @@ m13=m[13], m14=m[14], m15=m[15], m16=m[16], m17=m[17], m18=m[18], m19=m[19], m20
 	
 };
 };
-
