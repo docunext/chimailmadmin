@@ -32,7 +32,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:param name="i18n"/>
 		<xsl:call-template name="jquery-setup">
 			<xsl:with-param name="my-table">alias_table</xsl:with-param>
-			<xsl:with-param name="my-table-div">myAliasDiv</xsl:with-param>
 			<xsl:with-param name="no-sort-column">,
 			headers: {
 					5: {sorter: false},

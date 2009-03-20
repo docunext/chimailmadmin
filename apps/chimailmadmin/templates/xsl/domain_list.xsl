@@ -31,8 +31,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:param name="path_prefix"/>
     <xsl:param name="i18n"/>
 		<xsl:call-template name="jquery-setup">
-			<xsl:with-param name="my-table">admin_table</xsl:with-param>
-			<xsl:with-param name="my-table-div">myDomainsDiv</xsl:with-param>
+			<xsl:with-param name="my-table">domain_table</xsl:with-param>
 			<xsl:with-param name="no-sort-column">,
 			headers: {
 					5: {sorter: false},
@@ -49,8 +48,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 						'domain_id': domain_id
 				},
 				function (data){
-						myTable = document.getElementById("domain_table");
-						myTable.deleteRow(row);
 				});
 				}
 		}
@@ -74,7 +71,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				</thead>
 				<tbody>
 					<xsl:for-each select="/_R_/domains_get_all/domains_get_all">
-						<tr>
+						<tr id="d_{domain_id}">
 							<td>
 								<a href="{$link_prefix}xpa-mailbox-list&amp;domain_id={domain_id}">
 									<xsl:value-of select="domain"/>
@@ -109,7 +106,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			</table>
 		</div>
 		<xsl:call-template name="pager">
-			<xsl:with-param name="my-table">admin_table</xsl:with-param>
+			<xsl:with-param name="my-table">domain_table</xsl:with-param>
 		</xsl:call-template>
 
 		<div style="float: right">
