@@ -1,5 +1,5 @@
 <!--
-Program: Chi Mail Madmin
+Program: ChiMailMadmin.com
 Component: pager.xsl
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
@@ -34,12 +34,13 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<script type="text/javascript">
 		$(document).ready(function()
 				{
+						rotate_controls();
 						$("#<xsl:value-of select="$my-table"/>")
 						.tablesorter(
 								{
 										widgets:['zebra','cookie']
 										<xsl:value-of select="$my-sort-column"/>
-					<xsl:value-of select="$no-sort-column"/>
+										<xsl:value-of select="$no-sort-column"/>
 								}
 						)
 						.tablesorterPager(
@@ -48,7 +49,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 										size: 16
 								}
 						);
-						document.getElementById('<xsl:value-of select="$my-table-div"/>').style.visibility = 'visible';
 				}
 		);
 		</script>
@@ -81,20 +81,21 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			<xsl:value-of select="/_R_/runtime/path_prefix"/>
 		</xsl:param>
 		<xsl:param name="my-table"/>
-		<div id="{$my-table}-pager" class="pager" style="margin-top: 20px;">
+
+		<div id="{$my-table}-pager" class="pager">
 			<input id="mypagesize" class="pagesize" type="hidden" name="pagesize" value="16"/>
 			<table>
 				<tr>
 					<td>
-						<img src="{$path_prefix}/s/css/blue/first.png" class="first"/>
-						<img src="{$path_prefix}/s/css/blue/prev.png" class="prev"/>
+						<img id="ts_first" class="first pointer" alt="&lt;&lt;"/>
+						<img id="ts_prev" class="prev pointer" alt="&lt;"/>
 					</td>
 					<td>
 						<input type="text" class="pagedisplay" size="4" readonly="readonly"/>
 					</td>
 					<td>
-						<img src="{$path_prefix}/s/css/blue/next.png" class="next"/>
-						<img src="{$path_prefix}/s/css/blue/last.png" class="last"/>
+						<img id="ts_next" class="next pointer" alt="&gt;"/>
+						<img id="ts_last" class="last pointer" alt="&gt;&gt;"/>
 					</td>
 				</tr>
 			</table>

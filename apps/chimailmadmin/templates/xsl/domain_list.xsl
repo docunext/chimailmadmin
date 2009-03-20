@@ -1,5 +1,5 @@
 <!--
-Program: Chi Mail Madmin
+Program: ChiMailMadmin.com
 Component: domain_list.xsl
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV

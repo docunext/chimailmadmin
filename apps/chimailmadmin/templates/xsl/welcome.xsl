@@ -1,5 +1,5 @@
 <!--
-Program: Chi Mail Madmin
+Program: ChiMailMadmin.com
 Component: welcome.xsl
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
@@ -26,6 +26,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	xmlns="http://www.w3.org/1999/xhtml">
 	<xsl:import href="html_main.xsl"/>
 	<xsl:template name="content">
-		Welcome to Chi Mail Madmin
+		Welcome to ChiMailMadmin.com
 	</xsl:template>
 </xsl:stylesheet>

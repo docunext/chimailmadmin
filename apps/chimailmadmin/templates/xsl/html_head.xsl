@@ -1,5 +1,5 @@
 <!--
-Program: Chi Mail Madmin
+Program: ChiMailMadmin.com
 Component: html_head.xsl
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
@@ -29,7 +29,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:param name="path_prefix"/>
     <xsl:param name="i18n"/>
 		<head>
-			<title>Chi Mail Madmin</title>
+			<title>ChiMailMadmin.com</title>
 			<link rel="stylesheet" type="text/css" href="{$link_prefix}dynamic-css"></link>
 			<link rel="stylesheet" type="text/css" href="{$path_prefix}/s/css/droppy.css"></link>
 
@@ -39,6 +39,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			
 			
 			
+			<script type="text/javascript" src="{$link_prefix}x--dynamic-js"></script>
+			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.rotate.js"></script>
 			<script type="text/javascript" src="{$path_prefix}/s/js/jquery/plugins/jquery.tablesorter.min.js"></script>
 			<script type="text/javascript" src="{$path_prefix}/s/js/jquery/plugins/jquery.tablesorter.pager.js"></script>
 			<script type="text/javascript" src="{$path_prefix}/s/js/jquery/plugins/jquery.dimensions.js"></script>

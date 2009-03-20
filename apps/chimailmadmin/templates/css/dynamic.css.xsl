@@ -33,7 +33,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:call-template name="typography"/>
 <xsl:call-template name="layout"/>
 <xsl:call-template name="colors"/>
-html, body {
+body {
 	color: black;
 	background: white;
 	margin: 0;
@@ -67,11 +67,15 @@ table.tablesorter thead tr th, table.tablesorter tfoot tr th {
 	padding: 4px;
 }
 table.tablesorter thead tr .header {
-	background-image: url(<xsl:value-of select="//path_prefix"/>/s/css/blue/bg.gif);
+	background-image: url(data:image/gif;base64,R0lGODlhFQAJAIAAACMtMP///yH5BAEAAAEALAAAAAAVAAkAAAIXjI+AywnaYnhUMoqt3gZXPmVg94yJVQAAOw==);
 	background-repeat: no-repeat;
 	background-position: center right;
 	cursor: pointer;
 }
+.pointer {
+	cursor: pointer;
+}
+
 table.tablesorter tbody td {
 	color: #3D3D3D;
 	padding: 4px;
@@ -82,10 +86,10 @@ table.tablesorter tbody tr.odd td {
 	background-color:#F0F0F6;
 }
 table.tablesorter thead tr .headerSortUp {
-	background-image: url(<xsl:value-of select="//path_prefix"/>/s/css/blue/asc.gif);
+	background-image: url(data:image/gif;base64,R0lGODlhFQAEAIAAACMtMP///yH5BAEAAAEALAAAAAAVAAQAAAINjB+gC+jP2ptn0WskLQA7);
 }
 table.tablesorter thead tr .headerSortDown {
-	background-image: url(<xsl:value-of select="//path_prefix"/>/s/css/blue/desc.gif);
+	background-image: url(data:image/gif;base64,R0lGODlhFQAEAIAAACMtMP///yH5BAEAAAEALAAAAAAVAAQAAAINjI8Bya2wnINUMopZAQA7);
 }
 table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
 background-color: #8dbdd8;
@@ -112,271 +116,12 @@ background-color: #8dbdd8;
 
 
 
-/* This file is from Postfix Admin */
-
-
-body {
-	background: #ffffff;
-	color: #000000;
-	font-family: "BitStream Vera Sans", Verdana, Arial, Helvetica, sans-serif;
-	font-size: 11px;
-	font-weight: normal;
-	text-align: center;
-}
-
-a {
-	text-decoration: none;
-	color: #888888;
-}
-
-a:hover {
-	text-decoration: underline;
-	color: #888888;
-}
-
-a:visited, a:active {
-	color: #888888;
-}
-
 table {
 	/* border-spacing: 0; */
 	/* padding: 0; */
 	border-collapse: collapse; /* for IE */
 }
 
-.button {
-	border: 1px solid #aaaaaa;
-	color: #777777;
-	background: #dddddd;
-	padding: 3px 3px 3px 3px;
-	font-size: 11px;
-}
-
-.button:hover {
-	background: #BCFF36;
-	color: #888888;
-}
-
-.flat {
-	border: 1px solid #888888;
-}
-
-.error_msg {
-	color: #d01313;
-}
-
-.standout {
-	color: maroon;
-	padding: 3px 3px 3px 3px;
-	text-align: center;
-}
-
-#login_header {
-	width: 750px;
-	margin: 0 auto;
-	padding-bottom: 10px;
-	text-align: left;
-}
-
-#login {
-	width: 750px;
-	margin: 0 auto;
-}
-
-#login_table {
-	border-left: 8px solid gray;
-	border-right: 8px solid gray;
-	background: #eeeeee;
-	width: 350px;
-	margin: 0 auto;
-	border-collapse: separate;
-	border-spacing: 10px;
-}
-
-#login_table h4 {
-	font-size: 13px;
-}
-
-#menu {
-	width: 750px;
-	margin: 0 auto;
-	padding-top: 10px;
-	white-space: nowrap;
-}
-
-#menu ul {
-	padding: 0;
-	margin: 0;
-	margin-left:auto;
-	margin-right:auto;
-	list-style: none;
-}
-
-#menu li {
-	float: left;
-	background: #efefef;
-	margin-right: 3px;
-	border-top: 4px solid #aaaaaa;
-}
-
-#menu li:hover, #menu li.sfhover {
-	background: #BFFF00;
-}
-
-#menu li ul {
-	position: absolute;
-	width: auto;
-	left: -999em;
-	border:2px solid white;
-	border-top:none;
-}
-#menu li:hover ul, #menu li.sfhover ul {
-   left: auto;
-}
-
-
-#menu li ul li {
-    float: none;
-	margin-right: 0px;
-	border-top:2px solid white;;
-	text-align:left;
-}
-
-
-
-
-#menu a {
-	display: block;
-	width: auto;
-	padding: 20px 5px 5px 5px;
-	color: #888888;
-}
-
-#menu a:hover {
-	color: #888888;
-}
-
-
-
-#menu li ul li a {
-	padding: 5px 5px 5px 5px;
-}
-
-
-
-#main_menu, #edit_form {
-	width: 750px;
-	margin: 0 auto;
-}
-
-#edit_form table {
-	margin: 0 auto;
-	padding-top: 10px;
-	text-align: left;
-	width: 500px;
-	border: 1px solid #efefef;
-}
-
-#edit_form h3  {
-	text-align: center;
-	font-size: 12px;
-	margin: 0;
-	background: #AFE1A6; /*#b4004a;*/
-	border: 1px solid #bbb;
-	line-height: 25px;
-	color: #555555;
-}
-
-.hlp_center {
-	text-align: center;
-}
-
-.help_text {
-	background: #efefef;
-	border-left: 1px solid #bbbbbb;
-	border-right: 1px solid #bbbbbb;
-	text-align: center;
-	padding-top: 5px;
-	padding-bottom: 5px;
-}
-
-
-
-#main_menu a:hover {
-	color: #40B33C; /*#CD6A6A;*/
-	text-decoration: none;
-	padding-left: 4px;
-	border-bottom: 1px solid #40B33C;
-	border-left: 4px solid #40B33C;
-}
-
-#overview, #admin_domains, #admin_virtual {
-	margin: 0 auto;
-	background: #AFE1A6;
-	border: 1px solid #bbb;
-}
-
-#overview h4, #overview P, #overview FORM, #admin_virtual h4, #admin_virtual P, #admin_virtual FORM {
-	display: inline;
-	padding-right: 10px;
-	line-height: 30px;
-}
-
-#nav_bar {
-	text-align: right;
-	width: 750px;
-	margin: 0 auto;
-}
-
-#alias_table, #mailbox_table, #overview_table, #log_table, #admin_table {
-	width: 750px;
-	margin: 0px auto;
-	border: 1px solid #efefef;
-}
-
-#alias_table .header, #mailbox_table .header, #overview_table .header, #log_table .header, #admin_table .header {
-	line-height: 20px;
-	background: #efefef;
-	color: black;
-}
-
-#alias_table .hilightoff, #mailbox_table .hilightoff, #overview_table .hilightoff, #log_table .hilightoff, #admin_table .hilighoff {
-	background: white;
-}
-
-#alias_table .hilighton, #mailbox_table .hilighton, #overview_table .hilighton, #log_table .hilighton, #admin_table .hilighton {
-	background: #D9FF43; /*#D6FF85;*/ /*#ffdddd;*/
-}
-
-#alias_table tr:hover, #mailbox_table tr:hover, #overview_table tr:hover, #log_table tr:hover, #admin_table tr:hover {
-        background: #D9FF43; /*#D6FF85;*/ /*#ffdddd;*/
-}
-
-
-#alias_table h3, #mailbox_table h3, #overview_table h3, #log_table h3, #admin_table h3 {
-	background: silver;
-	text-align: left;
-	font-size: 12px;
-	font-weight: bold;
-	padding-left: 20px;
-	line-height: 25px;
-	margin: 0;
-}
-
-
-
-
-
-div.setup {
-	width:700px;
-	margin-left:auto;
-	margin-right:auto;
-	text-align: left;
-}
-
-div.setup li {
-	padding-bottom:1em;
-}
 
 </xsl:template>
 
