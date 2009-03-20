@@ -1,0 +1,41 @@
+<html>
+<head>
+ <title>Testing</title>
+ <script src="s/js/object_color_matrix.js" type="text/javascript"></script>
+</head>
+<body>
+<div>
+ <img src="s/img/next.png" id="canvas_b"/>
+<script type="text/javascript">
+
+
+window.onload=function() {
+
+    var replaceme = document.getElementById('canvas_b')
+    var mycanvas = document.createElement('canvas');
+    mycanvas.image=new Image;
+    mycanvas.image.src=replaceme.src;
+    mycanvas.image.onload=function() {
+
+        var o=mycanvas, w=mycanvas.image.width, h=mycanvas.image.height;
+
+        with(o) { width=w; height=h; }
+
+
+        var c=o.getContext('2d');
+        c.drawImage(mycanvas.image, 0,0, w, h);
+        $w=w;
+        $h=h;
+
+        setColorMatrix(_cMatrix.Colorize("0x00EE00",.6));
+        var target = mycanvas;
+        ColorMatrix(target, $w, $h);
+        replaceme.parentNode.replaceChild(mycanvas, replaceme);
+
+    };
+
+};
+
+</script>
+</body>
+</html>
