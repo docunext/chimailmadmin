@@ -30,7 +30,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:param name="i18n"/>
 		<head>
 			<title>ChiMailMadmin.com</title>
-			<link rel="stylesheet" type="text/css" href="{$link_prefix}dynamic-css"></link>
+			<link rel="stylesheet" type="text/css" href="{$link_prefix}x-dynamic-css"></link>
 			<link rel="stylesheet" type="text/css" href="{$path_prefix}/s/css/droppy.css"></link>
 
 			<script type="text/javascript" src="{$path_prefix}/s/js/jquery/jquery.js" >&#160;</script>
@@ -39,7 +39,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			
 			
 			
-			<script type="text/javascript" src="{$link_prefix}x--dynamic-js"></script>
+			<script type="text/javascript" src="{$link_prefix}x-dynamic-js"></script>
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.rotate.js"></script>
 			<script type="text/javascript" src="{$path_prefix}/s/js/jquery/plugins/jquery.tablesorter.min.js"></script>
 			<script type="text/javascript" src="{$path_prefix}/s/js/jquery/plugins/jquery.tablesorter.pager.js"></script>

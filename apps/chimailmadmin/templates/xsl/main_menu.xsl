@@ -46,7 +46,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
   <xsl:template name="button">
     <xsl:param name="key"/>
     <li>
-      <xsl:value-of select="/_R_/i18n/*[local-name()=$key]"/>
+      <div><xsl:value-of select="/_R_/i18n/*[local-name()=$key]"/></div>
       <ul>
         <xsl:for-each select="/_R_/menu/item[key=$key]/item">
           <xsl:variable name="my_key">
