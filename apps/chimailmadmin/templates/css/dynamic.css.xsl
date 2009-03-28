@@ -33,15 +33,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:call-template name="typography"/>
 <xsl:call-template name="layout"/>
 <xsl:call-template name="colors"/>
-body {
-	color: black;
-	background: white;
-	margin: 0;
-	padding: 0;
-	border: 0;
-	min-height: 50em;
-	font-family: sans-serif;
-}
 
 
 
