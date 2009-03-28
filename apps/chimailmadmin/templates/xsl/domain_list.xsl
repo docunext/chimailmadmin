@@ -55,7 +55,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<!-- 
 		return confirm ('Do you really want to delete all records for this domain? This can not be undone!\nDomain: test.com')
 		-->
-		<div id="myDomainsDiv">
+		<div class="tableframe">
 			<table id="domain_table" class="tablesorter">
 				<thead>
 					<tr>
