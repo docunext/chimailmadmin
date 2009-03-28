@@ -41,7 +41,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			</xsl:with-param>
 		</xsl:call-template>
 		<script type="text/javascript">
-		function domain_delete(domain_id,row) {
+		function domain_delete(domain_id) {
 				if(confirm('Are you sure?')){
 				$.post("<xsl:value-of select="$link_prefix"/>x-domain-delete&amp;domain_id="+domain_id,
 				{
@@ -98,7 +98,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 							</td>
 							<td>
 								<a href="{$link_prefix}x-domain-delete&amp;domain_id={domain_id}"
-									onclick="domain_delete({domain_id},this.parentNode.parentNode.rowIndex); return false;">del</a>
+									onclick="domain_delete({domain_id}); return false;">del</a>
 							</td>
 						</tr>
 					</xsl:for-each>
