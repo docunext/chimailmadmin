@@ -106,6 +106,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
 <xsl:template match="div[@id='footer']">
 </xsl:template>
+
+<xsl:template match="script">
+</xsl:template>
 <!--
 
 The name space is needed when tidy outputs xhtml.
