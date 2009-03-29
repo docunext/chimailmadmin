@@ -184,6 +184,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<map:action type="header" params="Cache-Control, no-store"/>
 		<map:xsl src="templates/js/html_blocks.js.xsl"/>
 	</map:gate>
+	<map:gate name="p-curl-test" cache="0">
+		<map:action type="header" params="Content-Type,text/xml"/>
+    <map:action type="curl" params="http://www.mirrors.docunext.com/cgi-bin/astahttpd,,curl"/>
+		<map:xsl src="templates/xsl/curl_test.xsl"/>
+	</map:gate>
 
 	<!-- Static Files -->
 	<!-- This type of file serving can be a huge
