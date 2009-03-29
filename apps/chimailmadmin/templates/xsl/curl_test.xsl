@@ -29,7 +29,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
   >
 	<xsl:import href="html_main.xsl"/>
 	<xsl:template name="content">
-    <div class="tableframe">
+    <div id="tableframe">
       <xsl:apply-templates />
     </div>
   </xsl:template>
@@ -69,17 +69,23 @@ Fifth Floor, Boston, MA 02110-1301 USA
 </xsl:template>
 
 <xsl:template match="@*|text()|comment()|processing-instruction()">
-<xsl:if test="not(name()='lang') and not(name()='xml:lang')">
-<xsl:copy/>
-</xsl:if>
+  <xsl:if test="not(name()='lang') and not(name()='xml:lang')">
+    <xsl:copy/>
+  </xsl:if>
 </xsl:template>
 
 
 
 
+<xsl:template match="xhtml:link">
+  <xsl:copy>
+    <xsl:apply-templates select="@*"/>
+  </xsl:copy>
+</xsl:template>
 
 
 <xsl:template match="xhtml:head">
+  <xsl:apply-templates select="@*|node()"/>
 </xsl:template>
 <xsl:template match="xhtml:body">
   <xsl:apply-templates select="@*|node()"/>

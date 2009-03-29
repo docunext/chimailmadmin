@@ -52,10 +52,10 @@ background-color: #AAA; color: white;
 #tableframe
 {
   position: absolute;
-  top: 120px;
-  left: 300px;
-  right: 160px;
-  bottom: 120px;
+  top: 60px;
+  left: 20px;
+  right: 20px;
+  bottom: 50px;
   border: 1px solid #999999;
   background-color: #F9F9F9;
   overflow: auto;
