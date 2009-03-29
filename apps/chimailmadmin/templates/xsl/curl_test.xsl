@@ -95,8 +95,26 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <xsl:template match="/_R_/*[not(name()='curl')]">
 </xsl:template>
 
+<xsl:template match="head">
+</xsl:template>
+
+<xsl:template match="a">
+  <a href="{//link_prefix}p-curl-test&amp;myurl={@href}">
+  <xsl:value-of select="."/>
+  </a>
+</xsl:template>
+
+<xsl:template match="div[@id='footer']">
+</xsl:template>
+<!--
+
+The name space is needed when tidy outputs xhtml.
+Tidy can output xml, which negates the need for the namespace prefix.
+
+It would be nice to prefix all elements as well as css classes and divs.
 
 
 
+-->
 
 </xsl:stylesheet>
