@@ -186,6 +186,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	</map:gate>
 	<map:gate name="p-curl-test" cache="0">
 		<map:action type="header" params="Content-Type,text/xml"/>
+    <!--
     <xsl:switch name="//_get/curl">
       <xsl:case value="astahttpd">
         <map:action type="curl" params="http://www.mirrors.docunext.com/cgi-bin/astahttpd,,curl"/>
@@ -194,9 +195,18 @@ Fifth Floor, Boston, MA 02110-1301 USA
         <map:action type="curl" params="http://www.mirrors.docunext.com/cgi-bin/aolserver,,curl"/>
       </xsl:case>
       <xsl:default>
-        <map:action type="curl" params="http://www.mirrors.docunext.com/cgi-bin/aolserver/browse/trunk,,curl"/>
+        <map:action type="curl" params="http://www.mirrors.docunext.com/cgi-bin/,,curl"/>
       </xsl:default>
     </xsl:switch>
+    -->
+    <map:if name="//_get/myurl">
+      <map:true>
+        <map:action type="curl" params="http://www.mirrors.docunext.com/{//_get/myurl},,curl"/>
+      </map:true>
+      <map:false>
+        <map:action type="curl" params="http://www.mirrors.docunext.com/cgi-bin/aolserver,,curl"/>
+      </map:false>
+    </map:if>
     <xsl:action type="rawxml" params="/_R_/curl,true"/>
 		<map:xsl src="templates/xsl/curl_test.xsl"/>
 	</map:gate>

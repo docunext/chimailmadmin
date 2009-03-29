@@ -54,7 +54,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
 </xsl:template>
 
 <xsl:template match="xhtml:a">
+  <a href="{//link_prefix}p-curl-test&amp;myurl={@href}">
   <xsl:value-of select="."/>
+  </a>
 </xsl:template>
 
 <xsl:template match="node()">
