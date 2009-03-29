@@ -186,7 +186,18 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	</map:gate>
 	<map:gate name="p-curl-test" cache="0">
 		<map:action type="header" params="Content-Type,text/xml"/>
-    <map:action type="curl" params="http://www.mirrors.docunext.com/cgi-bin/astahttpd,,curl"/>
+    <xsl:switch name="//_get/curl">
+      <xsl:case value="astahttpd">
+        <map:action type="curl" params="http://www.mirrors.docunext.com/cgi-bin/astahttpd,,curl"/>
+      </xsl:case>
+      <xsl:case value="aolserver">
+        <map:action type="curl" params="http://www.mirrors.docunext.com/cgi-bin/aolserver,,curl"/>
+      </xsl:case>
+      <xsl:default>
+        <map:action type="curl" params="http://www.mirrors.docunext.com/cgi-bin/aolserver/browse/trunk,,curl"/>
+      </xsl:default>
+    </xsl:switch>
+    <xsl:action type="rawxml" params="/_R_/curl,true"/>
 		<map:xsl src="templates/xsl/curl_test.xsl"/>
 	</map:gate>
 

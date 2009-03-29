@@ -49,5 +49,20 @@ cursor: default;
 .nav_selected {
 background-color: #AAA; color: white;
 }
+#tableframe
+{
+  position: absolute;
+  top: 120px;
+  left: 300px;
+  right: 160px;
+  bottom: 120px;
+  border: 1px solid #999999;
+  background-color: #F9F9F9;
+  overflow: auto;
+  <xsl:if test="//browser='msie'">
+  width: expression((parseInt(document.documentElement.clientWidth)-230)+'px');
+  height: expression((parseInt(document.documentElement.clientHeight)-125)+'px');
+  </xsl:if>
+}
 </xsl:template>
 </xsl:stylesheet>

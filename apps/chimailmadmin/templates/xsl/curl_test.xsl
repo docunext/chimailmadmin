@@ -29,14 +29,16 @@ Fifth Floor, Boston, MA 02110-1301 USA
   >
 	<xsl:import href="html_main.xsl"/>
 	<xsl:template name="content">
-  <xsl:apply-templates />
-</xsl:template>
+    <div class="tableframe">
+      <xsl:apply-templates />
+    </div>
+  </xsl:template>
 
 <xsl:template match="@*|node()">
   <xsl:if test="not(name()='_R_') and not(name()='html')">
-  <xsl:copy>
-    <xsl:apply-templates select="@*|node()"/>
-  </xsl:copy>
+    <xsl:copy>
+      <xsl:apply-templates select="@*|node()"/>
+    </xsl:copy>
   </xsl:if>
   <xsl:if test="name()='_R_' or name()='html'">
     <xsl:apply-templates select="@*|node()"/>
@@ -44,6 +46,16 @@ Fifth Floor, Boston, MA 02110-1301 USA
 </xsl:template>
 
 
+<xsl:template match="xhtml:div[@id='footer']">
+</xsl:template>
+<xsl:template match="xhtml:form">
+</xsl:template>
+<xsl:template match="xhtml:script">
+</xsl:template>
+
+<xsl:template match="xhtml:a">
+  <xsl:value-of select="."/>
+</xsl:template>
 
 <xsl:template match="node()">
   <xsl:if test="not(name()='_R_') and not(name()='html')">
@@ -70,9 +82,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <xsl:template match="xhtml:head">
 </xsl:template>
 <xsl:template match="xhtml:body">
-    <xsl:apply-templates select="@*|node()"/>
+  <xsl:apply-templates select="@*|node()"/>
 </xsl:template>
-<xsl:template match="/_R_/*[not(name()='html')]">
+<xsl:template match="/_R_/*[not(name()='curl')]">
 </xsl:template>
 
 
