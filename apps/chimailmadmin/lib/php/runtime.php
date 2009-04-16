@@ -35,12 +35,24 @@ $link_prefix = $path.'?nid=';
 $utcdate     = gmdate('Y-m-d H:i:s');
 
 
+// Prefix is needed for Mozilla as its the 0 position.
+$ua = '_' . $_SERVER['HTTP_USER_AGENT'];
 
+if(strpos($ua,'Google') || strpos($ua,'Yahoo') || strpos($ua,'bot')) {
+    $user_agent = 'bot';
+} elseif(strpos($ua,'Mozilla') || strpos($ua,'Opera')) {
+    $user_agent = 'gui_browser';
+} elseif (strpos($ua,'Elinks') || strpos($ua,'w3m') || strpos($ua,'Lynx')) {
+    $user_agent = 'text_browser';
+} else {
+    $user_agent = 'bot';
+}
 
 
 $runtime = array(
     'path_prefix' => $path_prefix,
     'link_prefix' => $link_prefix,
+    'user_agent'  => $user_agent,
     'utcdate'     => $utcdate
     );
 
