@@ -1,5 +1,5 @@
 <?php
-/*
+/* <!--
 Program: Chi Mail Madmin
 Component: runtime.php
 Copyright: Savonix Corporation
@@ -21,34 +21,30 @@ You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
 or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
-*/
+--> */
 
 
-$request_uri = $_SERVER['REQUEST_URI'];
-$parse_uri = explode("?",$request_uri);
-$app_prefix=$parse_uri[0];
-$path_prefix = dirname($app_prefix)."/";
-$link_prefix = $app_prefix."?nid=";
-$utcdate = gmdate('Y-m-d H:i:s');
 
-
-/* Subversion revision */
-if(is_file('../revision')) { 
-    $svn_revision = file_get_contents('../revision');
-} else {
-
+$path = $_SERVER['SCRIPT_NAME'];
+if ($_GET['nxrw_path']) {
+    $path = $_GET['nxrw_path'];
 }
+$path_prefix = dirname($path).'/';
+$link_prefix = $path.'?nid=';
+
+$utcdate     = gmdate('Y-m-d H:i:s');
+
+
 
 
 
 $runtime = array(
-                'path_prefix'=>$path_prefix,
-                'link_prefix'=>$link_prefix,
-                'svn_revision' => $svn_revision,
-                'utcdate'=>$utcdate
-                );
+    'path_prefix' => $path_prefix,
+    'link_prefix' => $link_prefix,
+    'utcdate'     => $utcdate
+    );
 
-Nexista_Flow::add("runtime",$runtime,false);
+Nexista_Flow::add('runtime',$runtime,false);
 
 
 ?>
