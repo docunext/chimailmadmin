@@ -29,11 +29,13 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:param name="path_prefix"/>
     <xsl:param name="i18n"/>
 		<div id="nofooter"/>
+    <!--
 		<div id="footer">
 			<a href="http://www.chimailmadmin.com/blog/">ChiMailMadmin.com</a>&#160;
 			<a href="{$link_prefix}xpa-iframe-viewer&amp;url=x-license">License</a>&#160;
 			<a href="{$link_prefix}xpa-iframe-viewer&amp;url=x-readme">Readme</a>
 		</div>
+    -->
 
 	</xsl:template>
 </xsl:stylesheet>
