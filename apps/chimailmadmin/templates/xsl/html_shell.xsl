@@ -58,6 +58,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					<xsl:sort select="priority"/>
 					<xsl:value-of select="string" disable-output-escaping="yes"/>
 				</xsl:for-each>
+      <xsl:for-each select="//post_body_content">
+				<xsl:sort select="priority" order="ascending"/>
+				<xsl:apply-templates select="nodes/*"/>
+			</xsl:for-each>
 			</body>
 		</html>
 	</xsl:template>
