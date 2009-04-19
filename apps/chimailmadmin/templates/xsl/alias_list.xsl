@@ -48,8 +48,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 						'alias_id': alias_id
 				},
 				function (data){
-						myTable = document.getElementById("alias_table");
-						myTable.deleteRow(row);
 				});
 				}
 		}
@@ -70,7 +68,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<h4>Alias List for <xsl:value-of
 			select="//domains_get_all/domains_get_all[domain_id=//_get/domain_id]/domain"/>
 		</h4>
-		<div id="myAliasDiv">
+		<div id="tableframe">
 			<table id="alias_table" class="tablesorter">
 				<thead>
 					<tr>
@@ -122,18 +120,21 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				</tbody>
 			</table>
 		</div>
+    <div class="table_meta">
+      <div style="float: right">
+        <a class="button-basic-blue" href="{$link_prefix}xpa-mailbox-edit&amp;domain_id={//_get/domain_id}">Add Mailbox</a>
+      </div>
+      <div style="float: right">
+        <a class="button-basic-blue" href="{$link_prefix}xpa-alias-edit&amp;domain_id={//_get/domain_id}">Add Alias</a>
+      </div>
+      <div style="float: right">
+        <a class="button-basic-blue" href="{$link_prefix}x-alias-export&amp;domain_id={//_get/domain_id}">Export Aliases</a>
+      </div>
+    </div>
+    <div class="table_controls">
 		<xsl:call-template name="pager">
 			<xsl:with-param name="my-table">alias_table</xsl:with-param>
 		</xsl:call-template>
-		<br/>
-		<div style="float: right">
-			<a class="button-basic-blue" href="{$link_prefix}xpa-mailbox-edit&amp;domain_id={//_get/domain_id}">Add Mailbox</a>
-		</div>
-		<div style="float: right">
-			<a class="button-basic-blue" href="{$link_prefix}xpa-alias-edit&amp;domain_id={//_get/domain_id}">Add Alias</a>
-		</div>
-		<div style="float: right">
-			<a class="button-basic-blue" href="{$link_prefix}x-alias-export&amp;domain_id={//_get/domain_id}">Export Aliases</a>
-		</div>
+    </div>
 	</xsl:template>
 </xsl:stylesheet>

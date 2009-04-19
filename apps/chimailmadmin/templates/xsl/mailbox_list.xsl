@@ -32,7 +32,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:param name="i18n"/>
 		<xsl:call-template name="jquery-setup">
 			<xsl:with-param name="my-table">mailbox_table</xsl:with-param>
-			<xsl:with-param name="my-table-div">myMailboxes</xsl:with-param>
 			<xsl:with-param name="no-sort-column">,
         headers: {
             5: {sorter: false},
@@ -49,8 +48,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 						'mailbox_id': mailbox_id
 				},
 				function (data){
-						myTable = document.getElementById("mailbox_table");
-						myTable.deleteRow(row);
 				});
 				}
 		}
@@ -68,9 +65,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				<input class="button" type="submit" name="go" value="Go"/>
 			</form>
 		</div>
-		<h4>Mailboxen for <xsl:value-of select="//domains_get_all/domains_get_all[domain_id=//_get/domain_id]/domain"/>
+		<h4>
+      Mailboxen for <xsl:value-of select="//domains_get_all/domains_get_all[domain_id=//_get/domain_id]/domain"/>
 		</h4>
-		<div id="myMailboxes">
+		<div id="tableframe">
 			<table id="mailbox_table" class="tablesorter">
 				<thead>
 					<tr>

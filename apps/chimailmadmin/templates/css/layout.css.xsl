@@ -63,5 +63,16 @@ background-color: #AAA; color: white;
   height: expression((parseInt(document.documentElement.clientHeight)-125)+'px');
   </xsl:if>
 }
+
+.table_controls {
+  position: absolute;
+  bottom: 40px;
+}
+
+.table_meta {
+  position: absolute;
+  right: 100px;
+  bottom: 40px;
+}
 </xsl:template>
 </xsl:stylesheet>
