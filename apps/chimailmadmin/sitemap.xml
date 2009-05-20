@@ -171,6 +171,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<map:xsl src="templates/txt/address_export.txt.xsl"/>
 	</map:gate>
 
+	<map:gate name="cma-mailstore-options">
+		<map:xsl src="templates/xsl/welcome.xsl"/>
+	</map:gate>
 
 	<map:gate name="xpa-iframe-viewer">
 		<map:xsl src="templates/xsl/iframe_viewer.xsl"/>

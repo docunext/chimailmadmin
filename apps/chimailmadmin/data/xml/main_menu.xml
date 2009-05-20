@@ -78,6 +78,10 @@ Fifth Floor, Boston, MA 02110-1301  USA
 			<url>cma-image-options</url>
 		</item>
 		<item>
+			<key>mailstore_options</key>
+			<url>cma-mailstore-options</url>
+		</item>
+		<item>
 			<key>database_options</key>
 			<url>cma-database-options</url>
 		</item>
