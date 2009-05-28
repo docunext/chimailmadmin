@@ -95,7 +95,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				</map:if>
 				<map:action type="redirect" params="{//link_prefix}xpa-mailbox-list"/>
 			</map:true>
-			<map:false></map:false>
+			<map:false/>
 		</map:if>
 		<map:query src="data/sql/domains_get_all.xml"/>
 		<map:query src="data/sql/mailbox_get_by_id.xml"/>
@@ -169,6 +169,17 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<map:action type="concat" params="//mailboxes_get_all/mailboxes_get_all/fq_email_address,//mailboxes_get_all/mailboxes_get_all/domain,//mailboxes_get_all/mailboxes_get_all/fq_email_address"/>
 		<map:action type="pad" params="//mailboxes_get_all/mailboxes_get_all/fq_email_address,40, "/>
 		<map:xsl src="templates/txt/address_export.txt.xsl"/>
+	</map:gate>
+
+	<map:gate name="x-address-export-xml" content_type="text/plain">
+		<map:query src="data/sql/alias_get_distinct.xml"/>
+		<map:query src="data/sql/domains_get_all.xml"/>
+		<map:action type="concat" params="//alias_get_all/alias_get_all/alias,@,//alias_get_all/alias_get_all/fq_alias_address"/>
+		<map:action type="concat" params="//alias_get_all/alias_get_all/fq_alias_address,//alias_get_all/alias_get_all/domain,//alias_get_all/alias_get_all/fq_alias_address"/>
+		<map:query src="data/sql/mailboxes_get_all.xml"/>
+		<map:action type="concat" params="//mailboxes_get_all/mailboxes_get_all/email_address,@,//mailboxes_get_all/mailboxes_get_all/fq_email_address"/>
+		<map:action type="concat" params="//mailboxes_get_all/mailboxes_get_all/fq_email_address,//mailboxes_get_all/mailboxes_get_all/domain,//mailboxes_get_all/mailboxes_get_all/fq_email_address"/>
+		<map:xsl src="templates/xml/address_export.xml.xsl"/>
 	</map:gate>
 
 	<map:gate name="cma-mailstore-options">

@@ -34,7 +34,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			<link rel="stylesheet" type="text/css" href="{$link_prefix}x-dynamic-css"></link>
 			<link rel="stylesheet" type="text/css" href="{$path_prefix}s/css/droppy.css"></link>
 
-			<script type="text/javascript" src="{$path_prefix}s/js/jquery/jquery.js" >&#160;</script>
+			<script type="text/javascript" src="{$path_prefix}s/js/jquery/jquery.js" ></script>
 
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.cookiejar.js" />
 			<script type="text/javascript" src="{$link_prefix}x-dynamic-js"></script>
