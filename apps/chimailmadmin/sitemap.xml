@@ -171,6 +171,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<map:xsl src="templates/txt/address_export.txt.xsl"/>
 	</map:gate>
 
+	<map:gate name="x-relay-recipients" content_type="text/plain">
+		<map:query src="data/sql/recipients_get_all.xml"/>
+	  <map:xsl src="templates/txt/address_export.txt.xsl"/>
+	</map:gate>
+
 	<map:gate name="x-address-export-xml" content_type="text/plain">
 		<map:query src="data/sql/alias_get_distinct.xml"/>
 		<map:query src="data/sql/domains_get_all.xml"/>

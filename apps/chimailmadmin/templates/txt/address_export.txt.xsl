@@ -33,5 +33,9 @@ Fifth Floor, Boston, MA 02110-1301  USA
     <xsl:value-of select="fq_alias_address"/><xsl:text>&#160;OK</xsl:text>
     <xsl:text>&#10;</xsl:text>
   </xsl:for-each>
+  <xsl:for-each select="/_R_/recipients_get_all/recipients_get_all">
+    <xsl:value-of select="email"/><xsl:text>&#160;OK</xsl:text>
+    <xsl:text>&#10;</xsl:text>
+  </xsl:for-each>
 </xsl:template>
 </xsl:stylesheet>
