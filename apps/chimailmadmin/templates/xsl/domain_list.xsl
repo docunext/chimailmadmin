@@ -112,5 +112,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<div style="float: right">
 			<a class="button-basic-{//theme_color}" href="{$link_prefix}xpa-domain-edit">New Domain</a>
 		</div>
+		<div style="float: right">
+			<a class="button-basic-{//theme_color}" href="{$link_prefix}x-domain-export">Export</a>
+		</div>
 	</xsl:template>
 </xsl:stylesheet>
