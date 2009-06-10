@@ -233,6 +233,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <map:action type="rawxml" params="/_R_/curl,true"/>
 		<map:xsl src="templates/xsl/curl_test.xsl"/>
 	</map:gate>
+  
+
+	<map:gate name="cma-access-lists">
+		<map:xsl src="templates/xsl/spam_access_lists.xsl"/>
+	</map:gate>
 
 	<!-- Static Files -->
 	<!-- This type of file serving can be a huge
