@@ -80,14 +80,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 							<input class="button" type="submit" name="submit" value="Add Alias" />
 						</td>
 					</tr>
-					<tr>
-						<td colspan="3"></td>
-					</tr>
-					<tr>
-						<td colspan="3">To create a catch-all use an "*" as alias.<br />
-						For domain to domain forwarding use "*@domain.tld" as to.
-						</td>
-					</tr>
 				</table>
 			</form>
 		</div>

@@ -26,6 +26,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	xmlns="http://www.w3.org/1999/xhtml">
 	<xsl:include href="html_main.xsl"/>
 	<xsl:include href="pager.xsl"/>
+	<xsl:include href="domain_selector.xsl"/>
 	<xsl:template name="content">
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
@@ -103,24 +104,12 @@ Fifth Floor, Boston, MA 02110-1301 USA
             <xsl:value-of select="//_get/domain_id"/>
           </xsl:if>
         </xsl:attribute>
-        Add Mailbox</a>
+        Add Entry</a>
       </div>
       <div style="float: right">
         <a class="button-basic-{//theme_color}" href="{$link_prefix}xpa-alias-edit&amp;domain_id={//_get/domain_id}">Add Alias</a>
       </div>
-      <div style="float: right">
-        <form name="overview" method="get">
-          <input type="hidden" name="nid" value="{//_get/nid}"/>
-          <select name="domain_id" onChange="this.form.submit();">
-            <xsl:for-each select="/_R_/domains_get_all/domains_get_all">
-              <option value="{domain_id}">
-                <xsl:value-of select="domain"/>
-              </option>
-            </xsl:for-each>
-          </select>
-          <input class="button" type="submit" name="go" value="Go"/>
-        </form>
-      </div>
+      <xsl:call-template name="domain_selector"/>
     </div>
 	</xsl:template>
 </xsl:stylesheet>

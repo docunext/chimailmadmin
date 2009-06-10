@@ -1,6 +1,6 @@
 <!--
 Program: ChiMailMadmin
-Component: domain_export.txt.xsl
+Component: db_engines.mysql.xml
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -19,20 +19,16 @@ GNU Affero General Public License for more details.
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
 or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA
+Fifth Floor, Boston, MA 02110-1301 USA
 -->
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-<xsl:output method="text" encoding="UTF-8" omit-xml-declaration="yes"/>
-<xsl:template match="/">
-
-  <xsl:for-each select="/_R_/domains_get_all/domains_get_all">
-    <xsl:value-of select="domain"/><xsl:text>&#160;</xsl:text>
-    <xsl:if test="//_get/transport='true'">
-      <xsl:if test="transport=''">maildrop:</xsl:if>
-		  <xsl:value-of select="transport"/>
-    </xsl:if>
-    <xsl:text>&#10;</xsl:text>
-  </xsl:for-each>
-
-</xsl:template>
-</xsl:stylesheet>
+<dbe>
+  <engine_default_timestamp>timestamp NOT NULL default CURRENT_TIMESTAMP</engine_default_timestamp>
+  <engine_auto_increment>int(11) NOT NULL auto_increment</engine_auto_increment>
+  <engine_increment_start> AUTO_INCREMENT=1</engine_increment_start>
+  <engine_auto_increment_b>, PRIMARY KEY (category_id)</engine_auto_increment_b>
+  <innodb_engine>ENGINE=InnoDB</innodb_engine>
+  <myisam_engine>ENGINE=MyISAM</myisam_engine>
+  <if_not_exists>IF NOT EXISTS </if_not_exists>
+  <integer>int(11) NOT NULL default 0</integer>
+  <varchar>varchar(255) NOT NULL default ''</varchar>
+</dbe>

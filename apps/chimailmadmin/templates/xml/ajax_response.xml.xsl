@@ -1,6 +1,6 @@
 <!--
-Program: ChiMailMadmin
-Component: domain_export.txt.xsl
+Program: ChiMailMadmin.com
+Component:  ajax_response.xml.xsl
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -18,21 +18,12 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program; if not, see http://www.gnu.org/licenses
-or write to the Free Software Foundation,Inc., 51 Franklin Street,
-Fifth Floor, Boston, MA 02110-1301  USA
+or write to the Free Software Foundation, Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-<xsl:output method="text" encoding="UTF-8" omit-xml-declaration="yes"/>
+<xsl:output method="xml" indent="yes" encoding="UTF-8" omit-xml-declaration="no" />
 <xsl:template match="/">
-
-  <xsl:for-each select="/_R_/domains_get_all/domains_get_all">
-    <xsl:value-of select="domain"/><xsl:text>&#160;</xsl:text>
-    <xsl:if test="//_get/transport='true'">
-      <xsl:if test="transport=''">maildrop:</xsl:if>
-		  <xsl:value-of select="transport"/>
-    </xsl:if>
-    <xsl:text>&#10;</xsl:text>
-  </xsl:for-each>
-
+<response>OK</response>
 </xsl:template>
 </xsl:stylesheet>

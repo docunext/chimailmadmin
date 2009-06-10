@@ -25,7 +25,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <xsl:output method="text" indent="yes" encoding="UTF-8" omit-xml-declaration="yes"/>
 <xsl:template match="/">
 
-CREATE TABLE IF NOT EXISTS `xpa_admin` (
+CREATE TABLE IF NOT EXISTS `<xsl:value-of select="//table_prefix"/>admin` (
   `user_id` int(11) NOT NULL auto_increment,
   `username` varchar(255) NOT NULL default '',
   `password` varchar(255) NOT NULL default '',
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `xpa_admin` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 
-CREATE TABLE IF NOT EXISTS `xpa_alias` (
+CREATE TABLE IF NOT EXISTS `<xsl:value-of select="//table_prefix"/>alias` (
   `alias_id` int(11) NOT NULL auto_increment,
   `alias` varchar(255) NOT NULL default '',
   `destination` text NOT NULL,
@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `xpa_alias` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 
-CREATE TABLE IF NOT EXISTS `xpa_config` (
+CREATE TABLE IF NOT EXISTS `<xsl:value-of select="//table_prefix"/>config` (
   `id` int(11) NOT NULL auto_increment,
   `name` varchar(20) NOT NULL default '',
   `value` varchar(20) NOT NULL default '',
@@ -58,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `xpa_config` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 
-CREATE TABLE IF NOT EXISTS `xpa_domain` (
+CREATE TABLE IF NOT EXISTS `<xsl:value-of select="//table_prefix"/>domain` (
   `domain_id` int(11) NOT NULL auto_increment,
   `domain` varchar(255) NOT NULL default '',
   `description` varchar(255) NOT NULL default '',
@@ -75,7 +75,7 @@ CREATE TABLE IF NOT EXISTS `xpa_domain` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 
-CREATE TABLE IF NOT EXISTS `xpa_domain_admins` (
+CREATE TABLE IF NOT EXISTS `<xsl:value-of select="//table_prefix"/>domain_admins` (
   `username` varchar(255) NOT NULL default '',
   `domain` varchar(255) NOT NULL default '',
   `created` datetime NOT NULL default '0000-00-00 00:00:00',
@@ -84,7 +84,7 @@ CREATE TABLE IF NOT EXISTS `xpa_domain_admins` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 ;
 
 
-CREATE TABLE IF NOT EXISTS `xpa_mailbox` (
+CREATE TABLE IF NOT EXISTS `<xsl:value-of select="//table_prefix"/>mailbox` (
   `mailbox_id` int(11) NOT NULL auto_increment,
   `email_address` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL default '',
@@ -99,7 +99,7 @@ CREATE TABLE IF NOT EXISTS `xpa_mailbox` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 
-CREATE TABLE IF NOT EXISTS `xpa_vacation` (
+CREATE TABLE IF NOT EXISTS `<xsl:value-of select="//table_prefix"/>vacation` (
   `email` varchar(255) NOT NULL default '',
   `subject` varchar(255) NOT NULL default '',
   `body` text NOT NULL,
@@ -108,6 +108,72 @@ CREATE TABLE IF NOT EXISTS `xpa_vacation` (
   `created` datetime NOT NULL default '0000-00-00 00:00:00',
   `active` tinyint(1) NOT NULL default '1'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 ;
+
+
+<!-- thanks http://wiki.apache.org/spamassassin/UsingSQL -->
+CREATE TABLE `<xsl:value-of select="//table_prefix"/>user_prefs` (
+  `id` int(8) unsigned NOT NULL auto_increment,
+  `username` varchar(128) NOT NULL default '',
+  `preference` varchar(64) NOT NULL default '',
+  `value` varchar(128) default NULL,
+  `descript` varchar(128) default NULL,
+  `added` datetime NOT NULL default '2003-01-01 00:00:00',
+  `added_by` varchar(128) NOT NULL default '',
+  `modified` timestamp(14) NOT NULL,
+  UNIQUE KEY `id` (`id`),
+  KEY `type` (`preference`),
+  KEY `added_by` (`added_by`),
+  KEY `preference` (`preference`),
+  KEY `username` (`username`)
+) TYPE=MyISAM COMMENT='Spamassassin Preferences';
+
+<!-- thanks http://www.marlow.dk/site.php/tech/postfix -->
+CREATE TABLE <xsl:value-of select="//table_prefix"/>access_lists (
+  id int(10) unsigned NOT NULL auto_increment,
+  source varchar(128) NOT NULL default '',
+  access varchar(128) NOT NULL default '',
+  created <xsl:value-of select="//dbe/engine_default_timestamp"/>,
+  notes varchar(255) NOT NULL default '',
+  type enum('recipient','sender','client') NOT NULL default 'recipient',
+  PRIMARY KEY  (id)
+) TYPE=MyISAM;
+
+
+
+<!-- Thanks to Roundcube, probably needs adjusting. -->
+CREATE TABLE IF NOT EXISTS `<xsl:value-of select="//table_prefix"/>contacts` (
+  `contact_id` int(10) unsigned NOT NULL auto_increment,
+  `changed` datetime NOT NULL default '0000-00-00 00:00:00',
+  `del` tinyint(1) NOT NULL default '0',
+  `name` varchar(128) NOT NULL,
+  `email` varchar(128) NOT NULL,
+  `firstname` varchar(128) NOT NULL,
+  `surname` varchar(128) NOT NULL,
+  `vcard` text,
+  `user_id` int(10) unsigned NOT NULL default '0',
+  PRIMARY KEY  (`contact_id`),
+  KEY `user_id_fk_contacts` (`user_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+
+
+
+CREATE TABLE IF NOT EXISTS `<xsl:value-of select="//table_prefix"/>identities` (
+  `identity_id` int(10) unsigned NOT NULL auto_increment,
+  `del` tinyint(1) NOT NULL default '0',
+  `standard` tinyint(1) NOT NULL default '0',
+  `name` varchar(128) NOT NULL,
+  `organization` varchar(128) NOT NULL,
+  `email` varchar(128) NOT NULL,
+  `reply-to` varchar(128) NOT NULL,
+  `bcc` varchar(128) NOT NULL,
+  `signature` text NOT NULL,
+  `html_signature` tinyint(1) NOT NULL default '0',
+  `user_id` int(10) unsigned NOT NULL default '0',
+  PRIMARY KEY  (`identity_id`),
+  KEY `user_id_fk_identities` (`user_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
+
+
 
 ALTER TABLE `xpa_alias`
   ADD CONSTRAINT `xpa_alias_ibfk_1` FOREIGN KEY (`alias_id`) REFERENCES `xpa_domain` (`domain_id`) ON DELETE CASCADE;

@@ -1,6 +1,6 @@
 <!--
 Program: ChiMailMadmin
-Component: domain_export.txt.xsl
+Component: sender_acl_export.txt.xsl
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -25,13 +25,10 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:output method="text" encoding="UTF-8" omit-xml-declaration="yes"/>
 <xsl:template match="/">
 
-  <xsl:for-each select="/_R_/domains_get_all/domains_get_all">
-    <xsl:value-of select="domain"/><xsl:text>&#160;</xsl:text>
-    <xsl:if test="//_get/transport='true'">
-      <xsl:if test="transport=''">maildrop:</xsl:if>
-		  <xsl:value-of select="transport"/>
-    </xsl:if>
-    <xsl:text>&#10;</xsl:text>
+  <xsl:for-each select="/_R_/sender_acl_get_all/sender_acl_get_all">
+    <xsl:value-of select="source"/>&#160;<xsl:value-of select="access"/>
+    <xsl:text>
+</xsl:text>
   </xsl:for-each>
 
 </xsl:template>

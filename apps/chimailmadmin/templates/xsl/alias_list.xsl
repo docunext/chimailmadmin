@@ -41,13 +41,14 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			</xsl:with-param>
 		</xsl:call-template>
 		<script type="text/javascript">
-		function alias_delete(alias_id,row) {
+		function alias_delete(alias_id) {
 				if(confirm('Are you sure?')){
 				$.post("<xsl:value-of select="$link_prefix"/>x-alias-delete&amp;alias_id="+alias_id,
 				{
 						'alias_id': alias_id
 				},
 				function (data){
+          $("#a_"+alias_id).remove();
 				});
 				}
 		}
@@ -81,7 +82,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				</thead>
 				<tbody>
 					<xsl:for-each select="//alias_get_all/alias_get_all">
-						<tr>
+						<tr id="a_{alias_id}">
 							<td>
 								<a href="{$link_prefix}xpa-alias-edit&amp;alias_id={alias_id}">
 									<xsl:value-of select="alias"/>@<xsl:value-of select="domain"/>
@@ -112,8 +113,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 								<a href="{$link_prefix}xpa-alias-edit&amp;alias_id={alias_id}">edit</a>
 							</td>
 							<td>
-								<a href="{$link_prefix}"
-									onclick="alias_delete({alias_id},this.parentNode.parentNode.rowIndex); return false;">del</a>
+								<a href="{$link_prefix}xpa-alias-delete&amp;alias_id={alias_id}"
+									onclick="alias_delete({alias_id}); return false;">del</a>
 							</td>
 						</tr>
 					</xsl:for-each>
