@@ -1,6 +1,6 @@
 <!--
 Program: Chi Mail Madmin
-Component: acl_get_sender.xml
+Component: acl_get_all.xml
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -22,10 +22,12 @@ or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
-<query name="acl_get_sender">
+<query name="acl_get">
 	<connection>&connection;</connection>
-	<params/>
+	<params>
+		<param name="_get/acl_id" type="text" default="%"/>
+  </params>
 	<sql>
-	SELECT * FROM &prefix;access_lists
+	SELECT * FROM &prefix;access_lists WHERE acl_id LIKE ?
 	</sql>
 </query>

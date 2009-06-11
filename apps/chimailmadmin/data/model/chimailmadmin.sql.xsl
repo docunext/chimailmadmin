@@ -129,11 +129,12 @@ CREATE TABLE `<xsl:value-of select="//table_prefix"/>user_prefs` (
 
 <!-- thanks http://www.marlow.dk/site.php/tech/postfix -->
 CREATE TABLE <xsl:value-of select="//table_prefix"/>access_lists (
-  id int(10) unsigned NOT NULL auto_increment,
+  acl_id int(10) unsigned NOT NULL auto_increment,
   source varchar(128) NOT NULL default '',
   access varchar(128) NOT NULL default '',
   created <xsl:value-of select="//dbe/engine_default_timestamp"/>,
   notes varchar(255) NOT NULL default '',
+  domain_id int(11) NOT NULL default '0',
   type enum('recipient','sender','client') NOT NULL default 'recipient',
   PRIMARY KEY  (id)
 ) TYPE=MyISAM;

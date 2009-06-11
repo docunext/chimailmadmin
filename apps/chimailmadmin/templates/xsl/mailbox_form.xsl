@@ -42,11 +42,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					select="//mailbox_get_by_id/mailbox_get_by_id"/>
 				<table>
 					<tr>
-						<td colspan="3">
-							<h3></h3>
-						</td>
-					</tr>
-					<tr>
 						<td>Email Address</td>
 						<td>
 							<input type="text" name="email_address" value="{$mailbox_get_by_id/email_address}"/>
@@ -131,9 +126,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 						<td colspan="3">
 							<input class="button" type="submit" name="submit" value="{$i18n/submit}"/>
 						</td>
-					</tr>
-					<tr>
-						<td colspan="3"></td>
 					</tr>
 				</table>
 			</form>

@@ -25,7 +25,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 <xsl:output method="text" encoding="UTF-8" omit-xml-declaration="yes"/>
 <xsl:template match="/">
 
-  <xsl:for-each select="/_R_/sender_acl_get_all/sender_acl_get_all">
+  <xsl:for-each select="/_R_/acl_get_sender/acl_get_sender">
     <xsl:value-of select="source"/>&#160;<xsl:value-of select="access"/>
     <xsl:text>
 </xsl:text>

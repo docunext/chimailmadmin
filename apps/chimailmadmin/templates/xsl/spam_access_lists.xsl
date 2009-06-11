@@ -42,11 +42,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			</xsl:with-param>
 		</xsl:call-template>
 		<script type="text/javascript">
-		function access_delete(access_id,row) {
+		function access_delete(acl_id,row) {
 				if(confirm('Are you sure?')){
-				$.post("<xsl:value-of select="$link_prefix"/>x-access-delete&amp;access_id="+access_id,
+				$.post("<xsl:value-of select="$link_prefix"/>x-access-delete&amp;acl_id="+acl_id,
 				{
-						'access_id': access_id
+						'acl_id': acl_id
 				},
 				function (data){
 				});
@@ -65,24 +65,24 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					</tr>
 				</thead>
 				<tbody>
-					<xsl:for-each select="//accesses_get_all/accesses_get_all">
+					<xsl:for-each select="//acl_get/acl_get">
 						<tr>
 							<td>
-								<a href="{$link_prefix}xpa-access-edit&amp;access_id={access_id}">
-									<xsl:value-of select="email_address"/>@<xsl:value-of select="domain"/>
+								<a href="{$link_prefix}cma-access-edit&amp;acl_id={acl_id}">
+									<xsl:value-of select="source"/>
 								</a>
 							</td>
 							<td>
-								<xsl:value-of select="name"/>
+								<xsl:value-of select="access"/>
+							</td>
+							<td>
+								<xsl:value-of select="type"/>
 							</td>
 							<td>
 								<xsl:value-of select="created"/>
 							</td>
 							<td>
-								<xsl:value-of select="created"/>
-							</td>
-							<td>
-								<xsl:value-of select="created"/>
+								<xsl:value-of select="notes"/>
 							</td>
 						</tr>
 					</xsl:for-each>
@@ -98,16 +98,13 @@ Fifth Floor, Boston, MA 02110-1301 USA
         <a class="button-basic-{//theme_color}">
         <xsl:attribute name="href">
         <xsl:value-of select="$link_prefix"/>
-        <xsl:text>xpa-access-edit</xsl:text>
+        <xsl:text>cma-access-edit</xsl:text>
           <xsl:if test="//_get/domain_id">
             <xsl:text>&amp;domain_id=</xsl:text>
             <xsl:value-of select="//_get/domain_id"/>
           </xsl:if>
         </xsl:attribute>
         Add Entry</a>
-      </div>
-      <div style="float: right">
-        <a class="button-basic-{//theme_color}" href="{$link_prefix}xpa-alias-edit&amp;domain_id={//_get/domain_id}">Add Alias</a>
       </div>
       <xsl:call-template name="domain_selector"/>
     </div>

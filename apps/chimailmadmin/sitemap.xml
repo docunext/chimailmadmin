@@ -140,7 +140,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				</map:if>
 				<map:action type="redirect" params="{//link_prefix}xpa-alias-list"/>
 			</map:true>
-			<map:false></map:false>
+			<map:false/>
 		</map:if>
 		<map:query src="data/sql/alias_get_all.xml"/>
 		<map:query src="data/sql/domains_get_all.xml"/>
@@ -236,11 +236,31 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	</map:gate>
 
 	<map:gate name="cma-access-lists">
+		<map:query src="data/sql/acl_get.xml"/>
 		<map:xsl src="templates/xsl/spam_access_lists.xsl"/>
+	</map:gate>
+	<map:gate name="cma-access-edit">
+		<map:if name="//_post">
+			<map:true>
+				<map:if name="//_post/access_id">
+					<map:true>
+						<map:query src="data/sql/acl_update.xml"/>
+					</map:true>
+					<map:false>
+						<map:query src="data/sql/acl_create.xml"/>
+					</map:false>
+				</map:if>
+				<map:action type="redirect" params="{//link_prefix}cma-access-lists"/>
+			</map:true>
+			<map:false>
+        <map:query src="data/sql/acl_get.xml"/>
+      </map:false>
+		</map:if>
+		<map:xsl src="templates/xsl/spam_access_form.xsl"/>
 	</map:gate>
 	<map:gate name="x-sender-acl-export">
 		<map:action type="header" params="Content-Type,text/plain"/>
-		<map:query src="data/sql/sender_acl_get_all.xml"/>
+		<map:query src="data/sql/acl_get_sender.xml"/>
 		<map:xsl src="templates/txt/sender_acl_export.txt.xsl"/>
 	</map:gate>
 
