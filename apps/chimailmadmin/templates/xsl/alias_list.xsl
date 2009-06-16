@@ -26,6 +26,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	xmlns="http://www.w3.org/1999/xhtml">
 	<xsl:include href="html_main.xsl"/>
 	<xsl:include href="pager.xsl"/>
+	<xsl:include href="domain_selector.xsl"/>
 	<xsl:template name="content">
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
@@ -54,17 +55,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		}
 		</script>
 		<div style="float: right">
-			<form name="overview" method="get">
-				<input type="hidden" name="nid" value="{//_get/nid}"/>
-				<select name="domain_id" onChange="this.form.submit();">
-					<xsl:for-each select="/_R_/domains_get_all/domains_get_all">
-						<option value="{domain_id}">
-							<xsl:value-of select="domain"/>
-						</option>
-					</xsl:for-each>
-				</select>
-				<input class="button" type="submit" name="go" value="Go"/>
-			</form>
+      <xsl:call-template name="domain_selector"/>
 		</div>
 		<h4>Alias List for <xsl:value-of
 			select="//domains_get_all/domains_get_all[domain_id=//_get/domain_id]/domain"/>

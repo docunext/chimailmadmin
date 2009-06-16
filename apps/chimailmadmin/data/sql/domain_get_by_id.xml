@@ -25,7 +25,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <query name="domain_get_by_id">
 	<connection>&connection_read;</connection>
 	<params>
-		<param name="_get/domain_id" type="integer"/>
+		<param name="_get/my_domain_id" type="integer"/>
 	</params>
 	<sql>
 	SELECT * FROM &xpa_domains; WHERE domain_id=? AND active&gt;0

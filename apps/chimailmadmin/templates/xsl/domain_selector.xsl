@@ -28,9 +28,13 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<div style="float: right">
 			<form name="overview" method="get">
 				<input type="hidden" name="nid" value="{//_get/nid}"/>
-				<select name="domain_id" onChange="this.form.submit();">
+				<select name="my_domain_id" onchange="this.form.submit();">
+          <option value="%">All</option>
 					<xsl:for-each select="/_R_/domains_get_all/domains_get_all">
 						<option value="{domain_id}">
+              <xsl:if test="//_get/my_domain_id=domain_id">
+                <xsl:attribute name="selected">selected</xsl:attribute>
+              </xsl:if>
 							<xsl:value-of select="domain"/>
 						</option>
 					</xsl:for-each>

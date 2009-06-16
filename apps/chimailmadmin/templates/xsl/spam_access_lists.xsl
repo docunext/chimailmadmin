@@ -107,7 +107,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
         <a class="button-basic-{//theme_color}">
         <xsl:attribute name="href">
         <xsl:value-of select="$link_prefix"/>
-        <xsl:text>cma-access-edit</xsl:text>
+        <xsl:text>cma-access-edit</xsl:text>&amp;acl_id=-10
           <xsl:if test="//_get/domain_id">
             <xsl:text>&amp;domain_id=</xsl:text>
             <xsl:value-of select="//_get/domain_id"/>

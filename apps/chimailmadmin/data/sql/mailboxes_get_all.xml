@@ -25,7 +25,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <query name="mailboxes_get_all">
 	<connection>&connection_read;</connection>
 	<params>
-		<param name="//_get/domain_id" type="text" default="%"/>
+		<param name="//_get/my_domain_id" type="text" default="%"/>
 	</params>
 	<sql>
 	SELECT &xpa_mailbox;.*,&xpa_domains;.domain,&xpa_mailbox;.email_address as fq_email_address

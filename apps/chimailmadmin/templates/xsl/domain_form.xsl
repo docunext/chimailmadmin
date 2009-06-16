@@ -28,8 +28,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	<xsl:template name="content">
 		<div id="edit_form">
 			<form name="create_domain" method="post">
-				<xsl:if test="//_get/domain_id">
-					<input type="hidden" name="domain_id" value="{//_get/domain_id}"/>
+				<xsl:if test="//_get/my_domain_id">
+					<input type="hidden" name="domain_id" value="{//_get/my_domain_id}"/>
 				</xsl:if>
 				<xsl:variable name="domain_get_by_id"
 					select="/_R_/domain_get_by_id/domain_get_by_id"/>

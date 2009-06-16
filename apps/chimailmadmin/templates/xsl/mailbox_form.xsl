@@ -32,7 +32,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
 		<div id="edit_form">
 			<form name="mailbox" method="post">
-				<xsl:if test="//_get/domain_id">
+				<xsl:if test="//_get/my_domain_id">
 					<input type="hidden" name="domain_id" value="{//_get/domain_id}"/>
 				</xsl:if>
 				<xsl:if test="//_get/mailbox_id">
@@ -47,10 +47,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
 							<input type="text" name="email_address" value="{$mailbox_get_by_id/email_address}"/>
 						</td>
 						<td>
-							<xsl:if test="//_get/domain_id">
+							<xsl:if test="//_get/my_domain_id">
 								@<xsl:value-of select="//domains_get_all/domains_get_all[domain_id=//_get/domain_id]/domain"/>
 							</xsl:if>
-							<xsl:if test="not(//_get/domain_id)">
+							<xsl:if test="not(//_get/my_domain_id)">
 								@<select name="domain_id">
 									<xsl:for-each select="//domains_get_all/domains_get_all">
 										<option value="{domain_id}">
