@@ -35,7 +35,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				<xsl:if test="//_get/domain_id">
 					<input type="hidden" name="domain_id" value="{//_get/domain_id}"/>
 				</xsl:if>
-				<xsl:if test="//_get/access_id and not(//_get/cloner)">
+				<xsl:if test="//_get/acl_id and not(//_get/cloner)">
 					<input type="hidden" name="acl_id" value="{//_get/acl_id}"/>
 				</xsl:if>
 				<xsl:variable name="acl_get"
@@ -66,7 +66,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					<tr>
 						<td>Notes</td>
 						<td>
-							<input type="text" name="name" value="{$acl_get/source}"/>
+							<input type="text" name="name" value="{$acl_get/notes}"/>
 						</td>
 					</tr>
 					<tr>

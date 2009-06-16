@@ -1,6 +1,6 @@
 <!--
 Program: Chi Mail Madmin
-Component: acl_update.xml
+Component: acl_delete.xml
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -22,16 +22,12 @@ or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <!DOCTYPE query SYSTEM "__default_table_names__.txt">
-<query name="acl_update">
+<query name="acl_delete">
 	<connection>&connection;</connection>
 	<params>
-		<param name="_post/source" type="text"/>
-		<param name="_post/access" type="text"/>
-		<param name="_post/type" type="text"/>
-		<param name="_post/notes" type="text"/>
 		<param name="_post/acl_id" type="integer"/>
   </params>
 	<sql>
-	UPDATE &prefix;access_lists SET source=?,access=?,type=?,notes=? WHERE acl_id = ?
+	DELETE FROM &prefix;access_lists WHERE acl_id = ?
 	</sql>
 </query>

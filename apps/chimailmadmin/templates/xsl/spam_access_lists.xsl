@@ -42,13 +42,14 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			</xsl:with-param>
 		</xsl:call-template>
 		<script type="text/javascript">
-		function access_delete(acl_id,row) {
+		function acl_delete(acl_id,row) {
 				if(confirm('Are you sure?')){
-				$.post("<xsl:value-of select="$link_prefix"/>x-access-delete&amp;acl_id="+acl_id,
+				$.post("<xsl:value-of select="$link_prefix"/>x-cma-access-delete&amp;acl_id="+acl_id,
 				{
 						'acl_id': acl_id
 				},
 				function (data){
+          $("#acl_"+acl_id).remove();
 				});
 				}
 		}
@@ -62,11 +63,12 @@ Fifth Floor, Boston, MA 02110-1301 USA
 						<th>Type</th>
 						<th>Date</th>
 						<th>Notes</th>
+						<th>Delete</th>
 					</tr>
 				</thead>
 				<tbody>
 					<xsl:for-each select="//acl_get/acl_get">
-						<tr>
+						<tr id="acl_{acl_id}">
 							<td>
 								<a href="{$link_prefix}cma-access-edit&amp;acl_id={acl_id}">
 									<xsl:value-of select="source"/>
@@ -83,6 +85,13 @@ Fifth Floor, Boston, MA 02110-1301 USA
 							</td>
 							<td>
 								<xsl:value-of select="notes"/>
+							</td>
+							<td>
+								<a href="#{$link_prefix}cma-access-delete&amp;acl_id={acl_id}"
+                  onclick="acl_delete({acl_id}); return false;"
+                  >
+                Delete
+                </a>
 							</td>
 						</tr>
 					</xsl:for-each>
@@ -105,6 +114,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
           </xsl:if>
         </xsl:attribute>
         Add Entry</a>
+      </div>
+      <div style="float: right">
+        <a class="button-basic-{//theme_color}" href="{$link_prefix}x-sender-acl-export">Export</a>
       </div>
       <xsl:call-template name="domain_selector"/>
     </div>
