@@ -1,3 +1,4 @@
+#!/usr/bin/lua
 --[[
 <!--
 Program: ChiMailMadmin.com
