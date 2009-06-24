@@ -64,6 +64,12 @@ Fifth Floor, Boston, MA 02110-1301 USA
 						</td>
 					</tr>
 					<tr>
+						<td>Restriction Class</td>
+						<td>
+							<input type="text" name="restriction_class" value="{$acl_get/restriction_class}"/>
+						</td>
+					</tr>
+					<tr>
 						<td>Notes</td>
 						<td>
 							<input type="text" name="name" value="{$acl_get/notes}"/>

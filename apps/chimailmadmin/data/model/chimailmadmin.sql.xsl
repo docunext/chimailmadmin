@@ -134,6 +134,7 @@ CREATE TABLE <xsl:value-of select="//table_prefix"/>access_lists (
   access varchar(128) NOT NULL default '',
   created <xsl:value-of select="//dbe/engine_default_timestamp"/>,
   notes varchar(255) NOT NULL default '',
+  restriction_class varchar(128) NOT NULL default '',
   domain_id int(11) NOT NULL default '0',
   type enum('recipient','sender','client') NOT NULL default 'recipient',
   PRIMARY KEY  (id)
