@@ -41,7 +41,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					</tr>
 					<tr>
 						<td>Domain:</td>
-
 						<td>
 							<input type="text" name="domain" value="{$domain_get_by_id/domain}"/>
 						</td>
@@ -54,7 +53,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 						</td>
 						<td></td>
 					</tr>
-
 					<tr>
 						<td>Aliases:</td>
 						<td>
@@ -64,7 +62,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					</tr>
 					<tr>
 						<td>Mailboxes:</td>
-
 						<td>
 							<input type="text" name="mailboxes" value="{$domain_get_by_id/mailboxes}"/>
 						</td>
@@ -92,7 +89,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 						</td>
 						<td></td>
 					</tr>
-
 					<tr>
 						<td colspan="3">
 							<input class="button" type="submit" name="submit" value="Add Domain"/>

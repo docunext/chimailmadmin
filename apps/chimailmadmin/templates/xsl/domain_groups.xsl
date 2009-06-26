@@ -60,43 +60,15 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			<table id="domain_table" class="tablesorter">
 				<thead>
 					<tr>
-						<th>Domain</th>
-						<th>Description</th>
-						<th>Aliases</th>
-						<th>Mailboxes</th>
-						<th>Last Modified</th>
-						<th>Active</th>
-						<th colspan="2"></th>
+						<th>Group Name</th>
+						<th>Domains</th>
 					</tr>
 				</thead>
 				<tbody>
 					<xsl:for-each select="/_R_/domains_get_all/domains_get_all">
-						<tr id="d_{domain_id}">
-							<td>
-								<a href="{$link_prefix}xpa-mailbox-list&amp;my_domain_id={domain_id}">
-									<xsl:value-of select="domain"/>
-								</a>
-							</td>
-							<td>
-								<xsl:value-of select="description"/>
-							</td>
+						<tr id="dg_{domain_group_id}">
 							<td></td>
 							<td></td>
-							<td>
-								<xsl:value-of select="modified"/>
-							</td>
-							<td>
-								<a href="{$link_prefix}">
-									<xsl:value-of select="active"/>
-								</a>
-							</td>
-							<td>
-								<a href="{$link_prefix}xpa-domain-edit&amp;my_domain_id={domain_id}">edit</a>
-							</td>
-							<td>
-								<a href="{$link_prefix}x-domain-delete&amp;my_domain_id={domain_id}"
-									onclick="domain_delete({domain_id}); return false;">del</a>
-							</td>
 						</tr>
 					</xsl:for-each>
 				</tbody>
@@ -106,11 +78,5 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			<xsl:with-param name="my-table">domain_table</xsl:with-param>
 		</xsl:call-template>
 
-		<div style="float: right">
-			<a class="button-basic-{//theme_color}" href="{$link_prefix}xpa-domain-edit">New Domain</a>
-		</div>
-		<div style="float: right">
-			<a class="button-basic-{//theme_color}" href="{$link_prefix}x-domain-export">Export</a>
-		</div>
 	</xsl:template>
 </xsl:stylesheet>

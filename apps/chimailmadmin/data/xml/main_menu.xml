@@ -32,6 +32,10 @@ Fifth Floor, Boston, MA 02110-1301  USA
 			<key>add_domain</key>
 			<url>xpa-domain-edit</url>
 		</item>
+		<item>
+			<key>domain_groups</key>
+			<url>xpa-domain-groups</url>
+		</item>
 	</item>
 	<item>
 		<key>addresses</key>
