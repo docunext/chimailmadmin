@@ -2,7 +2,7 @@
 --[[
 <!--
 Program: ChiMailMadmin.com
-Component: sender_acl.lua
+Component: acl_add.lua
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -30,5 +30,5 @@ require "config"
 env = assert (luasql.mysql())
 con = assert (env:connect(dbconfig["database"],dbconfig["username"],dbconfig["password"],dbconfig["host"]))
 
-sql_statement = "INSERT INTO xpa_access_lists (source,access,type) VALUES ('"..arg[1].."','PREPEND X-Pass-List-XJU: YES','sender')"
+sql_statement = "INSERT INTO xpa_access_lists (source,access,type) VALUES ('"..arg[1].."','PREPEND "..dbconfig["passlist"].."','sender')"
 assert (con:execute (sql_statement))
