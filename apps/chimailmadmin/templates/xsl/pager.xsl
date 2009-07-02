@@ -46,7 +46,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 						.tablesorterPager(
 								{
 										container: $("#<xsl:value-of select="$my-table"/>-pager"),
-										size: 16
+										size: 16,
+                    positionFixed: false
 								}
 						);
 				}
