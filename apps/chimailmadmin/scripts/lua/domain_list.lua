@@ -28,7 +28,7 @@ require "luasql.mysql"
 require "config"
 
 env = assert (luasql.mysql())
-con = assert (env:connect(dbconfig["database"],dbconfig["username"],dbconfig["password"],dbconfig["host"]))
+con = assert (env:connect(dbconfig["database"],dbconfig["username"],dbconfig["password"],dbconfig["hostname"]))
 
 function rows (connection, sql_statement)
   local cursor = assert (connection:execute (sql_statement))

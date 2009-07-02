@@ -28,7 +28,7 @@ require "luasql.mysql"
 require "config"
 
 env = assert (luasql.mysql())
-con = assert (env:connect(dbconfig["database"],dbconfig["username"],dbconfig["password"],dbconfig["host"]))
+con = assert (env:connect(dbconfig["database"],dbconfig["username"],dbconfig["password"],dbconfig["hostname"]))
 
 sql_statement = "INSERT INTO xpa_access_lists (source,access,type) VALUES ('"..arg[1].."','PREPEND "..dbconfig["passlist"].."','sender')"
 assert (con:execute (sql_statement))
