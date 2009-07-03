@@ -41,13 +41,14 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			</xsl:with-param>
 		</xsl:call-template>
 		<script type="text/javascript">
-		function mailbox_delete(mailbox_id,row) {
+		function mailbox_delete(mailbox_id) {
 				if(confirm('Are you sure?')){
 				$.post("<xsl:value-of select="$link_prefix"/>x-mailbox-delete&amp;mailbox_id="+mailbox_id,
 				{
 						'mailbox_id': mailbox_id
 				},
 				function (data){
+          $("#mb_"+mailbox_id).remove();
 				});
 				}
 		}
@@ -68,7 +69,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				</thead>
 				<tbody>
 					<xsl:for-each select="//mailboxes_get_all/mailboxes_get_all">
-						<tr>
+						<tr id="mb_{mailbox_id}">
 							<td>
 								<a href="{$link_prefix}xpa-mailbox-edit&amp;mailbox_id={mailbox_id}">
 									<xsl:value-of select="email_address"/>@<xsl:value-of select="domain"/>
@@ -87,7 +88,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 							</td>
 							<td>
 								<a href="{$link_prefix}"
-									onclick="mailbox_delete({mailbox_id},this.parentNode.parentNode.rowIndex); return false;">del</a>
+									onclick="mailbox_delete({mailbox_id}); return false;">del</a>
 							</td>
 						</tr>
 					</xsl:for-each>
@@ -95,27 +96,27 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			</table>
 		</div>
     <div class="table_controls">
-		<xsl:call-template name="pager">
-			<xsl:with-param name="my-table">mailbox_table</xsl:with-param>
-		</xsl:call-template>
+      <xsl:call-template name="pager">
+        <xsl:with-param name="my-table">mailbox_table</xsl:with-param>
+      </xsl:call-template>
 		</div>
 
     <div class="table_meta">
-		<div style="float: right">
-			<a class="button-basic-{//theme_color}">
-			<xsl:attribute name="href">
-			<xsl:value-of select="$link_prefix"/>
-			<xsl:text>xpa-mailbox-edit</xsl:text>
-				<xsl:if test="//_get/domain_id">
-					<xsl:text>&amp;domain_id=</xsl:text>
-					<xsl:value-of select="//_get/domain_id"/>
-				</xsl:if>
-			</xsl:attribute>
-			Add Mailbox</a>
-		</div>
-		<div style="float: right">
-			<a class="button-basic-{//theme_color}" href="{$link_prefix}xpa-alias-edit&amp;domain_id={//_get/domain_id}">Add Alias</a>
-		</div>
+      <div style="float: right">
+        <a class="button-basic-{//theme_color}">
+        <xsl:attribute name="href">
+        <xsl:value-of select="$link_prefix"/>
+        <xsl:text>xpa-mailbox-edit</xsl:text>
+          <xsl:if test="//_get/domain_id">
+            <xsl:text>&amp;domain_id=</xsl:text>
+            <xsl:value-of select="//_get/domain_id"/>
+          </xsl:if>
+        </xsl:attribute>
+        Add Mailbox</a>
+      </div>
+      <div style="float: right">
+        <a class="button-basic-{//theme_color}" href="{$link_prefix}xpa-alias-edit&amp;domain_id={//_get/domain_id}">Add Alias</a>
+      </div>
     </div>
 	</xsl:template>
 </xsl:stylesheet>

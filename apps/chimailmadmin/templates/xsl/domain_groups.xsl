@@ -41,14 +41,14 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			</xsl:with-param>
 		</xsl:call-template>
 		<script type="text/javascript">
-		function domain_delete(domain_id) {
+		function domain_group_delete(domain_group_id) {
 				if(confirm('Are you sure?')){
-				$.post("<xsl:value-of select="$link_prefix"/>x-domain-delete&amp;domain_id="+domain_id,
+				$.post("<xsl:value-of select="$link_prefix"/>x-domain-group-delete&amp;domain_group_id="+domain_group_id,
 				{
-						'domain_id': domain_id
+						'domain_group_id': domain_group_id
 				},
 				function (data){
-          $("#d_"+domain_id).remove();
+          $("#dg_"+domain_group_id).remove();
 				});
 				}
 		}
