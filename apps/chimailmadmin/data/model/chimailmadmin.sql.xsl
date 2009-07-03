@@ -62,6 +62,7 @@ CREATE TABLE IF NOT EXISTS `<xsl:value-of select="//table_prefix"/>domain` (
   `domain_id` int(11) NOT NULL auto_increment,
   `domain` varchar(255) NOT NULL default '',
   `description` varchar(255) NOT NULL default '',
+  `restriction_class` varchar(255) NOT NULL default '',
   `aliases` int(10) NOT NULL default '0',
   `mailboxes` int(10) NOT NULL default '0',
   `maxquota` int(10) NOT NULL default '0',
@@ -136,6 +137,7 @@ CREATE TABLE <xsl:value-of select="//table_prefix"/>access_lists (
   notes varchar(255) NOT NULL default '',
   restriction_class varchar(128) NOT NULL default '',
   domain_id int(11) NOT NULL default '0',
+  postfix_check enum('header','permit') NOT NULL default 'header',
   type enum('recipient','sender','client') NOT NULL default 'recipient',
   PRIMARY KEY  (id)
 ) TYPE=MyISAM;

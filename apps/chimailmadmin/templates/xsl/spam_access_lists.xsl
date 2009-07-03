@@ -26,7 +26,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	xmlns="http://www.w3.org/1999/xhtml">
 	<xsl:include href="html_main.xsl"/>
 	<xsl:include href="pager.xsl"/>
-	<xsl:include href="domain_selector.xsl"/>
 	<xsl:template name="content">
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
@@ -102,7 +101,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
       <xsl:call-template name="pager">
         <xsl:with-param name="my-table">access_table</xsl:with-param>
       </xsl:call-template>
-      <br/>
+    </div>
+    <div class="table_meta">
+
       <div style="float: right">
         <a class="button-basic-{//theme_color}">
         <xsl:attribute name="href">
@@ -116,9 +117,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
         Add Entry</a>
       </div>
       <div style="float: right">
-        <a class="button-basic-{//theme_color}" href="{$link_prefix}x-sender-acl-export">Export</a>
+        <a class="button-basic-{//theme_color}" href="{$link_prefix}x-sender-acl-export&amp;type=sender">Postfix Sender Export</a>
       </div>
-      <xsl:call-template name="domain_selector"/>
+      <div style="float: right">
+        <a class="button-basic-{//theme_color}" href="{$link_prefix}x-sender-acl-export&amp;type=recipient">Postfix Recipient Export</a>
+      </div>
     </div>
 	</xsl:template>
 </xsl:stylesheet>

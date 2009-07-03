@@ -25,7 +25,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 	xmlns="http://www.w3.org/1999/xhtml">
 	<xsl:include href="html_main.xsl"/>
-	<xsl:include href="domain_selector.xsl"/>
 	<xsl:include href="pager.xsl"/>
 	<xsl:template name="content">
     <xsl:param name="link_prefix"/>
@@ -53,9 +52,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				}
 		}
 		</script>
-		<div style="float: right">
-      <xsl:call-template name="domain_selector"/>
-		</div>
 		<h4>
       Mailboxen for <xsl:value-of select="//domains_get_all/domains_get_all[domain_id=//_get/domain_id]/domain"/>
 		</h4>
@@ -98,10 +94,13 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				</tbody>
 			</table>
 		</div>
+    <div class="table_controls">
 		<xsl:call-template name="pager">
 			<xsl:with-param name="my-table">mailbox_table</xsl:with-param>
 		</xsl:call-template>
-		<br/>
+		</div>
+
+    <div class="table_meta">
 		<div style="float: right">
 			<a class="button-basic-{//theme_color}">
 			<xsl:attribute name="href">
@@ -117,5 +116,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<div style="float: right">
 			<a class="button-basic-{//theme_color}" href="{$link_prefix}xpa-alias-edit&amp;domain_id={//_get/domain_id}">Add Alias</a>
 		</div>
+    </div>
 	</xsl:template>
 </xsl:stylesheet>
