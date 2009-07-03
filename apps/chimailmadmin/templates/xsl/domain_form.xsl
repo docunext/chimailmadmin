@@ -56,7 +56,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					<tr>
 						<td>Recipient Restriction Class:</td>
 						<td>
-							<input type="text" name="description" value="{$domain_get_by_id/restriction_class}"/>
+							<input type="text" name="restriction_class" value="{$domain_get_by_id/restriction_class}"/>
 						</td>
 						<td></td>
 					</tr>
