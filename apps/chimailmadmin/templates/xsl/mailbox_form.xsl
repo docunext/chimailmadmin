@@ -29,6 +29,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
     <xsl:param name="i18n"/>
+    <script type="text/javascript" src="{$path_prefix}s/js/common_functions.js"/>
 
 		<div id="edit_form">
 			<form name="mailbox" method="post">
@@ -44,7 +45,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					<tr>
 						<td>Email Address</td>
 						<td>
-							<input type="text" name="email_address" value="{$mailbox_get_by_id/email_address}"/>
+							<input type="text" name="email_address" id="email_address" value="{$mailbox_get_by_id/email_address}" onkeyup="copyValue('email_address','username')"/>
 						</td>
 						<td>
 							<xsl:if test="//_get/my_domain_id">
@@ -64,27 +65,30 @@ Fifth Floor, Boston, MA 02110-1301 USA
 							</xsl:if>
 						</td>
 					</tr>
+					<tr>
+						<td>Username</td>
+						<td>
+							<input type="test" name="username" id="username"/>
+						</td>
+					</tr>
 					<xsl:if test="not(//_get/mailbox_id)">
 					<tr>
 						<td>Password</td>
 						<td>
 							<input type="password" name="password"/>
 						</td>
-						<td></td>
 					</tr>
 					<tr>
 						<td></td>
 						<td>
 							<input type="password" name="password2"/>
 						</td>
-						<td></td>
 					</tr>
 					<tr>
 						<td>Welcome mail</td>
 						<td>
 							<input type="checkbox" name="mail"/>
 						</td>
-						<td></td>
 					</tr>
 					<tr>
 						<td>
@@ -109,7 +113,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 						<td>
 							<input type="text" name="name" value="{$mailbox_get_by_id/name}"/>
 						</td>
-						<td></td>
 					</tr>
 					<tr>
 						<td>Active</td>
@@ -120,10 +123,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
 								</xsl:if>
 							</input>
 						</td>
-						<td></td>
 					</tr>
 					<tr>
-						<td colspan="3">
+						<td colspan="2">
 							<input class="button" type="submit" name="submit" value="{$i18n/submit}"/>
 						</td>
 					</tr>
