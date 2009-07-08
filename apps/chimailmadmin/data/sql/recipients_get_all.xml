@@ -26,6 +26,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	<connection>relay_recipients</connection>
 	<params/>
 	<sql>
-	SELECT email FROM relay_recipients
+	SELECT email, SUBSTRING_INDEX(email,'@',-1) AS domain FROM relay_recipients
+  ORDER BY domain
 	</sql>
 </query>
