@@ -71,6 +71,13 @@ Fifth Floor, Boston, MA 02110-1301 USA
 							<input type="test" name="username" id="username"/>
 						</td>
 					</tr>
+					<xsl:if test="//_get/mailbox_id">
+					<tr>
+						<td>Reset Password</td>
+						<td>
+						</td>
+					</tr>
+          </xsl:if>
 					<xsl:if test="not(//_get/mailbox_id)">
 					<tr>
 						<td>Password</td>

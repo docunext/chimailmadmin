@@ -33,77 +33,59 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				</xsl:if>
 				<xsl:variable name="domain_get_by_id"
 					select="/_R_/domain_get_by_id/domain_get_by_id"/>
-				<table>
-					<tr>
-						<td colspan="3">
-							<h3>Add/Edit Domain</h3>
-						</td>
-					</tr>
-					<tr>
-						<td>Domain:</td>
-						<td>
-							<input type="text" name="domain" value="{$domain_get_by_id/domain}"/>
-						</td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Description:</td>
-						<td>
-							<input type="text" name="description" value="{$domain_get_by_id/description}"/>
-						</td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Recipient Restriction Class:</td>
-						<td>
-							<input type="text" name="restriction_class" value="{$domain_get_by_id/restriction_class}"/>
-						</td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Aliases:</td>
-						<td>
-							<input type="text" name="aliases" value="{$domain_get_by_id/aliases}"/>
-						</td>
-						<td>-1 = disable | 0 = unlimited</td>
-					</tr>
-					<tr>
-						<td>Mailboxes:</td>
-						<td>
-							<input type="text" name="mailboxes" value="{$domain_get_by_id/mailboxes}"/>
-						</td>
-						<td>-1 = disable | 0 = unlimited</td>
-					</tr>
-					<tr>
-						<td>Transport:</td>
-						<td>
-							<input type="text" name="transport" value="{$domain_get_by_id/transport}"/>
-						</td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Add default mail aliases:</td>
-						<td>
-							<input type="checkbox" name="defaultaliases"/>
-						</td>
-
-						<td></td>
-					</tr>
-					<tr>
-						<td>Mail server is backup MX:</td>
-						<td>
-							<input type="checkbox" name="backupmx"/>
-						</td>
-						<td></td>
-					</tr>
-					<tr>
-						<td colspan="3">
-							<input class="button" type="submit" name="submit" value="Add Domain"/>
-						</td>
-					</tr>
-					<tr>
-						<td colspan="3"></td>
-					</tr>
+				<table class="tablesorter" style="width: 600px;">
+          <thead>
+            <tr>
+              <th colspan="2" style="border-style: solid; border-width: 0 0 1px 0;">
+                <h3>Add/Edit Domain</h3>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Domain:</td>
+              <td>
+                <input type="text" name="domain" value="{$domain_get_by_id/domain}"/>
+              </td>
+            </tr>
+            <tr>
+              <td>Description:</td>
+              <td>
+                <input type="text" name="description" value="{$domain_get_by_id/description}"/>
+              </td>
+            </tr>
+            <tr>
+              <td>Transport:</td>
+              <td>
+                <input type="text" name="transport" value="{$domain_get_by_id/transport}"/>
+              </td>
+            </tr>
+            <tr>
+              <td>Recipient Restriction Class:</td>
+              <td>
+                <input type="text" name="restriction_class" value="{$domain_get_by_id/restriction_class}"/>
+              </td>
+            </tr>
+            <tr>
+              <td>Aliases:</td>
+              <td>
+                <input type="text" name="aliases" value="{$domain_get_by_id/aliases}"/>
+              ( -1 = disable | 0 = unlimited )
+              </td>
+            </tr>
+            <tr>
+              <td>Mailboxes:</td>
+              <td>
+                <input type="text" name="mailboxes" value="{$domain_get_by_id/mailboxes}"/>
+                ( -1 = disable | 0 = unlimited )
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" style="text-align:center;">
+                <input class="button" type="submit" name="submit" value="Add Domain"/>
+              </td>
+            </tr>
+          </tbody>
 				</table>
 			</form>
 		</div>
