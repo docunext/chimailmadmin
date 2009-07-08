@@ -26,7 +26,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	xmlns="http://www.w3.org/1999/xhtml">
 	<xsl:include href="html_main.xsl"/>
 	<xsl:include href="pager.xsl"/>
-	<xsl:include href="domain_selector.xsl"/>
 	<xsl:template name="content">
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
@@ -54,9 +53,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				}
 		}
 		</script>
-		<div style="float: right">
-      <xsl:call-template name="domain_selector"/>
-		</div>
 		<h4>Alias List for <xsl:value-of
 			select="//domains_get_all/domains_get_all[domain_id=//_get/domain_id]/domain"/>
 		</h4>
@@ -114,13 +110,13 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		</div>
     <div class="table_meta">
       <div style="float: right">
-        <a class="button-basic-blue" href="{$link_prefix}xpa-mailbox-edit&amp;domain_id={//_get/domain_id}">Add Mailbox</a>
+        <a class="button-basic-blue" href="{$link_prefix}xpa-mailbox-edit&amp;domain_id={//runtime/domain_id}">Add Mailbox</a>
       </div>
       <div style="float: right">
-        <a class="button-basic-blue" href="{$link_prefix}xpa-alias-edit&amp;domain_id={//_get/domain_id}">Add Alias</a>
+        <a class="button-basic-blue" href="{$link_prefix}xpa-alias-edit&amp;domain_id={//runtime/domain_id}">Add Alias</a>
       </div>
       <div style="float: right">
-        <a class="button-basic-blue" href="{$link_prefix}x-alias-export&amp;domain_id={//_get/domain_id}">Export Aliases</a>
+        <a class="button-basic-blue" href="{$link_prefix}x-alias-export&amp;domain_id={//runtime/domain_id}">Export Aliases</a>
       </div>
     </div>
     <div class="table_controls">

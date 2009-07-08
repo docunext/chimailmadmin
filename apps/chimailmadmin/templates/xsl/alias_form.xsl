@@ -51,11 +51,12 @@ Fifth Floor, Boston, MA 02110-1301 USA
 							<input type="text" name="alias" value="{$alias_get_by_id/alias}"/>
 						</td>
 						<td>
+              @
 							<xsl:if test="//_get/domain_id">
-								@<xsl:value-of select="//domains_get_all/domains_get_all[domain_id=//_get/domain_id]/domain"/>
+								<xsl:value-of select="//domains_get_all/domains_get_all[domain_id=//_get/domain_id]/domain"/>
 							</xsl:if>
-							<xsl:if test="not(_get/domain_id)">
-								@<select name="domain_id">
+							<xsl:if test="not(//_get/domain_id) or //_get/domain_id=''">
+								<select name="domain_id">
 									<xsl:for-each select="//domains_get_all/domains_get_all">
 										<option value="{domain_id}">
 											<xsl:if test="$alias_get_by_id/domain_id=domain_id">

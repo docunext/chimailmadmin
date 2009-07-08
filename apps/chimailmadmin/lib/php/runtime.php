@@ -49,10 +49,20 @@ if(strpos($ua,'Google') || strpos($ua,'Yahoo') || strpos($ua,'bot')) {
 }
 
 
+if(isset($_GET['domain_id'])) {
+    $_SESSION['domain_id'] = $_GET['domain_id'];
+} elseif (!$_SESSION['domain_id']) {
+    $_SESSION['domain_id'] = '%';
+}
+
+$domain_id = $_SESSION['domain_id'];
+
+
 $runtime = array(
     'path_prefix' => $path_prefix,
     'link_prefix' => $link_prefix,
     'user_agent'  => $user_agent,
+    'domain_id'   => $domain_id,
     'utcdate'     => $utcdate
     );
 

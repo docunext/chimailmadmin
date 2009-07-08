@@ -28,9 +28,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<param name="_post/domain_id" type="integer"/>
 		<param name="_post/alias" type="text"/>
 		<param name="_post/destination" type="text"/>
-		<param name="//runtime/utcdate" type="text"/>
 	</params>
 	<sql>
-	INSERT INTO &xpa_alias; (domain_id,alias,destination,created) VALUES (?,?,?,?)
+	INSERT INTO &xpa_alias; (domain_id,alias,destination) VALUES (?,?,?)
 	</sql>
 </query>
