@@ -23,6 +23,6 @@ Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <xsl:template name="base">
-
+<!-- testing hook -->
 </xsl:template>
 </xsl:stylesheet>
