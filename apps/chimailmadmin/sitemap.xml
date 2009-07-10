@@ -31,18 +31,16 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<map:xml src="i18n/en_US/chimailmadmin.xml"/>
 	</map:prepend>
 
-
-
 	<map:gate name="index" role="email_admin">
 		<map:xsl src="templates/xsl/welcome.xsl"/>
 	</map:gate>
 
 	<!-- DOMAINS -->
-	<map:gate name="xpa-domain-list" role="email_admin">
+	<map:gate name="cma-domain-list" role="email_admin">
 		<map:query src="data/sql/domains_get_all.xml"/>
 		<map:xsl src="templates/xsl/domain_list.xsl"/>
 	</map:gate>
-	<map:gate name="xpa-domain-edit" role="email_admin">
+	<map:gate name="cma-domain-edit" role="email_admin">
 		<map:if name="//_post">
 			<map:true>
 				<map:if name="//_post/domain_id">
@@ -53,7 +51,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 						<map:query src="data/sql/domain_create.xml"/>
 					</map:false>
 				</map:if>
-				<map:action type="redirect" params="{//link_prefix}xpa-domain-list"/>
+				<map:action type="redirect" params="{//link_prefix}cma-domain-list"/>
 			</map:true>
 			<map:false></map:false>
 		</map:if>
@@ -77,18 +75,18 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<map:xsl src="templates/txt/relay_export.txt.xsl"/>
 	</map:gate>
 
-	<map:gate name="xpa-domain-groups" role="email_admin">
+	<map:gate name="cma-domain-groups" role="email_admin">
 		<map:xsl src="templates/xsl/domain_groups.xsl"/>
 	</map:gate>
 
 	<!-- MAILBOXEN -->
-	<map:gate name="xpa-mailbox-list" role="email_admin">
+	<map:gate name="cma-mailbox-list" role="email_admin">
 		<map:query src="data/sql/domains_get_all.xml"/>
 		<map:query src="data/sql/mailboxes_get_all.xml"/>
 		<map:xsl src="templates/xsl/mailbox_list.xsl"/>
 	</map:gate>
 
-	<map:gate name="xpa-mailbox-edit" role="email_admin">
+	<map:gate name="cma-mailbox-edit" role="email_admin">
 		<map:if name="//_post">
 			<map:true>
 				<map:if name="//_post/mailbox_id">
@@ -99,7 +97,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 						<map:query src="data/sql/mailbox_create.xml"/>
 					</map:false>
 				</map:if>
-				<map:action type="redirect" params="{//link_prefix}xpa-mailbox-list"/>
+				<map:action type="redirect" params="{//link_prefix}cma-mailbox-list"/>
 			</map:true>
 			<map:false/>
 		</map:if>
@@ -134,13 +132,13 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	</map:gate>
 
 	<!-- ALIAS -->
-	<map:gate name="xpa-alias-list" role="email_admin">
+	<map:gate name="cma-alias-list" role="email_admin">
 		<map:query src="data/sql/domains_get_all.xml"/>
 		<map:query src="data/sql/alias_get_all.xml"/>
 		<map:xsl src="templates/xsl/alias_list.xsl"/>
 	</map:gate>
 
-	<map:gate name="xpa-alias-edit" role="email_admin">
+	<map:gate name="cma-alias-edit" role="email_admin">
 		<map:if name="//_post">
 			<map:true>
 				<map:if name="//_post/alias_id">
@@ -151,7 +149,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 						<map:query src="data/sql/alias_create.xml"/>
 					</map:false>
 				</map:if>
-				<map:action type="redirect" params="{//link_prefix}xpa-alias-list"/>
+				<map:action type="redirect" params="{//link_prefix}cma-alias-list"/>
 			</map:true>
 			<map:false/>
 		</map:if>
@@ -260,7 +258,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	</map:gate>
 
 
-	<map:gate name="xpa-iframe-viewer">
+	<map:gate name="cma-iframe-viewer">
 		<map:xsl src="templates/xsl/iframe_viewer.xsl"/>
 	</map:gate>
 	<map:gate name="x-dynamic-css" cache="0">
