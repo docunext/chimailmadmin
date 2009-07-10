@@ -58,6 +58,14 @@ CREATE TABLE IF NOT EXISTS `<xsl:value-of select="//table_prefix"/>config` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 
+CREATE TABLE IF NOT EXISTS `<xsl:value-of select="//table_prefix"/>server` (
+  `server_id` int(11) NOT NULL auto_increment,
+  `server` varchar(255) NOT NULL default '',
+  `description` varchar(255) NOT NULL default '',
+  PRIMARY KEY  (`server_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+
 CREATE TABLE IF NOT EXISTS `<xsl:value-of select="//table_prefix"/>domain` (
   `domain_id` int(11) NOT NULL auto_increment,
   `domain` varchar(255) NOT NULL default '',

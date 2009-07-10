@@ -127,7 +127,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
 
 	<!-- SERVERS -->
-	<map:gate name="xpa-server-list" role="email_admin">
+	<map:gate name="cma-server-list" role="email_admin">
 		<map:query src="data/sql/domains_get_all.xml"/>
 		<map:query src="data/sql/servers_get_all.xml"/>
 		<map:xsl src="templates/xsl/server_list.xsl"/>

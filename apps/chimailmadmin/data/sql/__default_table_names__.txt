@@ -15,6 +15,7 @@
 <!ENTITY xpa_admin "&prefix;admin">
 <!ENTITY xpa_alias "&prefix;alias">
 <!ENTITY xpa_config "&prefix;config">
+<!ENTITY xpa_servers "&prefix;server">
 <!ENTITY xpa_domains "&prefix;domain">
 <!ENTITY xpa_domain_admins "&prefix;domain_admins">
 <!ENTITY xpa_log "&prefix;log">
