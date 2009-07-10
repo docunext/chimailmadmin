@@ -23,6 +23,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
 -->
 <i18n>
   <admin>Admin</admin>
+  <alias>Alias</alias>
   <name>Name</name>
   <mailstore_options>Mailstore Options</mailstore_options>
   <domains>Domains</domains>
