@@ -40,7 +40,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
   <spamassassin>Spamassassin</spamassassin>
   <dspam>DSpam</dspam>
   <gld>GLD</gld>
-  <mailbox>Mailbox</mailbox>
+  <last_modified>Last Modified</last_modified>
   <mailbox>Mailbox</mailbox>
   <cma_options>Options</cma_options>
   <number_of_records>Number of records</number_of_records>
