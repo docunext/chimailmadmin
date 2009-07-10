@@ -37,7 +37,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
           <thead>
             <tr>
               <th colspan="2" style="border-style: solid; border-width: 0 0 1px 0;">
-                <h3>Add/Edit Domain</h3>
+                <h3>Add/Edit <xsl:value-of select="/_R_/i18n/domain"/></h3>
               </th>
             </tr>
           </thead>
@@ -49,7 +49,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
               </td>
             </tr>
             <tr>
-              <td>Description:</td>
+              <td><xsl:value-of select="/_R_/i18n/description"/>:</td>
               <td>
                 <input type="text" name="description" value="{$domain_get_by_id/description}"/>
               </td>
@@ -67,14 +67,14 @@ Fifth Floor, Boston, MA 02110-1301 USA
               </td>
             </tr>
             <tr>
-              <td>Aliases:</td>
+              <td><xsl:value-of select="/_R_/i18n/aliases"/>:</td>
               <td>
                 <input type="text" name="aliases" value="{$domain_get_by_id/aliases}"/>
               ( -1 = disable | 0 = unlimited )
               </td>
             </tr>
             <tr>
-              <td>Mailboxes:</td>
+              <td><xsl:value-of select="/_R_/i18n/mailboxes"/>:</td>
               <td>
                 <input type="text" name="mailboxes" value="{$domain_get_by_id/mailboxes}"/>
                 ( -1 = disable | 0 = unlimited )

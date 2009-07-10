@@ -61,7 +61,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 				<thead>
 					<tr>
 						<th>Group Name</th>
-						<th>Domains</th>
+						<th><xsl:value-of select="/_R_/i18n/domains"/></th>
 					</tr>
 				</thead>
 				<tbody>

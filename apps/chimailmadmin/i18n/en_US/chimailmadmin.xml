@@ -25,8 +25,10 @@ Fifth Floor, Boston, MA 02110-1301  USA
   <active>Active</active>
   <admin>Admin</admin>
   <alias>Alias</alias>
+  <aliases>Aliases</aliases>
   <name>Name</name>
   <mailstore_options>Mailstore Options</mailstore_options>
+  <description>Description</description>
   <domain>Domain</domain>
   <domains>Domains</domains>
   <domain_list>Domain List</domain_list>
@@ -44,6 +46,8 @@ Fifth Floor, Boston, MA 02110-1301  USA
   <gld>GLD</gld>
   <last_modified>Last Modified</last_modified>
   <mailbox>Mailbox</mailbox>
+  <mailboxes>Mailboxes</mailboxes>
+  <password>Password</password>
   <cma_options>Options</cma_options>
   <number_of_records>Number of records</number_of_records>
   <upload_options>Upload Options</upload_options>

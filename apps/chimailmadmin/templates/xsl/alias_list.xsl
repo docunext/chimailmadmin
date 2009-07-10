@@ -60,7 +60,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			<table id="alias_table" class="tablesorter">
 				<thead>
 					<tr>
-						<th>Alias</th>
+						<th><xsl:value-of select="$i18n/alias"/></th>
 						<th>Destination</th>
 						<th>Last Modified</th>
 						<th>Active</th>
