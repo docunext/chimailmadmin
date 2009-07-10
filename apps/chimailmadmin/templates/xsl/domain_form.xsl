@@ -43,7 +43,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
           </thead>
           <tbody>
             <tr>
-              <td>Domain:</td>
+              <td><xsl:value-of select="/_R_/i18n/domain"/>:</td>
               <td>
                 <input type="text" name="domain" value="{$domain_get_by_id/domain}"/>
               </td>
