@@ -71,12 +71,12 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					<xsl:for-each select="//alias_get_all/alias_get_all">
 						<tr id="a_{alias_id}">
 							<td>
-								<a href="{$link_prefix}xpa-alias-edit&amp;alias_id={alias_id}">
+								<a href="{$link_prefix}cma-alias-edit&amp;alias_id={alias_id}">
 									<xsl:value-of select="alias"/>@<xsl:value-of select="domain"/>
 								</a>
 							</td>
 							<td>
-								<a href="{$link_prefix}xpa-alias-edit&amp;alias_id={alias_id}">
+								<a href="{$link_prefix}cma-alias-edit&amp;alias_id={alias_id}">
 									<xsl:if test="string-length(destination) &gt; 40">
 										<xsl:attribute name="title">
 											<xsl:value-of select="destination"/>
@@ -92,15 +92,15 @@ Fifth Floor, Boston, MA 02110-1301 USA
 								<xsl:value-of select="modified"/>
 							</td>
 							<td>
-								<a href="{$link_prefix}xpa-alias-edit&amp;alias_id={alias_id}">
+								<a href="{$link_prefix}cma-alias-edit&amp;alias_id={alias_id}">
 									<xsl:value-of select="active"/>
 								</a>
 							</td>
 							<td>
-								<a href="{$link_prefix}xpa-alias-edit&amp;alias_id={alias_id}">edit</a>
+								<a href="{$link_prefix}cma-alias-edit&amp;alias_id={alias_id}">edit</a>
 							</td>
 							<td>
-								<a href="{$link_prefix}xpa-alias-delete&amp;alias_id={alias_id}"
+								<a href="{$link_prefix}cma-alias-delete&amp;alias_id={alias_id}"
 									onclick="alias_delete({alias_id}); return false;">del</a>
 							</td>
 						</tr>
@@ -110,10 +110,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		</div>
     <div class="table_meta">
       <div style="float: right">
-        <a class="button-basic-blue" href="{$link_prefix}xpa-mailbox-edit&amp;domain_id={//runtime/domain_id}">Add Mailbox</a>
+        <a class="button-basic-blue" href="{$link_prefix}cma-mailbox-edit&amp;domain_id={//runtime/domain_id}">Add Mailbox</a>
       </div>
       <div style="float: right">
-        <a class="button-basic-blue" href="{$link_prefix}xpa-alias-edit&amp;domain_id={//runtime/domain_id}">Add Alias</a>
+        <a class="button-basic-blue" href="{$link_prefix}cma-alias-edit&amp;domain_id={//runtime/domain_id}">Add Alias</a>
       </div>
       <div style="float: right">
         <a class="button-basic-blue" href="{$link_prefix}x-alias-export&amp;domain_id={//runtime/domain_id}">Export Aliases</a>
