@@ -73,7 +73,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					<xsl:for-each select="/_R_/domains_get_all/domains_get_all">
 						<tr id="d_{domain_id}">
 							<td>
-								<a href="{$link_prefix}xpa-mailbox-list&amp;my_domain_id={domain_id}">
+								<a href="{$link_prefix}cma-mailbox-list&amp;my_domain_id={domain_id}">
 									<xsl:value-of select="domain"/>
 								</a>
 							</td>
@@ -91,7 +91,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 								</a>
 							</td>
 							<td>
-								<a href="{$link_prefix}xpa-domain-edit&amp;my_domain_id={domain_id}">edit</a>
+								<a href="{$link_prefix}cma-domain-edit&amp;my_domain_id={domain_id}">edit</a>
 							</td>
 							<td>
 								<a href="{$link_prefix}x-domain-delete&amp;my_domain_id={domain_id}"
@@ -107,7 +107,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		</xsl:call-template>
 
 		<div style="float: right">
-			<a class="button-basic-{//theme_color}" href="{$link_prefix}xpa-domain-edit">New Domain</a>
+			<a class="button-basic-{//theme_color}" href="{$link_prefix}cma-domain-edit">New Domain</a>
 		</div>
 		<div style="float: right">
 			<a class="button-basic-{//theme_color}" href="{$link_prefix}x-domain-export">Export</a>
