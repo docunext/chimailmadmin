@@ -71,7 +71,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					<xsl:for-each select="//mailboxes_get_all/mailboxes_get_all">
 						<tr id="mb_{mailbox_id}">
 							<td>
-								<a href="{$link_prefix}xpa-mailbox-edit&amp;mailbox_id={mailbox_id}">
+								<a href="{$link_prefix}cma-mailbox-edit&amp;mailbox_id={mailbox_id}">
 									<xsl:value-of select="email_address"/>@<xsl:value-of select="domain"/>
 								</a>
 							</td>
@@ -84,7 +84,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 							<td>
 							</td>
 							<td>
-								<a href="{$link_prefix}xpa-mailbox-edit&amp;mailbox_id={mailbox_id}">edit</a>
+								<a href="{$link_prefix}cma-mailbox-edit&amp;mailbox_id={mailbox_id}">edit</a>
 							</td>
 							<td>
 								<a href="{$link_prefix}"
@@ -106,7 +106,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
         <a class="button-basic-{//theme_color}">
         <xsl:attribute name="href">
         <xsl:value-of select="$link_prefix"/>
-        <xsl:text>xpa-mailbox-edit</xsl:text>
+        <xsl:text>cma-mailbox-edit</xsl:text>
           <xsl:if test="//_get/domain_id">
             <xsl:text>&amp;domain_id=</xsl:text>
             <xsl:value-of select="//_get/domain_id"/>
@@ -115,7 +115,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
         Add Mailbox</a>
       </div>
       <div style="float: right">
-        <a class="button-basic-{//theme_color}" href="{$link_prefix}xpa-alias-edit&amp;domain_id={//_get/domain_id}">Add Alias</a>
+        <a class="button-basic-{//theme_color}" href="{$link_prefix}cma-alias-edit&amp;domain_id={//_get/domain_id}">Add Alias</a>
       </div>
     </div>
 	</xsl:template>
