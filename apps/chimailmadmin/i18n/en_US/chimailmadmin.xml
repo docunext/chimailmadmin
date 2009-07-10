@@ -35,16 +35,12 @@ Fifth Floor, Boston, MA 02110-1301  USA
   <add_mailbox>Add Mailbox</add_mailbox>
   <alias_list>Alias List</alias_list>
   <add_alias>Add Alias</add_alias>
-  <cma_options>Options</cma_options>
-  <number_of_records>Number of records</number_of_records>
-  <upload_options>Upload Options</upload_options>
-  <image_options>Image Options</image_options>
-  <interface_options>Interface Options</interface_options>
   <cma_junk>Junk Controls</cma_junk>
   <access_lists>Access Lists</access_lists>
   <spamassassin>Spamassassin</spamassassin>
   <dspam>DSpam</dspam>
   <gld>GLD</gld>
+  <mailbox>Mailbox</mailbox>
   <mailbox>Mailbox</mailbox>
   <cma_options>Options</cma_options>
   <number_of_records>Number of records</number_of_records>
