@@ -72,7 +72,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 						<tr id="srv_{server_id}">
 							<td>
 								<a href="{$link_prefix}cma-server-edit&amp;server_id={server_id}">
-									<xsl:value-of select="email_address"/>@<xsl:value-of select="domain"/>
+									<xsl:value-of select="server_id"/>
 								</a>
 							</td>
 							<td>

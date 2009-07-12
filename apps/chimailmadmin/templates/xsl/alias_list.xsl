@@ -63,7 +63,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 						<th><xsl:value-of select="$i18n/alias"/></th>
 						<th>Destination</th>
 						<th>Last Modified</th>
-						<th>Active</th>
+						<th><xsl:value-of select="$i18n/active"/></th>
 						<th colspan="3"></th>
 					</tr>
 				</thead>

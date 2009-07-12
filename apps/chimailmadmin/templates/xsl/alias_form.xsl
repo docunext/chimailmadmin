@@ -46,7 +46,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
             </td>
           </tr>
           <tr>
-            <td>Alias</td>
+            <td><xsl:value-of select="$i18n/alias"/></td>
             <td>
               <input type="text" name="alias" value="{$alias_get_by_id/alias}"/>
             </td>

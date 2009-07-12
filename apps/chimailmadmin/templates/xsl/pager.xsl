@@ -34,7 +34,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<script type="text/javascript">
 		$(document).ready(function()
 				{
-						rotate_controls();
+
 						$("#<xsl:value-of select="$my-table"/>")
 						.tablesorter(
 								{
@@ -76,30 +76,33 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		);
 		</script>
 	</xsl:template>
+  <!-- load the javascript -->
+  <xsl:template name="tablesorter-links">
+    <link rel="stylesheet" href="{/_R_/runtime/path_prefix}s/css/blue/style.css"
+      type="text/css"/>
+  </xsl:template>
 
-	<xsl:template name="pager">
-    <xsl:param name="path_prefix">
-			<xsl:value-of select="/_R_/runtime/path_prefix"/>
-		</xsl:param>
-		<xsl:param name="my-table"/>
-
-		<div id="{$my-table}-pager" class="pager">
-			<input id="mypagesize" class="pagesize" type="hidden" name="pagesize" value="16"/>
-			<table>
-				<tr>
-					<td>
-						<img id="ts_first" class="first pointer" alt="&lt;&lt;"/>
-						<img id="ts_prev" class="prev pointer" alt="&lt;"/>
-					</td>
-					<td>
-						<input type="text" class="pagedisplay" size="4" readonly="readonly"/>
-					</td>
-					<td>
-						<img id="ts_next" class="next pointer" alt="&gt;"/>
-						<img id="ts_last" class="last pointer" alt="&gt;&gt;"/>
-					</td>
-				</tr>
-			</table>
-		</div>
-	</xsl:template>
+  <xsl:template name="pager">
+    <xsl:param name="link_prefix"/>
+    <xsl:param name="path_prefix"/>
+    <xsl:param name="my-table"/>
+			<div id="{$my-table}-pager" class="pager">
+      <input id="mypagesize" class="pagesize" type="hidden" name="pagesize" value="20"/>
+      <table>
+        <tr>
+          <td>
+            <img src="{/_R_/runtime/path_prefix}s/css/blue/first.png" class="first"/>
+            <img src="{/_R_/runtime/path_prefix}s/css/blue/prev.png" class="prev"/>
+          </td>
+          <td>
+            <input type="text" class="pagedisplay" size="4" readonly="readonly"/>
+          </td>
+          <td>
+            <img src="{/_R_/runtime/path_prefix}s/css/blue/next.png" class="next"/>
+            <img src="{/_R_/runtime/path_prefix}s/css/blue/last.png" class="last"/>
+          </td>
+        </tr>
+      </table>
+			</div>
+  </xsl:template>
 </xsl:stylesheet>
