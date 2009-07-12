@@ -23,7 +23,6 @@
         id: 'cookie',
         format: function(table) {
             var sortList = table.config.sortList;
-            var pageNum = table.config.page;
             var tablesorterCookieJar = $.cookieJar('tablesorter', {
                 cookie: {
                     path: '/'
@@ -37,19 +36,10 @@
                     jQuery(table).trigger('sorton', [sortList]);
                }
             }
-            
+
+            var pageNum = table.config.page;
             if ( pageNum > 0 ) {
                 tablesorterCookieJar.set($(table).attr('id')+'-page', pageNum);
-            } else {
-               var pageNum = tablesorterCookieJar.get($(table).attr('id')+'-page');
-               if (pageNum && pageNum > 1) {
-                   table.config.page = pageNum;
-                   if(sortList) {
-                       jQuery(table).trigger('sorton', [sortList]);
-                   } else { 
-                       jQuery(table).trigger('sorton', [[[0,0]]]);
-                   }
-               }
             }
         }
     });
