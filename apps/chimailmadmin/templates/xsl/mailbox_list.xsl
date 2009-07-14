@@ -60,7 +60,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			<table id="mailbox_table" class="tablesorter">
 				<thead>
 					<tr>
-						<th><xsl:value-of select="/_R_/i18n/email"/></th>
+						<th><xsl:value-of select="$i18n/email"/></th>
 						<th>Name</th>
 						<th>Last Modified</th>
 						<th>Active</th>

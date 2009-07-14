@@ -34,6 +34,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
   <domains>Domains</domains>
   <domain_list>Domain List</domain_list>
   <domain_groups>Domain Groups</domain_groups>
+  <email>Email</email>
   <add_domain>Add Domain</add_domain>
   <addresses>Email Addresses</addresses>
   <address_list>Address List</address_list>

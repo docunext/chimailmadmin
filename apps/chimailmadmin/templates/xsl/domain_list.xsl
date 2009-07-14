@@ -73,7 +73,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 					<xsl:for-each select="/_R_/domains_get_all/domains_get_all">
 						<tr id="d_{domain_id}">
 							<td>
-								<a href="{$link_prefix}cma-mailbox-list&amp;my_domain_id={domain_id}">
+								<a href="{$link_prefix}cma-mailbox-list&amp;domain_id={domain_id}">
 									<xsl:value-of select="domain"/>
 								</a>
 							</td>
