@@ -110,7 +110,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			<a class="button-basic-{//theme_color}" href="{$link_prefix}cma-domain-edit">New Domain</a>
 		</div>
 		<div style="float: right">
-			<a class="button-basic-{//theme_color}" href="{$link_prefix}x-domain-export">Export</a>
+			<a class="button-basic-{//theme_color}" href="{$link_prefix}x-domain-export">Domain Export</a>
+		</div>
+		<div style="float: right">
+			<a class="button-basic-{//theme_color}" href="{$link_prefix}x-relay-export">Relay Export</a>
 		</div>
 	</xsl:template>
 </xsl:stylesheet>
