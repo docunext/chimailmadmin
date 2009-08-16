@@ -103,19 +103,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
     <div class="table_meta">
       <div style="float: right">
-        <a class="button-basic-{//theme_color}">
-        <xsl:attribute name="href">
-        <xsl:value-of select="$link_prefix"/>
-        <xsl:text>cma-server-edit</xsl:text>
-          <xsl:if test="//_get/domain_id">
-            <xsl:text>&amp;domain_id=</xsl:text>
-            <xsl:value-of select="//_get/domain_id"/>
-          </xsl:if>
-        </xsl:attribute>
-        Add Mailbox</a>
-      </div>
-      <div style="float: right">
-        <a class="button-basic-{//theme_color}" href="{$link_prefix}cma-alias-edit&amp;domain_id={//_get/domain_id}">Add Alias</a>
+        <a class="button-basic-{//theme_color}" href="{$link_prefix}cma-server-edit">
+        Add Server</a>
       </div>
     </div>
 	</xsl:template>
