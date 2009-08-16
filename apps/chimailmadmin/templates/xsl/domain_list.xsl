@@ -105,7 +105,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<xsl:call-template name="pager">
 			<xsl:with-param name="my-table">domain_table</xsl:with-param>
 		</xsl:call-template>
-
 		<div style="float: right">
 			<a class="button-basic-{//theme_color}" href="{$link_prefix}cma-domain-edit">New Domain</a>
 		</div>
