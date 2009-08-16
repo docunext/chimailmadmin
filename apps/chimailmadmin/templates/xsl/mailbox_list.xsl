@@ -117,6 +117,9 @@ Fifth Floor, Boston, MA 02110-1301 USA
       <div style="float: right">
         <a class="button-basic-{//theme_color}" href="{$link_prefix}cma-alias-edit&amp;domain_id={//_get/domain_id}">Add Alias</a>
       </div>
+      <div style="float: right">
+        <a class="button-basic-{//theme_color}" href="{$link_prefix}x-relay-recipients">Recipient Export</a>
+      </div>
     </div>
 	</xsl:template>
 </xsl:stylesheet>

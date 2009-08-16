@@ -24,7 +24,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <xsl:output method="text" encoding="UTF-8" omit-xml-declaration="yes"/>
 <xsl:template match="/">
-
   <xsl:for-each select="/_R_/mailboxes_get_all/mailboxes_get_all">
     <xsl:value-of select="fq_email_address"/><xsl:text>&#160;OK</xsl:text>
     <xsl:text>&#10;</xsl:text>
