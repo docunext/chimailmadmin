@@ -68,6 +68,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<map:action type="pad" params="//domains_get_all/domains_get_all/domain,30, "/>
 		<map:xsl src="templates/txt/domain_export.txt.xsl"/>
 	</map:gate>
+	<map:gate name="x-dkimproxy-export" content_type="text/plain">
+		<map:query src="data/sql/domains_get_all.xml"/>
+		<map:xsl src="templates/txt/dkimproxy.conf.txt.xsl"/>
+	</map:gate>
 
 	<map:gate name="x-relay-export" content_type="text/plain">
 		<map:query src="data/sql/domains_get_all.xml"/>
