@@ -85,8 +85,12 @@ Fifth Floor, Boston, MA 02110-1301  USA
 	<item>
 		<key>cma_tools</key>
 		<item>
-			<key>import</key>
-			<url>cma-import</url>
+			<key>import_aliases</key>
+			<url>cma-import-aliases</url>
+		</item>
+		<item>
+			<key>import_accounts</key>
+			<url>cma-import-accounts</url>
 		</item>
   </item>
 	<item>

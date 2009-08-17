@@ -264,7 +264,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	</map:gate>
 
 
-	<map:gate name="cma-import">
+	<map:gate name="cma-import-aliases">
+		<map:xsl src="templates/xsl/tools_import.xsl"/>
+	</map:gate>
+	<map:gate name="cma-import-accounts">
 		<map:xsl src="templates/xsl/tools_import.xsl"/>
 	</map:gate>
 
