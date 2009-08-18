@@ -62,6 +62,8 @@ CREATE TABLE IF NOT EXISTS `<xsl:value-of select="//table_prefix"/>server` (
   `server_id` int(11) NOT NULL auto_increment,
   `server` varchar(255) NOT NULL default '',
   `description` varchar(255) NOT NULL default '',
+  `server_type_id` <xsl:value-of select="//dbe/integer"/>,
+  `host_name` varchar(255) NOT NULL default '',
   PRIMARY KEY  (`server_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 

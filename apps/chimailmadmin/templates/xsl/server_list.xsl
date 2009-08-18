@@ -76,7 +76,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 								</a>
 							</td>
 							<td>
-								<xsl:value-of select="name"/>
+								<xsl:value-of select="server"/>
 							</td>
 							<td>
 								<xsl:value-of select="created"/>
