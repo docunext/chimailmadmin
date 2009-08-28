@@ -127,11 +127,11 @@ CREATE TABLE IF NOT EXISTS `<xsl:value-of select="//table_prefix"/>vacation` (
 
 <!-- thanks http://wiki.apache.org/spamassassin/UsingSQL -->
 CREATE TABLE `<xsl:value-of select="//table_prefix"/>user_prefs` (
-  `id` int(8) unsigned NOT NULL auto_increment,
+  `pref_id` int(8) unsigned NOT NULL auto_increment,
   `username` varchar(128) NOT NULL default '',
   `preference` varchar(64) NOT NULL default '',
   `value` varchar(128) default NULL,
-  `descript` varchar(128) default NULL,
+  `notes` varchar(128) default NULL,
   `added` datetime NOT NULL default '2003-01-01 00:00:00',
   `added_by` varchar(128) NOT NULL default '',
   `modified` timestamp(14) NOT NULL,
