@@ -28,6 +28,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	<xsl:template name="content">
 		Welcome to ChiMailMadmin.com
 		<h3>Email Information Resources</h3>
-		<xsl:apply-templates select="//email_resources/div"/>
+		<xsl:apply-templates select="//welcome/div"/>
 	</xsl:template>
 </xsl:stylesheet>

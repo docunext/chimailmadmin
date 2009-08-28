@@ -34,6 +34,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
   <add_alias>Add Alias</add_alias>
   <name>Name</name>
   <mailstore_options>Mailstore Options</mailstore_options>
+  <database_options>Database Options</database_options>
   <description>Description</description>
   <destination>Destination</destination>
   <domain>Domain</domain>

@@ -232,7 +232,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	</map:gate>
 
 	<map:gate name="cma-mailstore-options" role="email_admin">
-		<map:xsl src="templates/xsl/welcome.xsl"/>
+		<map:xml src="templates/xhtml/options_mailstore.xhtml"/>
+		<map:xsl src="templates/xsl/options_mailstore.xsl"/>
+	</map:gate>
+	<map:gate name="cma-database-options" role="email_admin">
+		<map:xsl src="templates/xsl/options_database.xsl"/>
 	</map:gate>
 
 
