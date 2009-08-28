@@ -27,8 +27,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
 CREATE TABLE IF NOT EXISTS `<xsl:value-of select="//table_prefix"/>admin` (
   `user_id` int(11) NOT NULL auto_increment,
-  `username` varchar(255) NOT NULL default '',
-  `password` varchar(255) NOT NULL default '',
+  `username` <xsl:value-of select="//dbe/varchar"/>,
+  `password` <xsl:value-of select="//dbe/varchar"/>,
   `created` datetime NOT NULL default '0000-00-00 00:00:00',
   `modified` datetime NOT NULL default '0000-00-00 00:00:00',
   `active` tinyint(1) NOT NULL default '1',
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `<xsl:value-of select="//table_prefix"/>admin` (
 
 CREATE TABLE IF NOT EXISTS `<xsl:value-of select="//table_prefix"/>alias` (
   `alias_id` int(11) NOT NULL auto_increment,
-  `alias` varchar(255) NOT NULL default '',
+  `alias` <xsl:value-of select="//dbe/varchar"/>,
   `destination` text NOT NULL,
   `domain_id` int(11) NOT NULL,
   `created` datetime NOT NULL default '0000-00-00 00:00:00',
@@ -60,23 +60,23 @@ CREATE TABLE IF NOT EXISTS `<xsl:value-of select="//table_prefix"/>config` (
 
 CREATE TABLE IF NOT EXISTS `<xsl:value-of select="//table_prefix"/>server` (
   `server_id` int(11) NOT NULL auto_increment,
-  `server` varchar(255) NOT NULL default '',
-  `description` varchar(255) NOT NULL default '',
+  `server` <xsl:value-of select="//dbe/varchar"/>,
+  `description` <xsl:value-of select="//dbe/varchar"/>,
   `server_type_id` <xsl:value-of select="//dbe/integer"/>,
-  `host_name` varchar(255) NOT NULL default '',
+  `host_name` <xsl:value-of select="//dbe/varchar"/>,
   PRIMARY KEY  (`server_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 
 CREATE TABLE IF NOT EXISTS `<xsl:value-of select="//table_prefix"/>domain` (
   `domain_id` int(11) NOT NULL auto_increment,
-  `domain` varchar(255) NOT NULL default '',
-  `description` varchar(255) NOT NULL default '',
-  `restriction_class` varchar(255) NOT NULL default '',
-  `aliases` int(10) NOT NULL default '0',
-  `mailboxes` int(10) NOT NULL default '0',
-  `maxquota` int(10) NOT NULL default '0',
-  `quota` int(10) NOT NULL default '0',
+  `domain` <xsl:value-of select="//dbe/varchar"/>,
+  `description` <xsl:value-of select="//dbe/varchar"/>,
+  `restriction_class` <xsl:value-of select="//dbe/varchar"/>,
+  `aliases` <xsl:value-of select="//dbe/integer"/>,
+  `mailboxes` <xsl:value-of select="//dbe/integer"/>,
+  `maxquota` <xsl:value-of select="//dbe/integer"/>,
+  `quota` <xsl:value-of select="//dbe/integer"/>,
   `transport` varchar(255) default NULL,
   `backupmx` tinyint(1) NOT NULL default '0',
   `created` datetime NOT NULL default '0000-00-00 00:00:00',
@@ -87,8 +87,8 @@ CREATE TABLE IF NOT EXISTS `<xsl:value-of select="//table_prefix"/>domain` (
 
 
 CREATE TABLE IF NOT EXISTS `<xsl:value-of select="//table_prefix"/>domain_admins` (
-  `username` varchar(255) NOT NULL default '',
-  `domain` varchar(255) NOT NULL default '',
+  `username` <xsl:value-of select="//dbe/varchar"/>,
+  `domain` <xsl:value-of select="//dbe/varchar"/>,
   `created` datetime NOT NULL default '0000-00-00 00:00:00',
   `active` tinyint(1) NOT NULL default '1',
   KEY `username` (`username`)
@@ -98,15 +98,15 @@ CREATE TABLE IF NOT EXISTS `<xsl:value-of select="//table_prefix"/>domain_admins
 CREATE TABLE IF NOT EXISTS `<xsl:value-of select="//table_prefix"/>mailbox` (
   `mailbox_id` int(11) NOT NULL auto_increment,
   `email_address` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL default '',
-  `name` varchar(255) NOT NULL default '',
-  `common_name` varchar(255) NOT NULL default '',
-  `uid` varchar(255) NOT NULL default '',
-  `maildir` varchar(255) NOT NULL default '',
-  `quota` int(10) NOT NULL default '0',
-  `domain_id` int(11) NOT NULL default '0',
-  `uidNumber` int(11) NOT NULL default '0',
-  `gidNumber` int(11) NOT NULL default '0',
+  `password` <xsl:value-of select="//dbe/varchar"/>,
+  `name` <xsl:value-of select="//dbe/varchar"/>,
+  `common_name` <xsl:value-of select="//dbe/varchar"/>,
+  `uid` <xsl:value-of select="//dbe/varchar"/>,
+  `maildir` <xsl:value-of select="//dbe/varchar"/>,
+  `quota` <xsl:value-of select="//dbe/integer"/>,
+  `domain_id` <xsl:value-of select="//dbe/integer"/>,
+  `uidNumber` <xsl:value-of select="//dbe/integer"/>,
+  `gidNumber` <xsl:value-of select="//dbe/integer"/>,
   `created` datetime NOT NULL default '0000-00-00 00:00:00',
   `modified` datetime NOT NULL default '0000-00-00 00:00:00',
   `active` varchar(2) default NULL,
@@ -115,11 +115,11 @@ CREATE TABLE IF NOT EXISTS `<xsl:value-of select="//table_prefix"/>mailbox` (
 
 
 CREATE TABLE IF NOT EXISTS `<xsl:value-of select="//table_prefix"/>vacation` (
-  `email` varchar(255) NOT NULL default '',
-  `subject` varchar(255) NOT NULL default '',
+  `email` <xsl:value-of select="//dbe/varchar"/>,
+  `subject` <xsl:value-of select="//dbe/varchar"/>,
   `body` text NOT NULL,
   `cache` text NOT NULL,
-  `domain` varchar(255) NOT NULL default '',
+  `domain` <xsl:value-of select="//dbe/varchar"/>,
   `created` datetime NOT NULL default '0000-00-00 00:00:00',
   `active` tinyint(1) NOT NULL default '1'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 ;
@@ -148,9 +148,9 @@ CREATE TABLE <xsl:value-of select="//table_prefix"/>access_lists (
   source varchar(128) NOT NULL default '',
   access varchar(128) NOT NULL default '',
   created <xsl:value-of select="//dbe/engine_default_timestamp"/>,
-  notes varchar(255) NOT NULL default '',
+  notes <xsl:value-of select="//dbe/varchar"/>,
   restriction_class varchar(128) NOT NULL default '',
-  domain_id int(11) NOT NULL default '0',
+  domain_id <xsl:value-of select="//dbe/integer"/>,
   postfix_check enum('header','permit') NOT NULL default 'header',
   type enum('recipient','sender','client') NOT NULL default 'recipient',
   PRIMARY KEY  (id)
