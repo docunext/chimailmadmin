@@ -1,0 +1,58 @@
+<!--
+Program: ChiMailMadmin.com
+Component: email_resources.xhtml
+Copyright: Savonix Corporation
+Author: Albert L. Lash, IV
+License: Gnu Affero Public License version 3
+http://www.gnu.org/licenses
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation; either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program; if not, see http://www.gnu.org/licenses
+or write to the Free Software Foundation, Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301 USA
+-->
+<spamassassin_notes>
+<div>
+<p>If using user configuration files instead of SQL, the user does not necessarily need to exist on the machine:</p>
+<pre style="font-size:9px">
+--virtual-config-dir=pattern
+   This option specifies where per-user preferences can be found for virtual users, for the -x switch. The pattern is used as a base pattern for the directory name.
+   Any of the following escapes can be used:
+
+   %u -- replaced with the full name of the current user, as sent by spamc.
+   %l -- replaced with the 'local part' of the current username.  In other words, if the username is an email address, this is the part before the "@" sign.
+   %d -- replaced with the 'domain' of the current username.  In other words, if the username is an email address, this is the part after the "@" sign.
+   %% -- replaced with a single percent sign (%).
+
+   So for example, if "/vhome/users/%u/spamassassin" is specified, and spamc sends a virtual username of "jm@example.com", the directory
+   "/vhome/users/jm@example.com/spamassassin" will be used.
+
+   The set of characters allowed in the virtual username for this path are restricted to:
+
+           A-Z a-z 0-9 - + _ . , @ =
+
+   All others will be replaced by underscores ("_").
+
+   This path must be a writable directory.  It will be created if it does not already exist.  If a file called user_prefs exists in this directory (note: not in a
+   ".spamassassin" subdirectory!), it will be loaded as the user's preferences.  The Bayes databases for that user will be stored in this directory.
+
+   Note that this requires that -x is used, and cannot be combined with SQL- or LDAP-based configuration.
+
+   The pattern must expand to an absolute directory when spamd is running daemonized (-d).
+
+   Currently, use of this without -u is not supported. This inhibits setuid.
+</pre>
+<p>Question: is it worthwhile to use user-specific bayes databases? I can't imagine there being enough of a corpus to be effective.</p>
+
+</div>
+</spamassassin_notes>
