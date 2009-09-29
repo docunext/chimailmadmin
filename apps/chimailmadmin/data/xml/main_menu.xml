@@ -116,4 +116,15 @@ Fifth Floor, Boston, MA 02110-1301  USA
 			<url>cma-interface-options</url>
 		</item>
 	</item>
+	<item>
+		<key>cma_help</key>
+		<item>
+			<key>about_cma</key>
+			<url>cma-about</url>
+		</item>
+		<item>
+			<key>email_resources</key>
+			<url>cma-email-resources</url>
+		</item>
+  </item>
 </menu>
