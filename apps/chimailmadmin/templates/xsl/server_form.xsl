@@ -33,15 +33,40 @@ Fifth Floor, Boston, MA 02110-1301 USA
       <xsl:if test="//_get/server_id">
         <input type="hidden" name="server_id" value="{//_get/server_id}"/>
       </xsl:if>
-      <input type="text" name="server" value="Server name"/><br/>
-      <input type="text" name="host_name" value="Host name"/><br/>
-      <select name="server_type">
+      <table>
+      <tbody>
+      <tr>
+      <th>Server name</th>
+      <td>
+        <input type="text" name="server" value="{//servers_get_all/server}"/>
+      </td>
+      </tr>
+      <tr>
+      <th>Host name</th>
+      <td>
+        <input type="text" name="host_name" value="{//servers_get_all/host_name}"/>
+      </td>
+      </tr>
+      <tr>
+      <th>Server type</th>
+      <td>
+      <select name="server_type_id">
         <xsl:for-each select="//server_type/server_type">
-          <option value="{@id}"><xsl:value-of select="label"/></option>
+          <option value="{@id}">
+            <xsl:if test="//servers_get_all/server_type_id=@id"><xsl:attribute name="selected">selected</xsl:attribute></xsl:if>
+            <xsl:value-of select="label"/>
+          </option>
         </xsl:for-each>
       </select>
-      <br/>
+      </td>
+      </tr>
+      <tr>
+      <td colspan="2">
       <input type="submit"/>
+      </td>
+      </tr>
+      </tbody>
+      </table>
     </form>
 	</xsl:template>
 </xsl:stylesheet>

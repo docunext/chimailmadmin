@@ -60,8 +60,10 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			<table id="server_table" class="tablesorter">
 				<thead>
 					<tr>
+						<th>ID</th>
 						<th>Server</th>
-						<th>Name</th>
+						<th>Host Name</th>
+						<th>Type</th>
 						<th>Last Modified</th>
 						<th>Active</th>
 						<th colspan="3"></th>
@@ -77,6 +79,12 @@ Fifth Floor, Boston, MA 02110-1301 USA
 							</td>
 							<td>
 								<xsl:value-of select="server"/>
+							</td>
+							<td>
+								<xsl:value-of select="host_name"/>
+							</td>
+							<td>
+								<xsl:value-of select="server_type_id"/>
 							</td>
 							<td>
 								<xsl:value-of select="created"/>

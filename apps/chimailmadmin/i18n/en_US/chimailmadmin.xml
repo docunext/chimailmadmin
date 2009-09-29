@@ -32,6 +32,7 @@ Fifth Floor, Boston, MA 02110-1301  USA
   <add_mailbox>Add Mailbox</add_mailbox>
   <alias_list>Alias List</alias_list>
   <add_alias>Add Alias</add_alias>
+  <backup_mx>Backup MX</backup_mx>
   <name>Name</name>
   <mailstore_options>Mailstore Options</mailstore_options>
   <database_options>Database Options</database_options>
@@ -50,11 +51,13 @@ Fifth Floor, Boston, MA 02110-1301  USA
   <access_lists>Access Lists</access_lists>
   <spamassassin>Spamassassin</spamassassin>
   <dspam>DSpam</dspam>
+  <gateway>Gateway</gateway>
   <gld>GLD</gld>
   <last_modified>Last Modified</last_modified>
   <mailbox>Mailbox</mailbox>
   <mailboxes>Mailboxes</mailboxes>
   <password>Password</password>
+  <primary_mx>Primary MX</primary_mx>
   <number_of_records>Number of records</number_of_records>
   <upload_options>Upload Options</upload_options>
   <image_options>Image Options</image_options>
