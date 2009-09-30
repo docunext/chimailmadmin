@@ -98,17 +98,23 @@ return confirm ('Do you really want to delete all records for this domain? This 
     </tbody>
   </table>
 </div>
+
 <xsl:call-template name="pager">
   <xsl:with-param name="my-table">domain_table</xsl:with-param>
 </xsl:call-template>
-<div style="float: right">
-  <a class="button-basic-{//theme_color}" href="{$link_prefix}cma-domain-edit">New Domain</a>
+
+<div style="float: right" class="button-basic-{//theme_color}">
+  <a href="{$link_prefix}cma-domain-edit">
+    <span id="i18n-new_domain">New Domain</span>
+  </a>
+  <a href="{$link_prefix}x-domain-export">
+    <span id="i18n-domain_export">Domain Export</span>
+  </a>
+  <a href="{$link_prefix}x-relay-export">
+    <span id="i18n-relay_export">Relay Export</span>
+  </a>
 </div>
-<div style="float: right">
-  <a class="button-basic-{//theme_color}" href="{$link_prefix}x-domain-export">Domain Export</a>
-</div>
-<div style="float: right">
-  <a class="button-basic-{//theme_color}" href="{$link_prefix}x-relay-export">Relay Export</a>
-</div>
-	</xsl:template>
+
+
+  </xsl:template>
 </xsl:stylesheet>
