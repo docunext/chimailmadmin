@@ -56,12 +56,24 @@ return confirm ('Do you really want to delete all records for this domain? This 
   <table id="domain_table" class="tablesorter">
     <thead>
       <tr>
-        <th>Domain</th>
-        <th>Description</th>
-        <th>Aliases</th>
-        <th>Mailboxes</th>
-        <th>Last Modified</th>
-        <th>Active</th>
+        <th>
+          <span id="i18n-domain">Domain</span>
+        </th>
+        <th>
+          <span id="i18n-description">Description</span>
+        </th>
+        <th>
+          <span id="i18n-aliases">Aliases</span>
+        </th>
+        <th>
+          <span id="i18n-mailboxes">Mailboxes</span>
+        </th>
+        <th>
+          <span id="i18n-last_modified">Last Modified</span>
+        </th>
+        <th>
+          <span id="i18n-active">Active</span>
+        </th>
         <th colspan="2" class="{{sorter: false}}" />
       </tr>
     </thead>
@@ -87,11 +99,15 @@ return confirm ('Do you really want to delete all records for this domain? This 
             </a>
           </td>
           <td>
-            <a href="{$link_prefix}cma-domain-edit&amp;my_domain_id={domain_id}">edit</a>
+            <a href="{$link_prefix}cma-domain-edit&amp;my_domain_id={domain_id}">
+              <span>edit</span>
+            </a>
           </td>
           <td>
-            <a href="{$link_prefix}x-domain-delete&amp;my_domain_id={domain_id}"
-              onclick="domain_delete({domain_id}); return false;">del</a>
+            <a href="#x-domain-delete&amp;my_domain_id={domain_id}"
+            onclick="domain_delete({domain_id}); return false;">
+              <span>del</span>
+            </a>
           </td>
         </tr>
       </xsl:for-each>
