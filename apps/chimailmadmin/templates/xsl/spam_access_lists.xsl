@@ -40,24 +40,14 @@ Fifth Floor, Boston, MA 02110-1301 USA
         }
 			</xsl:with-param>
 		</xsl:call-template>
-		<script type="text/javascript">
-		function acl_delete(acl_id,row) {
-				if(confirm('Are you sure?')){
-				$.post("<xsl:value-of select="$link_prefix"/>x-cma-access-delete&amp;acl_id="+acl_id,
-				{
-						'acl_id': acl_id
-				},
-				function (data){
-          $("#acl_"+acl_id).remove();
-				});
-				}
-		}
-		</script>
+    <script type="text/javascript" src="{$link_prefix}x-acl-delete-js"></script>
 		<div id="tableframe">
 			<table id="access_table" class="tablesorter">
 				<thead>
 					<tr>
-						<th>Key</th>
+						<th>
+						  <span id="i18n-key">Key</span>
+            </th>
 						<th>Value</th>
 						<th>Type</th>
 						<th>Date</th>

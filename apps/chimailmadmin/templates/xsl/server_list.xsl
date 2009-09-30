@@ -33,29 +33,16 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<xsl:call-template name="jquery-setup">
 			<xsl:with-param name="my-table">server_table</xsl:with-param>
 			<xsl:with-param name="no-sort-column">,
+        <xsl:text>
         headers: {
             5: {sorter: false},
             6: {sorter: false},
             7: {sorter: false}
         }
+        </xsl:text>
 			</xsl:with-param>
 		</xsl:call-template>
-		<script type="text/javascript">
-		function server_delete(server_id) {
-				if(confirm('Are you sure?')){
-				$.post("<xsl:value-of select="$link_prefix"/>x-server-delete&amp;server_id="+server_id,
-				{
-						'server_id': server_id
-				},
-				function (data){
-          $("#srv_"+server_id).remove();
-				});
-				}
-		}
-		</script>
-		<h4>
-      Mailboxen for <xsl:value-of select="//domains_get_all/domains_get_all[domain_id=//_get/domain_id]/domain"/>
-		</h4>
+    <script type="text/javascript" src="{$link_prefix}x-server-delete-js"></script>
 		<div id="tableframe">
 			<table id="server_table" class="tablesorter">
 				<thead>
@@ -67,9 +54,15 @@ Fifth Floor, Boston, MA 02110-1301 USA
 						<th>
 						  <span id="i18n-host_name">Host Name</span>
             </th>
-						<th><span id="i18n-type">Type</span></th>
-						<th><span id="i18n-last_modified">Last Modified</span></th>
-						<th><span id="i18n-active">Active</span></th>
+						<th>
+						  <span id="i18n-type">Type</span>
+						</th>
+						<th>
+						  <span id="i18n-last_modified">Last Modified</span>
+            </th>
+						<th>
+						  <span id="i18n-active">Active</span>
+            </th>
 						<th colspan="3" />
 					</tr>
 				</thead>
