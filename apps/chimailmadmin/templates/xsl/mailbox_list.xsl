@@ -54,17 +54,17 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		}
 		</script>
 		<h4>
-      Mailboxen for <xsl:value-of select="//domains_get_all/domains_get_all[domain_id=//_get/domain_id]/domain"/>
+      <span id="i18n-mailboxes_for">Mailboxes for</span> <xsl:value-of select="//domains_get_all/domains_get_all[domain_id=//_get/domain_id]/domain"/>
 		</h4>
 		<div id="tableframe">
 			<table id="mailbox_table" class="tablesorter">
 				<thead>
-					<tr>
-						<th><xsl:value-of select="$i18n/email"/></th>
-						<th>Name</th>
-						<th>Last Modified</th>
-						<th>Active</th>
-						<th colspan="3"></th>
+					<tr class="i18n_top">
+						<th><span id="i18n-email">Email</span></th>
+						<th><span id="i18n-name">Name</span></th>
+						<th><span id="i18n-last_modified">Last Modified</span></th>
+						<th><span id="i18n-active">Active</span></th>
+						<th colspan="3" />
 					</tr>
 				</thead>
 				<tbody>
@@ -81,14 +81,16 @@ Fifth Floor, Boston, MA 02110-1301 USA
 							<td>
 								<xsl:value-of select="created"/>
 							</td>
+							<td/>
 							<td>
+								<a href="{$link_prefix}cma-mailbox-edit&amp;mailbox_id={mailbox_id}">
+								  <span id="i18n_edit" class="i18n">edit</span>
+                </a>
 							</td>
 							<td>
-								<a href="{$link_prefix}cma-mailbox-edit&amp;mailbox_id={mailbox_id}">edit</a>
-							</td>
-							<td>
-								<a href="{$link_prefix}"
-									onclick="mailbox_delete({mailbox_id}); return false;">del</a>
+								<a href="{$link_prefix}" onclick="mailbox_delete({mailbox_id}); return false;">
+								  <span id="i18n_del" class="i18n">del</span>
+                </a>
 							</td>
 						</tr>
 					</xsl:for-each>
@@ -105,20 +107,23 @@ Fifth Floor, Boston, MA 02110-1301 USA
       <div style="float: right">
         <a class="button-basic-{//theme_color}">
         <xsl:attribute name="href">
-        <xsl:value-of select="$link_prefix"/>
+        <xsl:value-of select="$link_prefix" />
         <xsl:text>cma-mailbox-edit</xsl:text>
           <xsl:if test="//_get/domain_id">
             <xsl:text>&amp;domain_id=</xsl:text>
             <xsl:value-of select="//_get/domain_id"/>
           </xsl:if>
         </xsl:attribute>
-        Add Mailbox</a>
-      </div>
-      <div style="float: right">
-        <a class="button-basic-{//theme_color}" href="{$link_prefix}cma-alias-edit&amp;domain_id={//_get/domain_id}">Add Alias</a>
-      </div>
-      <div style="float: right">
-        <a class="button-basic-{//theme_color}" href="{$link_prefix}x-relay-recipients">Recipient Export</a>
+          <span id="i18n-add_mailbox" class="i18n">Add Mailbox</span>
+        </a>
+
+        <a class="button-basic-{//theme_color}" href="{$link_prefix}cma-alias-edit&amp;domain_id={//_get/domain_id}">
+          <span id="i18n-add_alias" class="i18n">Add Alias</span>
+        </a>
+
+        <a class="button-basic-{//theme_color}" href="{$link_prefix}x-relay-recipients">
+          <span id="i18n-recipient_export" class="i18n">Recipient Export</span>
+        </a>
       </div>
     </div>
 	</xsl:template>
