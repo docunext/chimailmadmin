@@ -122,7 +122,7 @@ table {
 <xsl:param name="button-name"/>
 <xsl:param name="background-color"/>
 <xsl:param name="color"/>
-.button-<xsl:value-of select="$button-name"/>
+.button-<xsl:value-of select="$button-name"/> a
 {
     padding: .2em .4em;
     background-color: <xsl:value-of select="$background-color"/>;
