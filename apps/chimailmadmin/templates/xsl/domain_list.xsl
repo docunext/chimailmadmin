@@ -30,89 +30,85 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
     <xsl:param name="i18n"/>
-		<xsl:call-template name="jquery-setup">
-			<xsl:with-param name="my-table">domain_table</xsl:with-param>
-			<xsl:with-param name="no-sort-column">,
-			headers: {
-					5: {sorter: false},
-					6: {sorter: false},
-					7: {sorter: false}
-			}
-			</xsl:with-param>
-		</xsl:call-template>
-		<script type="text/javascript">
-		function domain_delete(domain_id) {
-				if(confirm('Are you sure?')){
-				$.post("<xsl:value-of select="$link_prefix"/>x-domain-delete&amp;domain_id="+domain_id,
-				{
-						'domain_id': domain_id
-				},
-				function (data){
-          $("#d_"+domain_id).remove();
-				});
-				}
-		}
-		</script>
-		<!-- 
-		return confirm ('Do you really want to delete all records for this domain? This can not be undone!\nDomain: test.com')
-		-->
-		<div class="tableframe">
-			<table id="domain_table" class="tablesorter">
-				<thead>
-					<tr>
-						<th>Domain</th>
-						<th>Description</th>
-						<th>Aliases</th>
-						<th>Mailboxes</th>
-						<th>Last Modified</th>
-						<th>Active</th>
-						<th colspan="2"></th>
-					</tr>
-				</thead>
-				<tbody>
-					<xsl:for-each select="/_R_/domains_get_all/domains_get_all">
-						<tr id="d_{domain_id}">
-							<td>
-								<a href="{$link_prefix}cma-mailbox-list&amp;domain_id={domain_id}">
-									<xsl:value-of select="domain"/>
-								</a>
-							</td>
-							<td>
-								<xsl:value-of select="description"/>
-							</td>
-							<td></td>
-							<td></td>
-							<td>
-								<xsl:value-of select="modified"/>
-							</td>
-							<td>
-								<a href="{$link_prefix}">
-									<xsl:value-of select="active"/>
-								</a>
-							</td>
-							<td>
-								<a href="{$link_prefix}cma-domain-edit&amp;my_domain_id={domain_id}">edit</a>
-							</td>
-							<td>
-								<a href="{$link_prefix}x-domain-delete&amp;my_domain_id={domain_id}"
-									onclick="domain_delete({domain_id}); return false;">del</a>
-							</td>
-						</tr>
-					</xsl:for-each>
-				</tbody>
-			</table>
-		</div>
-		<xsl:call-template name="pager">
-			<xsl:with-param name="my-table">domain_table</xsl:with-param>
-		</xsl:call-template>
-		<div style="float: right">
-			<a class="button-basic-{//theme_color}" href="{$link_prefix}cma-domain-edit">New Domain</a>
-		</div>
-		<div style="float: right">
-			<a class="button-basic-{//theme_color}" href="{$link_prefix}x-domain-export">Domain Export</a>
-		</div>
-		<div style="float: right">
-			<a class="button-basic-{//theme_color}" href="{$link_prefix}x-relay-export">Relay Export</a>
-		</div>
+
+
+<script type="text/javascript"
+src="{$link_prefix}x-tablesorter-setup-js&amp;selector=domain_table" />
+
+
+<script type="text/javascript">
+function domain_delete(domain_id) {
+    if(confirm('Are you sure?')){
+    $.post("<xsl:value-of select="$link_prefix"/>x-domain-delete&amp;domain_id="+domain_id,
+    {
+        'domain_id': domain_id
+    },
+    function (data){
+      $("#d_"+domain_id).remove();
+    });
+    }
+}
+</script>
+<!-- 
+return confirm ('Do you really want to delete all records for this domain? This can not be undone!\nDomain: test.com')
+-->
+<div class="tableframe">
+  <table id="domain_table" class="tablesorter">
+    <thead>
+      <tr>
+        <th>Domain</th>
+        <th>Description</th>
+        <th>Aliases</th>
+        <th>Mailboxes</th>
+        <th>Last Modified</th>
+        <th>Active</th>
+        <th colspan="2" class="{{sorter: false}}" />
+      </tr>
+    </thead>
+    <tbody>
+      <xsl:for-each select="/_R_/domains_get_all/domains_get_all">
+        <tr id="d_{domain_id}">
+          <td>
+            <a href="{$link_prefix}cma-mailbox-list&amp;domain_id={domain_id}">
+              <xsl:value-of select="domain"/>
+            </a>
+          </td>
+          <td>
+            <xsl:value-of select="description"/>
+          </td>
+          <td></td>
+          <td></td>
+          <td>
+            <xsl:value-of select="modified"/>
+          </td>
+          <td>
+            <a href="{$link_prefix}">
+              <xsl:value-of select="active"/>
+            </a>
+          </td>
+          <td>
+            <a href="{$link_prefix}cma-domain-edit&amp;my_domain_id={domain_id}">edit</a>
+          </td>
+          <td>
+            <a href="{$link_prefix}x-domain-delete&amp;my_domain_id={domain_id}"
+              onclick="domain_delete({domain_id}); return false;">del</a>
+          </td>
+        </tr>
+      </xsl:for-each>
+    </tbody>
+  </table>
+</div>
+<xsl:call-template name="pager">
+  <xsl:with-param name="my-table">domain_table</xsl:with-param>
+</xsl:call-template>
+<div style="float: right">
+  <a class="button-basic-{//theme_color}" href="{$link_prefix}cma-domain-edit">New Domain</a>
+</div>
+<div style="float: right">
+  <a class="button-basic-{//theme_color}" href="{$link_prefix}x-domain-export">Domain Export</a>
+</div>
+<div style="float: right">
+  <a class="button-basic-{//theme_color}" href="{$link_prefix}x-relay-export">Relay Export</a>
+</div>
 	</xsl:template>
 </xsl:stylesheet>
