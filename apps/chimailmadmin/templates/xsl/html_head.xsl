@@ -40,6 +40,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 			<!-- <script type="text/javascript" src="{$link_prefix}x-dynamic-js"></script> -->
 			<script type="text/javascript" src="{$link_prefix}x-xhtml2dom-js"></script>
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.rotate.js"></script>
+			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.metadata.js"></script>
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.tablesorter.min.js"></script>
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.tablesorter.pager.js"></script>
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.dimensions.js"></script>

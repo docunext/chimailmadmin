@@ -29,6 +29,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
     <xsl:param name="i18n"/>
+
+
     <form method="post">
       <xsl:if test="//_get/server_id">
         <input type="hidden" name="server_id" value="{//_get/server_id}"/>
@@ -36,21 +38,28 @@ Fifth Floor, Boston, MA 02110-1301 USA
       <table>
       <tbody>
       <tr>
-      <th><xsl:value-of select="$i18n/server"/> name</th>
+        <th>
+          <span class="i18n-server_name">Server name</span>
+        </th>
         <td>
           <input type="text" name="server" value="{//servers_get_all/server}"/>
         </td>
       </tr>
       <tr>
-      <th><xsl:value-of select="$i18n/host"/> name</th>
+        <th>
+          <span class="i18n-host_name">Host name</span>
+        </th>
         <td>
           <input type="text" name="host_name" value="{//servers_get_all/host_name}"/>
         </td>
       </tr>
       <tr>
-      <th><xsl:value-of select="$i18n/server"/> type</th>
+        <th>
+          <span class="i18n-server_type">Server type</span>
+        </th>
         <td>
           <select name="server_type_id">
+
             <xsl:for-each select="//server_type/server_type">
               <option value="{@id}">
                 <xsl:if test="//servers_get_all/server_type_id=@id">
@@ -59,6 +68,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
                 <xsl:value-of select="label"/>
               </option>
             </xsl:for-each>
+
           </select>
         </td>
       </tr>
@@ -70,5 +80,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
       </tbody>
       </table>
     </form>
+
 	</xsl:template>
 </xsl:stylesheet>

@@ -30,87 +30,90 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
     <xsl:param name="i18n"/>
-		<xsl:call-template name="jquery-setup">
-			<xsl:with-param name="my-table">server_table</xsl:with-param>
-			<xsl:with-param name="no-sort-column">,
-        <xsl:text>
-        headers: {
-            5: {sorter: false},
-            6: {sorter: false},
-            7: {sorter: false}
-        }
-        </xsl:text>
-			</xsl:with-param>
-		</xsl:call-template>
-    <script type="text/javascript" src="{$link_prefix}x-server-delete-js"></script>
-		<div id="tableframe">
-			<table id="server_table" class="tablesorter">
-				<thead>
-					<tr class="i18n_top">
-						<th>ID</th>
-						<th>
-						  <span id="i18n-server">Server</span>
-            </th>
-						<th>
-						  <span id="i18n-host_name">Host Name</span>
-            </th>
-						<th>
-						  <span id="i18n-type">Type</span>
-						</th>
-						<th>
-						  <span id="i18n-last_modified">Last Modified</span>
-            </th>
-						<th>
-						  <span id="i18n-active">Active</span>
-            </th>
-						<th colspan="3" />
-					</tr>
-				</thead>
-				<tbody>
-					<xsl:for-each select="//servers_get_all/servers_get_all">
-						<tr id="srv_{server_id}">
-							<td>
-								<a href="{$link_prefix}cma-server-edit&amp;server_id={server_id}">
-									<xsl:value-of select="server_id"/>
-								</a>
-							</td>
-							<td>
-								<xsl:value-of select="server"/>
-							</td>
-							<td>
-								<xsl:value-of select="host_name"/>
-							</td>
-							<td>
-								<xsl:value-of select="server_type_id"/>
-							</td>
-							<td>
-								<xsl:value-of select="created"/>
-							</td>
-							<td />
-							<td>
-								<a href="{$link_prefix}cma-server-edit&amp;server_id={server_id}">edit</a>
-							</td>
-							<td>
-								<a href="{$link_prefix}"
-									onclick="server_delete({server_id}); return false;">del</a>
-							</td>
-						</tr>
-					</xsl:for-each>
-				</tbody>
-			</table>
-		</div>
-    <div class="table_controls">
-      <xsl:call-template name="pager">
-        <xsl:with-param name="my-table">server_table</xsl:with-param>
-      </xsl:call-template>
-		</div>
 
-    <div class="table_meta">
-      <div style="float: right">
-        <a class="button-basic-{//theme_color}" href="{$link_prefix}cma-server-edit">
-          <span id="i18n-add_server">Add Server</span>
-        </a>
-      </div>
-    </div>
+
+<script type="text/javascript" src="{$link_prefix}x-server-delete-js" />
+<script type="text/javascript"
+src="{$link_prefix}x-tablesorter-setup-js&amp;selector=server_table" />
+
+
+<div id="tableframe">
+  <table id="server_table" class="tablesorter">
+    <thead>
+      <tr class="i18n_top">
+        <th>ID</th>
+        <th>
+          <span id="i18n-server">Server</span>
+        </th>
+        <th>
+          <span id="i18n-host_name">Host Name</span>
+        </th>
+        <th>
+          <span id="i18n-type">Type</span>
+        </th>
+        <th>
+          <span id="i18n-last_modified">Last Modified</span>
+        </th>
+        <th>
+          <span id="i18n-active">Active</span>
+        </th>
+        <th colspan="2" class="{{sorter: false}}" />
+      </tr>
+    </thead>
+    <tbody>
+      <xsl:for-each select="//servers_get_all/servers_get_all">
+        <tr id="srv_{server_id}">
+          <td>
+            <a href="{$link_prefix}cma-server-edit&amp;server_id={server_id}">
+              <xsl:value-of select="server_id"/>
+            </a>
+          </td>
+          <td>
+            <xsl:value-of select="server"/>
+          </td>
+          <td>
+            <xsl:value-of select="host_name"/>
+          </td>
+          <td>
+            <xsl:value-of select="server_type_id"/>
+          </td>
+          <td>
+            <xsl:value-of select="created"/>
+          </td>
+          <td />
+          <td>
+            <a href="{$link_prefix}cma-server-edit&amp;server_id={server_id}">
+              <span class="i18n-edit">edit</span>
+            </a>
+          </td>
+          <td>
+            <a href="#" onclick="server_delete({server_id}); return false;">
+              <span class="i18n-del">del</span>
+            </a>
+          </td>
+        </tr>
+      </xsl:for-each>
+    </tbody>
+  </table>
+</div>
+
+
+<div class="table_controls">
+  <xsl:call-template name="pager">
+    <xsl:with-param name="my-table">server_table</xsl:with-param>
+  </xsl:call-template>
+</div>
+
+
+<div class="table_meta">
+  <div style="float: right" class="button-basic-{//theme_color}">
+    <a href="{$link_prefix}cma-server-edit">
+      <span id="i18n-add_server">Add Server</span>
+    </a>
+  </div>
+</div>
+
+
+
 	</xsl:template>
 </xsl:stylesheet>

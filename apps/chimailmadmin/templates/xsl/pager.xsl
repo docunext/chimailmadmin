@@ -31,27 +31,29 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<xsl:param name="my-sort-column"/>
 		<xsl:param name="no-sort-column"/>
 		<xsl:param name="my-page-num">0</xsl:param>
-		<script type="text/javascript">
-		$(document).ready(function()
-				{
-
-						$("#<xsl:value-of select="$my-table"/>")
-						.tablesorter(
-								{
-										widgets:['zebra','cookie']
-										<xsl:value-of select="$my-sort-column"/>
-										<xsl:value-of select="$no-sort-column"/>
-								}
-						)
-						.tablesorterPager(
-								{
-										container: $("#<xsl:value-of select="$my-table"/>-pager"),
-										size: 16,
-                    positionFixed: false
-								}
-						);
-				}
-		);
+<script type="text/javascript">
+<xsl:text>
+$(document).ready(function()
+    {
+        $("#</xsl:text><xsl:value-of select="$my-table"/><xsl:text>")
+        .tablesorter(
+            {
+                widgets:['zebra','cookie']</xsl:text>
+                <xsl:value-of select="$my-sort-column"/>
+                <xsl:value-of select="$no-sort-column"/>
+                <xsl:text>
+            }
+        )
+        .tablesorterPager(
+            {
+                container: $("#</xsl:text><xsl:value-of select="$my-table"/><xsl:text>-pager"),
+                size: 16,
+                positionFixed: false
+            }
+        );
+    }
+);
+</xsl:text>
 		</script>
 		</xsl:template>
 
