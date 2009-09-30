@@ -1,6 +1,6 @@
 <!--
-Program: ChiMailMadmin.com
-Component: main_menu.xsl
+Program: Chimailmadmin.com
+Component: common.js.xsl
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -24,44 +24,11 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <xsl:stylesheet version="1.0"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 	xmlns="http://www.w3.org/1999/xhtml">
-	<xsl:include href="html_shell.xsl"/>
-	<xsl:template name="main_menu">
-
-
-<ul id="nav">
-  <xsl:for-each select="//menu/item[not(@active=0)]">
-    <xsl:call-template name="button">
-      <xsl:with-param name="key">
-        <xsl:value-of select="key"/>
-      </xsl:with-param>
-    </xsl:call-template>
-  </xsl:for-each>
-</ul>
-
-
+	<xsl:output method="text" indent="yes" encoding="UTF-8" omit-xml-declaration="yes"/>
+	<xsl:template match="/">
+$(document).ready(function()
+{
+    $('#nav').droppy();
+});
 	</xsl:template>
-
-
-
-
-  <xsl:template name="button">
-    <xsl:param name="key"/>
-
-
-<li>
-  <div><xsl:value-of select="/_R_/i18n/*[local-name()=$key]"/></div>
-  <ul>
-    <xsl:for-each select="/_R_/menu/item[key=$key]/item">
-      <xsl:variable name="my_key" select="key"/>
-      <li>
-        <a href="{/_R_/runtime/link_prefix}{url}" id="{key}">
-          <xsl:value-of select="/_R_/i18n/*[local-name()=$my_key]"/>
-        </a>
-      </li>
-    </xsl:for-each>
-  </ul>
-</li>
-
-
-  </xsl:template>
 </xsl:stylesheet>
