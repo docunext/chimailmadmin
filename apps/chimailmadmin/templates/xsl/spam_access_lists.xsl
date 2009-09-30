@@ -39,7 +39,7 @@ src="{$link_prefix}x-tablesorter-setup-js&amp;selector=access_table" />
 <div id="tableframe">
   <table id="access_table" class="tablesorter">
     <thead>
-      <tr>
+      <tr class="i18n_top">
         <th>
           <span id="i18n-key">Key</span>
         </th>

@@ -38,7 +38,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
           <input type="hidden" name="domain_id" value="{//_get/domain_id}"/>
         </xsl:if>
         <xsl:variable name="alias_get_by_id"
-          select="//alias_get_all/alias_get_all"/>
+        select="//alias_get_all/alias_get_all"/>
         <table>
           <tr>
             <td colspan="3">
