@@ -59,14 +59,18 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<div id="tableframe">
 			<table id="server_table" class="tablesorter">
 				<thead>
-					<tr>
+					<tr class="i18n_top">
 						<th>ID</th>
-						<th>Server</th>
-						<th>Host Name</th>
-						<th>Type</th>
-						<th>Last Modified</th>
-						<th>Active</th>
-						<th colspan="3"></th>
+						<th>
+						  <span id="i18n-server">Server</span>
+            </th>
+						<th>
+						  <span id="i18n-host_name">Host Name</span>
+            </th>
+						<th><span id="i18n-type">Type</span></th>
+						<th><span id="i18n-last_modified">Last Modified</span></th>
+						<th><span id="i18n-active">Active</span></th>
+						<th colspan="3" />
 					</tr>
 				</thead>
 				<tbody>
@@ -89,8 +93,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 							<td>
 								<xsl:value-of select="created"/>
 							</td>
-							<td>
-							</td>
+							<td />
 							<td>
 								<a href="{$link_prefix}cma-server-edit&amp;server_id={server_id}">edit</a>
 							</td>
@@ -112,7 +115,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <div class="table_meta">
       <div style="float: right">
         <a class="button-basic-{//theme_color}" href="{$link_prefix}cma-server-edit">
-        Add Server</a>
+          <span id="i18n-add_server">Add Server</span>
+        </a>
       </div>
     </div>
 	</xsl:template>
