@@ -29,115 +29,138 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
     <xsl:param name="i18n"/>
-    <script type="text/javascript" src="{$path_prefix}s/js/common_functions.js"/>
 
-		<div id="edit_form">
-			<form name="mailbox" method="post">
-				<xsl:if test="//_get/my_domain_id">
-					<input type="hidden" name="domain_id" value="{//_get/domain_id}"/>
-				</xsl:if>
-				<xsl:if test="//_get/mailbox_id">
-					<input type="hidden" name="mailbox_id" value="{//_get/mailbox_id}"/>
-				</xsl:if>
-				<xsl:variable name="mailbox_get_by_id"
-					select="//mailbox_get_by_id/mailbox_get_by_id"/>
-				<table>
-					<tr>
-						<td>Email Address</td>
-						<td>
-							<input type="text" name="email_address" id="email_address" value="{$mailbox_get_by_id/email_address}" onkeyup="copyValue('email_address','username')"/>
-						</td>
-						<td>
-							<xsl:if test="//_get/my_domain_id">
-								@<xsl:value-of select="//domains_get_all/domains_get_all[domain_id=//_get/domain_id]/domain"/>
-							</xsl:if>
-							<xsl:if test="not(//_get/my_domain_id)">
-								@<select name="domain_id">
-									<xsl:for-each select="//domains_get_all/domains_get_all">
-										<option value="{domain_id}">
-											<xsl:if test="$mailbox_get_by_id/domain_id=domain_id">
-												<xsl:attribute name="selected">selected</xsl:attribute>
-											</xsl:if>
-											<xsl:value-of select="domain"/>
-										</option>
-									</xsl:for-each>
-								</select>
-							</xsl:if>
-						</td>
-					</tr>
-					<tr>
-						<td>Username</td>
-						<td>
-							<input type="test" name="username" id="username"/>
-						</td>
-					</tr>
-					<xsl:if test="//_get/mailbox_id">
-					<tr>
-						<td>Reset Password</td>
-						<td>
-						</td>
-					</tr>
+
+<script type="text/javascript" src="{$path_prefix}s/js/common_functions.js"/>
+
+<div id="edit_form">
+  <form name="mailbox" method="post">
+
+    <xsl:if test="//_get/my_domain_id">
+      <input type="hidden" name="domain_id" value="{//_get/domain_id}"/>
+    </xsl:if>
+
+    <xsl:if test="//_get/mailbox_id">
+      <input type="hidden" name="mailbox_id" value="{//_get/mailbox_id}"/>
+    </xsl:if>
+
+    <xsl:variable name="mailbox_get_by_id"
+    select="//mailbox_get_by_id/mailbox_get_by_id"/>
+
+    <table>
+      <tr>
+        <td>
+          <span class="i18n-email_address">Email Address</span>
+        </td>
+        <td>
+          <input type="text" name="email_address" id="email_address"
+          value="{$mailbox_get_by_id/email_address}"
+          onkeyup="copyValue('email_address','username')"/>
+        </td>
+        <td>
+          <xsl:if test="//_get/my_domain_id">
+            @<xsl:value-of
+            select="//domains_get_all[domain_id=//_get/domain_id]/domain"/>
           </xsl:if>
-					<xsl:if test="not(//_get/mailbox_id)">
-					<tr>
-						<td>Password</td>
-						<td>
-							<input type="password" name="password"/>
-						</td>
-					</tr>
-					<tr>
-						<td></td>
-						<td>
-							<input type="password" name="password2"/>
-						</td>
-					</tr>
-					<tr>
-						<td>Welcome mail</td>
-						<td>
-							<input type="checkbox" name="mail"/>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label for="maildir">Create {maildir}</label>
-						</td>
-						<td>
-							<input id="maildir" name="create_mail_directory" value="1" type="radio"/>Yes
-							<input id="maildir" name="create_mail_directory" value="0" type="radio"/>No
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<label for="default_filters">Create default filters</label>
-						</td>
-						<td>
-							<input id="default_filters" name="create_default_filters" value="1" checked="checked" type="checkbox"/>
-						</td>
-					</tr>
-					</xsl:if>
-					<tr>
-						<td>Name</td>
-						<td>
-							<input type="text" name="name" value="{$mailbox_get_by_id/name}"/>
-						</td>
-					</tr>
-					<tr>
-						<td>Active</td>
-						<td>
-							<input type="checkbox" name="active" id="{active}">
-								<xsl:if test="$mailbox_get_by_id/active='on'">
-									<xsl:attribute name="checked">checked</xsl:attribute>
-								</xsl:if>
-							</input>
-						</td>
-					</tr>
-					<tr>
-						<td colspan="2">
-							<input class="button" type="submit" name="submit" value="{$i18n/submit}"/>
-						</td>
-					</tr>
-				</table>
-			</form>
-		</div>
+          <xsl:if test="not(//_get/my_domain_id)">
+            @<select name="domain_id">
+              <xsl:for-each select="//domains_get_all/domains_get_all">
+                <option value="{domain_id}">
+                  <xsl:if test="$mailbox_get_by_id/domain_id=domain_id">
+                    <xsl:attribute name="selected">selected</xsl:attribute>
+                  </xsl:if>
+                  <xsl:value-of select="domain"/>
+                </option>
+              </xsl:for-each>
+            </select>
+          </xsl:if>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span class="i18n-username">Username</span>
+        </td>
+        <td>
+          <input type="test" name="username" id="username"/>
+        </td>
+      </tr>
+      <xsl:if test="//_get/mailbox_id">
+      <tr>
+        <td colspan="2">
+          <span class="i18n-reset_password">Reset Password</span>
+        </td>
+      </tr>
+      </xsl:if>
+      <xsl:if test="not(//_get/mailbox_id)">
+      <tr>
+        <td>
+          <label for="password">
+            <span class="i18n-password">Password</span>
+          </label>
+        </td>
+        <td>
+          <input type="password" name="password" id="password" />
+        </td>
+      </tr>
+      <tr>
+        <td />
+        <td>
+          <input type="password" name="password2"/>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span class="i18n-welcome_mail">Welcome mail</span>
+        </td>
+        <td>
+          <input type="checkbox" name="mail"/>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="maildir">Create {maildir}</label>
+        </td>
+        <td>
+          <input id="maildir" name="create_mail_directory" value="1" type="radio"/>Yes
+          <input id="maildir" name="create_mail_directory" value="0" type="radio"/>No
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="default_filters">Create default filters</label>
+        </td>
+        <td>
+          <input id="default_filters" name="create_default_filters" value="1"
+          checked="checked" type="checkbox"/>
+        </td>
+      </tr>
+      </xsl:if>
+      <tr>
+        <td>Name</td>
+        <td>
+          <input type="text" name="name" value="{$mailbox_get_by_id/name}"/>
+        </td>
+      </tr>
+      <tr>
+        <td>Active</td>
+        <td>
+          <input type="checkbox" name="active" id="{active}">
+            <xsl:if test="$mailbox_get_by_id/active='on'">
+              <xsl:attribute name="checked">checked</xsl:attribute>
+            </xsl:if>
+          </input>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <input class="button" type="submit" name="submit"
+          value="{$i18n/submit}"/>
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>
+
+
 	</xsl:template>
 </xsl:stylesheet>
