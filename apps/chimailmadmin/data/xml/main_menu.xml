@@ -43,6 +43,10 @@ Fifth Floor, Boston, MA 02110-1301  USA
 			<key>server_list</key>
 			<url>cma-server-list</url>
 		</item>
+		<item>
+			<key>server_add</key>
+			<url>cma-server-edit</url>
+		</item>
 	</item>
 	<item>
 		<key>addresses</key>

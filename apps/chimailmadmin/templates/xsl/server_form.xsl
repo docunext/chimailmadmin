@@ -36,34 +36,36 @@ Fifth Floor, Boston, MA 02110-1301 USA
       <table>
       <tbody>
       <tr>
-      <th>Server name</th>
-      <td>
-        <input type="text" name="server" value="{//servers_get_all/server}"/>
-      </td>
+      <th><xsl:value-of select="$i18n/server"/> name</th>
+        <td>
+          <input type="text" name="server" value="{//servers_get_all/server}"/>
+        </td>
       </tr>
       <tr>
-      <th>Host name</th>
-      <td>
-        <input type="text" name="host_name" value="{//servers_get_all/host_name}"/>
-      </td>
+      <th><xsl:value-of select="$i18n/host"/> name</th>
+        <td>
+          <input type="text" name="host_name" value="{//servers_get_all/host_name}"/>
+        </td>
       </tr>
       <tr>
-      <th>Server type</th>
-      <td>
-      <select name="server_type_id">
-        <xsl:for-each select="//server_type/server_type">
-          <option value="{@id}">
-            <xsl:if test="//servers_get_all/server_type_id=@id"><xsl:attribute name="selected">selected</xsl:attribute></xsl:if>
-            <xsl:value-of select="label"/>
-          </option>
-        </xsl:for-each>
-      </select>
-      </td>
+      <th><xsl:value-of select="$i18n/server"/> type</th>
+        <td>
+          <select name="server_type_id">
+            <xsl:for-each select="//server_type/server_type">
+              <option value="{@id}">
+                <xsl:if test="//servers_get_all/server_type_id=@id">
+                  <xsl:attribute name="selected">selected</xsl:attribute>
+                </xsl:if>
+                <xsl:value-of select="label"/>
+              </option>
+            </xsl:for-each>
+          </select>
+        </td>
       </tr>
       <tr>
-      <td colspan="2">
-      <input type="submit"/>
-      </td>
+        <td colspan="2">
+          <input type="submit"/>
+        </td>
       </tr>
       </tbody>
       </table>
