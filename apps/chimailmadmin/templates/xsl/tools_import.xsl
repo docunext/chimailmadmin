@@ -29,21 +29,25 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
     <xsl:param name="i18n"/>
-    <div id="edit_form">
-    <xsl:if test="//_get/nid='cma-import-aliases'">
-      <form name="alias" method="post">
-        <textarea name="import">
-        </textarea>
-        <input type="submit"/>
-      </form>
-    </xsl:if>
-    <xsl:if test="//_get/nid='cma-import-mailboxes'">
-      <form name="alias" method="post">
-        <textarea name="import">
-        </textarea>
-        <input type="submit"/>
-      </form>
-    </xsl:if>
-    </div>
+
+
+<div id="edit_form">
+  <xsl:if test="//_get/nid='cma-import-aliases'">
+    <form name="alias" method="post">
+      <textarea name="import">
+      </textarea>
+      <input type="submit"/>
+    </form>
+  </xsl:if>
+  <xsl:if test="//_get/nid='cma-import-mailboxes'">
+    <form name="alias" method="post">
+      <textarea name="import">
+      </textarea>
+      <input type="submit"/>
+    </form>
+  </xsl:if>
+</div>
+
+
   </xsl:template>
 </xsl:stylesheet>

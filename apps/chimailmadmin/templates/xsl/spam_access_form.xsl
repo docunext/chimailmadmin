@@ -30,57 +30,60 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:param name="path_prefix"/>
     <xsl:param name="i18n"/>
 
-		<div id="edit_form">
-			<form name="access" method="post">
-				<xsl:if test="//_get/domain_id">
-					<input type="hidden" name="domain_id" value="{//_get/domain_id}"/>
-				</xsl:if>
-				<xsl:if test="//_get/acl_id and not(//_get/cloner) and not(//_get/acl_id='-10')">
-					<input type="hidden" name="acl_id" value="{//_get/acl_id}"/>
-				</xsl:if>
-				<xsl:variable name="acl_get" select="//acl_get/acl_get"/>
-				<table>
-					<tr>
-						<td>Source</td>
-						<td>
-							<input type="text" name="source" value="{$acl_get/source}"/>
-						</td>
-					</tr>
-					<tr>
-						<td>Access</td>
-						<td>
-							<input type="text" name="access" value="{$acl_get/access}"/>
-						</td>
-					</tr>
-					<tr>
-						<td>Type</td>
-						<td>
-              <select name="type">
-                <option value="sender">sender</option>
-                <option value="client">client</option>
-                <option value="recipient">recipient</option>
-              </select>
-						</td>
-					</tr>
-					<tr>
-						<td>Restriction Class</td>
-						<td>
-							<input type="text" name="restriction_class" value="{$acl_get/restriction_class}"/>
-						</td>
-					</tr>
-					<tr>
-						<td>Notes</td>
-						<td>
-							<input type="text" name="name" value="{$acl_get/notes}"/>
-						</td>
-					</tr>
-					<tr>
-						<td colspan="2">
-							<input class="button" type="submit" name="submit" value="{$i18n/submit}"/>
-						</td>
-					</tr>
-				</table>
-			</form>
-		</div>
+
+<div id="edit_form">
+  <form name="access" method="post">
+    <xsl:if test="//_get/domain_id">
+      <input type="hidden" name="domain_id" value="{//_get/domain_id}"/>
+    </xsl:if>
+    <xsl:if test="//_get/acl_id and not(//_get/cloner) and not(//_get/acl_id='-10')">
+      <input type="hidden" name="acl_id" value="{//_get/acl_id}"/>
+    </xsl:if>
+    <xsl:variable name="acl_get" select="//acl_get/acl_get"/>
+    <table>
+      <tr>
+        <td>Source</td>
+        <td>
+          <input type="text" name="source" value="{$acl_get/source}"/>
+        </td>
+      </tr>
+      <tr>
+        <td>Access</td>
+        <td>
+          <input type="text" name="access" value="{$acl_get/access}"/>
+        </td>
+      </tr>
+      <tr>
+        <td>Type</td>
+        <td>
+          <select name="type">
+            <option value="sender">sender</option>
+            <option value="client">client</option>
+            <option value="recipient">recipient</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Restriction Class</td>
+        <td>
+          <input type="text" name="restriction_class" value="{$acl_get/restriction_class}"/>
+        </td>
+      </tr>
+      <tr>
+        <td>Notes</td>
+        <td>
+          <input type="text" name="name" value="{$acl_get/notes}"/>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <input class="button" type="submit" name="submit" value="{$i18n/submit}"/>
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>
+
+
 	</xsl:template>
 </xsl:stylesheet>

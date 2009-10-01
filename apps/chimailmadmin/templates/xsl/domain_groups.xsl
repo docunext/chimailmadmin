@@ -30,53 +30,47 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
     <xsl:param name="i18n"/>
-		<xsl:call-template name="jquery-setup">
-			<xsl:with-param name="my-table">domain_table</xsl:with-param>
-			<xsl:with-param name="no-sort-column">,
-			headers: {
-					5: {sorter: false},
-					6: {sorter: false},
-					7: {sorter: false}
-			}
-			</xsl:with-param>
-		</xsl:call-template>
-		<script type="text/javascript">
-		function domain_group_delete(domain_group_id) {
-				if(confirm('Are you sure?')){
-				$.post("<xsl:value-of select="$link_prefix"/>x-domain-group-delete&amp;domain_group_id="+domain_group_id,
-				{
-						'domain_group_id': domain_group_id
-				},
-				function (data){
-          $("#dg_"+domain_group_id).remove();
-				});
-				}
-		}
-		</script>
-		<!-- 
-		return confirm ('Do you really want to delete all records for this domain? This can not be undone!\nDomain: test.com')
-		-->
-		<div class="tableframe">
-			<table id="domain_table" class="tablesorter">
-				<thead>
-					<tr>
-						<th>Group Name</th>
-						<th><xsl:value-of select="/_R_/i18n/domains"/></th>
-					</tr>
-				</thead>
-				<tbody>
-					<xsl:for-each select="/_R_/domains_get_all/domains_get_all">
-						<tr id="dg_{domain_group_id}">
-							<td></td>
-							<td></td>
-						</tr>
-					</xsl:for-each>
-				</tbody>
-			</table>
-		</div>
-		<xsl:call-template name="pager">
-			<xsl:with-param name="my-table">domain_table</xsl:with-param>
-		</xsl:call-template>
+
+
+<script type="text/javascript"
+src="{$link_prefix}x-tablesorter-setup-js&amp;selector=domain_table" />
+
+<script type="text/javascript">
+function domain_group_delete(domain_group_id) {
+    if(confirm('Are you sure?')){
+    $.post("<xsl:value-of select="$link_prefix"/>x-domain-group-delete&amp;domain_group_id="+domain_group_id,
+    {
+        'domain_group_id': domain_group_id
+    },
+    function (data){
+      $("#dg_"+domain_group_id).remove();
+    });
+    }
+}
+</script>
+
+<div class="tableframe">
+  <table id="domain_table" class="tablesorter">
+    <thead>
+      <tr>
+        <th>Group Name</th>
+        <th><xsl:value-of select="/_R_/i18n/domains"/></th>
+      </tr>
+    </thead>
+    <tbody>
+      <xsl:for-each select="/_R_/domains_get_all/domains_get_all">
+        <tr id="dg_{domain_group_id}">
+          <td></td>
+          <td></td>
+        </tr>
+      </xsl:for-each>
+    </tbody>
+  </table>
+</div>
+<xsl:call-template name="pager">
+  <xsl:with-param name="my-table">domain_table</xsl:with-param>
+</xsl:call-template>
+
 
 	</xsl:template>
 </xsl:stylesheet>
