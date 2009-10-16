@@ -375,15 +375,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
     <map:xml src="templates/xhtml/footer.xhtml"/>
     <map:xsl src="templates/js/xhtml2dom.js.xsl"/>
 	</map:gate>
-	<map:gate name="x-server-delete-js" cache="0" nosession="true" content_type="application/javascript" cache_control="public, max-age=30, must-revalidate">
-    <map:xsl src="templates/js/server_delete.js.xsl"/>
-	</map:gate>
-	<map:gate name="x-acl-delete-js" cache="0" nosession="true" content_type="application/javascript" cache_control="public, max-age=30, must-revalidate">
-    <map:xsl src="templates/js/acl_delete.js.xsl"/>
-	</map:gate>
-	<map:gate name="x-mailbox-delete-js" cache="0" nosession="true" content_type="application/javascript" cache_control="public, max-age=30, must-revalidate">
-    <map:xsl src="templates/js/mailbox_delete.js.xsl"/>
-	</map:gate>
 	<map:gate name="x-tablesorter-setup-js" cache="0" nosession="true" content_type="application/javascript" cache_control="public, max-age=10, must-revalidate">
     <map:xsl src="templates/js/tablesorter_setup.js.xsl"/>
 	</map:gate>

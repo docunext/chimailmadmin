@@ -21,11 +21,43 @@ along with this program; if not, see http://www.gnu.org/licenses
 or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
-<xsl:stylesheet version="1.0"
-	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-	xmlns="http://www.w3.org/1999/xhtml">
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+xmlns="http://www.w3.org/1999/xhtml">
 	<xsl:output method="text" indent="yes" encoding="UTF-8" omit-xml-declaration="yes"/>
 	<xsl:template match="/">
+function mailbox_delete(mailbox_id) {
+    if(confirm('Are you sure?')){
+    $.post("<xsl:value-of select="//link_prefix"/>x-mailbox-delete&amp;mailbox_id="+mailbox_id,
+    {
+        'mailbox_id': mailbox_id
+    },
+    function (data){
+      $("#mb_"+mailbox_id).remove();
+    });
+    }
+}
+function server_delete(server_id) {
+  if(confirm('Are you sure?')){
+  $.post("<xsl:value-of select="//link_prefix"/>x-server-delete&amp;server_id="+server_id,
+  {
+      'server_id': server_id
+  },
+  function (data){
+    $("#srv_"+server_id).remove();
+  });
+  }
+}
+function acl_delete(acl_id,row) {
+    if(confirm('Are you sure?')){
+    $.post("<xsl:value-of select="//link_prefix"/>x-cma-access-delete&amp;acl_id="+acl_id,
+    {
+        'acl_id': acl_id
+    },
+    function (data){
+      $("#acl_"+acl_id).remove();
+    });
+    }
+}
 $(document).ready(function()
 {
     $('#nav').droppy();
