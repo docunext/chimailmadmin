@@ -21,64 +21,67 @@ along with this program; if not, see http://www.gnu.org/licenses
 or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
-<xsl:stylesheet version="1.0"
-	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-	xmlns="http://www.w3.org/1999/xhtml">
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+xmlns="http://www.w3.org/1999/xhtml">
 	<xsl:import href="html_main.xsl"/>
 	<xsl:template name="content">
     <xsl:param name="link_prefix"/>
     <xsl:param name="path_prefix"/>
     <xsl:param name="i18n"/>
-		<div id="edit_form">
-			<form name="create_admin" method="post">
-				<table>
-					<tr>
-						<td colspan="3">
-							<h3>Add a new domain admin</h3>
-						</td>
-					</tr>
-					<tr>
-						<td>Admin:</td>
-						<td>
-							<input type="text" name="username" value=""/>
-						</td>
-						<td>Email address</td>
-					</tr>
-					<tr>
-						<td>Password:</td>
-						<td>
-							<input type="password" name="password" />
-						</td>
-						<td></td>
-					</tr>
 
-					<tr>
-						<td>Password (again):</td>
-						<td>
-							<input type="password" name="password2" />
-						</td>
-						<td></td>
-					</tr>
-					<tr>
-						<td>Domain:</td>
-						<td>
-							<select name="domain_id" size="10" multiple="multiple">
-								<xsl:for-each select="//domains_get_all/domains_get_all">
-									<option value="{domain}">
-										<xsl:value-of select="domain_name"/>
-									</option>
-								</xsl:for-each>
-							</select>
-						</td>
-						<td></td>
-					</tr>
-					<tr>
-						<td colspan="3">
-							<input class="button" type="submit" name="submit" value="Add Admin" />
-						</td>
-					</tr>
-				</table>
-			</form>
-		</div>
+
+<div id="edit_form">
+  <form name="create_admin" method="post">
+    <table>
+      <tr>
+        <td colspan="3">
+          <h3>Add a new domain admin</h3>
+        </td>
+      </tr>
+      <tr>
+        <td>Admin:</td>
+        <td>
+          <input type="text" name="username" value=""/>
+        </td>
+        <td>Email address</td>
+      </tr>
+      <tr>
+        <td>Password:</td>
+        <td>
+          <input type="password" name="password" />
+        </td>
+        <td></td>
+      </tr>
+
+      <tr>
+        <td>Password (again):</td>
+        <td>
+          <input type="password" name="password2" />
+        </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Domain:</td>
+        <td>
+          <select name="domain_id" size="10" multiple="multiple">
+            <xsl:for-each select="//domains_get_all/domains_get_all">
+              <option value="{domain}">
+                <xsl:value-of select="domain_name"/>
+              </option>
+            </xsl:for-each>
+          </select>
+        </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td colspan="3">
+          <input class="button" type="submit" name="submit" value="Add Admin" />
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>
+
+
 	</xsl:template>
 </xsl:stylesheet>

@@ -21,13 +21,16 @@ along with this program; if not, see http://www.gnu.org/licenses
 or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
-<xsl:stylesheet version="1.0"
-	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-	xmlns="http://www.w3.org/1999/xhtml">
+<xsl:stylesheet version="1.0"	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+xmlns="http://www.w3.org/1999/xhtml">
 	<xsl:import href="html_main.xsl"/>
 	<xsl:template name="content">
+
+
 		Welcome to ChiMailMadmin.com
 		<h3>Email Information Resources</h3>
 		<xsl:apply-templates select="//welcome/div"/>
+
+
 	</xsl:template>
 </xsl:stylesheet>

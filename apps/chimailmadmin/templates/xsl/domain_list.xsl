@@ -21,9 +21,8 @@ along with this program; if not, see http://www.gnu.org/licenses
 or write to the Free Software Foundation, Inc., 51 Franklin Street,
 Fifth Floor, Boston, MA 02110-1301 USA
 -->
-<xsl:stylesheet version="1.0"
-	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-	xmlns="http://www.w3.org/1999/xhtml">
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+xmlns="http://www.w3.org/1999/xhtml">
 	<xsl:include href="html_main.xsl"/>
 	<xsl:include href="pager.xsl"/>
 	<xsl:template name="content">
@@ -36,19 +35,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 src="{$link_prefix}x-tablesorter-setup-js&amp;selector=domain_table" />
 
 
-<script type="text/javascript">
-function domain_delete(domain_id) {
-    if(confirm('Are you sure?')){
-    $.post("<xsl:value-of select="$link_prefix"/>x-domain-delete&amp;domain_id="+domain_id,
-    {
-        'domain_id': domain_id
-    },
-    function (data){
-      $("#d_"+domain_id).remove();
-    });
-    }
-}
-</script>
 <!-- 
 return confirm ('Do you really want to delete all records for this domain? This can not be undone!\nDomain: test.com')
 -->
