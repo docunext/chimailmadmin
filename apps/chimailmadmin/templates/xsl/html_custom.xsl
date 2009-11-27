@@ -96,6 +96,45 @@ xmlns="http://www.w3.org/1999/xhtml">
 			</xsl:for-each>
 		</head>
 	</xsl:template>
+	<xsl:template name="main_menu">
+
+
+<ul id="nav">
+  <xsl:for-each select="//menu/item[not(@active=0)]">
+    <xsl:call-template name="button">
+      <xsl:with-param name="key">
+        <xsl:value-of select="key"/>
+      </xsl:with-param>
+    </xsl:call-template>
+  </xsl:for-each>
+</ul>
+
+
+	</xsl:template>
+
+
+
+
+  <xsl:template name="button">
+    <xsl:param name="key"/>
+
+
+<li>
+  <div><xsl:value-of select="/_R_/i18n/*[local-name()=$key]"/></div>
+  <ul>
+    <xsl:for-each select="/_R_/menu/item[key=$key]/item">
+      <xsl:variable name="my_key" select="key"/>
+      <li>
+        <a href="{/_R_/runtime/link_prefix}{url}" id="{key}">
+          <xsl:value-of select="/_R_/i18n/*[local-name()=$my_key]"/>
+        </a>
+      </li>
+    </xsl:for-each>
+  </ul>
+</li>
+
+
+  </xsl:template>
 <xsl:template match="node()">
 <xsl:element name="{name()}">
 <xsl:apply-templates select="@*|node()"/>
