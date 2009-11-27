@@ -135,6 +135,29 @@ xmlns="http://www.w3.org/1999/xhtml">
 
 
   </xsl:template>
+  <xsl:template name="pager">
+    <xsl:param name="link_prefix"/>
+    <xsl:param name="path_prefix"/>
+    <xsl:param name="my-table"/>
+			<div id="{$my-table}-pager" class="pager">
+      <input id="mypagesize" class="pagesize" type="hidden" name="pagesize" value="20"/>
+      <table>
+        <tr>
+          <td>
+            <img src="{/_R_/runtime/path_prefix}s/css/blue/first.png" class="first"/>
+            <img src="{/_R_/runtime/path_prefix}s/css/blue/prev.png" class="prev"/>
+          </td>
+          <td>
+            <input type="text" class="pagedisplay" size="4" readonly="readonly"/>
+          </td>
+          <td>
+            <img src="{/_R_/runtime/path_prefix}s/css/blue/next.png" class="next"/>
+            <img src="{/_R_/runtime/path_prefix}s/css/blue/last.png" class="last"/>
+          </td>
+        </tr>
+      </table>
+			</div>
+  </xsl:template>
 <xsl:template match="node()">
 <xsl:element name="{name()}">
 <xsl:apply-templates select="@*|node()"/>
