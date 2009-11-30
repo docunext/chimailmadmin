@@ -31,98 +31,92 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<map:xml src="i18n/en_US/chimailmadmin.xml"/>
 	</map:prepend>
 
-	<map:gate name="index" role="email_admin">
+	<map:gate name="index" role="email_admin" http_method="get">
 		<map:xml src="templates/xhtml/email_resources.xhtml"/>
 		<map:xsl src="templates/xsl/welcome.xsl"/>
 	</map:gate>
 
 	<!-- DOMAINS -->
-	<map:gate name="cma-domain-list" role="email_admin">
+	<map:gate name="cma-domain-list" role="email_admin" http_method="get">
 		<map:query src="data/sql/domains_get_all.xml"/>
 		<map:xsl src="templates/xsl/domain_list.xsl"/>
 	</map:gate>
-	<map:gate name="cma-domain-edit" role="email_admin">
-		<map:if name="//_post">
-			<map:true>
-				<map:if name="//_post/domain_id">
-					<map:true>
-						<map:query src="data/sql/domain_update.xml"/>
-					</map:true>
-					<map:false>
-						<map:query src="data/sql/domain_create.xml"/>
-					</map:false>
-				</map:if>
-				<map:action type="redirect" params="{//link_prefix}cma-domain-list"/>
-			</map:true>
-			<map:false></map:false>
-		</map:if>
+	<map:gate name="cma-domain-edit" role="email_admin" http_method="get">
 		<map:query src="data/sql/domain_get_by_id.xml"/>
 		<map:xsl src="templates/xsl/domain_form.xsl"/>
 	</map:gate>
-	<map:gate name="x-domain-delete" role="email_admin">
+	<map:gate name="cma-domain-edit" role="email_admin" http_method="post">
+    <map:if name="//_post/domain_id">
+      <map:true>
+        <map:query src="data/sql/domain_update.xml"/>
+      </map:true>
+      <map:false>
+        <map:query src="data/sql/domain_create.xml"/>
+      </map:false>
+    </map:if>
+    <map:action type="redirect" params="{//link_prefix}cma-domain-list"/>
+	</map:gate>
+	<map:gate name="x-domain-delete" role="email_admin" http_method="post">
 		<map:query src="data/sql/domain_delete.xml"/>
 		<map:xsl src="templates/xml/ajax_response.xml.xsl"/>
 	</map:gate>
 
-	<map:gate name="x-domain-export" content_type="text/plain">
+	<map:gate name="x-domain-export" content_type="text/plain" http_method="get">
 		<map:query src="data/sql/domains_get_all.xml"/>
 		<map:action type="pad" params="//domains_get_all/domains_get_all/domain,30, "/>
 		<map:xsl src="templates/txt/domain_export.txt.xsl"/>
 	</map:gate>
-	<map:gate name="x-dkimproxy-export" content_type="text/plain">
+	<map:gate name="x-dkimproxy-export" content_type="text/plain" http_method="get">
 		<map:query src="data/sql/domains_get_all.xml"/>
 		<map:xsl src="templates/txt/dkimproxy.conf.txt.xsl"/>
 	</map:gate>
 
-	<map:gate name="x-relay-export" content_type="text/plain">
+	<map:gate name="x-relay-export" content_type="text/plain" http_method="get">
 		<map:query src="data/sql/domains_get_all.xml"/>
 		<map:action type="pad" params="//domains_get_all/domains_get_all/domain,30, "/>
 		<map:xsl src="templates/txt/relay_export.txt.xsl"/>
 	</map:gate>
 
-	<map:gate name="cma-domain-groups" role="email_admin">
+	<map:gate name="cma-domain-groups" role="email_admin" http_method="get">
 		<map:xsl src="templates/xsl/domain_groups.xsl"/>
 	</map:gate>
 
 	<!-- MAILBOXEN -->
-	<map:gate name="cma-mailbox-list" role="email_admin">
+	<map:gate name="cma-mailbox-list" role="email_admin" http_method="get">
 		<map:query src="data/sql/domains_get_all.xml"/>
 		<map:query src="data/sql/mailboxes_get_all.xml"/>
 		<map:xsl src="templates/xsl/mailbox_list.xsl"/>
 	</map:gate>
 
-	<map:gate name="cma-mailbox-edit" role="email_admin">
-		<map:if name="//_post">
-			<map:true>
-				<map:if name="//_post/mailbox_id">
-					<map:true>
-						<map:query src="data/sql/mailbox_update.xml"/>
-					</map:true>
-					<map:false>
-						<map:query src="data/sql/mailbox_create.xml"/>
-					</map:false>
-				</map:if>
-				<map:action type="redirect" params="{//link_prefix}cma-mailbox-list"/>
-			</map:true>
-			<map:false/>
-		</map:if>
+	<map:gate name="cma-mailbox-edit" role="email_admin" http_method="get">
 		<map:query src="data/sql/domains_get_all.xml"/>
 		<map:query src="data/sql/mailbox_get_by_id.xml"/>
 		<map:xsl src="templates/xsl/mailbox_form.xsl"/>
 	</map:gate>
+	<map:gate name="cma-mailbox-edit" role="email_admin" http_method="post">
+    <map:if name="//_post/mailbox_id">
+      <map:true>
+        <map:query src="data/sql/mailbox_update.xml"/>
+      </map:true>
+      <map:false>
+        <map:query src="data/sql/mailbox_create.xml"/>
+      </map:false>
+    </map:if>
+    <map:action type="redirect" params="{//link_prefix}cma-mailbox-list"/>
+	</map:gate>
 
-	<map:gate name="x-mailbox-delete" role="email_admin">
+	<map:gate name="x-mailbox-delete" role="email_admin" http_method="post">
 		<map:query src="data/sql/mailbox_delete.xml"/>
 		<map:xsl src="templates/xml/ajax_response.xml.xsl"/>
 	</map:gate>
-	<map:gate name="x-mailbox-export" content_type="text/plain">
+	<map:gate name="x-mailbox-export" content_type="text/plain" http_method="get">
 		<map:query src="data/sql/mailboxes_get_all.xml"/>
 		<map:action type="concat" params="//mailboxes_get_all/mailboxes_get_all/email_address,@,//mailboxes_get_all/mailboxes_get_all/fq_email_address"/>
 		<map:action type="concat" params="//mailboxes_get_all/mailboxes_get_all/fq_email_address,//mailboxes_get_all/mailboxes_get_all/domain,//mailboxes_get_all/mailboxes_get_all/fq_email_address"/>
 		<map:action type="pad" params="//mailboxes_get_all/mailboxes_get_all/fq_email_address,30, "/>
 		<map:xsl src="templates/txt/mailbox_export.txt.xsl"/>
 	</map:gate>
-	<map:gate name="x-offlineimap-export" content_type="text/plain">
+	<map:gate name="x-offlineimap-export" content_type="text/plain" http_method="get">
 		<map:query src="data/sql/mailboxes_get_all.xml"/>
 		<map:action type="pad" params="//mailboxes_get_all/mailboxes_get_all/fq_email_address,30, "/>
 		<map:xsl src="templates/txt/offlineimaprc.txt.xsl"/>
@@ -130,67 +124,61 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
 
 	<!-- SERVERS -->
-	<map:gate name="cma-server-list" role="email_admin">
+	<map:gate name="cma-server-list" role="email_admin" http_method="get">
 		<map:query src="data/sql/domains_get_all.xml"/>
 		<map:query src="data/sql/servers_get_all.xml"/>
 		<map:xsl src="templates/xsl/server_list.xsl"/>
 	</map:gate>
-	<map:gate name="cma-server-edit" role="email_admin">
-		<map:if name="//_post">
-			<map:true>
-				<map:if name="//_post/server_id">
-					<map:true>
-					  <map:query src="data/sql/server_update.xml"/>
-					</map:true>
-					<map:false>
-					  <map:query src="data/sql/server_create.xml"/>
-					</map:false>
-        </map:if>
+	<map:gate name="cma-server-edit" role="email_admin" http_method="get">
+    <map:if name="//_get/server_id">
+      <map:true>
+        <map:query src="data/sql/servers_get_all.xml"/>
       </map:true>
-      <map:false>
-				<map:if name="//_get/server_id">
-					<map:true>
-					  <map:query src="data/sql/servers_get_all.xml"/>
-					</map:true>
-					<map:false/>
-        </map:if>
-      </map:false>
+      <map:false/>
     </map:if>
 	  <map:xml src="data/xml/server_types.xml"/>
 		<map:xsl src="templates/xsl/server_form.xsl"/>
 	</map:gate>
+	<map:gate name="cma-server-edit" role="email_admin" http_method="post">
+    <map:if name="//_post/server_id">
+      <map:true>
+        <map:query src="data/sql/server_update.xml"/>
+      </map:true>
+      <map:false>
+        <map:query src="data/sql/server_create.xml"/>
+      </map:false>
+    </map:if>
+    <map:action type="redirect" params="{//link_prefix}cma-server-list"/>
+	</map:gate>
 
 	<!-- ALIAS -->
-	<map:gate name="cma-alias-list" role="email_admin">
+	<map:gate name="cma-alias-list" role="email_admin" http_method="get">
 		<map:query src="data/sql/domains_get_all.xml"/>
 		<map:query src="data/sql/alias_get_all.xml"/>
 		<map:xsl src="templates/xsl/alias_list.xsl"/>
 	</map:gate>
 
-	<map:gate name="cma-alias-edit" role="email_admin">
-		<map:if name="//_post">
-			<map:true>
-				<map:if name="//_post/alias_id">
-					<map:true>
-						<map:query src="data/sql/alias_update.xml"/>
-					</map:true>
-					<map:false>
-						<map:query src="data/sql/alias_create.xml"/>
-					</map:false>
-				</map:if>
-				<map:action type="redirect" params="{//link_prefix}cma-alias-list"/>
-			</map:true>
-			<map:false/>
-		</map:if>
+	<map:gate name="cma-alias-edit" role="email_admin" http_method="get">
 		<map:query src="data/sql/alias_get_all.xml"/>
 		<map:query src="data/sql/domains_get_all.xml"/>
 		<map:xsl src="templates/xsl/alias_form.xsl"/>
 	</map:gate>
-	<map:gate name="x-alias-delete" role="email_admin">
+	<map:gate name="cma-alias-edit" role="email_admin" http_method="post">
+    <map:if name="//_post/alias_id">
+      <map:true>
+        <map:query src="data/sql/alias_update.xml"/>
+      </map:true>
+      <map:false>
+        <map:query src="data/sql/alias_create.xml"/>
+      </map:false>
+    </map:if>
+    <map:action type="redirect" params="{//link_prefix}cma-alias-list"/>
+	</map:gate>
+	<map:gate name="x-alias-delete" role="email_admin" http_method="post">
 		<map:query src="data/sql/alias_delete.xml"/>
 		<map:xsl src="templates/xml/ajax_response.xml.xsl"/>
 	</map:gate>
-	<map:gate name="x-alias-export" content_type="text/plain">
+	<map:gate name="x-alias-export" content_type="text/plain" http_method="get">
 		<map:query src="data/sql/alias_get_all.xml"/>
 		<map:query src="data/sql/domains_get_all.xml"/>
 		<map:action type="concat" params="//alias_get_all/alias_get_all/alias,@,//alias_get_all/alias_get_all/fq_alias_address"/>
@@ -198,7 +186,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<map:action type="pad" params="//alias_get_all/alias_get_all/fq_alias_address,40, "/>
 		<map:xsl src="templates/txt/alias_export.txt.xsl"/>
 	</map:gate>
-	<map:gate name="x-alias-export-csv" content_type="text/plain">
+	<map:gate name="x-alias-export-csv" content_type="text/plain" http_method="get">
 		<map:query src="data/sql/alias_get_all.xml"/>
 		<map:query src="data/sql/domains_get_all.xml"/>
 		<map:action type="concat" params="//alias_get_all/alias_get_all/alias,@,//alias_get_all/alias_get_all/fq_alias_address"/>
@@ -206,7 +194,7 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<map:xsl src="templates/csv/alias_export.csv.xsl"/>
 	</map:gate>
 
-	<map:gate name="x-address-export" content_type="text/plain">
+	<map:gate name="x-address-export" content_type="text/plain" http_method="get">
 		<map:query src="data/sql/alias_get_distinct.xml"/>
 		<map:query src="data/sql/domains_get_all.xml"/>
 		<map:action type="concat" params="//alias_get_all/alias_get_all/alias,@,//alias_get_all/alias_get_all/fq_alias_address"/>
@@ -219,13 +207,13 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<map:xsl src="templates/txt/address_export.txt.xsl"/>
 	</map:gate>
 
-	<map:gate name="x-relay-recipients" content_type="text/plain">
+	<map:gate name="x-relay-recipients" content_type="text/plain" http_method="get">
 		<map:query src="data/sql/recipients_get_all.xml"/>
 		<map:action type="pad" params="//recipients_get_all/recipients_get_all/email,40, "/>
 	  <map:xsl src="templates/txt/address_export.txt.xsl"/>
 	</map:gate>
 
-	<map:gate name="x-address-export-xml" content_type="text/plain">
+	<map:gate name="x-address-export-xml" content_type="text/plain" http_method="get">
 		<map:query src="data/sql/alias_get_distinct.xml"/>
 		<map:query src="data/sql/domains_get_all.xml"/>
 		<map:action type="concat" params="//alias_get_all/alias_get_all/alias,@,//alias_get_all/alias_get_all/fq_alias_address"/>
@@ -236,89 +224,79 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<map:xsl src="templates/xml/address_export.xml.xsl"/>
 	</map:gate>
 
-	<map:gate name="x-address-export-ldif" content_type="text/plain">
+	<map:gate name="x-address-export-ldif" content_type="text/plain" http_method="get">
 		<map:query src="data/sql/mailboxes_get_all.xml"/>
 		<map:action type="concat" params="//mailboxes_get_all/mailboxes_get_all/email_address,@,//mailboxes_get_all/mailboxes_get_all/fq_email_address"/>
 		<map:action type="concat" params="//mailboxes_get_all/mailboxes_get_all/fq_email_address,//mailboxes_get_all/mailboxes_get_all/domain,//mailboxes_get_all/mailboxes_get_all/fq_email_address"/>
 		<map:xsl src="templates/txt/ldif_export.txt.xsl"/>
 	</map:gate>
 
-	<map:gate name="cma-mailstore-options" role="email_admin">
+	<map:gate name="cma-mailstore-options" role="email_admin" http_method="get">
 		<map:xml src="templates/xhtml/options_mailstore.xhtml"/>
 		<map:xsl src="templates/xsl/options_mailstore.xsl"/>
 	</map:gate>
-	<map:gate name="cma-database-options" role="email_admin">
+	<map:gate name="cma-database-options" role="email_admin" http_method="get">
 		<map:xsl src="templates/xsl/options_database.xsl"/>
 	</map:gate>
 
 
-	<map:gate name="cma-access-lists" role="email_admin">
+	<map:gate name="cma-access-lists" role="email_admin" http_method="get">
 		<map:query src="data/sql/domains_get_all.xml"/>
 		<map:query src="data/sql/acl_get.xml"/>
 		<map:xsl src="templates/xsl/spam_access_lists.xsl"/>
 	</map:gate>
-	<map:gate name="cma-access-edit" role="email_admin">
+	<map:gate name="cma-access-edit" role="email_admin" http_method="get">
 		<map:query src="data/sql/domains_get_all.xml"/>
-		<map:if name="//_post">
-			<map:true>
-				<map:if name="//_post/acl_id">
-					<map:true>
-						<map:query src="data/sql/acl_update.xml"/>
-					</map:true>
-					<map:false>
-						<map:query src="data/sql/acl_create.xml"/>
-					</map:false>
-				</map:if>
-				<map:action type="redirect" params="{//link_prefix}cma-access-lists"/>
-			</map:true>
-			<map:false>
-        <map:query src="data/sql/acl_get.xml"/>
-      </map:false>
-		</map:if>
+    <map:query src="data/sql/acl_get.xml"/>
 		<map:xsl src="templates/xsl/spam_access_form.xsl"/>
 	</map:gate>
-	<map:gate name="x-cma-access-delete" role="email_admin">
+	<map:gate name="cma-access-edit" role="email_admin" http_method="post">
+	<!-- IS THIS QUERY NEEDED HERE? -->
+		<map:query src="data/sql/domains_get_all.xml"/>
     <map:if name="//_post/acl_id">
       <map:true>
-        <map:query src="data/sql/acl_delete.xml"/>
-        <map:xsl src="templates/xml/ajax_response.xml.xsl"/>
+        <map:query src="data/sql/acl_update.xml"/>
       </map:true>
-      <map:false/>
+      <map:false>
+        <map:query src="data/sql/acl_create.xml"/>
+      </map:false>
     </map:if>
+    <map:action type="redirect" params="{//link_prefix}cma-access-lists"/>
 	</map:gate>
-	<map:gate name="x-sender-acl-export">
+	<map:gate name="x-cma-access-delete" role="email_admin" http_method="post">
+    <map:query src="data/sql/acl_delete.xml"/>
+    <map:xsl src="templates/xml/ajax_response.xml.xsl"/>
+	</map:gate>
+	<map:gate name="x-sender-acl-export" http_method="get">
 		<map:action type="header" params="Content-Type,text/plain"/>
 		<map:query src="data/sql/acl_get_by_type.xml"/>
 		<map:xsl src="templates/txt/acl_export.txt.xsl"/>
 	</map:gate>
 
 
-	<map:gate name="cma-spamassassin-prefs" role="email_admin">
+	<map:gate name="cma-spamassassin-prefs" role="email_admin" http_method="get">
 		<map:query src="data/sql/domains_get_all.xml"/>
 		<map:query src="data/sql/spamassassin_user_prefs_get.xml"/>
 		<map:xsl src="templates/xsl/spam_spamassassin_prefs.xsl"/>
 	</map:gate>
-	<map:gate name="cma-spamassassin-edit" role="email_admin">
+	<map:gate name="cma-spamassassin-edit" role="email_admin" http_method="get">
 		<map:query src="data/sql/domains_get_all.xml"/>
-		<map:if name="//_post">
-			<map:true>
-				<map:if name="//_post/pref_id">
-					<map:true>
-						<map:query src="data/sql/spamassassin_user_prefs_update.xml"/>
-					</map:true>
-					<map:false>
-						<map:query src="data/sql/spamassassin_user_prefs_create.xml"/>
-					</map:false>
-				</map:if>
-				<map:action type="redirect" params="{//link_prefix}cma-spamassassin-prefs"/>
-			</map:true>
-			<map:false>
-        <map:query src="data/sql/spamassassin_user_prefs_get.xml"/>
-      </map:false>
-		</map:if>
+    <map:query src="data/sql/spamassassin_user_prefs_get.xml"/>
 		<map:xsl src="templates/xsl/spam_spamassassin_form.xsl"/>
 	</map:gate>
-	<map:gate name="x-cma-spamassassin-delete" role="email_admin">
+	<map:gate name="cma-spamassassin-edit" role="email_admin" http_method="post">
+		<map:query src="data/sql/domains_get_all.xml"/>
+    <map:if name="//_post/pref_id">
+      <map:true>
+        <map:query src="data/sql/spamassassin_user_prefs_update.xml"/>
+      </map:true>
+      <map:false>
+        <map:query src="data/sql/spamassassin_user_prefs_create.xml"/>
+      </map:false>
+    </map:if>
+    <map:action type="redirect" params="{//link_prefix}cma-spamassassin-prefs"/>
+	</map:gate>
+	<map:gate name="x-cma-spamassassin-delete" role="email_admin" http_method="post">
     <map:if name="//_post/pref_id">
       <map:true>
         <map:query src="data/sql/spamassassin_user_prefs_delete.xml"/>
@@ -328,35 +306,35 @@ Fifth Floor, Boston, MA 02110-1301 USA
     </map:if>
 	</map:gate>
 
-	<map:gate name="cma-spamassassin-notes" role="email_admin">
+	<map:gate name="cma-spamassassin-notes" role="email_admin" http_method="get">
 		<map:xml src="templates/xhtml/spamassassin_notes.xhtml"/>
 		<map:xsl src="templates/xsl/spam_spamassassin_notes.xsl"/>
 	</map:gate>
 
 
-	<map:gate name="cma-dspam-prefs" role="email_admin">
+	<map:gate name="cma-dspam-prefs" role="email_admin" http_method="get">
 		<map:query src="data/sql/domains_get_all.xml"/>
 		<map:query src="data/sql/dspam_user_prefs_get.xml"/>
 		<map:xsl src="templates/xsl/spam_dspam_prefs.xsl"/>
 	</map:gate>
 
-	<map:gate name="cma-maildroprc" role="email_admin">
+	<map:gate name="cma-maildroprc" role="email_admin" http_method="get">
 		<map:action type="header" params="Content-Type,text/plain"/>
 		<map:xsl src="templates/txt/maildroprc.txt.xsl"/>
 	</map:gate>
 
 
-	<map:gate name="cma-import-aliases">
+	<map:gate name="cma-import-aliases" http_method="get">
 		<map:xsl src="templates/xsl/tools_import.xsl"/>
 	</map:gate>
-	<map:gate name="cma-import-accounts">
+	<map:gate name="cma-import-accounts" http_method="get">
 		<map:xsl src="templates/xsl/tools_import.xsl"/>
 	</map:gate>
 
-	<map:gate name="cma-iframe-viewer">
+	<map:gate name="cma-iframe-viewer" http_method="get">
 		<map:xsl src="templates/xsl/iframe_viewer.xsl"/>
 	</map:gate>
-	<map:gate name="x-dynamic-css" cache="0">
+	<map:gate name="x-dynamic-css" cache="0" http_method="get">
 		<map:action type="header" params="Content-Type,text/css"/>
 		<map:xsl src="templates/css/dynamic.css.xsl"/>
 	</map:gate>
@@ -368,17 +346,17 @@ Fifth Floor, Boston, MA 02110-1301 USA
 	</map:gate>
   -->
 
-	<map:gate name="x-common-js" cache="0" nosession="true" content_type="application/javascript" cache_control="public, max-age=30, must-revalidate">
+	<map:gate name="x-common-js" cache="0" nosession="true" content_type="application/javascript" cache_control="public, max-age=30, must-revalidate" http_method="get">
     <map:xsl src="templates/js/common.js.xsl"/>
 	</map:gate>
-	<map:gate name="x-xhtml2dom-js" cache="0" nosession="true" content_type="application/javascript" cache_control="public, max-age=30, must-revalidate">
+	<map:gate name="x-xhtml2dom-js" cache="0" nosession="true" content_type="application/javascript" cache_control="public, max-age=30, must-revalidate" http_method="get">
     <map:xml src="templates/xhtml/footer.xhtml"/>
     <map:xsl src="templates/js/xhtml2dom.js.xsl"/>
 	</map:gate>
-	<map:gate name="x-tablesorter-setup-js" cache="0" nosession="true" content_type="application/javascript" cache_control="public, max-age=10, must-revalidate">
+	<map:gate name="x-tablesorter-setup-js" cache="0" nosession="true" content_type="application/javascript" cache_control="public, max-age=10, must-revalidate" http_method="get">
     <map:xsl src="templates/js/tablesorter_setup.js.xsl"/>
 	</map:gate>
-	<map:gate name="p-curl-test" cache="0">
+	<map:gate name="p-curl-test" cache="0" http_method="get">
 		<map:action type="header" params="Content-Type,text/xml"/>
     <!--
     <xsl:switch name="//_get/curl">
@@ -405,16 +383,16 @@ Fifth Floor, Boston, MA 02110-1301 USA
 		<map:xsl src="templates/xsl/curl_test.xsl"/>
 	</map:gate>
 
-	<map:gate name="x-license" cache="0">
+	<map:gate name="x-license" cache="0"  http_method="get">
 		<map:action type="header" params="Content-Type,text/plain"/>
 		<map:raw src="LICENSE" />
 	</map:gate>
-	<map:gate name="x-readme" cache="0">
+	<map:gate name="x-readme" cache="0"  http_method="get">
 		<map:action type="header" params="Content-Type,text/plain"/>
 		<map:raw src="README" />
 	</map:gate>
 
-  <map:gate name="dynamic-database-model">
+  <map:gate name="dynamic-database-model" http_method="get">
     <map:if name="//defaults/install_settings">
       <map:true></map:true>
       <map:false>
