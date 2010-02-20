@@ -79,6 +79,10 @@ module Chimailmadmin
       set :logging, false
       set :reload_templates, true # This does work! :-)
     end
+    configure :demo do
+      set :logging, true
+      set :reload_templates, false # This does work! :-)
+    end
 
     configure :test do
       #
