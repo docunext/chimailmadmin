@@ -35,9 +35,14 @@ xmlns="http://www.w3.org/1999/xhtml">
 			</xsl:for-each>
 
 		<div id="page">
-			<xsl:call-template name="main_menu" />
+		  <div id="hd">
+		  <xsl:call-template name="inline-ads" />
+		  <h1>Open Source Email Admin Software</h1>
+		  </div>
+		  <div id="navigation">
+      <xsl:call-template name="main_menu" />
+      </div>
 			<div id="content">
-			  <xsl:call-template name="inline-ads" />
 				<xsl:apply-templates />
 			</div>
       <div id="nofooter"/>
@@ -60,6 +65,7 @@ xmlns="http://www.w3.org/1999/xhtml">
       <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?2.7.0/build/reset/reset-min.css"></link>
 			<link rel="stylesheet" type="text/css" href="{$path_prefix}s/css/chimailmadmin.css"></link>
 			<link rel="stylesheet" type="text/css" href="{$path_prefix}s/css/droppy.css"></link>
+			<link rel="stylesheet" type="text/css" href="{$path_prefix}stylesheet.css"></link>
 
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/jquery.js" />
 
@@ -83,6 +89,7 @@ xmlns="http://www.w3.org/1999/xhtml">
 	</xsl:template>
 	
 <xsl:template name="main_menu">
+<div>
 <ul id="nav">
   <xsl:for-each select="document('../../data/xml/main_menu.xml')/menu/item">
     <xsl:call-template name="button">
@@ -92,6 +99,7 @@ xmlns="http://www.w3.org/1999/xhtml">
     </xsl:call-template>
   </xsl:for-each>
 </ul>
+</div>
 </xsl:template>
 
 
@@ -175,7 +183,7 @@ xmlns="http://www.w3.org/1999/xhtml">
 </xsl:template>
 
 <xsl:template name="inline-ads">
-<div style="margin-left:30px;margin-bottom:0.8em;">
+<div style="float:right;">
 <script type="text/javascript"><xsl:comment>
 google_ad_client = "pub-9657495873329253";
 google_ad_width = 728;

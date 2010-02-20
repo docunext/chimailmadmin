@@ -82,10 +82,12 @@ module Chimailmadmin
     configure :test do
       #
     end
-    
+
     # Rewrite app url patterns to static files
     use Rack::Rewrite do
       rewrite Chimailmadmin.conf['uripfx']+'welcome', '/s/xhtml/welcome.html'
+      rewrite Chimailmadmin.conf['uripfx']+'cma-alias-edit', '/s/xhtml/alias_form.html'
+      rewrite Chimailmadmin.conf['uripfx']+'cma-mailbox-edit', '/s/xhtml/mailbox_form.html'
     end
     
     # Use Rack-XSLView
