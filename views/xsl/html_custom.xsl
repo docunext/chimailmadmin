@@ -39,7 +39,7 @@ xmlns="http://www.w3.org/1999/xhtml">
       <xsl:if test="$RACK_ENV='demo'">
 		  <xsl:call-template name="inline-ads" />
 		  </xsl:if>
-		  <h1>Open Source Email Admin Software</h1>
+		  <h1><a href="{$link_prefix}welcome">Open Source Email Admin Software</a></h1>
 		  </div>
 		  <div id="navigation">
       <xsl:call-template name="main_menu" />
@@ -47,23 +47,15 @@ xmlns="http://www.w3.org/1999/xhtml">
 			<div id="content">
 				<xsl:apply-templates />
 			</div>
-      <div id="nofooter"/>
 		</div>
+    <xsl:call-template name="footer" />
 
-				<xsl:for-each select="//footer">
-					<xsl:sort select="priority"/>
-					<xsl:value-of select="string" disable-output-escaping="yes"/>
-				</xsl:for-each>
-      <xsl:for-each select="//post_body_content">
-				<xsl:sort select="priority" order="ascending"/>
-				<xsl:apply-templates select="nodes/*"/>
-			</xsl:for-each>
 			</body>
 		</html>
 	</xsl:template>
 	<xsl:template name="head">
 		<head>
-			<title>ChiMailMadmin.com</title>
+			<title>CMA <xsl:value-of select="document('../../apps/chimailmadmin/i18n/en_US/chimailmadmin.xml')/i18n/*[contains($PATH_INFO,local-name())]"/></title>
       <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?2.7.0/build/reset/reset-min.css"></link>
 			<link rel="stylesheet" type="text/css" href="{$path_prefix}s/css/chimailmadmin.css"></link>
 			<link rel="stylesheet" type="text/css" href="{$path_prefix}s/css/droppy.css"></link>
@@ -230,8 +222,8 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 <xsl:template name="footer">
 <div id="ft">
   <p class="inner">Copyright 
-  <a href="http://www.savonix.com/">Savonix Corporation</a>. 
-  AGPL Licensed
+  <a href="http://www.savonix.com/">Savonix Corporation</a><xsl:text> </xsl:text>
+  <a href="http://www.docunext.com/wiki/Affero_GPL">AGPL Licensed</a>
   </p>
 </div>
 </xsl:template>

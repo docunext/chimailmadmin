@@ -95,9 +95,8 @@ module Chimailmadmin
       rewrite Chimailmadmin.conf['uripfx']+'cma-mailbox-edit', '/s/xhtml/mailbox_form.html'
       rewrite Chimailmadmin.conf['uripfx']+'cma-server-edit', '/s/xhtml/server_form.html'
       rewrite Chimailmadmin.conf['uripfx']+'cma-domain-edit', '/s/xhtml/domain_form.html'
-      r301 Chimailmadmin.conf['uripfx']+'cma-email-resources', Chimailmadmin.conf['uripfx']+'welcome'
     end
-    
+
     # Use Rack-XSLView
     use Rack::XSLView, :myxsl => Chimailmadmin.runtime['xslt'], :noxsl => Chimailmadmin.runtime['omitxsl'], :passenv => Chimailmadmin.runtime['passenv']
 
@@ -119,7 +118,7 @@ module Chimailmadmin
       puts Chimailmadmin.conf['uripfx']
       mredirect 'welcome'
     end
-    
+
     get '/cma-mailbox-list' do
       xslview '<root />', 'mailbox_list.xsl'
     end
@@ -132,8 +131,8 @@ module Chimailmadmin
     get '/cma-access-lists' do
       xslview '<root />', 'spam_access_list.xsl'
     end
-    get '/cma-about' do
-      markdown :'md/cma-about'
+    get '/cma-info-:info' do
+      markdown :"md/cma-#{params[:info]}"
     end
     get '/runtime/info' do
       cache_control :public, :must_revalidate, :max_age => 60
