@@ -59,8 +59,8 @@ module Chimailmadmin
       # Set request.env with application mount path
       use Rack::Config do |env|
         env['RACK_ENV'] = ENV['RACK_ENV'] ? ENV['RACK_ENV'] : 'development'
-        env['path_prefix'] = '/'
-        env['link_prefix'] = '/'
+        env['path_prefix'] = Chimailmadmin.conf['uripfx']
+        env['link_prefix'] = Chimailmadmin.conf['uripfx']
       end
 
       Chimailmadmin.runtime = Hash.new
