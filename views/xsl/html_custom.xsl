@@ -37,6 +37,7 @@ xmlns="http://www.w3.org/1999/xhtml">
 		<div id="page">
 			<xsl:call-template name="main_menu" />
 			<div id="content">
+			  <xsl:call-template name="inline-ads" />
 				<xsl:apply-templates />
 			</div>
       <div id="nofooter"/>
@@ -172,8 +173,29 @@ xmlns="http://www.w3.org/1999/xhtml">
   </div>
 </div>
 </xsl:template>
+
+<xsl:template name="inline-ads">
+<div style="margin-left:30px;margin-bottom:0.8em;">
+<script type="text/javascript"><xsl:comment>
+google_ad_client = "pub-9657495873329253";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_type = "text_image";
+google_ad_channel = "";
+google_color_border = "FFFFFF";
+google_color_bg = "FFFFFF";
+google_color_link = "2D8930";
+google_color_text = "000000";
+google_color_url = "1B703A";
+//</xsl:comment></script> 
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> 
+</script>
+</xsl:template>
+
 <xsl:template name="ads">
-<div class="block">
+<div class="block" style="float:right;">
   <div class="hd">
   <h2>
     <span class="i18n-quick_links">Sponsors</span>
