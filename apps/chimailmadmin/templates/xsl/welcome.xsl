@@ -26,11 +26,7 @@ xmlns="http://www.w3.org/1999/xhtml">
 	<xsl:import href="html_main.xsl"/>
 	<xsl:template name="content">
 
-
-		Welcome to ChiMailMadmin.com
-		<h3>Email Information Resources</h3>
-		<xsl:apply-templates select="//welcome/div"/>
-
+		<xsl:apply-templates select="document('../../../../public/s/xhtml/welcome.xml')/div"/>
 
 	</xsl:template>
 </xsl:stylesheet>
