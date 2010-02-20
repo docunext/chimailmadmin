@@ -88,6 +88,7 @@ module Chimailmadmin
       rewrite Chimailmadmin.conf['uripfx']+'welcome', '/s/xhtml/welcome.html'
       rewrite Chimailmadmin.conf['uripfx']+'cma-alias-edit', '/s/xhtml/alias_form.html'
       rewrite Chimailmadmin.conf['uripfx']+'cma-mailbox-edit', '/s/xhtml/mailbox_form.html'
+      rewrite Chimailmadmin.conf['uripfx']+'cma-domain-edit', '/s/xhtml/domain_form.html'
     end
     
     # Use Rack-XSLView
@@ -106,6 +107,13 @@ module Chimailmadmin
     get '/' do
       puts Chimailmadmin.conf['uripfx']
       mredirect 'welcome'
+    end
+    
+    get '/cma-mailbox-list' do
+      xslview '<root />', 'mailbox_list.xsl'
+    end
+    get '/cma-domain-list' do
+      xslview '<root />', 'domain_list.xsl'
     end
     get '/runtime/info' do
       @uptime   = (0 + Time.now.to_i - Chimailmadmin.runtime['started_at']).to_s
