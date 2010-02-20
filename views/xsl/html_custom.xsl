@@ -25,42 +25,120 @@ Fifth Floor, Boston, MA 02110-1301 USA
 xmlns="http://www.w3.org/1999/xhtml">
 
 
-<xsl:template name="page">
-  <html>
-    <xsl:call-template name="head"/>
-    <body class="rounded">
-    <div id="doc3" class="yui-t6">
-      <div id="hd">
-        <img src="/s/img/docunext.png" alt="" style="float:right;"/>
-        <h1>Not A Sinatra App</h1>
-        <xsl:call-template name="nav-menu"/>
-      </div>
-      <div id="bd">
-        <div id="yui-main">
-          <div class="yui-b"><div class="yui-g">
-            <div id="page-content">
-            <xsl:if test="$RACK_ENV='demo'">
-              <xsl:call-template name="ads"/>
-            </xsl:if>
-            <xsl:apply-templates />
-            </div>
-          </div></div>
-        </div>
-        <div id="sidebar" class="yui-b">
-          <xsl:if test="$RACK_ENV='demo'">
-            <xsl:call-template name="ads"/>
-          </xsl:if>
-          <xsl:call-template name="sidebar"/>
-        </div>
-      </div>
-      <xsl:call-template name="footer"/>
-    </div>
-    <xsl:if test="$RACK_ENV='demo'">
-      <!--<xsl:call-template name="analytics_code"/>-->
-    </xsl:if>
-    </body>
-  </html>
+	<xsl:template name="page">
+		<html>
+			<xsl:call-template name="head"/>
+
+			<body>
+      <xsl:for-each select="//pre_body_content">
+				<xsl:sort select="priority" order="ascending"/>
+				<xsl:apply-templates select="nodes/*"/>
+			</xsl:for-each>
+
+		<div id="page">
+			<xsl:call-template name="main_menu" />
+			<div id="content">
+				<xsl:apply-templates />
+			</div>
+      <div id="nofooter"/>
+		</div>
+
+				<xsl:for-each select="//footer">
+					<xsl:sort select="priority"/>
+					<xsl:value-of select="string" disable-output-escaping="yes"/>
+				</xsl:for-each>
+      <xsl:for-each select="//post_body_content">
+				<xsl:sort select="priority" order="ascending"/>
+				<xsl:apply-templates select="nodes/*"/>
+			</xsl:for-each>
+			</body>
+		</html>
+	</xsl:template>
+	<xsl:template name="head">
+		<head>
+			<title>ChiMailMadmin.com</title>
+      <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?2.7.0/build/reset/reset-min.css"></link>
+			<link rel="stylesheet" type="text/css" href="{$link_prefix}x-dynamic-css"></link>
+			<link rel="stylesheet" type="text/css" href="{$path_prefix}s/css/droppy.css"></link>
+
+			<script type="text/javascript" src="{$path_prefix}s/js/jquery/jquery.js" ></script>
+
+			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.cookiejar.js" />
+			<!-- <script type="text/javascript" src="{$link_prefix}x-dynamic-js"></script> -->
+			<script type="text/javascript" src="{$link_prefix}x-common-js"></script>
+			<script type="text/javascript" src="{$link_prefix}x-xhtml2dom-js"></script>
+			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.rotate.js"></script>
+			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.metadata.js"></script>
+			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.tablesorter.min.js"></script>
+			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.tablesorter.pager.js"></script>
+			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.dimensions.js"></script>
+			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.date_input.js"></script>
+			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.cookie.js"></script>
+			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.json.js"></script>
+			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.tablesorter.cookie.js"></script>
+			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.droppy.js"></script>
+      <xsl:for-each select="//head_nodes">
+				<xsl:sort select="priority" order="ascending"/>
+				<xsl:apply-templates select="nodes/*"/>
+			</xsl:for-each>
+		</head>
+	</xsl:template>
+	
+<xsl:template name="main_menu">
+<ul id="nav">
+  <xsl:for-each select="document('../../data/xml/main_menu.xml')/menu/item">
+    <xsl:call-template name="button">
+      <xsl:with-param name="key">
+        <xsl:value-of select="key"/>
+      </xsl:with-param>
+    </xsl:call-template>
+  </xsl:for-each>
+</ul>
 </xsl:template>
+
+
+
+
+  <xsl:template name="button">
+    <xsl:param name="key"/>
+
+
+<li>
+  <div><xsl:value-of select="document('../../apps/chimailmadmin/i18n/en_US/chimailmadmin.xml')/i18n/*[local-name()=$key]"/></div>
+  <ul>
+    <xsl:for-each select="document('../../data/xml/main_menu.xml')/menu/item[key=$key]/item">
+      <xsl:variable name="my_key" select="key"/>
+      <li>
+        <a href="{$link_prefix}{url}" id="{key}">
+          <xsl:value-of select="document('../../apps/chimailmadmin/i18n/en_US/chimailmadmin.xml')/i18n/*[local-name()=$my_key]"/>
+        </a>
+      </li>
+    </xsl:for-each>
+  </ul>
+</li>
+
+
+  </xsl:template>
+  <xsl:template name="pager">
+			<div id="{$my-table}-pager" class="pager">
+      <input id="mypagesize" class="pagesize" type="hidden" name="pagesize" value="20"/>
+      <table>
+        <tr>
+          <td>
+            <img src="{$path_prefix}s/css/blue/first.png" class="first"/>
+            <img src="{$path_prefix}s/css/blue/prev.png" class="prev"/>
+          </td>
+          <td>
+            <input type="text" class="pagedisplay" size="4" readonly="readonly"/>
+          </td>
+          <td>
+            <img src="{$path_prefix}s/css/blue/next.png" class="next"/>
+            <img src="{$path_prefix}s/css/blue/last.png" class="last"/>
+          </td>
+        </tr>
+      </table>
+			</div>
+  </xsl:template>
 
 
 <xsl:template name="nav-menu">
