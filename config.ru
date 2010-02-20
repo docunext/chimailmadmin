@@ -11,7 +11,7 @@ else
   mountpath = '/'
 end
 
-require File.dirname(__FILE__) + '/chimailmadmin'
+require 'chimailmadmin'
 
 
 map mountpath do
