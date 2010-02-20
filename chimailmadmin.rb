@@ -54,7 +54,6 @@ module Chimailmadmin
       set :static, true
       set :public, 'public'
       set :xslviews, 'views/xsl/'
-      set :uripfx, '/'
 
       # Set request.env with application mount path
       use Rack::Config do |env|
@@ -77,7 +76,7 @@ module Chimailmadmin
       Chimailmadmin.runtime['started_at'] = Time.now.to_i
     end
     configure :development do
-      set :logging, true
+      set :logging, false
     end
 
     configure :test do
@@ -86,7 +85,7 @@ module Chimailmadmin
     
     # Rewrite app url patterns to static files
     use Rack::Rewrite do
-      rewrite Chimailmadmin.conf['uripfx']+'/', '/s/xhtml/welcome.xml'
+      rewrite Chimailmadmin.conf['uripfx']+'welcome', '/s/xhtml/welcome.html'
     end
     
     # Use Rack-XSLView
@@ -102,6 +101,10 @@ module Chimailmadmin
       end
     end
 
+    get '/' do
+      puts Chimailmadmin.conf['uripfx']
+      mredirect 'welcome'
+    end
     get '/runtime/info' do
       @uptime   = (0 + Time.now.to_i - Chimailmadmin.runtime['started_at']).to_s
       runtime   = builder :'xml/runtime'
@@ -110,7 +113,7 @@ module Chimailmadmin
 
     not_found do
       headers 'Last-Modified' => Time.now.httpdate, 'Cache-Control' => 'no-store'
-      %(<div class="block"><div class="hd"><h2>Error</h2></div><div class="bd">This is nowhere to be found. <a href="#{self.options.uripfx}/">Start over?</a></div></div>)
+      %(<div class="block"><div class="hd"><h2>Error</h2></div><div class="bd">This is nowhere to be found. <a href="#{Chimailmadmin.conf['uripfx']}">Start over?</a></div></div>)
     end
 
     get '/stylesheet.css' do

@@ -24,7 +24,6 @@ Fifth Floor, Boston, MA 02110-1301 USA
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 xmlns="http://www.w3.org/1999/xhtml">
 
-
 	<xsl:template name="page">
 		<html>
 			<xsl:call-template name="head"/>
@@ -61,12 +60,9 @@ xmlns="http://www.w3.org/1999/xhtml">
 			<link rel="stylesheet" type="text/css" href="{$path_prefix}s/css/chimailmadmin.css"></link>
 			<link rel="stylesheet" type="text/css" href="{$path_prefix}s/css/droppy.css"></link>
 
-			<script type="text/javascript" src="{$path_prefix}s/js/jquery/jquery.js" ></script>
+			<script type="text/javascript" src="{$path_prefix}s/js/jquery/jquery.js" />
 
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.cookiejar.js" />
-			<!-- <script type="text/javascript" src="{$link_prefix}x-dynamic-js"></script> -->
-			<script type="text/javascript" src="{$link_prefix}x-common-js"></script>
-			<script type="text/javascript" src="{$link_prefix}x-xhtml2dom-js"></script>
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.rotate.js"></script>
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.metadata.js"></script>
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.tablesorter.min.js"></script>
