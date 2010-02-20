@@ -90,6 +90,7 @@ module Chimailmadmin
       rewrite Chimailmadmin.conf['uripfx']+'cma-alias-edit', '/s/xhtml/alias_form.html'
       rewrite Chimailmadmin.conf['uripfx']+'cma-mailbox-edit', '/s/xhtml/mailbox_form.html'
       rewrite Chimailmadmin.conf['uripfx']+'cma-domain-edit', '/s/xhtml/domain_form.html'
+      r301 Chimailmadmin.conf['uripfx']+'cma-email-resources', Chimailmadmin.conf['uripfx']+'welcome'
     end
     
     # Use Rack-XSLView
@@ -121,7 +122,7 @@ module Chimailmadmin
       xslview '<root />', 'domain_list.xsl'
     end
     get '/cma-about' do
-      markdown :'md/hi'
+      markdown :'md/cma-about'
     end
     get '/runtime/info' do
       cache_control :public, :must_revalidate, :max_age => 60
