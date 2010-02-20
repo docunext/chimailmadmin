@@ -192,6 +192,7 @@ google_color_url = "1B703A";
 <script type="text/javascript"
 src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> 
 </script>
+</div>
 </xsl:template>
 
 <xsl:template name="ads">
