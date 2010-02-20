@@ -1,6 +1,6 @@
 
 if ENV['RACK_ENV'] == "demo"
-  mountpath = '/demo/chimailmadmin'
+  mountpath = '/demo/chimailmadmin/'
   dirpfx = '/var/www/dev/chimailmadmin/current'
   ENV['DATABASE_URL'] = 'sqlite3:///var/www/dev/chimailr/rbeans.sqlite3'
 elsif ENV['RACK_ENV'] == "development"
