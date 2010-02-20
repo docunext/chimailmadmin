@@ -58,7 +58,7 @@ xmlns="http://www.w3.org/1999/xhtml">
 		<head>
 			<title>ChiMailMadmin.com</title>
       <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?2.7.0/build/reset/reset-min.css"></link>
-			<link rel="stylesheet" type="text/css" href="{$link_prefix}x-dynamic-css"></link>
+			<link rel="stylesheet" type="text/css" href="{$path_prefix}s/css/chimailmadmin.css"></link>
 			<link rel="stylesheet" type="text/css" href="{$path_prefix}s/css/droppy.css"></link>
 
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/jquery.js" ></script>
@@ -77,6 +77,7 @@ xmlns="http://www.w3.org/1999/xhtml">
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.json.js"></script>
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.tablesorter.cookie.js"></script>
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.droppy.js"></script>
+			<script type="text/javascript" src="{$path_prefix}s/js/chimailmadmin.js"></script>
       <xsl:for-each select="//head_nodes">
 				<xsl:sort select="priority" order="ascending"/>
 				<xsl:apply-templates select="nodes/*"/>

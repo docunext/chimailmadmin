@@ -15,7 +15,7 @@ require File.dirname(__FILE__) + '/chimailmadmin'
 
 
 map mountpath do
-  conf = Hash['uripfx', mountpath, "b", 201]
+  conf = Hash['uripfx', mountpath.gsub(/^\/$/,''), "b", 201]
   myapp = Chimailmadmin.new(conf)
   myapp.set :environment, 'development'
   run myapp

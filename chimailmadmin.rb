@@ -25,6 +25,7 @@ require 'rubygems'
 require 'sinatra/base'
 require 'rack/utils'
 require 'rack/contrib'
+require 'rack-rewrite'
 require 'builder'
 require 'sass'
 require 'xml/xslt'
@@ -82,7 +83,12 @@ module Chimailmadmin
     configure :test do
       #
     end
-
+    
+    # Rewrite app url patterns to static files
+    use Rack::Rewrite do
+      rewrite Chimailmadmin.conf['uripfx']+'/', '/s/xhtml/welcome.xml'
+    end
+    
     # Use Rack-XSLView
     use Rack::XSLView, :myxsl => Chimailmadmin.runtime['xslt'], :noxsl => Chimailmadmin.runtime['omitxsl'], :passenv => Chimailmadmin.runtime['passenv']
 
@@ -90,10 +96,13 @@ module Chimailmadmin
     helpers Sinatra::XSLView
 
     helpers do
-      #
+      # Just the usual Sinatra redirect with App prefix
+      def mredirect(uri)
+        redirect Chimailmadmin.conf['uripfx']+uri
+      end
     end
 
-    get '/' do
+    get '/runtime/info' do
       @uptime   = (0 + Time.now.to_i - Chimailmadmin.runtime['started_at']).to_s
       runtime   = builder :'xml/runtime'
       xslview runtime, 'runtime.xsl'
