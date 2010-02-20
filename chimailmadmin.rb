@@ -32,8 +32,8 @@ require 'rack-xslview'
 require 'sinatra/xslview'
 require 'rexml/document'
 
-# The container for the Notapp application
-module Notapp
+# The container for the Chimailmadmin application
+module Chimailmadmin
 
 
   class << self
@@ -58,20 +58,22 @@ module Notapp
       # Set request.env with application mount path
       use Rack::Config do |env|
         env['RACK_ENV'] = ENV['RACK_ENV'] ? ENV['RACK_ENV'] : 'development'
+        env['path_prefix'] = '/'
+        env['link_prefix'] = '/'
       end
 
-      Notapp.runtime = Hash.new
+      Chimailmadmin.runtime = Hash.new
       # Setup XSL - better to do this only once
-      Notapp.runtime['xslt']    = XML::XSLT.new()
-      Notapp.runtime['xslfile'] = File.open('views/xsl/html_main.xsl')
-      Notapp.runtime['xslt'].xsl = REXML::Document.new Notapp.runtime['xslfile']
+      Chimailmadmin.runtime['xslt']    = XML::XSLT.new()
+      Chimailmadmin.runtime['xslfile'] = File.open('views/xsl/html_main.xsl')
+      Chimailmadmin.runtime['xslt'].xsl = REXML::Document.new Chimailmadmin.runtime['xslfile']
 
       # Setup paths to remove from Rack::XSLView, and params to include
-      Notapp.runtime['omitxsl'] = ['/raw/', '/s/js/', '/s/css/', '/s/img/']
-      Notapp.runtime['passenv'] = ['PATH_INFO', 'RACK_MOUNT_PATH', 'RACK_ENV']
+      Chimailmadmin.runtime['omitxsl'] = ['/raw/', '/s/js/', '/s/css/', '/s/img/']
+      Chimailmadmin.runtime['passenv'] = ['PATH_INFO', 'RACK_MOUNT_PATH', 'RACK_ENV','link_prefix','path_prefix']
 
       # Used in runtime/info
-      Notapp.runtime['started_at'] = Time.now.to_i
+      Chimailmadmin.runtime['started_at'] = Time.now.to_i
     end
     configure :development do
       set :logging, true
@@ -82,7 +84,7 @@ module Notapp
     end
 
     # Use Rack-XSLView
-    use Rack::XSLView, :myxsl => Notapp.runtime['xslt'], :noxsl => Notapp.runtime['omitxsl'], :passenv => Notapp.runtime['passenv']
+    use Rack::XSLView, :myxsl => Chimailmadmin.runtime['xslt'], :noxsl => Chimailmadmin.runtime['omitxsl'], :passenv => Chimailmadmin.runtime['passenv']
 
     # Sinatra Helper Gems
     helpers Sinatra::XSLView
@@ -92,7 +94,7 @@ module Notapp
     end
 
     get '/' do
-      @uptime   = (0 + Time.now.to_i - Notapp.runtime['started_at']).to_s
+      @uptime   = (0 + Time.now.to_i - Chimailmadmin.runtime['started_at']).to_s
       runtime   = builder :'xml/runtime'
       xslview runtime, 'runtime.xsl'
     end
@@ -112,7 +114,7 @@ end
 
 if __FILE__ == $0
   conf = Hash["a", 100, "b", 200]
-  myapp = Notapp.new(conf)
+  myapp = Chimailmadmin.new(conf)
   myapp.set :environment, 'development'
   myapp.run!
 end
