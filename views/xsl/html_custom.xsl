@@ -36,7 +36,9 @@ xmlns="http://www.w3.org/1999/xhtml">
 
 		<div id="page">
 		  <div id="hd">
+      <xsl:if test="$RACK_ENV='demo'">
 		  <xsl:call-template name="inline-ads" />
+		  </xsl:if>
 		  <h1>Open Source Email Admin Software</h1>
 		  </div>
 		  <div id="navigation">

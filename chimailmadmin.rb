@@ -77,6 +77,7 @@ module Chimailmadmin
     end
     configure :development do
       set :logging, false
+      set :reload_templates, true # This does work! :-)
     end
 
     configure :test do
@@ -102,6 +103,10 @@ module Chimailmadmin
       def mredirect(uri)
         redirect Chimailmadmin.conf['uripfx']+uri
       end
+      def markdown(template, options={})
+        output = render :markdown, template, options
+        '<div>'+output+'</div>'
+      end
     end
 
     get '/' do
@@ -115,7 +120,11 @@ module Chimailmadmin
     get '/cma-domain-list' do
       xslview '<root />', 'domain_list.xsl'
     end
+    get '/cma-about' do
+      markdown :'md/hi'
+    end
     get '/runtime/info' do
+      cache_control :public, :must_revalidate, :max_age => 60
       @uptime   = (0 + Time.now.to_i - Chimailmadmin.runtime['started_at']).to_s
       runtime   = builder :'xml/runtime'
       xslview runtime, 'runtime.xsl'
