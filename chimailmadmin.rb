@@ -105,7 +105,7 @@ module Chimailmadmin
         redirect Chimailmadmin.conf['uripfx']+uri
       end
       def markdown(template, options={})
-        output = render :markdown, template, options
+        output = render :md, template, options
         '<div>'+output+'</div>'
       end
     end
