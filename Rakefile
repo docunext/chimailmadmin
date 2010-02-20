@@ -28,7 +28,7 @@ namespace :vlad do
 end
 
 task :geturls do
-  command = %q~ echo "myurls = Array.new" && cat chimailmadmin.rb | grep -E "get|r301|rewrite " | sed -r "s/    get //g" | sed -r "s/ do//g" | sed -r "s/[^\+]*\+'([^']+').+/'\/\1/g" | sort | uniq | awk '{print "myurls[] =" $1}'r~
+  command = %q~ echo "myurls = Array.new" && cat chimailmadmin.rb | grep -E "get|r301|rewrite " | sed -r "s/    get //g" | sed -r "s/ do//g" | sed -r "s/[^\+]*\+'([^']+').+/'\/\1/g" | sort | uniq | awk '{print "myurls << " $1}'r~
   puts `#{command}`
 end
  
