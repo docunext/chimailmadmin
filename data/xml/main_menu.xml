@@ -1,0 +1,134 @@
+<!--
+Program: Chi Mail Madmin
+Component: main_menu.xml
+Copyright: Savonix Corporation
+Author: Albert L. Lash, IV
+License: Gnu Affero Public License version 3
+http://www.gnu.org/licenses
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation; either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program; if not, see http://www.gnu.org/licenses
+or write to the Free Software Foundation,Inc., 51 Franklin Street,
+Fifth Floor, Boston, MA 02110-1301  USA
+-->
+<menu>
+    <item>
+        <key>domains</key>
+        <item>
+            <key>domain_list</key>
+            <url>cma-domain-list</url>
+        </item>
+        <item>
+            <key>add_domain</key>
+            <url>cma-domain-edit</url>
+        </item>
+        <item>
+            <key>domain_groups</key>
+            <url>cma-domain-groups</url>
+        </item>
+    </item>
+    <item>
+        <key>servers</key>
+        <item>
+            <key>server_list</key>
+            <url>cma-server-list</url>
+        </item>
+        <item>
+            <key>server_add</key>
+            <url>cma-server-edit</url>
+        </item>
+    </item>
+    <item>
+        <key>addresses</key>
+        <item>
+            <key>address_list</key>
+            <url>cma-mailbox-list</url>
+        </item>
+        <item>
+            <key>add_mailbox</key>
+            <url>cma-mailbox-edit</url>
+        </item>
+        <item>
+            <key>alias_list</key>
+            <url>cma-alias-list</url>
+        </item>
+        <item>
+            <key>add_alias</key>
+            <url>cma-alias-edit</url>
+        </item>
+    </item>
+    <item>
+        <key>cma_junk</key>
+        <item>
+            <key>access_lists</key>
+            <url>cma-access-lists</url>
+        </item>
+        <item>
+            <key>spamassassin</key>
+            <url>cma-spamassassin-prefs</url>
+        </item>
+        <item>
+            <key>dspam</key>
+            <url>cma-dspam-prefs</url>
+        </item>
+        <item>
+            <key>gld</key>
+            <url>cma-gld</url>
+        </item>
+    </item>
+    <item>
+        <key>cma_tools</key>
+        <item>
+            <key>import_aliases</key>
+            <url>cma-import-aliases</url>
+        </item>
+        <item>
+            <key>import_accounts</key>
+            <url>cma-import-accounts</url>
+        </item>
+  </item>
+    <item>
+        <key>cma_options</key>
+        <item>
+            <key>upload_options</key>
+            <url>cma-upload-options</url>
+        </item>
+        <item>
+            <key>image_options</key>
+            <url>cma-image-options</url>
+        </item>
+        <item>
+            <key>mailstore_options</key>
+            <url>cma-mailstore-options</url>
+        </item>
+        <item>
+            <key>database_options</key>
+            <url>cma-database-options</url>
+        </item>
+        <item>
+            <key>interface_options</key>
+            <url>cma-interface-options</url>
+        </item>
+    </item>
+    <item>
+        <key>cma_help</key>
+        <item>
+            <key>about_cma</key>
+            <url>cma-about</url>
+        </item>
+        <item>
+            <key>email_resources</key>
+            <url>cma-email-resources</url>
+        </item>
+  </item>
+</menu>
