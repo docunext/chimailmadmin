@@ -27,7 +27,12 @@ namespace :vlad do
   task :deploy => [:update, :restart, :fix]
 end
 
-
+task :geturls do
+  command = %q~ echo "myurls = Array.new" && cat chimailmadmin.rb | grep -E "get|r301|rewrite " | sed -r "s/    get //g" | sed -r "s/ do//g" | sed -r "s/[^\+]*\+'([^']+').+/'\/\1/g" | sort | uniq | awk '{print "myurls[] =" $1}'r~
+  puts `#{command}`
+end
+ 
+  
 Spec::Rake::SpecTask.new(:spec) do |t|
   t.spec_files = Dir.glob('spec/*_spec.rb')
   t.spec_opts << '--format specdoc'
