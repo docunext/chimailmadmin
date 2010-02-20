@@ -27,14 +27,32 @@ describe "Chimailmadmin" do
   include Rack::Test::Methods
 
   def app
-    conf = Hash['uripfx', '', "b", 201]
+    conf = Hash['uripfx', '/', "b", 201]
     myapp = Chimailmadmin.new(conf)
     myapp.set :environment, 'test'
     @app ||=   myapp
   end
+  myurls = Array.new
+  myurls << '/'
+  myurls << '/cma-about'
+  myurls << '/cma-access-lists'
+  myurls << '/cma-alias-edit'
+  myurls << '/cma-domain-edit'
+  myurls << '/cma-domain-list'
+  myurls << '/cma-email-resources'
+  myurls << '/cma-mailbox-edit'
+  myurls << '/cma-mailbox-list'
+  myurls << '/cma-server-edit'
+  myurls << '/cma-server-list'
+  myurls << '/runtime/info'
+  myurls << '/stylesheet.css'
+  myurls << '/welcome'
 
-  it "should respond to /" do
-    get '/'
-    last_response.should be_ok
-  end
+  myurls.each { |url|
+    it "should respond to #{url}" do
+      get url
+      last_response.should be_ok
+    end
+  }
+
 end

@@ -1,6 +1,6 @@
 <!--
-Program: http://www.docunext.com
-Component: runtime.xsl
+Program: http://www.chimailmadmin.com
+Component: domain_list.xsl
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -101,7 +101,7 @@ return confirm ('Do you really want to delete all records for this domain? This 
 </div>
 
 
-<div style="float: right" class="button-basic-{//theme_color}">
+<div style="float: right" class="button-basic-blue">
   <a href="cma-domain-edit">
     <span id="i18n-new_domain">New Domain</span>
   </a>

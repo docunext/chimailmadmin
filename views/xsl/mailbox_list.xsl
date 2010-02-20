@@ -1,6 +1,6 @@
 <!--
-Program: http://www.docunext.com
-Component: runtime.xsl
+Program: http://www.chimailmadmin.com
+Component: mailbox_list.xsl
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
 License: Gnu Affero Public License version 3
@@ -89,7 +89,7 @@ src="x-tablesorter-setup-js&amp;selector=mailbox_table" />
 </div>
 
 <div class="table_meta">
-  <div style="float: right" class="button-basic-{//theme_color}">
+  <div style="float: right" class="button-basic-blue">
     <a href="cma-mailbox-edit">
       <span id="i18n-add_mailbox" class="i18n">Add Mailbox</span>
     </a>

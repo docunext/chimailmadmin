@@ -93,6 +93,7 @@ module Chimailmadmin
       rewrite Chimailmadmin.conf['uripfx']+'welcome', '/s/xhtml/welcome.html'
       rewrite Chimailmadmin.conf['uripfx']+'cma-alias-edit', '/s/xhtml/alias_form.html'
       rewrite Chimailmadmin.conf['uripfx']+'cma-mailbox-edit', '/s/xhtml/mailbox_form.html'
+      rewrite Chimailmadmin.conf['uripfx']+'cma-server-edit', '/s/xhtml/server_form.html'
       rewrite Chimailmadmin.conf['uripfx']+'cma-domain-edit', '/s/xhtml/domain_form.html'
       r301 Chimailmadmin.conf['uripfx']+'cma-email-resources', Chimailmadmin.conf['uripfx']+'welcome'
     end
@@ -124,6 +125,12 @@ module Chimailmadmin
     end
     get '/cma-domain-list' do
       xslview '<root />', 'domain_list.xsl'
+    end
+    get '/cma-server-list' do
+      xslview '<root />', 'server_list.xsl'
+    end
+    get '/cma-access-lists' do
+      xslview '<root />', 'spam_access_list.xsl'
     end
     get '/cma-about' do
       markdown :'md/cma-about'
