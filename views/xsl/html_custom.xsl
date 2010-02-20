@@ -49,6 +49,7 @@ xmlns="http://www.w3.org/1999/xhtml">
 			</div>
 		</div>
     <xsl:call-template name="footer" />
+    <xsl:call-template name="analytics_code" />
 
 			</body>
 		</html>
@@ -174,6 +175,18 @@ xmlns="http://www.w3.org/1999/xhtml">
     </ul>
   </div>
 </div>
+</xsl:template>
+
+
+<xsl:template name="analytics_code">
+<script src="http://www.google-analytics.com/ga.js" type="text/javascript"></script> 
+<script type="text/javascript"> 
+try {
+var pageTracker = _gat._getTracker("UA-9068589-14");
+pageTracker._setCookiePath("/demo/");
+ 
+pageTracker._trackPageview();
+} catch(err) {}</script>
 </xsl:template>
 
 <xsl:template name="inline-ads">
