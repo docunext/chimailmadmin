@@ -21,7 +21,7 @@ namespace :vlad do
     run "sudo svc -u /service/#{@application}"
   end
   remote_task :fix do
-    run "mkdir /var/www/dev/#{@application}/current/public/d/xhtml"
+    run "mkdir -p /var/www/dev/#{@application}/current/public/d/xhtml"
     run "chmod 0777 /var/www/dev/#{@application}/current/public/d/xhtml"
   end
   task :deploy => [:update, :restart, :fix]
