@@ -33,7 +33,7 @@ src="x-tablesorter-setup-js&amp;selector=mailbox_table" />
 
 <h4>
   <span id="i18n-mailboxes_for">Mailboxes for </span>
-  <xsl:value-of select="//domains_get_all[domain_id=//_get/domain_id]/domain"/>
+  <xsl:value-of select="//@domain"/>
 </h4>
 <div id="tableframe">
   <table id="mailbox_table" class="tablesorter">
@@ -55,28 +55,28 @@ src="x-tablesorter-setup-js&amp;selector=mailbox_table" />
       </tr>
     </thead>
     <tbody>
-      <xsl:for-each select="//mailboxes_get_all/mailboxes_get_all">
-        <tr id="mb_{mailbox_id}">
+      <xsl:for-each select="//mailboxes/mailbox">
+        <tr id="mb_{@id}">
           <td>
-            <a href="cma-mailbox-edit&amp;mailbox_id={mailbox_id}">
-              <xsl:value-of select="email_address"/>@<xsl:value-of select="domain"/>
+            <a href="cma-mailbox-edit/{@id}">
+              <xsl:value-of select="@address"/>@<xsl:value-of select="//@domain"/>
             </a>
           </td>
           <td>
-            <xsl:value-of select="name"/>
+            <xsl:value-of select="@address"/>
           </td>
           <td>
             <xsl:value-of select="created"/>
           </td>
           <td/>
           <td>
-            <a href="cma-mailbox-edit&amp;mailbox_id={mailbox_id}">
+            <a href="cma-mailbox-edit/{@id}">
               <span id="i18n_edit" class="i18n">edit</span>
             </a>
           </td>
           <td>
             <a href=""
-            onclick="mailbox_delete({mailbox_id}); return false;">
+            onclick="mailbox_delete({@id}); return false;">
               <span id="i18n_del" class="i18n">del</span>
             </a>
           </td>

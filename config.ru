@@ -13,7 +13,6 @@ end
 
 require 'chimailmadmin'
 
-
 map mountpath do
   conf = Hash['uripfx', mountpath.gsub(/^\/$/,''), "b", 201]
   myapp = Chimailmadmin.new(conf)

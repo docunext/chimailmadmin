@@ -30,20 +30,24 @@ require 'builder'
 require 'sass'
 require 'xml/xslt'
 require 'rack-xslview'
+require 'rack/cache'
 require 'sinatra/xslview'
 require 'rexml/document'
+require 'memcache'
+require 'json'
 
 # The container for the Chimailmadmin application
 module Chimailmadmin
 
-
   class << self
-    attr_accessor(:conf, :runtime)
+    attr_accessor(:conf, :runtime, :memc, :memcdb)
   end
 
   # Create the app which will run
   def self.new(conf)
     self.conf = conf
+    self.memc = MemCache.new '192.168.8.2:11211', :namespace => 'doculabsappone'
+    self.memcdb = MemCache.new '192.168.8.2:21201', :namespace => 'doculabsappone'
     Main
   end
 
@@ -97,6 +101,11 @@ module Chimailmadmin
       rewrite Chimailmadmin.conf['uripfx']+'cma-domain-edit', '/s/xhtml/domain_form.html'
     end
 
+    use Rack::Cache,
+      :verbose     => true,
+      :metastore   => 'file:/tmp/cache/rack/meta',
+      :entitystore => 'file:/tmp/cache/rack/body'
+
     # Use Rack-XSLView
     use Rack::XSLView, :myxsl => Chimailmadmin.runtime['xslt'], :noxsl => Chimailmadmin.runtime['omitxsl'], :passenv => Chimailmadmin.runtime['passenv']
 
@@ -120,10 +129,23 @@ module Chimailmadmin
     end
 
     get '/cma-mailbox-list' do
+      idx_json = Chimailmadmin.memcdb.get('name_index') || '["bob"]'
+      @index = JSON.parse(idx_json)
+      domains = builder :'xml/mailboxes'
       xslview '<root />', 'mailbox_list.xsl'
     end
+    get '/cma-mailbox-list/*' do
+      idx_json = Chimailmadmin.memcdb.get('name_index') || '["bob"]'
+      @index = JSON.parse(idx_json)
+      @domain = params[:splat].first
+      mailboxen = builder :'xml/mailboxes'
+      xslview mailboxen, 'mailbox_list.xsl'
+    end
     get '/cma-domain-list' do
-      xslview '<root />', 'domain_list.xsl'
+      idx_json = Chimailmadmin.memcdb.get('dig_index') || '["docunext.com"]'
+      @index = JSON.parse(idx_json)
+      domains = builder :'xml/domains'
+      xslview domains, 'domain_list.xsl'
     end
     get '/cma-server-list' do
       xslview '<root />', 'server_list.xsl'
@@ -147,6 +169,7 @@ module Chimailmadmin
     end
 
     get '/stylesheet.css' do
+      cache_control :public, :max_age => 600
       content_type 'text/css', :charset => 'utf-8'
       sass 'css/notapp'.to_sym
     end

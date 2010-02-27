@@ -63,11 +63,11 @@ return confirm ('Do you really want to delete all records for this domain? This 
       </tr>
     </thead>
     <tbody>
-      <xsl:for-each select="/_R_/domains_get_all/domains_get_all">
-        <tr id="d_{domain_id}">
+      <xsl:for-each select="//domains/domain">
+        <tr id="d_{@id}">
           <td>
-            <a href="cma-mailbox-list&amp;domain_id={domain_id}">
-              <xsl:value-of select="domain"/>
+            <a href="cma-mailbox-list/{@name}">
+              <xsl:value-of select="@name"/>
             </a>
           </td>
           <td>
