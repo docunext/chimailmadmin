@@ -154,6 +154,7 @@ module Chimailmadmin
       xslview '<root />', 'spam_access_list.xsl'
     end
     get '/cma-info-:info' do
+      cache_control :public, :must_revalidate, :max_age => 600
       markdown :"md/cma-#{params[:info]}"
     end
     get '/runtime/info' do
