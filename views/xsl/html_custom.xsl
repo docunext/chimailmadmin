@@ -49,7 +49,9 @@ xmlns="http://www.w3.org/1999/xhtml">
 			</div>
 		</div>
     <xsl:call-template name="footer" />
-    <xsl:call-template name="analytics_code" />
+    <xsl:if test="$RACK_ENV='demo'">
+      <xsl:call-template name="analytics_code" />
+    </xsl:if>
 
 			</body>
 		</html>
@@ -62,7 +64,15 @@ xmlns="http://www.w3.org/1999/xhtml">
 			<link rel="stylesheet" type="text/css" href="{$path_prefix}s/css/droppy.css"></link>
 			<link rel="stylesheet" type="text/css" href="{$path_prefix}stylesheet.css"></link>
 
+      <xsl:if test="$RACK_ENV='demo'">
+      <script type="text/javascript" src="http://www-01.evenserver.com/s/js/jquery/jquery-1.4.2.min.js"></script>
+      <script type="text/javascript" src="http://www-01.evenserver.com/s/js/jquery/plugins/jquery.url-1.0.js"></script>
+      </xsl:if>
+      
+      <xsl:if test="not($RACK_ENV='demo')">
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/jquery.js" />
+			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.url.js" />
+			</xsl:if>
 
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.cookiejar.js" />
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.rotate.js"></script>
