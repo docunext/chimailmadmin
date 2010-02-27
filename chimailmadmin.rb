@@ -96,7 +96,7 @@ module Chimailmadmin
     use Rack::Rewrite do
       rewrite Chimailmadmin.conf['uripfx']+'welcome', '/s/xhtml/welcome.html'
       rewrite Chimailmadmin.conf['uripfx']+'cma-alias-edit', '/s/xhtml/alias_form.html'
-      rewrite %r{#{Chimailmadmin.conf['uripfx']}cma-mailbox-edit(.*)}, '/s/xhtml/mailbox_form.html?id=$1'
+      rewrite %r{#{Chimailmadmin.conf['uripfx']}cma-mailbox-edit/(.*)}, '/s/xhtml/mailbox_form.html?email=$1'
       rewrite Chimailmadmin.conf['uripfx']+'cma-mailbox-edit', '/s/xhtml/mailbox_form.html'
       rewrite Chimailmadmin.conf['uripfx']+'cma-server-edit', '/s/xhtml/server_form.html'
       rewrite Chimailmadmin.conf['uripfx']+'cma-domain-edit', '/s/xhtml/domain_form.html'

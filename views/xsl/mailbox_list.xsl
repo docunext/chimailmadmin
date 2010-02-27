@@ -58,7 +58,7 @@ src="x-tablesorter-setup-js&amp;selector=mailbox_table" />
       <xsl:for-each select="//mailboxes/mailbox">
         <tr id="mb_{@id}">
           <td>
-            <a href="../cma-mailbox-edit/{@id}">
+            <a href="../cma-mailbox-edit/{@address}@{//@domain}">
               <xsl:value-of select="@address"/>@<xsl:value-of select="//@domain"/>
             </a>
           </td>
@@ -70,7 +70,7 @@ src="x-tablesorter-setup-js&amp;selector=mailbox_table" />
           </td>
           <td/>
           <td>
-            <a href="../cma-mailbox-edit/{@id}">
+            <a href="../cma-mailbox-edit/{@address}@{//@domain}">
               <span id="i18n_edit" class="i18n">edit</span>
             </a>
           </td>

@@ -236,7 +236,8 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 <div id="ft">
   <p class="inner">Copyright 
   <a href="http://www.savonix.com/">Savonix Corporation</a><xsl:text> </xsl:text>
-  <a href="http://www.docunext.com/wiki/Affero_GPL">AGPL Licensed</a>
+  <a href="http://www.docunext.com/wiki/Affero_GPL">AGPL Licensed</a><xsl:text> </xsl:text>
+  <a href="http://www.chimailmadmin.com/blog/">ChiMailMadmin.com</a>
   </p>
 </div>
 </xsl:template>
