@@ -1,5 +1,5 @@
 <!--
-Program: http://www.docunext.com
+Program: http://www.chimailmadmin.com
 Component: spamassassin_prefs.xsl
 Copyright: Savonix Corporation
 Author: Albert L. Lash, IV
@@ -23,75 +23,47 @@ Fifth Floor, Boston, MA 02110-1301 USA
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 xmlns="http://www.w3.org/1999/xhtml">
-
-
 <xsl:template match="/">
-
 <div>
-
-
 <script type="text/javascript"
-src="x-tablesorter-setup-js&amp;selector=domain_table" />
-
-
-<!-- 
-return confirm ('Do you really want to delete all records for this domain? This can not be undone!\nDomain: test.com')
--->
-<div class="tableframe">
-  <table id="domain_table" class="tablesorter">
+src="{$link_prefix}x-tablesorter-setup-js&amp;selector=server_table" />
+<div id="tableframe">
+  <table id="access_table" class="tablesorter">
     <thead>
       <tr>
-        <th>
-          <span id="i18n-domain">Domain</span>
-        </th>
-        <th>
-          <span id="i18n-description">Description</span>
-        </th>
-        <th>
-          <span id="i18n-aliases">Aliases</span>
-        </th>
-        <th>
-          <span id="i18n-mailboxes">Mailboxes</span>
-        </th>
-        <th>
-          <span id="i18n-last_modified">Last Modified</span>
-        </th>
-        <th>
-          <span id="i18n-active">Active</span>
-        </th>
-        <th colspan="2" class="{{sorter: false}}" />
+        <th>Email / Domain</th>
+        <th>Preference</th>
+        <th>Value</th>
+        <th>Date</th>
+        <th>Notes</th>
+        <th>Delete</th>
       </tr>
     </thead>
     <tbody>
-      <xsl:for-each select="/_R_/domains_get_all/domains_get_all">
-        <tr id="d_{domain_id}">
+      <xsl:for-each select="//user_prefs_get_all/user_prefs_get_all">
+        <tr id="pref_{pref_id}">
           <td>
-            <a href="cma-mailbox-list&amp;domain_id={domain_id}">
-              <xsl:value-of select="domain"/>
+            <a href="{$link_prefix}cma-spamassassin-edit&amp;pref_id={pref_id}">
+              <xsl:value-of select="email_domain"/>
             </a>
           </td>
           <td>
-            <xsl:value-of select="description"/>
-          </td>
-          <td></td>
-          <td></td>
-          <td>
-            <xsl:value-of select="modified"/>
+            <xsl:value-of select="preference"/>
           </td>
           <td>
-            <a href="">
-              <xsl:value-of select="active"/>
-            </a>
+            <xsl:value-of select="value"/>
           </td>
           <td>
-            <a href="cma-domain-edit&amp;my_domain_id={domain_id}">
-              <span>edit</span>
-            </a>
+            <xsl:value-of select="created"/>
           </td>
           <td>
-            <a href="#x-domain-delete&amp;my_domain_id={domain_id}"
-            onclick="domain_delete({domain_id}); return false;">
-              <span>del</span>
+            <xsl:value-of select="notes"/>
+          </td>
+          <td>
+            <a href="#{$link_prefix}x-cma-spamassassin-delete&amp;pref_id={pref_id}"
+              onclick="user_pref_delete({pref_id}); return false;"
+              >
+            Delete
             </a>
           </td>
         </tr>
@@ -100,17 +72,20 @@ return confirm ('Do you really want to delete all records for this domain? This 
   </table>
 </div>
 
+<div class="table_controls">
+  <xsl:call-template name="pager">
+    <xsl:with-param name="my-table">access_table</xsl:with-param>
+  </xsl:call-template>
+</div>
 
-<div style="float: right" class="button-basic-blue">
-  <a href="cma-domain-edit">
-    <span id="i18n-new_domain">New Domain</span>
-  </a>
-  <a href="x-domain-export">
-    <span id="i18n-domain_export">Domain Export</span>
-  </a>
-  <a href="x-relay-export">
-    <span id="i18n-relay_export">Relay Export</span>
-  </a>
+<div class="table_meta">
+  <div style="float: right" class="button-basic-{//theme_color}">
+    <a href="{$link_prefix}cma-spamassassin-edit">
+    Add Entry</a>
+    <a class="button-basic-{//theme_color}" href="{$link_prefix}x-sender-user-prefs-export&amp;type=sender" title="Note: per-domain preferences may produce unpredictable results when not using SQL.">
+      Preferences File Export
+    </a>
+  </div>
 </div>
 </div>
 </xsl:template>
