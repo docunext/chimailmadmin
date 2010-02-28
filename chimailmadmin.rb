@@ -97,6 +97,7 @@ module Chimailmadmin
       rewrite Chimailmadmin.conf['uripfx']+'welcome', '/s/xhtml/welcome.html'
       rewrite Chimailmadmin.conf['uripfx']+'cma-alias-edit', '/s/xhtml/alias_form.html'
       rewrite %r{#{Chimailmadmin.conf['uripfx']}cma-mailbox-edit/(.*)}, '/s/xhtml/mailbox_form.html?email=$1'
+      rewrite %r{#{Chimailmadmin.conf['uripfx']}cma-import-(.*)}, '/s/xhtml/import_form.html?type=$1'
       rewrite Chimailmadmin.conf['uripfx']+'cma-mailbox-edit', '/s/xhtml/mailbox_form.html'
       rewrite Chimailmadmin.conf['uripfx']+'cma-server-edit', '/s/xhtml/server_form.html'
       rewrite Chimailmadmin.conf['uripfx']+'cma-domain-edit', '/s/xhtml/domain_form.html'
@@ -130,29 +131,43 @@ module Chimailmadmin
     end
 
     get '/cma-mailbox-list' do
-      idx_json = Chimailmadmin.memcdb.get('name_index') || '["bob"]'
+      idx_json = Chimailmadmin.memcdb.get('name_index') || '["bill.gates","steve.jobs"]'
       @index = JSON.parse(idx_json)
-      domains = builder :'xml/mailboxes'
-      xslview '<root />', 'mailbox_list.xsl'
+      xml = builder :'xml/mailboxes'
+      xslview xml, 'mailbox_list.xsl'
     end
     get '/cma-mailbox-list/*' do
-      idx_json = Chimailmadmin.memcdb.get('name_index') || '["bob"]'
+      idx_json = Chimailmadmin.memcdb.get('name_index') || '["bill.gates","steve.jobs"]'
       @index = JSON.parse(idx_json)
       @domain = params[:splat].first
-      mailboxen = builder :'xml/mailboxes'
-      xslview mailboxen, 'mailbox_list.xsl'
+      xml = builder :'xml/mailboxes'
+      xslview xml, 'mailbox_list.xsl'
     end
     get '/cma-domain-list' do
       idx_json = Chimailmadmin.memcdb.get('dig_index') || '["docunext.com"]'
       @index = JSON.parse(idx_json)
-      domains = builder :'xml/domains'
-      xslview domains, 'domain_list.xsl'
+      xml = builder :'xml/domains'
+      xslview xml, 'domain_list.xsl'
     end
     get '/cma-server-list' do
-      xslview '<root />', 'server_list.xsl'
+      xml = '<root />'
+      xslview xml, 'server_list.xsl'
     end
     get '/cma-access-lists' do
-      xslview '<root />', 'spam_access_list.xsl'
+      xml = '<root />'
+      xslview xml, 'spam_access_list.xsl'
+    end
+    get '/cma-sa-prefs' do
+      settings = ["example.com","example.org","example.net"]
+      @index = { 'whitelist_to' => settings }
+      xml = builder :"xml/sa_prefs"
+      xslview xml, "sa_prefs.xsl"
+    end
+    # Expiriment
+    get '/dnu-cma-sa-:pipeline' do
+      @prefs = { 'whitelist_to' => ["example.com","example.org"]}
+      xml = builder :"xml/sa_#{params[:pipeline]}"
+      xslview xml, "sa_#{params[:pipeline]}.xsl"
     end
     get '/cma-info-:info' do
       cache_control :public, :must_revalidate, :max_age => 600
