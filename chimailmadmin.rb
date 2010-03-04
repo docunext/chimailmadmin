@@ -149,6 +149,10 @@ module Chimailmadmin
       xml = builder :'xml/domains'
       xslview xml, 'domain_list.xsl'
     end
+    get '/cma-domain-groups' do
+      xml = '<root />'
+      xslview xml, 'domain_groups.xsl'
+    end
     get '/cma-server-list' do
       xml = '<root />'
       xslview xml, 'server_list.xsl'
