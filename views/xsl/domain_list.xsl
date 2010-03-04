@@ -68,6 +68,9 @@ return confirm ('Do you really want to delete all records for this domain? This 
             <a href="cma-mailbox-list/{@name}">
               <xsl:value-of select="@name"/>
             </a>
+            <a href="http://www.labs.docunext.com/demo/doculabsappone/tools/digmx/{@name}.html">
+            <xsl:text>Dig MX</xsl:text>
+            </a>
           </td>
           <td>
             <xsl:value-of select="description"/>
