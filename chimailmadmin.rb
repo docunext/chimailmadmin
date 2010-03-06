@@ -35,6 +35,9 @@ require 'sinatra/xslview'
 require 'rexml/document'
 require 'memcache'
 require 'json'
+require 'dbi'
+require 'erubis'
+require 'redis'
 
 # The container for the Chimailmadmin application
 module Chimailmadmin
@@ -98,13 +101,14 @@ module Chimailmadmin
       rewrite Chimailmadmin.conf['uripfx']+'cma-alias-edit', '/s/xhtml/alias_form.html'
       rewrite %r{#{Chimailmadmin.conf['uripfx']}cma-mailbox-edit/(.*)}, '/s/xhtml/mailbox_form.html?email=$1'
       rewrite %r{#{Chimailmadmin.conf['uripfx']}cma-import-(.*)}, '/s/xhtml/import_form.html?type=$1'
+      rewrite %r{#{Chimailmadmin.conf['uripfx']}cma-spamassassin-edit}, '/s/xhtml/spam_spamassassin_form.html?type=$1'
       rewrite Chimailmadmin.conf['uripfx']+'cma-mailbox-edit', '/s/xhtml/mailbox_form.html'
       rewrite Chimailmadmin.conf['uripfx']+'cma-server-edit', '/s/xhtml/server_form.html'
       rewrite Chimailmadmin.conf['uripfx']+'cma-domain-edit', '/s/xhtml/domain_form.html'
     end
 
     use Rack::Cache,
-      :verbose     => true,
+      :verbose     => false,
       :metastore   => 'file:/tmp/cache/rack/meta',
       :entitystore => 'file:/tmp/cache/rack/body'
 
