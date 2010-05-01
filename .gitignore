@@ -1,4 +1,5 @@
 config/config.xml
+config/customconf.rb
 cache
 coverage
 config/deploy.rb
