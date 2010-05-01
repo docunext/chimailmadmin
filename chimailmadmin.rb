@@ -183,7 +183,7 @@ module Chimailmadmin
       markdown :"md/cma-#{params[:info]}"
     end
     get '/cma-admin' do
-      xslview '<root />', 'admin.xsl'
+      xslview '<root />', 'admin.xsl', { 'link_prefix' => "#{Chimailmadmin.conf[:uripfx]}"  }
     end
     get '/cma-admin-rr' do
       stdout = '<pre>'<< Chimailmadmin.conf[:user] << "@" << Chimailmadmin.conf[:host] << "\n"

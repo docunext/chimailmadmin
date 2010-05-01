@@ -13,7 +13,7 @@ require 'chimailmadmin'
 
 map mountpath do
   ccf = 'config/customconf.rb'
-  conf = Hash[:uripfx, mountpath.gsub(/^\/$/,''), :ccf, ccf]
+  conf = { :uripfx => mountpath.gsub(/^\/$/,''), :ccf => ccf }
   myapp = Chimailmadmin.new(conf)
   myapp.set :environment, 'development'
   run myapp
