@@ -24,6 +24,9 @@ namespace :vlad do
     run "mkdir -p /var/www/dev/#{@application}/current/public/d/xhtml"
     run "chmod 0777 /var/www/dev/#{@application}/current/public/d/xhtml"
   end
+  remote_task :logtail do
+    run "tail /tmp/webapps/chimailmadmin.log -n 100"
+  end
   task :deploy => [:update, :restart, :fix]
 end
 
