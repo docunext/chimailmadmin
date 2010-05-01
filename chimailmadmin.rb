@@ -48,9 +48,11 @@ module Chimailmadmin
     self.conf = conf
     self.memc = MemCache.new '192.168.8.2:11211', :namespace => 'doculabsappone'
     self.memcdb = MemCache.new '192.168.8.2:21201', :namespace => 'doculabsappone'
-    myconf = File.open(self.conf[:ccf]) { |f| f.read }
-    customconf = eval(myconf)
-    self.conf.merge!(customconf)
+    if File.exists?(self.conf[:ccf])
+      myconf = File.open(self.conf[:ccf]) { |f| f.read }
+      customconf = eval(myconf)
+      self.conf.merge!(customconf)
+    end
     Main
   end
 
