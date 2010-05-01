@@ -21,10 +21,8 @@
 # or write to the Free Software Foundation, Inc., 51 Franklin Street,
 # Fifth Floor, Boston, MA 02110-1301 USA
 ##
-require 'rubygems'
 require 'sinatra/base'
-require 'rack/utils'
-require 'rack/contrib'
+require 'rack/contrib/config'
 require 'rack-rewrite'
 require 'builder'
 require 'sass'
@@ -36,8 +34,7 @@ require 'rexml/document'
 require 'memcache'
 require 'json'
 require 'dbi'
-require 'erubis'
-require 'redis'
+require 'net/ssh'
 
 # The container for the Chimailmadmin application
 module Chimailmadmin
@@ -51,6 +48,9 @@ module Chimailmadmin
     self.conf = conf
     self.memc = MemCache.new '192.168.8.2:11211', :namespace => 'doculabsappone'
     self.memcdb = MemCache.new '192.168.8.2:21201', :namespace => 'doculabsappone'
+    myconf = File.open(self.conf[:ccf]) { |f| f.read }
+    customconf = eval(myconf)
+    self.conf.merge!(customconf)
     Main
   end
 
@@ -61,23 +61,24 @@ module Chimailmadmin
       set :static, true
       set :public, 'public'
       set :xslviews, 'views/xsl/'
+      set :uripfx, Proc.new { Chimailmadmin.conf[:uripfx] }
 
       # Set request.env with application mount path
       use Rack::Config do |env|
         env['RACK_ENV'] = ENV['RACK_ENV'] ? ENV['RACK_ENV'] : 'development'
-        env['path_prefix'] = Chimailmadmin.conf['uripfx']
-        env['link_prefix'] = Chimailmadmin.conf['uripfx']
+        env['path_prefix'] = Chimailmadmin.conf[:uripfx]
+        env['link_prefix'] = Chimailmadmin.conf[:uripfx]
       end
 
       Chimailmadmin.runtime = Hash.new
       # Setup XSL - better to do this only once
-      Chimailmadmin.runtime['xslt']    = XML::XSLT.new()
-      Chimailmadmin.runtime['xslfile'] = File.open('views/xsl/html_main.xsl')
-      Chimailmadmin.runtime['xslt'].xsl = REXML::Document.new Chimailmadmin.runtime['xslfile']
+      Chimailmadmin.runtime[:xslt]    = XML::XSLT.new()
+      Chimailmadmin.runtime[:xslfile] = File.open('views/xsl/html_main.xsl') {|f| f.read }
+      Chimailmadmin.runtime[:xslt].xsl = REXML::Document.new Chimailmadmin.runtime[:xslfile]
 
       # Setup paths to remove from Rack::XSLView, and params to include
-      Chimailmadmin.runtime['omitxsl'] = ['/raw/', '/s/js/', '/s/css/', '/s/img/']
-      Chimailmadmin.runtime['passenv'] = ['PATH_INFO', 'RACK_MOUNT_PATH', 'RACK_ENV','link_prefix','path_prefix']
+      Chimailmadmin.runtime[:omitxsl] = ['/raw/', '/s/js/']
+      Chimailmadmin.runtime[:passenv] = ['PATH_INFO', 'RACK_MOUNT_PATH', 'RACK_ENV','link_prefix','path_prefix']
 
       # Used in runtime/info
       Chimailmadmin.runtime['started_at'] = Time.now.to_i
@@ -97,14 +98,14 @@ module Chimailmadmin
 
     # Rewrite app url patterns to static files
     use Rack::Rewrite do
-      rewrite Chimailmadmin.conf['uripfx']+'welcome', '/s/xhtml/welcome.html'
-      rewrite Chimailmadmin.conf['uripfx']+'cma-alias-edit', '/s/xhtml/alias_form.html'
-      rewrite %r{#{Chimailmadmin.conf['uripfx']}cma-mailbox-edit/(.*)}, '/s/xhtml/mailbox_form.html?email=$1'
-      rewrite %r{#{Chimailmadmin.conf['uripfx']}cma-import-(.*)}, '/s/xhtml/import_form.html?type=$1'
-      rewrite %r{#{Chimailmadmin.conf['uripfx']}cma-spamassassin-edit}, '/s/xhtml/spam_spamassassin_form.html?type=$1'
-      rewrite Chimailmadmin.conf['uripfx']+'cma-mailbox-edit', '/s/xhtml/mailbox_form.html'
-      rewrite Chimailmadmin.conf['uripfx']+'cma-server-edit', '/s/xhtml/server_form.html'
-      rewrite Chimailmadmin.conf['uripfx']+'cma-domain-edit', '/s/xhtml/domain_form.html'
+      rewrite Chimailmadmin.conf[:uripfx]+'welcome', '/s/xhtml/welcome.html'
+      rewrite Chimailmadmin.conf[:uripfx]+'cma-alias-edit', '/s/xhtml/alias_form.html'
+      rewrite %r{#{Chimailmadmin.conf[:uripfx]}cma-mailbox-edit/(.*)}, '/s/xhtml/mailbox_form.html?email=$1'
+      rewrite %r{#{Chimailmadmin.conf[:uripfx]}cma-import-(.*)}, '/s/xhtml/import_form.html?type=$1'
+      rewrite %r{#{Chimailmadmin.conf[:uripfx]}cma-spamassassin-edit}, '/s/xhtml/spam_spamassassin_form.html?type=$1'
+      rewrite Chimailmadmin.conf[:uripfx]+'cma-mailbox-edit', '/s/xhtml/mailbox_form.html'
+      rewrite Chimailmadmin.conf[:uripfx]+'cma-server-edit', '/s/xhtml/server_form.html'
+      rewrite Chimailmadmin.conf[:uripfx]+'cma-domain-edit', '/s/xhtml/domain_form.html'
     end
 
     use Rack::Cache,
@@ -113,7 +114,7 @@ module Chimailmadmin
       :entitystore => 'file:/tmp/cache/rack/body'
 
     # Use Rack-XSLView
-    use Rack::XSLView, :myxsl => Chimailmadmin.runtime['xslt'], :noxsl => Chimailmadmin.runtime['omitxsl'], :passenv => Chimailmadmin.runtime['passenv']
+    use Rack::XSLView, :myxsl => Chimailmadmin.runtime[:xslt], :noxsl => Chimailmadmin.runtime[:omitxsl], :passenv => Chimailmadmin.runtime[:passenv]
 
     # Sinatra Helper Gems
     helpers Sinatra::XSLView
@@ -121,7 +122,7 @@ module Chimailmadmin
     helpers do
       # Just the usual Sinatra redirect with App prefix
       def mredirect(uri)
-        redirect Chimailmadmin.conf['uripfx']+uri
+        redirect Chimailmadmin.conf[:uripfx]+uri
       end
       def markdown(template, options={})
         output = render :md, template, options
@@ -130,7 +131,7 @@ module Chimailmadmin
     end
 
     get '/' do
-      puts Chimailmadmin.conf['uripfx']
+      puts Chimailmadmin.conf[:uripfx]
       mredirect 'welcome'
     end
 
@@ -181,6 +182,18 @@ module Chimailmadmin
       cache_control :public, :must_revalidate, :max_age => 600
       markdown :"md/cma-#{params[:info]}"
     end
+    get '/cma-admin' do
+      xslview '<root />', 'admin.xsl'
+    end
+    get '/cma-admin-rr' do
+      stdout = '<pre>'<< Chimailmadmin.conf[:user] << "@" << Chimailmadmin.conf[:host] << "\n"
+      Net::SSH.start(Chimailmadmin.conf[:host], Chimailmadmin.conf[:user]) do |ssh|
+        ssh.exec!("sudo cat /etc/postfix/relay_recipients") do |channel, stream, data|
+          stdout << data if stream == :stdout
+        end
+      end
+      stdout << '</pre>'
+    end
     get '/runtime/info' do
       cache_control :public, :must_revalidate, :max_age => 60
       @uptime   = (0 + Time.now.to_i - Chimailmadmin.runtime['started_at']).to_s
@@ -190,7 +203,7 @@ module Chimailmadmin
 
     not_found do
       headers 'Last-Modified' => Time.now.httpdate, 'Cache-Control' => 'no-store'
-      %(<div class="block"><div class="hd"><h2>Error</h2></div><div class="bd">This is nowhere to be found. <a href="#{Chimailmadmin.conf['uripfx']}">Start over?</a></div></div>)
+      %(<div class="block"><div class="hd"><h2>Error</h2></div><div class="bd">This is nowhere to be found. <a href="#{Chimailmadmin.conf[:uripfx]}">Start over?</a></div></div>)
     end
 
     get '/stylesheet.css' do
@@ -200,11 +213,4 @@ module Chimailmadmin
     end
   end
 
-end
-
-if __FILE__ == $0
-  conf = Hash["a", 100, "b", 200]
-  myapp = Chimailmadmin.new(conf)
-  myapp.set :environment, 'development'
-  myapp.run!
 end
