@@ -186,9 +186,18 @@ module Chimailmadmin
       xslview '<root />', 'admin.xsl', { 'link_prefix' => "#{Chimailmadmin.conf[:uripfx]}"  }
     end
     get '/cma-admin-rr' do
-      stdout = '<pre>'<< Chimailmadmin.conf[:user] << "@" << Chimailmadmin.conf[:host] << "\n"
-      Net::SSH.start(Chimailmadmin.conf[:host], Chimailmadmin.conf[:user]) do |ssh|
+      stdout = '<pre>'<< Chimailmadmin.conf[:user] << "@" << Chimailmadmin.conf[:pfhost] << "\n"
+      Net::SSH.start(Chimailmadmin.conf[:pfhost], Chimailmadmin.conf[:user]) do |ssh|
         ssh.exec!("sudo cat /etc/postfix/relay_recipients") do |channel, stream, data|
+          stdout << data if stream == :stdout
+        end
+      end
+      stdout << '</pre>'
+    end
+    get '/cma-admin-sa' do
+      stdout = '<pre>'<< Chimailmadmin.conf[:user] << "@" << Chimailmadmin.conf[:sahost] << "\n"
+      Net::SSH.start(Chimailmadmin.conf[:sahost], Chimailmadmin.conf[:user]) do |ssh|
+        ssh.exec!("sudo cat /etc/spamassassin/local.cf") do |channel, stream, data|
           stdout << data if stream == :stdout
         end
       end

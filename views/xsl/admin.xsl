@@ -28,7 +28,8 @@ Fifth Floor, Boston, MA 02110-1301 USA
 
 
 <div id="edit_form">
-<a href="{$link_prefix}cma-admin-rr">Relay Recipients</a><br/>
+<a href="{$link_prefix}cma-admin-rr">Relay Recipients</a> 
+<a href="{$link_prefix}cma-admin-sa">Spamassassin Setup</a>
   <form name="create_admin" method="post">
     <table>
       <tr>
