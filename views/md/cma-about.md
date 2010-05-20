@@ -5,6 +5,7 @@
 * Inspired in part by [postfix](http://www.docunext.com/wiki/Postfix) and postfix admin
 * First written as a [Nexista](http://www.nexista.org/) app
 * Getting ported to [Sinatra](http://www.docunext.com/wiki/Sinatra) now; current status is alpha
+* Now hosted at [Github.com](http://github.com/docunext/yodnsconf)
 
 ## Plans
 
