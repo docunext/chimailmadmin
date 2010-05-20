@@ -138,6 +138,16 @@ module Chimailmadmin
 
     helpers do
       # These should be different based upon development vs. production
+      def get_aliases(domain=nil)
+        aliases = []
+        myalias = Hash.new
+        myalias[:id] = 1
+        myalias[:alias] = 'bob_hope'
+        myalias[:destination] = 'bob.hope' 
+        myalias[:modified] = Time.now.to_i
+        aliases << myalias
+        return aliases
+      end
       def get_mailboxes(domain=nil)
         idx_json = Chimailmadmin.memcdb.get('name_index') || '["bill.gates","steve.jobs"]'
         @index = JSON.parse(idx_json)
@@ -163,18 +173,25 @@ module Chimailmadmin
       xslview xml, 'mailbox_list.xsl'
     end
     post '/cma-mailbox-post' do
-      idx_json = Chimailmadmin.memcdb.get('name_index') || '["bill.gates","steve.jobs"]'
-      index = JSON.parse(idx_json)
+      index = get_mailboxes[0]
       index << params[:email_address]
       Chimailmadmin.memcdb.set('name_index',index.uniq.to_json)
       mredirect 'cma-mailbox-list/'
     end
-
     get '/cma-mailbox-list/*' do
       @index, @updex = get_mailboxes
       @domain = params[:splat].first
       xml = builder :'xml/mailboxes'
       xslview xml, 'mailbox_list.xsl'
+    end
+    get '/cma-alias-list' do
+      mredirect 'cma-alias-list/'
+    end
+    get '/cma-alias-list/*' do
+      @index = get_aliases
+      @domain = params[:splat].first
+      xml = builder :'xml/aliases'
+      xslview xml, 'alias_list.xsl'
     end
     get '/cma-domain-list' do
       @index = get_domains

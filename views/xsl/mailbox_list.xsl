@@ -84,24 +84,8 @@ src="x-tablesorter-setup-js&amp;selector=mailbox_table" />
     </tbody>
   </table>
 </div>
-<div class="table_controls">
-</div>
-
-<div class="table_meta">
-  <div style="float: right" class="button-basic-blue">
-    <a href="../cma-mailbox-edit">
-      <span id="i18n-add_mailbox" class="i18n">Add Mailbox</span>
-    </a>
-
-    <a href="../cma-alias-edit">
-      <span id="i18n-add_alias" class="i18n">Add Alias</span>
-    </a>
-
-    <a href="../x-relay-recipients">
-      <span id="i18n-recipient_export" class="i18n">Recipient Export</span>
-    </a>
-  </div>
-</div>
+<div class="table_controls"/>
+<xsl:copy-of select="document('../../public/s/xhtml/address_menu.html')/*"/>
 </div>
 </xsl:template>
 </xsl:stylesheet>
