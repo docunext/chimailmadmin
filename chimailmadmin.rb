@@ -51,18 +51,19 @@ end
 module Chimailmadmin
 
   class << self
-    attr_accessor(:conf, :runtime, :memc, :memcdb)
+    attr_accessor(:conf, :runtime, :memcdb)
   end
 
   # Create the app which will run
   def self.new(conf)
     self.conf = conf
-    self.memc = MemCache.new '192.168.8.2:11211', :namespace => 'doculabsappone'
     self.memcdb = MemCache.new '192.168.8.2:21201', :namespace => 'doculabsappone'
-    if File.exists?(self.conf[:ccf])
-      myconf = File.open(self.conf[:ccf]) { |f| f.read }
-      customconf = eval(myconf)
-      self.conf.merge!(customconf)
+    if self.conf[:ccf]
+      if File.exists?(self.conf[:ccf])
+        myconf = File.open(self.conf[:ccf]) { |f| f.read }
+        customconf = eval(myconf)
+        self.conf.merge!(customconf)
+      end
     end
     Main
   end
