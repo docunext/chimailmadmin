@@ -116,9 +116,11 @@ module Chimailmadmin
       rewrite %r{#{Chimailmadmin.conf[:uripfx]}cma-mailbox-edit/(.*)}, '/s/xhtml/mailbox_form.html?email=$1'
       rewrite %r{#{Chimailmadmin.conf[:uripfx]}cma-import-(.*)}, '/s/xhtml/import_form.html?type=$1'
       rewrite %r{#{Chimailmadmin.conf[:uripfx]}cma-spamassassin-edit}, '/s/xhtml/spam_spamassassin_form.html?type=$1'
+      rewrite %r{#{Chimailmadmin.conf[:uripfx]}cma-access-edit}, '/s/xhtml/spam_acl_form.html?type=$1'
       rewrite Chimailmadmin.conf[:uripfx]+'cma-mailbox-edit', '/s/xhtml/mailbox_form.html'
       rewrite Chimailmadmin.conf[:uripfx]+'cma-server-edit', '/s/xhtml/server_form.html'
       rewrite Chimailmadmin.conf[:uripfx]+'cma-domain-edit', '/s/xhtml/domain_form.html'
+      rewrite Chimailmadmin.conf[:uripfx]+'cma-access-edit', '/s/xhtml/spam_acl_form.html'
     end
 
     use Rack::Cache,
@@ -189,6 +191,7 @@ module Chimailmadmin
     end
     get '/cma-access-lists' do
       @index = { "example.com"=>'allow', "example.org"=>'allow' }
+      @index['microsoft'] = 'deny'
       xml = builder :'xml/access_lists'
       xslview xml, 'spam_access_list.xsl'
     end
