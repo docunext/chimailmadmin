@@ -60,11 +60,11 @@ src="x-tablesorter-setup-js&amp;selector=access_table" />
         <tr id="acl_{acl_id}">
           <td>
             <a href="cma-access-edit&amp;acl_id={acl_id}">
-              <xsl:value-of select="source"/>
+              <xsl:value-of select="@name"/>
             </a>
           </td>
           <td>
-            <xsl:value-of select="access"/>
+            <xsl:value-of select="@value"/>
           </td>
           <td>
             <xsl:value-of select="type"/>

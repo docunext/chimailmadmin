@@ -188,7 +188,8 @@ module Chimailmadmin
       xslview xml, 'server_list.xsl'
     end
     get '/cma-access-lists' do
-      xml = '<root />'
+      @index = { "example.com"=>'allow', "example.org"=>'allow' }
+      xml = builder :'xml/access_lists'
       xslview xml, 'spam_access_list.xsl'
     end
     get '/cma-sa-prefs' do
