@@ -61,20 +61,20 @@ src="x-tablesorter-setup-js&amp;selector=server_table" />
         <tr id="srv_{server_id}">
           <td>
             <a href="cma-server-edit&amp;server_id={server_id}">
-              <xsl:value-of select="server_id"/>
+              <xsl:value-of select="@id"/>
             </a>
           </td>
           <td>
-            <xsl:value-of select="server"/>
+            <xsl:value-of select="@server"/>
           </td>
           <td>
-            <xsl:value-of select="host_name"/>
+            <xsl:value-of select="@host_name"/>
           </td>
           <td>
-            <xsl:value-of select="server_type_id"/>
+            <xsl:value-of select="@server_type"/>
           </td>
           <td>
-            <xsl:value-of select="created"/>
+            <xsl:value-of select="@created"/>
           </td>
           <td />
           <td>

@@ -149,6 +149,16 @@ module Chimailmadmin
         aliases << myalias
         return aliases
       end
+      def get_servers(domain=nil)
+        servers = []
+        server = Hash.new
+        server[:id] = 1
+        server[:server] = 'Franklin'
+        server[:host_name] = 'mx2.example.com' 
+        server[:modified] = Time.now.to_i
+        servers << server
+        return servers
+      end
       def get_mailboxes(domain=nil)
         idx_json = Chimailmadmin.memcdb.get('name_index') || '["bill.gates","steve.jobs"]'
         @index = JSON.parse(idx_json)
@@ -204,7 +214,8 @@ module Chimailmadmin
       xslview xml, 'domain_groups.xsl'
     end
     get '/cma-server-list' do
-      xml = '<root />'
+      @index = get_servers
+      xml = builder :'xml/servers'
       xslview xml, 'server_list.xsl'
     end
     get '/cma-access-lists' do
