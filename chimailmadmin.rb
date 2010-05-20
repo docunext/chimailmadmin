@@ -36,8 +36,8 @@ require 'memcache'
 require 'json'
 require 'dbi'
 require 'net/ssh'
-require File.dirname(File.dirname(__FILE__)) + '/svxbox/lib/svxbox' unless ENV['RACK_ENV'] == 'production'
-require 'svxbox' if ENV['RACK_ENV'] == 'production'
+require File.dirname(File.dirname(__FILE__)) + '/svxbox/lib/svxbox' if ENV['RACK_ENV'] == 'development'
+require 'svxbox' unless ENV['RACK_ENV'] == 'development'
 
 module Sinatra
   module ModBox
