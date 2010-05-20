@@ -75,12 +75,9 @@ xmlns="http://www.w3.org/1999/xhtml">
 			</xsl:if>
 
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.cookiejar.js" />
-			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.rotate.js"></script>
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.metadata.js"></script>
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.tablesorter.min.js"></script>
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.tablesorter.pager.js"></script>
-			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.dimensions.js"></script>
-			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.date_input.js"></script>
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.cookie.js"></script>
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.json.js"></script>
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.tablesorter.cookie.js"></script>
@@ -152,41 +149,6 @@ xmlns="http://www.w3.org/1999/xhtml">
   </xsl:template>
 
 
-<xsl:template name="nav-menu">
-<div id="navigation">
-<ul id="primary-navigation">
-  <li id="nav-home"><a href="/">Home</a></li>
-</ul>
-<ul id="user-navigation">
-  <li><a href="/runtime/info" class="regdel-link">Settings</a></li>
-  <li><a href="/runtime/info" class="regdel-link not-production">Development</a></li>
-</ul>
-<div class="clear"></div>
-</div>
-</xsl:template>
-
-<xsl:template name="sidebar">
-<div class="block">
-  <div class="hd">
-  <h2>
-    <span class="i18n-quick_links">Quick Links</span>
-  </h2>
-  </div>
-  <div class="bd">
-    <h3>
-      <span class="i18n-actions">Actions</span>
-    </h3>
-    <ul class="biglist">
-      <li>
-        <a href="/" id="sb-new-entry" class="regdel-link">
-          <span class="i18n-new_entry">Home</span>
-        </a>
-      </li>
-    </ul>
-  </div>
-</div>
-</xsl:template>
-
 
 <xsl:template name="analytics_code">
 <script src="http://www.google-analytics.com/ga.js" type="text/javascript"></script> 
@@ -220,27 +182,6 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </div>
 </xsl:template>
 
-<xsl:template name="ads">
-<div class="block" style="float:right;">
-  <div class="hd">
-  <h2>
-    <span class="i18n-quick_links">Sponsors</span>
-  </h2>
-  </div>
-  <div class="bd" style="padding:1em 0;">
-<script type="text/javascript"><xsl:comment>
-google_ad_client = "pub-9657495873329253";
-/* 300x250-wiki */
-google_ad_slot = "6561520760";
-google_ad_width = 300;
-google_ad_height = 250;
-//</xsl:comment></script> 
-<script type="text/javascript"
-src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> 
-</script> 
-  </div>
-</div>
-</xsl:template>
 
 <xsl:template name="footer">
 <div id="ft">

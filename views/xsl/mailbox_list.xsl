@@ -62,7 +62,7 @@ src="x-tablesorter-setup-js&amp;selector=mailbox_table" />
             </a>
           </td>
           <td>
-            <xsl:value-of select="@address"/>
+            <xsl:value-of select="@name"/>
           </td>
           <td>
             <xsl:value-of select="created"/>
@@ -89,15 +89,15 @@ src="x-tablesorter-setup-js&amp;selector=mailbox_table" />
 
 <div class="table_meta">
   <div style="float: right" class="button-basic-blue">
-    <a href="cma-mailbox-edit">
+    <a href="../cma-mailbox-edit">
       <span id="i18n-add_mailbox" class="i18n">Add Mailbox</span>
     </a>
 
-    <a href="cma-alias-edit">
+    <a href="../cma-alias-edit">
       <span id="i18n-add_alias" class="i18n">Add Alias</span>
     </a>
 
-    <a href="x-relay-recipients">
+    <a href="../x-relay-recipients">
       <span id="i18n-recipient_export" class="i18n">Recipient Export</span>
     </a>
   </div>

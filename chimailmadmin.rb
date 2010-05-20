@@ -30,11 +30,22 @@ require 'xml/xslt'
 require 'rack-xslview'
 require 'rack/cache'
 require 'sinatra/xslview'
+require 'sinatra/simplerdiscount'
 require 'rexml/document'
 require 'memcache'
 require 'json'
 require 'dbi'
 require 'net/ssh'
+require File.dirname(File.dirname(__FILE__)) + '/svxbox/lib/svxbox' unless ENV['RACK_ENV'] == 'production'
+require 'svxbox' if ENV['RACK_ENV'] == 'production'
+
+module Sinatra
+  module ModBox
+    include SvxBox::Sinatricus
+    include SvxBox::MarkupGuppy
+  end
+  helpers ModBox
+end
 
 # The container for the Chimailmadmin application
 module Chimailmadmin
@@ -120,15 +131,22 @@ module Chimailmadmin
 
     # Sinatra Helper Gems
     helpers Sinatra::XSLView
+    helpers Sinatra::ModBox
+    helpers Sinatra::SimpleRDiscount
 
     helpers do
-      # Just the usual Sinatra redirect with App prefix
-      def mredirect(uri)
-        redirect Chimailmadmin.conf[:uripfx]+uri
+      # These should be different based upon development vs. production
+      def get_mailboxes(domain=nil)
+        idx_json = Chimailmadmin.memcdb.get('name_index') || '["bill.gates","steve.jobs"]'
+        @index = JSON.parse(idx_json)
+        @updex = @index.map do |name|
+          name.gsub('.',' ').gsub(/\b\w/){$&.upcase}
+        end
+        return [@index, @updex]
       end
-      def markdown(template, options={})
-        output = render :md, template, options
-        '<div>'+output+'</div>'
+      def get_domains(domain_group=nil)
+        idx_json = Chimailmadmin.memcdb.get('dig_index') || '["docunext.com"]'
+        return JSON.parse(idx_json)
       end
     end
 
@@ -138,21 +156,26 @@ module Chimailmadmin
     end
 
     get '/cma-mailbox-list' do
-      idx_json = Chimailmadmin.memcdb.get('name_index') || '["bill.gates","steve.jobs"]'
-      @index = JSON.parse(idx_json)
+      @index, @updex = get_mailboxes
       xml = builder :'xml/mailboxes'
       xslview xml, 'mailbox_list.xsl'
     end
-    get '/cma-mailbox-list/*' do
+    post '/cma-mailbox-post' do
       idx_json = Chimailmadmin.memcdb.get('name_index') || '["bill.gates","steve.jobs"]'
-      @index = JSON.parse(idx_json)
+      index = JSON.parse(idx_json)
+      index << params[:email_address]
+      Chimailmadmin.memcdb.set('name_index',index.uniq.to_json)
+      mredirect 'cma-mailbox-list/'
+    end
+
+    get '/cma-mailbox-list/*' do
+      @index, @updex = get_mailboxes
       @domain = params[:splat].first
       xml = builder :'xml/mailboxes'
       xslview xml, 'mailbox_list.xsl'
     end
     get '/cma-domain-list' do
-      idx_json = Chimailmadmin.memcdb.get('dig_index') || '["docunext.com"]'
-      @index = JSON.parse(idx_json)
+      @index = get_domains
       xml = builder :'xml/domains'
       xslview xml, 'domain_list.xsl'
     end
@@ -174,7 +197,7 @@ module Chimailmadmin
       xml = builder :"xml/sa_prefs"
       xslview xml, "sa_prefs.xsl"
     end
-    # Expiriment
+    # Experiment
     get '/dnu-cma-sa-:pipeline' do
       @prefs = { 'whitelist_to' => ["example.com","example.org"]}
       xml = builder :"xml/sa_#{params[:pipeline]}"
@@ -212,6 +235,16 @@ module Chimailmadmin
       xslview runtime, 'runtime.xsl'
     end
 
+    get '/raw/json/cma-mailbox-list' do
+      content_type :json
+      idx_json, names = get_mailboxes
+      idx_json.to_json
+    end
+    get '/raw/json/cma-domain-list' do
+      content_type :json
+      idx_json = get_domains.to_json
+      idx_json
+    end
     not_found do
       headers 'Last-Modified' => Time.now.httpdate, 'Cache-Control' => 'no-store'
       %(<div class="block"><div class="hd"><h2>Error</h2></div><div class="bd">This is nowhere to be found. <a href="#{Chimailmadmin.conf[:uripfx]}">Start over?</a></div></div>)

@@ -24,6 +24,7 @@
 xml.mailboxes(:domain => @domain) {
   @index.each_index do |pos|
     address = @index[pos]
-    xml.mailbox(:id=>pos, :address=>address)
+    name = @updex[pos]
+    xml.mailbox(:id=>pos, :address=>address, :name=>name)
   end
 }
