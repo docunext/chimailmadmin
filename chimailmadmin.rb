@@ -51,7 +51,7 @@ end
 module Chimailmadmin
 
   class << self
-    attr_accessor(:conf, :runtime, :memcdb)
+    attr_accessor(:conf, :memcdb)
   end
 
   # Create the app which will run
@@ -76,6 +76,7 @@ module Chimailmadmin
       set :public, 'public'
       set :xslviews, 'views/xsl/'
       set :uripfx, Proc.new { Chimailmadmin.conf[:uripfx] }
+      set :started_at => Time.now.to_i
 
       # Set request.env with application mount path
       use Rack::Config do |env|
@@ -84,30 +85,21 @@ module Chimailmadmin
         env['link_prefix'] = Chimailmadmin.conf[:uripfx]
       end
 
-      Chimailmadmin.runtime = Hash.new
-      # Setup XSL - better to do this only once
-      Chimailmadmin.runtime[:xslt]    = XML::XSLT.new()
-      Chimailmadmin.runtime[:xslfile] = File.open('views/xsl/html_main.xsl') {|f| f.read }
-      Chimailmadmin.runtime[:xslt].xsl = REXML::Document.new Chimailmadmin.runtime[:xslfile]
 
-      # Setup paths to remove from Rack::XSLView, and params to include
-      Chimailmadmin.runtime[:omitxsl] = ['/raw/', '/s/js/']
-      Chimailmadmin.runtime[:passenv] = ['PATH_INFO', 'RACK_MOUNT_PATH', 'RACK_ENV','link_prefix','path_prefix']
+      myxslfile = File.open('views/xsl/html_main.xsl') { |f| f.read }
+      myxsl = XML::XSLT.new()
+      myxsl.xsl = REXML::Document.new myxslfile
+      set :xsl, myxsl
+      set :xslfile, myxslfile
+      set :noxsl, ['/raw/', '/s/img/', '/s/js/']
+      set :passenv, ['PATH_INFO', 'RACK_MOUNT_PATH', 'RACK_ENV','link_prefix','path_prefix']
 
-      # Used in runtime/info
-      Chimailmadmin.runtime['started_at'] = Time.now.to_i
     end
     configure :development do
-      set :logging, false
-      set :reload_templates, true # This does work! :-)
+      set :logging => false, :reload_templates => true
     end
     configure :demo do
-      set :logging, true
-      set :reload_templates, false # This does work! :-)
-    end
-
-    configure :test do
-      #
+      set :logging => true, :reload_templates => false
     end
 
     # Rewrite app url patterns to static files
@@ -124,13 +116,20 @@ module Chimailmadmin
       rewrite Chimailmadmin.conf[:uripfx]+'cma-access-edit', '/s/xhtml/spam_acl_form.html'
     end
 
-    use Rack::Cache,
-      :verbose     => false,
-      :metastore   => 'file:/tmp/cache/rack/meta',
-      :entitystore => 'file:/tmp/cache/rack/body'
+    unless ENV['RACK_ENV'] == 'development'
+      use Rack::Cache,
+        :verbose     => true,
+        :metastore   => 'file:/tmp/cache/rack/meta',
+        :entitystore => 'file:/tmp/cache/rack/body'
+    end
 
     # Use Rack-XSLView
-    use Rack::XSLView, :myxsl => Chimailmadmin.runtime[:xslt], :noxsl => Chimailmadmin.runtime[:omitxsl], :passenv => Chimailmadmin.runtime[:passenv]
+    use Rack::XSLView,
+      :myxsl => xsl,
+      :noxsl => noxsl,
+      :passenv => passenv,
+      :xslfile => xslfile,
+      :reload => ENV['RACK_ENV'] == 'development' ? true : false
 
     # Sinatra Helper Gems
     helpers Sinatra::XSLView
@@ -263,9 +262,9 @@ module Chimailmadmin
     end
     get '/runtime/info' do
       cache_control :public, :must_revalidate, :max_age => 60
-      @uptime   = (0 + Time.now.to_i - Chimailmadmin.runtime['started_at']).to_s
-      runtime   = builder :'xml/runtime'
-      xslview runtime, 'runtime.xsl'
+      @uptime   = (0 + Time.now.to_i - settings.started_at).to_s
+      index   = builder :'xml/runtime'
+      xslview index, 'runtime.xsl'
     end
 
     get '/raw/json/cma-mailbox-list' do
