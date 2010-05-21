@@ -6,7 +6,6 @@ require 'spec/rake/spectask'
 task :test => :spec
 task :default => :spec
 
-
 begin
   require "vlad"
   Vlad.load(:app => nil, :scm => "git")
@@ -15,19 +14,22 @@ rescue LoadError
 end
 
 namespace :vlad do
-  @application = 'chimailmadmin'
   remote_task :restart do
-    run "sudo svc -d /service/#{@application}"
-    run "sudo svc -u /service/#{@application}"
+    run "sudo svc -d /service/#{application}"
+    run "sudo svc -u /service/#{application}"
   end
   remote_task :fix do
-    run "mkdir -p /var/www/dev/#{@application}/current/public/d/xhtml"
-    run "chmod 0777 /var/www/dev/#{@application}/current/public/d/xhtml"
+    run "mkdir -p #{deploy_to}/current/public/d/xhtml"
+    run "chmod 0777 #{deploy_to}/current/public/d/xhtml"
   end
   remote_task :logtail do
     run "tail /tmp/webapps/chimailmadmin.log -n 100"
   end
-  task :deploy => [:update, :restart, :fix]
+  task :send_conf do
+    command = "rsync config/customconf.rb #{domain}:#{deploy_to}/current/config/"
+    puts `#{command}`
+  end
+  task :deploy => [:update, :restart, :fix, :send_conf]
 end
 
 task :geturls do

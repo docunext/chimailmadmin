@@ -44,7 +44,7 @@ describe "Chimailmadmin" do
   myurls << '/cma-server-edit'
   myurls << '/cma-server-list'
   myurls << '/runtime/info'
-  myurls << '/stylesheet.css'
+  myurls << '/s/css/stylesheet.css'
   myurls << '/welcome'
 
   myurls.each { |url|
