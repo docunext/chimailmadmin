@@ -72,19 +72,18 @@ module Chimailmadmin
   class Main < Sinatra::Base
 
     configure do
-      set :static, true
-      set :public, 'public'
-      set :xslviews, 'views/xsl/'
-      set :uripfx, Proc.new { Chimailmadmin.conf[:uripfx] }
+      set :static => true, :public => 'public'
+      set :xslviews => 'views/xsl/'
+      set :uripfx => Proc.new { Chimailmadmin.conf[:uripfx] }
       set :started_at => Time.now.to_i
 
       # Set request.env with application mount path
       use Rack::Config do |env|
-        env['RACK_ENV'] = ENV['RACK_ENV'] ? ENV['RACK_ENV'] : 'development'
-        env['path_prefix'] = Chimailmadmin.conf[:uripfx]
-        env['link_prefix'] = Chimailmadmin.conf[:uripfx]
+        env['analytics_key'] = Chimailmadmin.conf[:analytics_key] if Chimailmadmin.conf[:analytics_key]
+        env['RACK_ENV'] = ENV['RACK_ENV']
+        env['path_prefix'] = uripfx
+        env['link_prefix'] = uripfx
       end
-
 
       myxslfile = File.open('views/xsl/html_main.xsl') { |f| f.read }
       myxsl = XML::XSLT.new()
@@ -92,7 +91,7 @@ module Chimailmadmin
       set :xsl, myxsl
       set :xslfile, myxslfile
       set :noxsl, ['/raw/', '/s/img/', '/s/js/']
-      set :passenv, ['PATH_INFO', 'RACK_MOUNT_PATH', 'RACK_ENV','link_prefix','path_prefix']
+      set :passenv, ['PATH_INFO', 'RACK_MOUNT_PATH', 'RACK_ENV','link_prefix','path_prefix','analytics_key']
 
     end
     configure :development do
@@ -173,7 +172,6 @@ module Chimailmadmin
     end
 
     get '/' do
-      puts Chimailmadmin.conf[:uripfx]
       mredirect 'welcome'
     end
 
@@ -282,10 +280,10 @@ module Chimailmadmin
       %(<div class="block"><div class="hd"><h2>Error</h2></div><div class="bd">This is nowhere to be found. <a href="#{Chimailmadmin.conf[:uripfx]}">Start over?</a></div></div>)
     end
 
-    get '/stylesheet.css' do
+    get '/s/css/stylesheet.css' do
       cache_control :public, :max_age => 600
       content_type 'text/css', :charset => 'utf-8'
-      sass 'css/notapp'.to_sym
+      sass 'css/chimailmadmin'.to_sym
     end
   end
 

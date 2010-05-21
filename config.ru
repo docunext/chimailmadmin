@@ -8,6 +8,7 @@ else
   mountpath = '/'
 end
 
+ENV['analytics_key'] = 'UA-9068589-14'
 
 require 'chimailmadmin'
 

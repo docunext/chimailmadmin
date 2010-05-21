@@ -50,7 +50,12 @@ xmlns="http://www.w3.org/1999/xhtml">
 		</div>
     <xsl:call-template name="footer" />
     <xsl:if test="$RACK_ENV='demo'">
-      <xsl:call-template name="analytics_code" />
+      <xsl:call-template name="g_analytics_code" />
+    </xsl:if>
+    <xsl:if test="$RACK_ENV='development'">
+    <xsl:comment>
+      <xsl:value-of select="$analytics_key" />
+    </xsl:comment>
     </xsl:if>
 
 			</body>
@@ -65,9 +70,8 @@ var svx_cdns = 'http://www-01.evenserver.com/s/';
     </script>
 			<title>CMA <xsl:value-of select="document('../../apps/chimailmadmin/i18n/en_US/chimailmadmin.xml')/i18n/*[contains($PATH_INFO,local-name())]"/></title>
       <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?2.7.0/build/reset/reset-min.css"></link>
-			<link rel="stylesheet" type="text/css" href="{$path_prefix}s/css/chimailmadmin.css"></link>
 			<link rel="stylesheet" type="text/css" href="{$path_prefix}s/css/droppy.css"></link>
-			<link rel="stylesheet" type="text/css" href="{$path_prefix}stylesheet.css"></link>
+			<link rel="stylesheet" type="text/css" href="{$path_prefix}s/css/stylesheet.css"></link>
 
       <xsl:if test="$RACK_ENV='demo'">
       <script type="text/javascript" src="http://www-01.evenserver.com/s/js/jquery/jquery-1.4.2.min.js"></script>
@@ -84,7 +88,6 @@ var svx_cdns = 'http://www-01.evenserver.com/s/';
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.tablesorter.min.js"></script>
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.tablesorter.pager.js"></script>
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.cookie.js"></script>
-			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.json.js"></script>
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.tablesorter.cookie.js"></script>
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.droppy.js"></script>
 			<script type="text/javascript" src="{$path_prefix}s/js/chimailmadmin.js"></script>
@@ -155,16 +158,6 @@ var svx_cdns = 'http://www-01.evenserver.com/s/';
 
 
 
-<xsl:template name="analytics_code">
-<script src="http://www.google-analytics.com/ga.js" type="text/javascript"></script> 
-<script type="text/javascript"> 
-try {
-var pageTracker = _gat._getTracker("UA-9068589-14");
-pageTracker._setCookiePath("/demo/");
- 
-pageTracker._trackPageview();
-} catch(err) {}</script>
-</xsl:template>
 
 <xsl:template name="inline-ads">
 <div style="float:right;">
