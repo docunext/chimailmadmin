@@ -57,13 +57,15 @@ module Chimailmadmin
   # Create the app which will run
   def self.new(conf)
     self.conf = conf
-    self.memcdb = MemCache.new '192.168.8.2:21201', :namespace => 'doculabsappone'
     if self.conf[:ccf]
       if File.exists?(self.conf[:ccf])
         myconf = File.open(self.conf[:ccf]) { |f| f.read }
         customconf = eval(myconf)
         self.conf.merge!(customconf)
       end
+    end
+    if self.conf[:memc_srv]
+      self.memcdb = MemCache.new self.conf[:memc_srv], :namespace => self.conf[:memc_ns]
     end
     Main
   end
@@ -118,8 +120,8 @@ module Chimailmadmin
     unless ENV['RACK_ENV'] == 'development'
       use Rack::Cache,
         :verbose     => true,
-        :metastore   => 'file:/tmp/cache/rack/meta',
-        :entitystore => 'file:/tmp/cache/rack/body'
+        :metastore   => Chimailmadmin.conf[:cache_base]+'/meta',
+        :entitystore => Chimailmadmin.conf[:cache_base]+'/body'
     end
 
     # Use Rack-XSLView
@@ -137,12 +139,15 @@ module Chimailmadmin
 
     helpers do
       # These should be different based upon development vs. production
+      def get_passlist
+        ['example.com','example.org','example.net']
+      end
       def get_aliases(domain=nil)
         aliases = []
         myalias = Hash.new
         myalias[:id] = 1
         myalias[:alias] = 'bob_hope'
-        myalias[:destination] = 'bob.hope' 
+        myalias[:destination] = 'bob.hope'
         myalias[:modified] = Time.now.to_i
         aliases << myalias
         return aliases
@@ -168,6 +173,9 @@ module Chimailmadmin
       def get_domains(domain_group=nil)
         idx_json = Chimailmadmin.memcdb.get('dig_index') || '["docunext.com"]'
         return JSON.parse(idx_json)
+      end
+      def get_access_lists
+        { 'example.com'=>'allow', 'example.org'=>'allow', 'microsoft.com' => 'deny' }
       end
     end
 
@@ -216,20 +224,18 @@ module Chimailmadmin
       xslview xml, 'server_list.xsl'
     end
     get '/cma-access-lists' do
-      @index = { "example.com"=>'allow', "example.org"=>'allow' }
-      @index['microsoft'] = 'deny'
+      @index = get_access_lists
       xml = builder :'xml/access_lists'
       xslview xml, 'spam_access_list.xsl'
     end
     get '/cma-sa-prefs' do
-      settings = ["example.com","example.org","example.net"]
-      @index = { 'whitelist_to' => settings }
-      xml = builder :"xml/sa_prefs"
-      xslview xml, "sa_prefs.xsl"
+      @index = { 'whitelist_to' => get_passlist }
+      xml = builder :'xml/sa_prefs'
+      xslview xml, 'sa_prefs.xsl'
     end
     # Experiment
     get '/dnu-cma-sa-:pipeline' do
-      @prefs = { 'whitelist_to' => ["example.com","example.org"]}
+      @prefs = { 'whitelist_to' => get_passlist }
       xml = builder :"xml/sa_#{params[:pipeline]}"
       xslview xml, "sa_#{params[:pipeline]}.xsl"
     end
@@ -241,18 +247,18 @@ module Chimailmadmin
       xslview '<root />', 'admin.xsl', { 'link_prefix' => "#{Chimailmadmin.conf[:uripfx]}"  }
     end
     get '/cma-admin-rr' do
-      stdout = '<pre>'<< Chimailmadmin.conf[:user] << "@" << Chimailmadmin.conf[:pfhost] << "\n"
+      stdout = '<pre>' << Chimailmadmin.conf[:user] << '@' << Chimailmadmin.conf[:pfhost] << '\n'
       Net::SSH.start(Chimailmadmin.conf[:pfhost], Chimailmadmin.conf[:user]) do |ssh|
-        ssh.exec!("sudo cat /etc/postfix/relay_recipients") do |channel, stream, data|
+        ssh.exec!('sudo cat /etc/postfix/relay_recipients') do |channel, stream, data|
           stdout << data if stream == :stdout
         end
       end
       stdout << '</pre>'
     end
     get '/cma-admin-sa' do
-      stdout = '<pre>'<< Chimailmadmin.conf[:user] << "@" << Chimailmadmin.conf[:sahost] << "\n"
+      stdout = '<pre>' << Chimailmadmin.conf[:user] << '@' << Chimailmadmin.conf[:sahost] << '\n'
       Net::SSH.start(Chimailmadmin.conf[:sahost], Chimailmadmin.conf[:user]) do |ssh|
-        ssh.exec!("sudo cat /etc/spamassassin/local.cf") do |channel, stream, data|
+        ssh.exec!('sudo cat /etc/spamassassin/local.cf') do |channel, stream, data|
           stdout << data if stream == :stdout
         end
       end
