@@ -117,7 +117,7 @@ module Chimailmadmin
       rewrite Chimailmadmin.conf[:uripfx]+'cma-access-edit', '/s/xhtml/spam_acl_form.html'
     end
 
-    unless ENV['RACK_ENV'] == 'development'
+    if ENV['RACK_ENV'] == 'production' && Chimailmadmin.conf[:cache_base]
       use Rack::Cache,
         :verbose     => true,
         :metastore   => Chimailmadmin.conf[:cache_base]+'/meta',
@@ -157,25 +157,33 @@ module Chimailmadmin
         server = Hash.new
         server[:id] = 1
         server[:server] = 'Franklin'
-        server[:host_name] = 'mx2.example.com' 
+        server[:host_name] = 'mx2.example.com'
         server[:modified] = Time.now.to_i
         servers << server
         return servers
       end
       def get_mailboxes(domain=nil)
-        idx_json = Chimailmadmin.memcdb.get('name_index') || '["bill.gates","steve.jobs"]'
-        @index = JSON.parse(idx_json)
-        @updex = @index.map do |name|
+        if Chimailmadmin.conf[:memc_srv]
+          idx_json = Chimailmadmin.memcdb.get('name_index')
+        else
+          idx_json = '["bill.gates","steve.jobs"]'
+        end
+        index = JSON.parse(idx_json)
+        updex = index.map do |name|
           name.gsub('.',' ').gsub(/\b\w/){$&.upcase}
         end
-        return [@index, @updex]
+        return [index, updex]
       end
       def get_domains(domain_group=nil)
-        idx_json = Chimailmadmin.memcdb.get('dig_index') || '["docunext.com"]'
+        if Chimailmadmin.conf[:memc_srv]
+          idx_json = Chimailmadmin.memcdb.get('dig_index')
+        else
+          idx_json = '["docunext.com"]'
+        end
         return JSON.parse(idx_json)
       end
       def get_access_lists
-        { 'example.com'=>'allow', 'example.org'=>'allow', 'microsoft.com' => 'deny' }
+        {'example.com'=>'allow','example.org'=>'allow','microsoft.com'=>'deny'}
       end
     end
 
@@ -247,7 +255,7 @@ module Chimailmadmin
       xslview '<root />', 'admin.xsl', { 'link_prefix' => "#{Chimailmadmin.conf[:uripfx]}"  }
     end
     get '/cma-admin-rr' do
-      stdout = '<pre>' << Chimailmadmin.conf[:user] << '@' << Chimailmadmin.conf[:pfhost] << '\n'
+      stdout = '<pre>' << Chimailmadmin.conf[:user] << '@' << Chimailmadmin.conf[:pfhost] << "\n"
       Net::SSH.start(Chimailmadmin.conf[:pfhost], Chimailmadmin.conf[:user]) do |ssh|
         ssh.exec!('sudo cat /etc/postfix/relay_recipients') do |channel, stream, data|
           stdout << data if stream == :stdout
@@ -256,7 +264,7 @@ module Chimailmadmin
       stdout << '</pre>'
     end
     get '/cma-admin-sa' do
-      stdout = '<pre>' << Chimailmadmin.conf[:user] << '@' << Chimailmadmin.conf[:sahost] << '\n'
+      stdout = '<pre>' << Chimailmadmin.conf[:user] << '@' << Chimailmadmin.conf[:sahost] << "\n"
       Net::SSH.start(Chimailmadmin.conf[:sahost], Chimailmadmin.conf[:user]) do |ssh|
         ssh.exec!('sudo cat /etc/spamassassin/local.cf') do |channel, stream, data|
           stdout << data if stream == :stdout
@@ -282,7 +290,7 @@ module Chimailmadmin
       idx_json
     end
     not_found do
-      headers 'Last-Modified' => Time.now.httpdate, 'Cache-Control' => 'no-store'
+      cache_control :'no-store', :max_age => 0
       %(<div class="block"><div class="hd"><h2>Error</h2></div><div class="bd">This is nowhere to be found. <a href="#{Chimailmadmin.conf[:uripfx]}">Start over?</a></div></div>)
     end
 
