@@ -63,10 +63,9 @@ xmlns="http://www.w3.org/1999/xhtml">
 	</xsl:template>
 	<xsl:template name="head">
 		<head>
-    <script type="text/javascript"><xsl:comment>
+    <script type="text/javascript">
 var app_prefix = '<xsl:value-of select="$path_prefix"/>';
 var svx_cdns = 'http://www-01.evenserver.com/s/';
-//</xsl:comment>
     </script>
 			<title>CMA <xsl:value-of select="document('../../apps/chimailmadmin/i18n/en_US/chimailmadmin.xml')/i18n/*[contains($PATH_INFO,local-name())]"/></title>
       <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/combo?2.7.0/build/reset/reset-min.css"></link>

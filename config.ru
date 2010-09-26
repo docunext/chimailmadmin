@@ -1,3 +1,5 @@
+use Rack::Static, :urls => ['/favicon.ico'], :root => 'web/s/'
+
 if ENV['RACK_ENV'] == "demo"
   mountpath = '/demo/chimailmadmin/'
   dirpfx = '/var/www/dev/chimailmadmin/current'
