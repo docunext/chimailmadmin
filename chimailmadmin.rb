@@ -140,10 +140,9 @@ module Chimailmadmin
       :xslfile => xslfile,
       :reload => ENV['RACK_ENV'] == 'development' ? true : false
 
-    # TODO - Use bundler
-    #set(:bundle_cache_time,0)
-    #set(:warm_bundle_cache,0)
-    #set(:cache_bundles,0)
+    set(:bundle_cache_time,0)
+    set(:warm_bundle_cache,0)
+    set(:cache_bundles,0)
  
     #stylesheet_bundle(:all, %w(droppy yui-reset-min thickbox))
     javascript_bundle(:all, %w(jquery/jquery jquery/plugins/jquery.url jquery/plugins/jquery.cookiejar jquery/plugins/jquery.metadata jquery/plugins/jquery.tablesorter.min jquery/plugins/jquery.tablesorter.pager jquery/plugins/jquery.cookie jquery/plugins/jquery.tablesorter.cookie jquery/plugins/jquery.droppy))
