@@ -38,6 +38,8 @@ require 'dbi'
 require 'net/ssh'
 require File.dirname(File.dirname(__FILE__)) + '/svxbox/lib/svxbox' if ENV['RACK_ENV'] == 'development'
 require 'svxbox' unless ENV['RACK_ENV'] == 'development'
+require File.dirname(File.dirname(__FILE__)) + '/sinatra-stuff/sinatra-bundles/lib/sinatra/bundles' if ENV['RACK_ENV'] == 'development'
+require 'sinatra/bundles' unless ENV['RACK_ENV'] == 'development'
 
 module Sinatra
   module ModBox
@@ -73,6 +75,10 @@ module Chimailmadmin
   # The sub-classed Sinatra application
   class Main < Sinatra::Base
 
+    set :js => 's/js'
+    set :css => 's/css'
+    register Sinatra::Bundles
+
     configure do
       set :static => true, :public => 'public'
       set :xslviews => 'views/xsl/'
@@ -85,6 +91,7 @@ module Chimailmadmin
         env['RACK_ENV'] = ENV['RACK_ENV']
         env['path_prefix'] = uripfx
         env['link_prefix'] = uripfx
+        env['TS'] = Time.now.to_i
       end
 
       myxslfile = File.open('views/xsl/html_main.xsl') { |f| f.read }
@@ -93,7 +100,7 @@ module Chimailmadmin
       set :xsl, myxsl
       set :xslfile, myxslfile
       set :noxsl, ['/raw/', '/s/img/', '/s/js/']
-      set :passenv, ['PATH_INFO', 'RACK_MOUNT_PATH', 'RACK_ENV','link_prefix','path_prefix','analytics_key']
+      set :passenv, ['PATH_INFO', 'RACK_MOUNT_PATH', 'RACK_ENV','link_prefix','path_prefix','analytics_key','TS']
 
     end
     configure :development do
@@ -131,6 +138,15 @@ module Chimailmadmin
       :passenv => passenv,
       :xslfile => xslfile,
       :reload => ENV['RACK_ENV'] == 'development' ? true : false
+
+    # TODO - Use bundler
+    #set(:bundle_cache_time,0)
+    #set(:warm_bundle_cache,0)
+    #set(:cache_bundles,0)
+ 
+    #stylesheet_bundle(:all, %w(droppy yui-reset-min thickbox))
+    javascript_bundle(:all, %w(jquery/jquery jquery/plugins/jquery.url jquery/plugins/jquery.cookiejar jquery/plugins/jquery.metadata jquery/plugins/jquery.tablesorter.min jquery/plugins/jquery.tablesorter.pager jquery/plugins/jquery.cookie jquery/plugins/jquery.tablesorter.cookie jquery/plugins/jquery.droppy))
+
 
     # Sinatra Helper Gems
     helpers Sinatra::XSLView

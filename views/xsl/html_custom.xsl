@@ -80,8 +80,8 @@ var svx_cdns = 'http://www-01.evenserver.com/s/';
       <xsl:if test="not($RACK_ENV='demo')">
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/jquery.js" />
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.url.js" />
-			</xsl:if>
-
+		</xsl:if>
+<!--
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.cookiejar.js" />
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.metadata.js"></script>
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.tablesorter.min.js"></script>
@@ -89,6 +89,8 @@ var svx_cdns = 'http://www-01.evenserver.com/s/';
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.cookie.js"></script>
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.tablesorter.cookie.js"></script>
 			<script type="text/javascript" src="{$path_prefix}s/js/jquery/plugins/jquery.droppy.js"></script>
+-->
+<script type="text/javascript" src="{$path_prefix}s/js/bundles/all.js?#{$TS}"></script>
 			<script type="text/javascript" src="{$path_prefix}s/js/chimailmadmin.js"></script>
       <xsl:for-each select="//head_nodes">
 				<xsl:sort select="priority" order="ascending"/>
