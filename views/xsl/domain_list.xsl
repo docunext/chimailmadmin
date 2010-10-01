@@ -86,7 +86,7 @@ return confirm ('Do you really want to delete all records for this domain? This 
             </a>
           </td>
           <td>
-            <a href="cma-domain-edit&amp;my_domain_id={domain_id}">
+            <a href="cma-domain-edit/{@name}">
               <span>edit</span>
             </a>
           </td>

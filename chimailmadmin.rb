@@ -121,6 +121,7 @@ module Chimailmadmin
       rewrite Chimailmadmin.conf[:uripfx]+'cma-mailbox-edit', '/s/xhtml/mailbox_form.html'
       rewrite Chimailmadmin.conf[:uripfx]+'cma-server-edit', '/s/xhtml/server_form.html'
       rewrite Chimailmadmin.conf[:uripfx]+'cma-domain-edit', '/s/xhtml/domain_form.html'
+      rewrite %r{#{Chimailmadmin.conf[:uripfx]}cma-domain-edit\/(.*)}, '/s/xhtml/domain_form.html?domain=$1'
       rewrite Chimailmadmin.conf[:uripfx]+'cma-access-edit', '/s/xhtml/spam_acl_form.html'
     end
 
