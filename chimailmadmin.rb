@@ -1,6 +1,6 @@
 ###
 # Program:: http://www.docunext.com/wiki/Sinatra
-# Component:: notapp.rb
+# Component:: chimailmadmin.rb
 # Copyright:: Savonix Corporation
 # Author:: Albert L. Lash, IV
 # License:: Gnu Affero Public License version 3
