@@ -1,4 +1,4 @@
-# [CHIMAILMADMIN](http://www.chimailmadmin.com/)
+# [CHIMAILMADMIN - Flexible Domain Administration Panel for E-Mail Accounts](http://www.chimailmadmin.com/)
 
 About
 =====
@@ -22,4 +22,4 @@ Plans
     * Patterns
 * Support Dovecot first (because its awesome), Courier too
 * Support Postfix first (because its awesome), QMail and Exim too
-
+* Add direct support for exporting CDB files via Ruby-CDB
