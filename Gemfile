@@ -18,6 +18,10 @@ end
 
 gem 'jquery-rails'
 
+gem 'haml'
+gem 'hpricot'
+gem 'ruby_parser'
+
 gem 'inherited_resources'
 # Use unicorn as the web server
 # gem 'unicorn'
