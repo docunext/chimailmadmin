@@ -1,0 +1,32 @@
+.block
+  .secondary-navigation
+    %ul.wat-cf
+      %li.first= link_to "#{t("web-app-theme.list", :default => "List")}", servers_path
+      %li= link_to "#{t("web-app-theme.new", :default => "New")}", new_server_path
+      %li.active= link_to "#{t("web-app-theme.show", :default => "Show")}", server_path
+  .content
+    .inner
+      %p
+        %b
+          = t("activerecord.attributes.server.server", :default => t("activerecord.labels.server", :default => "Server"))
+          \:
+        = @server.server
+      %p
+        %b
+          = t("activerecord.attributes.server.description", :default => t("activerecord.labels.description", :default => "Description"))
+          \:
+        = @server.description
+      %p
+        %b
+          = t("activerecord.attributes.server.server_type_id", :default => t("activerecord.labels.server_type_id", :default => "Server type"))
+          \:
+        = @server.server_type_id
+      %p
+        %b
+          = t("activerecord.attributes.server.host_name", :default => t("activerecord.labels.host_name", :default => "Host name"))
+          \:
+        = @server.host_name
+      .wat-cf
+        = link_to image_tag("web-app-theme/icons/application_edit.png", :alt => "#{t("web-app-theme.edit", :default=> "Edit")}") + " " + t("web-app-theme.edit", :default=> "Edit"), edit_server_path(@server), :class => "button"
+        = link_to image_tag("web-app-theme/icons/cross.png", :alt => "#{t("web-app-theme.delete", :default=> "Delete")}") + " " + t("web-app-theme.delete", :default => "Delete"), server_path(@server), :method => "delete", :class => "button", :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}"
+- content_for :sidebar, render(:partial => 'sidebar')

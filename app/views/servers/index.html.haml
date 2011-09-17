@@ -1,0 +1,33 @@
+.block
+  .secondary-navigation
+    %ul.wat-cf
+      %li.first.active= link_to "#{t("web-app-theme.list", :default => "List")}", servers_path
+      %li= link_to "#{t("web-app-theme.new", :default => "New")}", new_server_path
+  .content
+    %h2.title
+      = t("web-app-theme.all", :default => "All")
+      Servers
+    .inner
+      %table.table
+        %tr
+          %th.first ID
+          %th
+            = t("activerecord.attributes.server.server", :default => t("activerecord.labels.server", :default => "Server"))
+          %th= t("web-app-theme.created_at", :default => "Created at")
+          %th.last &nbsp;
+        - @servers.each do |server|
+          %tr{:class => cycle("odd", "even")}
+            %td
+              = server.id
+            %td
+              = link_to server.server, server_path(server)
+            %td
+              = server.created_at
+            %td.last
+              = link_to "#{t("web-app-theme.show", :default => "Show")}", server_path(server)
+              |
+              \#{link_to "#{t("web-app-theme.edit", :default => "Edit")}", edit_server_path(server)} |
+              \#{link_to "#{t("web-app-theme.delete", :default => "Delete")}", server_path(server), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}"}
+      .actions-bar.wat-cf
+        .actions
+- content_for :sidebar, render(:partial => 'sidebar')
