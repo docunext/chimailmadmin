@@ -3,3 +3,6 @@ config/customconf.rb
 cache
 coverage
 config/deploy.rb
+log/*
+tmp
+db/*.sqlite3
