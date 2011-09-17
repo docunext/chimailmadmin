@@ -5,3 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+require 'active_record/fixtures'
+
+10.times do |i|
+  Email.new(:address => "test#{i}@test.com").save!
+end

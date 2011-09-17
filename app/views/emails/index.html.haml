@@ -7,8 +7,11 @@
             %th.first Name
             %th.last Address 
         %tbody
-          -# resource_class.root.children.each do |acc|
-            -#  =render(:partial => 'account_row', :locals => {:acc => acc, :level => 0})
+          - collection.each do |acc|
+            %tr
+              %td
+              %td= acc.address
+
       .actions-bar.wat-cf
         .actions
           .wat-cf
