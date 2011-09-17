@@ -7,6 +7,9 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 require 'active_record/fixtures'
 
+d = Domain.new({:name => 'test.com'})
+d.save
+
 10.times do |i|
-  Email.new(:address => "test#{i}@test.com").save!
+  d.emails.create(:address => "test#{i}").save!
 end
