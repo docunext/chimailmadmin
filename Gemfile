@@ -18,6 +18,7 @@ end
 
 gem 'jquery-rails'
 
+gem 'inherited_resources'
 # Use unicorn as the web server
 # gem 'unicorn'
 
@@ -27,7 +28,11 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
+group :development do
+  gem 'web-app-theme', '>= 0.6.2'
+end
+
 group :test do
-  # Pretty printed test output
   gem 'turn', :require => false
+  gem 'web-app-theme', '>= 0.6.2'
 end
