@@ -29,7 +29,21 @@ ActiveRecord::Schema.define(:version => 20110917191646) do
 
   create_table "emails", :force => true do |t|
     t.string   "address"
-    t.string   "domain_id"
+    t.integer  "domain_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.integer  "quota"
+    t.string   "maildir"
+    t.boolean  "active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "servers", :force => true do |t|
+    t.string   "server"
+    t.string   "description"
+    t.integer  "server_type_id"
+    t.string   "host_name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

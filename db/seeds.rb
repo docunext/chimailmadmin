@@ -11,5 +11,5 @@ d = Domain.new({:name => 'test.com'})
 d.save
 
 10.times do |i|
-  d.emails.create(:address => "test#{i}").save!
+  d.emails.create({:address => "test#{i}", :first_name => i, :last_name => i}).save!
 end
