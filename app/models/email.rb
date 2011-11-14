@@ -2,7 +2,6 @@ class Email < ActiveRecord::Base
   belongs_to :domain
 
   validates :address,
-            :uniqueness => true,
             :presence => true
 
   validates :domain_id,
