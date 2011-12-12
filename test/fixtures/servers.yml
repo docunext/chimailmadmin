@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  server: MyString
+  description: MyString
+  server_type_id: 1
+  host_name: MyString
+
+two:
+  server: MyString
+  description: MyString
+  server_type_id: 1
+  host_name: MyString
